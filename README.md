@@ -1,0 +1,2 @@
+# Runes of Wizardry Classic pack
+This adds the classic dusts and runes from <a href=http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1280442-1-5-the-runic-dust-mod-mar14>The Runic Dust Mod</a>
