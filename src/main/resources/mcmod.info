@@ -1,7 +1,7 @@
 [
 {
-  "modid": "runesofwizardry-classics",
-  "name": "Runes of Wizardry - classic dusts pack",
+  "modid": "runesofwizardry_classics",
+  "name": "Runes of Wizardry - Classic Dusts Pack",
   "description": "Adds the classic dusts and runes to Runes of Wizardry",
   "version": "${version}",
   "mcversion": "${mcversion}",
