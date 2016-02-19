@@ -1,16 +1,16 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "runesofwizardry-classics",
+  "name": "Runes of Wizardry - classic dusts pack",
+  "description": "Adds the classic dusts and runes to Runes of Wizardry",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Xilef11"],
+  "credits": "billythegoat101 for the original concept",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": ["runesofwizardry"]
 }
 ]

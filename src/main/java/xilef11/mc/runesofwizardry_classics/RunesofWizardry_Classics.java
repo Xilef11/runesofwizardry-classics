@@ -1,16 +1,18 @@
-package com.example.examplemod;
+package xilef11.mc.runesofwizardry_classics;
 
 import net.minecraft.init.Blocks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = ExampleMod.MODID, version = ExampleMod.VERSION)
-public class ExampleMod
+@Mod(modid = Refs.MODID, version = Refs.VERSION, name=Refs.NAME, dependencies = "before:runesofwizardry")
+public class RunesofWizardry_Classics
 {
-    public static final String MODID = "examplemod";
-    public static final String VERSION = "1.0";
-    
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event){
+		System.out.println("classics in preinit");
+	}
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
