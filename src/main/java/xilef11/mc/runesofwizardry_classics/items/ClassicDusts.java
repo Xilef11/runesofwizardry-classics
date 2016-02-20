@@ -12,6 +12,7 @@ import com.zpig333.runesofwizardry.api.IDust;
  *
  */
 public class ClassicDusts extends IDust {
+	public static IDust instance;
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IDust#getDustName()
 	 */

@@ -3,6 +3,8 @@
  */
 package xilef11.mc.runesofwizardry_classics.items;
 
+import net.minecraft.item.ItemStack;
+
 /**
  * @author Xilef11
  *
@@ -29,6 +31,9 @@ public enum EnumDustTypes {
 	/** returns the metadata value associated with a dust type **/
 	public int meta(){
 		return this.ordinal();
+	}
+	public ItemStack getStack(int amount){
+		return new ItemStack(ClassicDusts.instance,amount,this.meta());
 	}
 	/** returns the dust type associated with the given meta **/
 	public static EnumDustTypes getByMeta(int meta){
