@@ -8,10 +8,10 @@ package xilef11.mc.runesofwizardry_classics.items;
  *
  */
 public enum EnumDustTypes {
-	PLANT (0,0),
-	GUNPOWDER(0,0),
-	LAPIS(0,0),
-	BLAZE(0,0);
+	PLANT (0x629B26, 0x8AD041, 0xC2E300),
+	GUNPOWDER(0x696969, 0x979797, 0x666464),
+	LAPIS(0x345EC3, 0x5A82E2, 0x0087FF),
+	BLAZE(0xEA8A00, 0xFFFE31, 0xFF6E1E);
 	/*
 	 * In order of least valuable to most valuable:
 	   2xTall Grass or Saplings or Leaves or Seeds + 1xCoal = 8xPlant Runic Dust
@@ -19,11 +19,12 @@ public enum EnumDustTypes {
        3xLapis + 1xCoal = 8xLapis Runic Dust
        3xLapis Runic Dust + 1xBlaze Powder = 12xBlaze Runic Dust
 	 */
-	public final int primaryColor, secondaryColor;
+	public final int primaryColor, secondaryColor,floorColor;
 	//constructor for our dust types
-	EnumDustTypes(int primaryColor, int secondaryColor){
+	EnumDustTypes(int primaryColor, int secondaryColor,int floorColor){
 		this.primaryColor=primaryColor;
 		this.secondaryColor=secondaryColor;
+		this.floorColor = floorColor;
 	}
 	/** returns the metadata value associated with a dust type **/
 	public int meta(){

@@ -3,13 +3,7 @@
  */
 package xilef11.mc.runesofwizardry_classics.items;
 
-import java.util.List;
-
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.zpig333.runesofwizardry.api.IDust;
 
@@ -18,15 +12,11 @@ import com.zpig333.runesofwizardry.api.IDust;
  *
  */
 public class ClassicDusts extends IDust {
-	public ClassicDusts(){
-		this.setHasSubtypes(true);
-	}
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IDust#getDustName()
 	 */
 	@Override
 	public String getDustName() {
-		// TODO Auto-generated method stub
 		return "classic";
 	}
 
@@ -55,24 +45,26 @@ public class ClassicDusts extends IDust {
 	public int getSecondaryColor(ItemStack stack) {
 		return EnumDustTypes.getByMeta(stack.getMetadata()).secondaryColor;
 	}
-	private static int[] res=null;
+	
+	/* (non-Javadoc)
+	 * @see com.zpig333.runesofwizardry.api.IDust#getPlacedColor(net.minecraft.item.ItemStack)
+	 */
+	@Override
+	public int getPlacedColor(ItemStack stack) {
+		return EnumDustTypes.getByMeta(stack.getMetadata()).floorColor;
+	}
+
+	private static int[] metaVals=null;
 	@Override
 	public int[] getMetaValues() {
-		if(res==null){
+		if(metaVals==null){
 			EnumDustTypes vals[] = EnumDustTypes.values();
-			res = new int[vals.length];
+			metaVals = new int[vals.length];
 			for(int i=0;i<vals.length;i++){
-				res[i]=vals[i].meta();
+				metaVals[i]=vals[i].meta();
 			}
 		}
-		return res;
-	}
-	@SideOnly(Side.CLIENT)//duplicating the sideonly in Item
-	@Override
-	public void getSubItems(Item itemIn, CreativeTabs tab,List<ItemStack> subItems) {
-		for(int meta:getMetaValues()){
-			subItems.add(new ItemStack(itemIn,1,meta));
-		}
+		return metaVals;
 	}
 	
 }

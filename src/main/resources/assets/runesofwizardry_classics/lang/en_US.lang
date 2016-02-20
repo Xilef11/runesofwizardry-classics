@@ -1,0 +1,11 @@
+#dusts
+item.runesofwizardry_dust_classic.0.name=Plant Runic Dust
+item.runesofwizardry_dust_classic.1.name=Gunpowder Runic Dust
+item.runesofwizardry_dust_classic.2.name=Lapis Runic Dust
+item.runesofwizardry_dust_classic.3.name=Blaze Runic Dust
+
+#dust blocks
+tile.runesofwizardry_dust_classic_storage.0.name=Block of Plant Runic Dust
+tile.runesofwizardry_dust_classic_storage.1.name=Block of Gunpowder Runic Dust
+tile.runesofwizardry_dust_classic_storage.2.name=Block of Lapis Runic Dust
+tile.runesofwizardry_dust_classic_storage.3.name=Block of Blaze Runic Dust
