@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import xilef11.mc.runesofwizardry_classics.items.ClassicDusts;
+import xilef11.mc.runesofwizardry_classics.items.DustVariable;
 
 import com.zpig333.runesofwizardry.api.DustRegistry;
 
@@ -21,6 +22,8 @@ public class RunesofWizardry_Classics
 		ModLogger.logInfo("Registering Classic dusts");
 		ClassicDusts.instance = new ClassicDusts();
 		DustRegistry.registerDust(ClassicDusts.instance);
+		DustVariable.instance=new DustVariable();
+		DustRegistry.registerDust(DustVariable.instance);
 	}
     @EventHandler
     public void init(FMLInitializationEvent event)

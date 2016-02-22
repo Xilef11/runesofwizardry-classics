@@ -3,6 +3,7 @@ item.runesofwizardry_dust_classic.0.name=Plant Runic Dust
 item.runesofwizardry_dust_classic.1.name=Gunpowder Runic Dust
 item.runesofwizardry_dust_classic.2.name=Lapis Runic Dust
 item.runesofwizardry_dust_classic.3.name=Blaze Runic Dust
+item.runesofwizardry_dust_variable=Variable dust placeholder
 
 #dust blocks
 tile.runesofwizardry_dust_classic_storage.0.name=Block of Plant Runic Dust
