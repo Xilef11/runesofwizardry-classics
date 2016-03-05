@@ -34,7 +34,7 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
@@ -42,7 +42,7 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
@@ -57,13 +57,13 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
@@ -71,13 +71,13 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
@@ -90,13 +90,13 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
@@ -106,30 +106,16 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
-    null,
-    null
-  ],
-  [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
     null,
     null
   ],
@@ -150,15 +136,29 @@
   [
     null,
     null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  [
+    null,
+    null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
@@ -168,13 +168,13 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
@@ -187,13 +187,13 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
@@ -201,13 +201,13 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
@@ -222,7 +222,7 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
@@ -230,7 +230,7 @@
     null,
     {
       "stackSize": 1,
-      "item": "runesofwizardry:dust_variable",
+      "item": "runesofwizardry_classics:dust_variable",
       "stackTagCompound": null,
       "itemDamage": 0
     },
