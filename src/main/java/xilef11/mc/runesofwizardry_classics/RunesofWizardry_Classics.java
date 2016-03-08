@@ -30,5 +30,6 @@ public class RunesofWizardry_Classics
     {
     	ModRecipes.registerDustRecipes();
     	//register the runes
+    	ModRunes.registerRunes();
     }
 }
