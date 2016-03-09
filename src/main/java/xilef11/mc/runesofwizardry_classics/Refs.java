@@ -14,7 +14,7 @@ public final class Refs {
 	public static final String VERSION = "@VERSION@";
 	public static final String NAME="Runes of Wizardry - Classic Dusts Pack";
 	public static final String GUI_FACTORY="xilef11.mc.runesofwizardry_classics.client.gui.GuiFactory";
-	public static final String PATTERN_PATH=MODID+":/patterns/";
+	public static final String PATTERN_PATH=MODID+":patterns/";
 	
 	public static final class Lang{
 		private Lang(){}

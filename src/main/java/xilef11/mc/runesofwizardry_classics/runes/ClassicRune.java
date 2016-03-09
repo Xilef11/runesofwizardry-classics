@@ -3,8 +3,14 @@
  */
 package xilef11.mc.runesofwizardry_classics.runes;
 
+import java.io.IOException;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3i;
+
+import org.apache.logging.log4j.Level;
+
+import xilef11.mc.runesofwizardry_classics.ModLogger;
 
 import com.zpig333.runesofwizardry.api.IRune;
 
@@ -23,12 +29,16 @@ public abstract class ClassicRune extends IRune {
 	@Override
 	public ItemStack[][] getPattern() {
 		if(pattern==null){
-			pattern=setupPattern();
+			try {
+				pattern=setupPattern();
+			} catch (IOException e) {
+				ModLogger.logException(Level.FATAL, e, "Could not set up pattern");
+			}
 		}
 		return pattern;
 	}
 
-	protected abstract ItemStack[][] setupPattern();
+	protected abstract ItemStack[][] setupPattern() throws IOException;
 	
 
 	/* (non-Javadoc)
@@ -54,7 +64,7 @@ public abstract class ClassicRune extends IRune {
 		}
 		return null;
 	}
-
+	//this has slightly more overhead in case of a completely null sacrifice, but reduces it otherwise
 	protected abstract ItemStack[][] setupSacrifice();
 
 
