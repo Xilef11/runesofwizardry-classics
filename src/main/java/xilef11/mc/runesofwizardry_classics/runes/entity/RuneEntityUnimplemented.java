@@ -35,7 +35,7 @@ public class RuneEntityUnimplemented extends RuneEntity {
 	public RuneEntityUnimplemented(ItemStack[][] actualPattern, EnumFacing facing,Set<BlockPos> dusts, TileEntityDustActive entity,IRune rune) {
 		super(actualPattern, facing, dusts, entity);
 		this.runeName=rune.getName();
-		String id = runeName.substring(runeName.lastIndexOf('.'));
+		String id = runeName.substring(runeName.lastIndexOf('.')+1);
 		this.id = "rune"+id.substring(0, 1).toUpperCase()+id.substring(1);
 	}
 
