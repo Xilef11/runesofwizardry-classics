@@ -48,7 +48,7 @@ public class RuneLumber extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.stick,2),new ItemStack(Blocks.log,3)}//TODO oredict for logs + sticks
+				{new ItemStack(Items.stick,2),new ItemStack(Blocks.log,3)}
 		};
 	}
 

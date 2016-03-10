@@ -4,6 +4,7 @@
 package xilef11.mc.runesofwizardry_classics;
 
 import xilef11.mc.runesofwizardry_classics.runes.RuneHealing;
+import xilef11.mc.runesofwizardry_classics.runes.RuneLumber;
 import xilef11.mc.runesofwizardry_classics.runes.RuneRabbitHole;
 import xilef11.mc.runesofwizardry_classics.runes.RuneTorch;
 
@@ -18,5 +19,6 @@ public class ModRunes {
 		DustRegistry.registerRune(new RuneTorch());
 		DustRegistry.registerRune(new RuneRabbitHole());
 		DustRegistry.registerRune(new RuneHealing());
+		DustRegistry.registerRune(new RuneLumber());
 	}
 }

@@ -62,7 +62,7 @@ public abstract class ClassicRune extends IRune {
 		if(sacrifice==null){
 			sacrifice=setupSacrifice();
 		}
-		return null;
+		return sacrifice;
 	}
 	//this has slightly more overhead in case of a completely null sacrifice, but reduces it otherwise
 	protected abstract ItemStack[][] setupSacrifice();
