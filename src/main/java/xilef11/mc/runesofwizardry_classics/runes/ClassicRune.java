@@ -4,15 +4,27 @@
 package xilef11.mc.runesofwizardry_classics.runes;
 
 import java.io.IOException;
+import java.util.Set;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3i;
+import net.minecraft.world.World;
 
 import org.apache.logging.log4j.Level;
 
+import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.ModLogger;
+import xilef11.mc.runesofwizardry_classics.Refs;
 
 import com.zpig333.runesofwizardry.api.IRune;
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 
 /**
  * @author Xilef11
@@ -67,5 +79,47 @@ public abstract class ClassicRune extends IRune {
 	//this has slightly more overhead in case of a completely null sacrifice, but reduces it otherwise
 	protected abstract ItemStack[][] setupSacrifice();
 
+	/* (non-Javadoc)
+	 * @see com.zpig333.runesofwizardry.api.IRune#getName()
+	 */
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zpig333.runesofwizardry.api.IRune#createRune(net.minecraft.item.ItemStack[][], net.minecraft.util.EnumFacing, java.util.Set, com.zpig333.runesofwizardry.tileentity.TileEntityDustActive)
+	 */
+	@Override
+	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
+			Set<BlockPos> dusts, TileEntityDustActive entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zpig333.runesofwizardry.api.IRune#canBeActivatedByPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, net.minecraft.util.BlockPos)
+	 */
+	@Override
+	public boolean canBeActivatedByPlayer(EntityPlayer player, World world,	BlockPos activationPos) {
+		if(world.isRemote)return false;//Server-side only
+		String perm = Config.getPermissionsForRune(this);
+		boolean allowed=false;
+		if(perm!=null){
+			//if(perm.equals(Config.PERMISSIONS_NONE))allowed=false;
+			if(perm.equals(Config.PERMISSIONS_ALL))allowed=true;
+			if(perm.equals(Config.PERMISSIONS_OP)){
+				String[] ops = MinecraftServer.getServer().getConfigurationManager().getOppedPlayerNames();
+				for(String name:ops){
+					if(name.equals(player.getName()))allowed=true;
+				}
+				//TODO check if cheats enabled if single player
+			}
+		}
+		if(!allowed)player.addChatMessage(new ChatComponentTranslation(Refs.Lang.RUNE+".nopermission.message",StatCollector.translateToLocal(getName())));
+		return allowed;
+	}
+	
 
 }

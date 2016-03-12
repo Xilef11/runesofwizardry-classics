@@ -19,6 +19,7 @@ public final class Refs {
 	public static final class Lang{
 		private Lang(){}
 		public static final String RUNE=MODID+".rune";
+		public static final String CONFIG=MODID+".configuration";
 	}
 
 }

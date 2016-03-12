@@ -3,9 +3,55 @@
  */
 package xilef11.mc.runesofwizardry_classics;
 
-import xilef11.mc.runesofwizardry_classics.runes.*;
+import java.util.LinkedList;
+import java.util.List;
+
+import xilef11.mc.runesofwizardry_classics.runes.ClassicRune;
+import xilef11.mc.runesofwizardry_classics.runes.RuneBarrier;
+import xilef11.mc.runesofwizardry_classics.runes.RuneBouncing;
+import xilef11.mc.runesofwizardry_classics.runes.RuneCompression;
+import xilef11.mc.runesofwizardry_classics.runes.RuneDawn;
+import xilef11.mc.runesofwizardry_classics.runes.RuneDepths;
+import xilef11.mc.runesofwizardry_classics.runes.RuneDetonation;
+import xilef11.mc.runesofwizardry_classics.runes.RuneDusk;
+import xilef11.mc.runesofwizardry_classics.runes.RuneEnchantingFireBow;
+import xilef11.mc.runesofwizardry_classics.runes.RuneEnchantingFortune;
+import xilef11.mc.runesofwizardry_classics.runes.RuneEnchantingSilkTouch;
+import xilef11.mc.runesofwizardry_classics.runes.RuneEntrapment;
+import xilef11.mc.runesofwizardry_classics.runes.RuneFarm;
+import xilef11.mc.runesofwizardry_classics.runes.RuneFire;
+import xilef11.mc.runesofwizardry_classics.runes.RuneHealing;
+import xilef11.mc.runesofwizardry_classics.runes.RuneHeights;
+import xilef11.mc.runesofwizardry_classics.runes.RuneHellstorm;
+import xilef11.mc.runesofwizardry_classics.runes.RuneLeapingFrog;
+import xilef11.mc.runesofwizardry_classics.runes.RuneLevelEarth;
+import xilef11.mc.runesofwizardry_classics.runes.RuneLockedTime;
+import xilef11.mc.runesofwizardry_classics.runes.RuneLumber;
+import xilef11.mc.runesofwizardry_classics.runes.RuneMountain;
+import xilef11.mc.runesofwizardry_classics.runes.RuneMusic;
+import xilef11.mc.runesofwizardry_classics.runes.RunePowerDistribution;
+import xilef11.mc.runesofwizardry_classics.runes.RuneProtection;
+import xilef11.mc.runesofwizardry_classics.runes.RuneRabbitHole;
+import xilef11.mc.runesofwizardry_classics.runes.RuneRebirth;
+import xilef11.mc.runesofwizardry_classics.runes.RuneResurrection;
+import xilef11.mc.runesofwizardry_classics.runes.RuneSarlacc;
+import xilef11.mc.runesofwizardry_classics.runes.RuneSpawnerCollection;
+import xilef11.mc.runesofwizardry_classics.runes.RuneSpawnerReassignment;
+import xilef11.mc.runesofwizardry_classics.runes.RuneSpeed;
+import xilef11.mc.runesofwizardry_classics.runes.RuneSpiritTools;
+import xilef11.mc.runesofwizardry_classics.runes.RuneSpriteEarth;
+import xilef11.mc.runesofwizardry_classics.runes.RuneSpriteFire;
+import xilef11.mc.runesofwizardry_classics.runes.RuneTeleportation;
+import xilef11.mc.runesofwizardry_classics.runes.RuneTorch;
+import xilef11.mc.runesofwizardry_classics.runes.RuneTransport;
+import xilef11.mc.runesofwizardry_classics.runes.RuneTrapFire;
+import xilef11.mc.runesofwizardry_classics.runes.RuneTrapLightning;
+import xilef11.mc.runesofwizardry_classics.runes.RuneTrapPoison;
+import xilef11.mc.runesofwizardry_classics.runes.RuneVoid;
+import xilef11.mc.runesofwizardry_classics.runes.RuneWisdom;
 
 import com.zpig333.runesofwizardry.api.DustRegistry;
+import com.zpig333.runesofwizardry.api.IRune;
 
 
 /** Registers all the runes in the mod
@@ -13,49 +59,59 @@ import com.zpig333.runesofwizardry.api.DustRegistry;
  *
  */
 public class ModRunes {
+	private static List<ClassicRune> runes;
+	public static List<ClassicRune> getRunes(){
+		return runes;
+	}
 	public static void registerRunes(){
-		DustRegistry.registerRune(new RuneTorch());
-		DustRegistry.registerRune(new RuneRabbitHole());
-		DustRegistry.registerRune(new RuneHealing());
-		DustRegistry.registerRune(new RuneLumber());
-		DustRegistry.registerRune(new RuneFire());
-		DustRegistry.registerRune(new RuneDepths());
-		DustRegistry.registerRune(new RuneHeights());
-		DustRegistry.registerRune(new RuneFarm());
-		DustRegistry.registerRune(new RuneLeapingFrog());
-		DustRegistry.registerRune(new RuneDawn());
+		for(IRune rune:runes){
+			DustRegistry.registerRune(rune);
+		}
+	}
+	public static void initRunes(){
+		runes = new LinkedList<ClassicRune>();
+		runes.add(new RuneTorch());
+		runes.add(new RuneRabbitHole());
+		runes.add(new RuneHealing());
+		runes.add(new RuneLumber());
+		runes.add(new RuneFire());
+		runes.add(new RuneDepths());
+		runes.add(new RuneHeights());
+		runes.add(new RuneFarm());
+		runes.add(new RuneLeapingFrog());
+		runes.add(new RuneDawn());
 		//auto-inserted
-		DustRegistry.registerRune(new RuneDusk());
-		DustRegistry.registerRune(new RuneTrapFire());
-		DustRegistry.registerRune(new RuneTrapLightning());
-		DustRegistry.registerRune(new RuneTrapPoison());
-		DustRegistry.registerRune(new RuneDetonation());
-		DustRegistry.registerRune(new RuneEntrapment());
-		DustRegistry.registerRune(new RuneLockedTime());
-		DustRegistry.registerRune(new RuneVoid());
-		DustRegistry.registerRune(new RuneBarrier());
-		DustRegistry.registerRune(new RuneWisdom());
-		DustRegistry.registerRune(new RuneSpeed());
-		DustRegistry.registerRune(new RuneCompression());
-		DustRegistry.registerRune(new RuneHellstorm());
-		DustRegistry.registerRune(new RuneRebirth());
-		DustRegistry.registerRune(new RuneResurrection());
-		DustRegistry.registerRune(new RunePowerDistribution());
-		DustRegistry.registerRune(new RuneSpawnerCollection());
-		DustRegistry.registerRune(new RuneSpawnerReassignment());
-		DustRegistry.registerRune(new RuneTeleportation());
-		DustRegistry.registerRune(new RuneTransport());
-		DustRegistry.registerRune(new RuneSpriteFire());
-		DustRegistry.registerRune(new RuneSpriteEarth());
-		DustRegistry.registerRune(new RuneBouncing());
-		DustRegistry.registerRune(new RuneMusic());
-		DustRegistry.registerRune(new RuneSpiritTools());
-		DustRegistry.registerRune(new RuneEnchantingFireBow());
-		DustRegistry.registerRune(new RuneEnchantingSilkTouch());
-		DustRegistry.registerRune(new RuneEnchantingFortune());
-		DustRegistry.registerRune(new RuneProtection());
-		DustRegistry.registerRune(new RuneLevelEarth());
-		DustRegistry.registerRune(new RuneMountain());
-		DustRegistry.registerRune(new RuneSarlacc());
+		runes.add(new RuneDusk());
+		runes.add(new RuneTrapFire());
+		runes.add(new RuneTrapLightning());
+		runes.add(new RuneTrapPoison());
+		runes.add(new RuneDetonation());
+		runes.add(new RuneEntrapment());
+		runes.add(new RuneLockedTime());
+		runes.add(new RuneVoid());
+		runes.add(new RuneBarrier());
+		runes.add(new RuneWisdom());
+		runes.add(new RuneSpeed());
+		runes.add(new RuneCompression());
+		runes.add(new RuneHellstorm());
+		runes.add(new RuneRebirth());
+		runes.add(new RuneResurrection());
+		runes.add(new RunePowerDistribution());
+		runes.add(new RuneSpawnerCollection());
+		runes.add(new RuneSpawnerReassignment());
+		runes.add(new RuneTeleportation());
+		runes.add(new RuneTransport());
+		runes.add(new RuneSpriteFire());
+		runes.add(new RuneSpriteEarth());
+		runes.add(new RuneBouncing());
+		runes.add(new RuneMusic());
+		runes.add(new RuneSpiritTools());
+		runes.add(new RuneEnchantingFireBow());
+		runes.add(new RuneEnchantingSilkTouch());
+		runes.add(new RuneEnchantingFortune());
+		runes.add(new RuneProtection());
+		runes.add(new RuneLevelEarth());
+		runes.add(new RuneMountain());
+		runes.add(new RuneSarlacc());
 	}
 }

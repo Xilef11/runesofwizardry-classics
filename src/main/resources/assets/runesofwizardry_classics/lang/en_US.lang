@@ -10,13 +10,16 @@ tile.runesofwizardry_classics_dust_classic_storage.0.name=Block of Plant Runic D
 tile.runesofwizardry_classics_dust_classic_storage.1.name=Block of Gunpowder Runic Dust
 tile.runesofwizardry_classics_dust_classic_storage.2.name=Block of Lapis Runic Dust
 tile.runesofwizardry_classics_dust_classic_storage.3.name=Block of Blaze Runic Dust
-
+#configuration
+runesofwizardry_classics.configuration.catruneperms=Rune Permissions
 #unimplemented runes
 runesofwizardry_classics.rune.unimplemented.message=This rune is not yet implemented: %s
-
+#permission refused
+runesofwizardry_classics.rune.nopermission.message=You do not have permission to use the %s
 #rune names
 runesofwizardry_classics.rune.torch=Torch Rune
 runesofwizardry_classics.rune.rabbitHole=Rune of the Rabbit Hole
+runesofwizardry_classics.rune.rabbitHole=Rune of Healing
 runesofwizardry_classics.rune.lumber=Rune of Lumber
 runesofwizardry_classics.rune.fire=Rune of Fire
 runesofwizardry_classics.rune.depths=Rune of Depths

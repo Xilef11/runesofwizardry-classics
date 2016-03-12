@@ -15,15 +15,17 @@ public class RunesofWizardry_Classics
 {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
-		//register the config
-		Config.init(event.getSuggestedConfigurationFile());
-		MinecraftForge.EVENT_BUS.register(new Config());
 		
 		ModLogger.logInfo("Registering Classic dusts");
 		ClassicDusts.instance = new ClassicDusts();
 		DustRegistry.registerDust(ClassicDusts.instance);
 		DustVariable.instance=new DustVariable();
 		DustRegistry.registerDust(DustVariable.instance);
+		//init the runes
+		ModRunes.initRunes();
+		//register the config
+		Config.init(event.getSuggestedConfigurationFile());
+		MinecraftForge.EVENT_BUS.register(new Config());
 	}
     @EventHandler
     public void init(FMLInitializationEvent event)
