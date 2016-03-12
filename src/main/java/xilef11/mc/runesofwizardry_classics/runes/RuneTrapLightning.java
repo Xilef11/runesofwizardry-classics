@@ -6,6 +6,7 @@ import java.util.Set;
 
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -30,7 +31,7 @@ public class RuneTrapLightning extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{}
+				{new ItemStack(Items.iron_ingot,3)}
 				};
 	}
 

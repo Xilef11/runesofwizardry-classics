@@ -24,14 +24,12 @@ public class RuneVoid extends ClassicRune {
 
 	@Override
 	protected Vec3i setupEntityPos() {
-		return new Vec3i(0,0,0);
+		return new Vec3i(1,1,0);
 	}
 
 	@Override
 	protected ItemStack[][] setupSacrifice() {
-		return new ItemStack[][]{
-				{}
-				};
+		return null;//SAC take 3 xp levels
 	}
 
 	@Override

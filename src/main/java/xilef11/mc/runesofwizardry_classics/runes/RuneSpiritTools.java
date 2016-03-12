@@ -4,6 +4,8 @@ package xilef11.mc.runesofwizardry_classics.runes;
 import java.io.IOException;
 import java.util.Set;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -36,7 +38,8 @@ public class RuneSpiritTools extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{}
+				{new ItemStack(Items.golden_pickaxe),new ItemStack(Blocks.tnt,4)},//SAC take 18 XP (both times
+				{new ItemStack(Items.golden_sword),new ItemStack(Blocks.glowstone)}
 				};
 	}
 

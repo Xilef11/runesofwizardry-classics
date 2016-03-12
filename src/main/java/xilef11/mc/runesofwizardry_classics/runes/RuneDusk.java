@@ -6,6 +6,8 @@ import java.util.Set;
 
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -30,7 +32,7 @@ public class RuneDusk extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{}
+				{new ItemStack(Items.nether_wart,4),new ItemStack(Items.dye,1,EnumDyeColor.BLUE.getMetadata())}
 				};
 	}
 
