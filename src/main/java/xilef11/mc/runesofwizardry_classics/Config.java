@@ -40,7 +40,7 @@ public class Config {
 	//map of rune to permissions
 	private static Map<String,String> runePerms = new HashMap<String, String>();
 	public static String getPermissionsForRune(ClassicRune rune){
-		return runePerms.get(rune);
+		return runePerms.get(rune.createRune(new ItemStack[][]{},EnumFacing.NORTH, null, null).getRuneID());
 	}
 	private static void loadConfiguration(){
 		//read properties
