@@ -37,7 +37,13 @@ public class RuneEnchantingFireBow extends ClassicRune {
 				{new ItemStack(Items.fire_charge,9),new ItemStack(Items.bow,1,OreDictionary.WILDCARD_VALUE),new ItemStack(Blocks.gold_block)}//SAC take 5 XP
 				};
 	}
-
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".enchantingfirebow";

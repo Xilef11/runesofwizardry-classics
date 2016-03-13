@@ -34,7 +34,13 @@ public class RuneSpriteFire extends ClassicRune {
 				{new ItemStack(Items.ghast_tear),new ItemStack(Items.fire_charge,2)}//SAC take 22 XP
 				};
 	}
-
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".spritefire";

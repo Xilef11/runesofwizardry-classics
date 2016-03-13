@@ -34,6 +34,15 @@ public class RuneResurrection extends ClassicRune {
 				{new ItemStack(Blocks.soul_sand,4)}//SAC 2x mob drops...
 				};
 	}
+	
+
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 
 	@Override
 	public String getName() {

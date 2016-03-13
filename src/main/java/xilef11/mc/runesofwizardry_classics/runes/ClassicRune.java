@@ -4,14 +4,12 @@
 package xilef11.mc.runesofwizardry_classics.runes;
 
 import java.io.IOException;
-import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3i;
 import net.minecraft.world.World;
@@ -23,8 +21,6 @@ import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
 
 import com.zpig333.runesofwizardry.api.IRune;
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 
 /**
  * @author Xilef11
@@ -78,24 +74,17 @@ public abstract class ClassicRune extends IRune {
 	}
 	//this has slightly more overhead in case of a completely null sacrifice, but reduces it otherwise
 	protected abstract ItemStack[][] setupSacrifice();
-
+	//return true to enable the extra sacrifice info
+	protected boolean hasExtraSacrifice(){
+		return false;
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getName()
 	 */
 	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.zpig333.runesofwizardry.api.IRune#createRune(net.minecraft.item.ItemStack[][], net.minecraft.util.EnumFacing, java.util.Set, com.zpig333.runesofwizardry.tileentity.TileEntityDustActive)
-	 */
-	@Override
-	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
-			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getExtraSacrificeInfo() {
+		return hasExtraSacrifice()? getName()+".extrasac" : null;
 	}
 
 	/* (non-Javadoc)

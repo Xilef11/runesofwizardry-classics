@@ -35,6 +35,14 @@ public class RuneSpriteEarth extends ClassicRune {
 				{new ItemStack(Items.ghast_tear),new ItemStack(Blocks.glass,16)}//SAC take 20 XP
 				};
 	}
+	
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 
 	@Override
 	public String getName() {

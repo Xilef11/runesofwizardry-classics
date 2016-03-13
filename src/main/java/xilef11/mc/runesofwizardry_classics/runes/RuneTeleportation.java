@@ -34,7 +34,13 @@ public class RuneTeleportation extends ClassicRune {
 				{new ItemStack(Items.ender_eye)}//SAC take 5 XP at init + 3 hearth/teleport
 				};
 	}
-
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".teleportation";

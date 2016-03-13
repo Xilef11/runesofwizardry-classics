@@ -42,6 +42,14 @@ public class RuneSpiritTools extends ClassicRune {
 				{new ItemStack(Items.golden_sword),new ItemStack(Blocks.glowstone)}
 				};
 	}
+	
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 
 	@Override
 	public String getName() {

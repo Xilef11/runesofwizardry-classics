@@ -21,7 +21,8 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-
+//https://github.com/riiid/gradle-github-plugin for auto github releases
+//https://github.com/matthewprenger/CurseGradle for auto curseforge releases
 version = "1.8.9-0.1-dev"
 group= "xilef11.mc.runesofwizardry-classics" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "runesofwizardry-classics"

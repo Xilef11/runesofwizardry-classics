@@ -34,7 +34,13 @@ public class RuneBarrier extends ClassicRune {
 				{new ItemStack(Blocks.iron_ore)}//SAC take 3 xp
 				};
 	}
-
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".barrier";

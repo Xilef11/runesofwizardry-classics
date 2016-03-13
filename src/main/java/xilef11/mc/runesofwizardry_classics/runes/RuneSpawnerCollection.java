@@ -34,6 +34,16 @@ public class RuneSpawnerCollection extends ClassicRune {
 				{new ItemStack(Items.gold_ingot,6)}//SAC take 10 XP
 				};
 	}
+	
+	
+
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 
 	@Override
 	public String getName() {

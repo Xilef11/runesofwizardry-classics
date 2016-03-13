@@ -34,7 +34,13 @@ public class RuneWisdom extends ClassicRune {
 				{new ItemStack(Items.iron_ingot,16)}//SAC take 6 XP
 				};
 	}
-
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".wisdom";

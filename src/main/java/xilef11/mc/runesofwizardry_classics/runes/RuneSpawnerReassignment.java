@@ -34,6 +34,14 @@ public class RuneSpawnerReassignment extends ClassicRune {
 				{new ItemStack(Items.spawn_egg),new ItemStack(Items.ender_pearl,2)}//SAC take 10 xp (might have to do something to ignore egg NBT)
 				};
 	}
+	
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 
 	@Override
 	public String getName() {

@@ -34,6 +34,14 @@ public class RuneMountain extends ClassicRune {
 				{new ItemStack(Blocks.red_flower)}
 				};//SAC take 1 live iron golem + 10 XP
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.zpig333.runesofwizardry.api.IRune#getExtraSacrificeInfo()
+	 */
+	@Override
+	public boolean hasExtraSacrifice() {
+		return true;
+	}
 
 	@Override
 	public String getName() {

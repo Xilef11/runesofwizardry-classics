@@ -31,7 +31,13 @@ public class RuneTransport extends ClassicRune {
 	protected ItemStack[][] setupSacrifice() {
 		return null;//SAC take 5 xp
 	}
-
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".transport";

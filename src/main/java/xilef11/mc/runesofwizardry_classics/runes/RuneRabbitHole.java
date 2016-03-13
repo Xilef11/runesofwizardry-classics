@@ -47,6 +47,14 @@ public class RuneRabbitHole extends ClassicRune {
 	protected ItemStack[][] setupSacrifice() {
 		return null; //SAC take 2 hunger upon activation
 	}
+	
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getName()

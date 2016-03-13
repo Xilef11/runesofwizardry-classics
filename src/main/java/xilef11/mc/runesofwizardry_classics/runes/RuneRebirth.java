@@ -34,6 +34,14 @@ public class RuneRebirth extends ClassicRune {
 				{new ItemStack(Items.diamond),new ItemStack(Items.egg)}//SAC take 10 xp and 1 live entityLiving
 				};
 	}
+	
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 
 	@Override
 	public String getName() {

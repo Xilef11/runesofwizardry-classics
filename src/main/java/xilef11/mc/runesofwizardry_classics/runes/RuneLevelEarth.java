@@ -34,7 +34,13 @@ public class RuneLevelEarth extends ClassicRune {
 				{new ItemStack(Blocks.iron_ore,5)}//SAC take XP according to dust
 				};
 	}
-
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".levelearth";
