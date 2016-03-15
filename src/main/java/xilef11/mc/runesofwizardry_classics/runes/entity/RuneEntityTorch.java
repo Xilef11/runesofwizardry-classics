@@ -39,7 +39,7 @@ public class RuneEntityTorch extends RuneEntity {
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[])
 	 */
 	@Override
-	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice) {
+	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice,boolean negated) {
 		ModLogger.logDebug("Activated torch rune with sacrifice: "+sacrifice);
 		if(sacrifice==null){
 			World world = entity.getWorld();

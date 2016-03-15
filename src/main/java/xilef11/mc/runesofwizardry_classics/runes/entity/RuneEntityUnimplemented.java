@@ -51,7 +51,7 @@ public class RuneEntityUnimplemented extends RuneEntity {
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[])
 	 */
 	@Override
-	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice) {
+	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice,boolean negated) {
 		player.addChatMessage(new ChatComponentTranslation(message, StatCollector.translateToLocal(runeName)));
 		RunesUtil.deactivateRune(this);
 	}
