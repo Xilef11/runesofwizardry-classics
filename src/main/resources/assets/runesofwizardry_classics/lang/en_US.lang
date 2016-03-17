@@ -19,7 +19,7 @@ runesofwizardry_classics.rune.nopermission.message=You do not have permission to
 #rune names
 runesofwizardry_classics.rune.torch=Torch Rune
 runesofwizardry_classics.rune.rabbitHole=Rune of the Rabbit Hole
-runesofwizardry_classics.rune.rabbitHole=Rune of Healing
+runesofwizardry_classics.rune.healing=Rune of Healing
 runesofwizardry_classics.rune.lumber=Rune of Lumber
 runesofwizardry_classics.rune.fire=Rune of Fire
 runesofwizardry_classics.rune.depths=Rune of Depths
@@ -83,3 +83,6 @@ runesofwizardry_classics.rune.powerdistribution.extrasac=5 levels
 runesofwizardry_classics.rune.teleportation.extrasac=5 levels on activation + 3 hearts/teleport
 runesofwizardry_classics.rune.wisdom.extrasac=6 levels
 runesofwizardry_classics.rune.levelearth.extrasac=5 levels for plant dust, 6 for gunpowder, 7 for lapis, 8 for blaze
+
+#descriptions
+runesofwizardry_classics.rune.bouncing.shortdesc=A magical trampoline!
