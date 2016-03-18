@@ -68,7 +68,7 @@ runesofwizardry_classics.rune.mountain.extrasac=A live Iron Golem + 10 levels
 runesofwizardry_classics.rune.enchantingsilktouch.extrasac=10 levels
 runesofwizardry_classics.rune.enchantingfortune.extrasac=15 levels
 runesofwizardry_classics.rune.spawnercollection.extrasac=10 levels
-runesofwizardry_classics.rune.spawnerreassignment.extrasac=10 levels
+runesofwizardry_classics.rune.spawnerreassignment.extrasac=Kept for decorative purposes
 runesofwizardry_classics.rune.rebirth.extrasac=A live Mob + 10 levels
 runesofwizardry_classics.rune.spirittools.extrasac=18 levels
 runesofwizardry_classics.rune.rabbitHole.extrasac=2 hunger
@@ -85,4 +85,6 @@ runesofwizardry_classics.rune.wisdom.extrasac=6 levels
 runesofwizardry_classics.rune.levelearth.extrasac=5 levels for plant dust, 6 for gunpowder, 7 for lapis, 8 for blaze
 
 #descriptions
-runesofwizardry_classics.rune.bouncing.shortdesc=A magical trampoline!
+runesofwizardry_classics.rune.bouncing.shortdesc=Magical trampoline!
+runesofwizardry_classics.rune.spawnerreassignment.shortdesc=Use your spawn egg on a spawner instead.
+runesofwizardry_classics.rune.leapingfrog.shortdesc=A path of plants across a lake.

@@ -4,13 +4,12 @@ package xilef11.mc.runesofwizardry_classics.runes;
 import java.io.IOException;
 import java.util.Set;
 
-import xilef11.mc.runesofwizardry_classics.Refs;
-import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3i;
+import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
@@ -33,9 +32,11 @@ public class RuneSpawnerReassignment extends ClassicRune {
 
 	@Override
 	protected ItemStack[][] setupSacrifice() {
-		return new ItemStack[][]{
-				{new ItemStack(Items.spawn_egg),new ItemStack(Items.ender_pearl,2)}//SAC take 10 xp (might have to do something to ignore egg NBT)
-				};
+		return null;
+		//No need for this rune, spawners can be set by using a spawn egg on them directly.
+//		return new ItemStack[][]{
+//				{new ItemStack(Items.spawn_egg),new ItemStack(Items.ender_pearl,2)}//SAC take 10 xp (might have to do something to ignore egg NBT)
+//				};
 	}
 	
 	/* (non-Javadoc)
