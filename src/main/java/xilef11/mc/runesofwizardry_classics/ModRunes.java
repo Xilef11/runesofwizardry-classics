@@ -51,7 +51,6 @@ import xilef11.mc.runesofwizardry_classics.runes.RuneVoid;
 import xilef11.mc.runesofwizardry_classics.runes.RuneWisdom;
 
 import com.zpig333.runesofwizardry.api.DustRegistry;
-import com.zpig333.runesofwizardry.api.IRune;
 
 
 /** Registers all the runes in the mod
@@ -64,8 +63,8 @@ public class ModRunes {
 		return runes;
 	}
 	public static void registerRunes(){
-		for(IRune rune:runes){
-			DustRegistry.registerRune(rune);
+		for(ClassicRune rune:runes){
+			DustRegistry.registerRune(rune,rune.getID());
 		}
 	}
 	public static void initRunes(){

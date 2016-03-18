@@ -32,7 +32,10 @@ public class RuneFire extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeFire.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runeFire";
+	}
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupEntityPos()
 	 */

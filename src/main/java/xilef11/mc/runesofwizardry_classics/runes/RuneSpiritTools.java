@@ -29,7 +29,10 @@ public class RuneSpiritTools extends ClassicRune {
 				{l,l,l,l}
 		};
 	}
-
+	@Override
+	public String getID() {
+		return "runeSpiritTools";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(0,0,0);

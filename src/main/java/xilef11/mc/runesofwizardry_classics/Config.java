@@ -4,8 +4,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -40,7 +38,7 @@ public class Config {
 	//map of rune to permissions
 	private static Map<String,String> runePerms = new HashMap<String, String>();
 	public static String getPermissionsForRune(ClassicRune rune){
-		return runePerms.get(rune.createRune(new ItemStack[][]{},EnumFacing.NORTH, null, null).getRuneID());
+		return runePerms.get(rune.getID());
 	}
 	private static void loadConfiguration(){
 		//read properties
@@ -48,7 +46,7 @@ public class Config {
 		config.setCategoryRequiresWorldRestart(CATEGORY_RUNES, false);
 		config.setCategoryLanguageKey(CATEGORY_RUNES, Refs.Lang.CONFIG+".catruneperms");
 		for(ClassicRune rune:ModRunes.getRunes()){
-			String id = rune.createRune(new ItemStack[][]{},EnumFacing.NORTH, null, null).getRuneID();
+			String id = rune.getID();
 			String perms = config.getString(id, CATEGORY_RUNES, PERMISSIONS_ALL, StatCollector.translateToLocal(rune.getName()), new String[]{PERMISSIONS_ALL,PERMISSIONS_OP,PERMISSIONS_NONE},rune.getName());
 			runePerms.put(id,perms);
 		}

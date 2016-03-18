@@ -22,7 +22,10 @@ public class RunePowerDistribution extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runePowerDistribution.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runePowerDistribution";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,1,0);

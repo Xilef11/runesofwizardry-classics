@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
+import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 
@@ -35,16 +36,8 @@ public class RuneEntityMusic extends RuneEntity {
 	 * @param entity
 	 */
 	public RuneEntityMusic(ItemStack[][] actualPattern, EnumFacing facing,
-			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		super(actualPattern, facing, dusts, entity);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.zpig333.runesofwizardry.api.RuneEntity#getRuneID()
-	 */
-	@Override
-	public String getRuneID() {
-		return "runeMusic";
+			Set<BlockPos> dusts, TileEntityDustActive entity,IRune creator) {
+		super(actualPattern, facing, dusts, entity,creator);
 	}
 
 	/* (non-Javadoc)

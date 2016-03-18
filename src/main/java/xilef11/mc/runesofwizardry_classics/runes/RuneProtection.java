@@ -22,7 +22,10 @@ public class RuneProtection extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeProtection.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runeProtection";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,1,0);

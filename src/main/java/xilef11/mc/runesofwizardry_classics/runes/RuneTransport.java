@@ -16,7 +16,10 @@ import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 
 public class RuneTransport extends ClassicRune {
-
+	@Override
+	public String getID() {
+		return "runeTransport";
+	}
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeTransport.json");

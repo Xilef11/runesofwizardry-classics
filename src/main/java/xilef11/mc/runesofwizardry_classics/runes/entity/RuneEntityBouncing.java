@@ -11,19 +11,15 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
+import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 
 public class RuneEntityBouncing extends RuneEntity {
 
 	public RuneEntityBouncing(ItemStack[][] actualPattern, EnumFacing facing,
-			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		super(actualPattern, facing, dusts, entity);
-	}
-
-	@Override
-	public String getRuneID() {
-		return "runeBouncing";
+			Set<BlockPos> dusts, TileEntityDustActive entity,IRune creator) {
+		super(actualPattern, facing, dusts, entity,creator);
 	}
 
 	@Override
@@ -47,6 +43,7 @@ public class RuneEntityBouncing extends RuneEntity {
 //					ent.velocityChanged=true;
 //				}
 //			}
+			//FIXME not cancelling fall damage
 			//remove fall damage for all entities within the action radius
 			int radius=6;
 			List<EntityLiving> negateFall = world.getEntitiesWithinAABB(EntityLiving.class, new AxisAlignedBB(getPos().add(-radius, 0, -radius), getPos().add(radius,radius,radius)));

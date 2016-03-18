@@ -23,7 +23,10 @@ public class RuneCompression extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeCompression.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runeCompression";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,1,0);

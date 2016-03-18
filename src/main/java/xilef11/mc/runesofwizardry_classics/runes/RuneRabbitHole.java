@@ -31,7 +31,10 @@ public class RuneRabbitHole extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeRabbitHole.json"));
 	}
-
+	@Override
+	public String getID() {
+		return "runeRabbitHole";
+	}
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupEntityPos()
 	 */

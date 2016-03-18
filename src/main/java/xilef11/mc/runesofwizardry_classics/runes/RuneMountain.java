@@ -22,7 +22,10 @@ public class RuneMountain extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeMountain.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runeMountain";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(2,1,0);

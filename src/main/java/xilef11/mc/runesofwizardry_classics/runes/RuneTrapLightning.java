@@ -27,7 +27,10 @@ public class RuneTrapLightning extends ClassicRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(0,0,0);
 	}
-
+	@Override
+	public String getID() {
+		return "runeTrapLightning";
+	}
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{

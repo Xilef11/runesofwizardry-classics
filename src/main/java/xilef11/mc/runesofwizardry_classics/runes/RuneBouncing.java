@@ -30,6 +30,10 @@ public class RuneBouncing extends ClassicRune {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	@Override
+	public String getID() {
+		return "runeBouncing";
+	}
+	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeBouncing.json");
 	}
@@ -54,7 +58,7 @@ public class RuneBouncing extends ClassicRune {
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntityBouncing(actualPattern, front, dusts, entity);
+		return new RuneEntityBouncing(actualPattern, front, dusts, entity,this);
 	}
 	//event handling is done here because this is a singleton, not the rune entity
 	@SubscribeEvent

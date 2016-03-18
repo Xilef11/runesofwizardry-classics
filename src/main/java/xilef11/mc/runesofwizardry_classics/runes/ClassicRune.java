@@ -62,6 +62,7 @@ public abstract class ClassicRune extends IRune {
 
 	protected abstract Vec3i setupEntityPos();
 
+	public abstract String getID();
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getSacrifice()
 	 */

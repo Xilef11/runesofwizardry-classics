@@ -37,7 +37,7 @@ public class RuneTorch extends ClassicRune {
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntityTorch(actualPattern, front, dusts, entity);
+		return new RuneEntityTorch(actualPattern, front, dusts, entity,this);
 	}
 
 	@Override
@@ -63,5 +63,8 @@ public class RuneTorch extends ClassicRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(0,0,0);
 	}
-
+	@Override
+	public String getID() {
+		return "runeTorch";
+	}
 }

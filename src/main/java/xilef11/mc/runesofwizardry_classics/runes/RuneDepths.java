@@ -24,7 +24,10 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
  *
  */
 public class RuneDepths extends ClassicRune {
-
+	@Override
+	public String getID() {
+		return "runeDepths";
+	}
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupPattern()
 	 */

@@ -22,7 +22,10 @@ public class RuneLevelEarth extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeLevelEarth.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runeLevelEarth";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(2,2,0);

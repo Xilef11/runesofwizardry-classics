@@ -33,7 +33,10 @@ public class RuneLumber extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeLumber.json"));
 	}
-
+	@Override
+	public String getID() {
+		return "runeLumber";
+	}
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupEntityPos()
 	 */

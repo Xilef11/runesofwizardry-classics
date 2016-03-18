@@ -22,7 +22,10 @@ public class RuneSpeed extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeSpeed.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runeSpeed";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,0,0);

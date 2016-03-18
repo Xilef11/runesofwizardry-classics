@@ -32,7 +32,10 @@ public class RuneHealing extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeHealing.json"));
 	}
-
+	@Override
+	public String getID() {
+		return "runeHealing";
+	}
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupEntityPos()
 	 */

@@ -24,7 +24,10 @@ public class RuneEnchantingSilkTouch extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeEnchantingSilkTouch.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runeEnchantingSilkTouch";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,1,0);

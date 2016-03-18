@@ -27,7 +27,10 @@ public class RuneResurrection extends ClassicRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,1,0);
 	}
-
+	@Override
+	public String getID() {
+		return "runeResurrection";
+	}
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{

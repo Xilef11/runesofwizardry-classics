@@ -27,7 +27,10 @@ public class RuneSarlacc extends ClassicRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(4,3,0);
 	}
-
+	@Override
+	public String getID() {
+		return "runeSarlacc";
+	}
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{

@@ -22,7 +22,10 @@ public class RuneSpawnerReassignment extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeSpawnerReassignment.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runeSpawnerReassignment";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,2,0);//below the spawner

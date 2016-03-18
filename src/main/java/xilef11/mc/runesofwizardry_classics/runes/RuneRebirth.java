@@ -51,9 +51,12 @@ public class RuneRebirth extends ClassicRune {
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntityRebirth(actualPattern, front, dusts, entity);
+		return new RuneEntityRebirth(actualPattern, front, dusts, entity,this);
 	}
-
+	@Override
+	public String getID() {
+		return "runeRebirth";
+	}
 }
 
     

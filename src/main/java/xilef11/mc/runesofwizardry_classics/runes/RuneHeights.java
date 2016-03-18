@@ -21,7 +21,10 @@ public class RuneHeights extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeHeights.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runeHeights";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,2,0);

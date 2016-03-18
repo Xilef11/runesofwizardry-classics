@@ -22,7 +22,10 @@ public class RuneDetonation extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeDetonation.json");
 	}
-
+	@Override
+	public String getID() {
+		return "runeDetonation";
+	}
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(0,1,0);

@@ -14,6 +14,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.ModLogger;
 
+import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 
@@ -22,18 +23,11 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
  *
  */
 public class RuneEntityTorch extends RuneEntity {
-	public RuneEntityTorch(ItemStack[][] actualPattern, EnumFacing facing,Set<BlockPos> dusts, TileEntityDustActive entity) {
-		super(actualPattern, facing, dusts, entity);
+	public RuneEntityTorch(ItemStack[][] actualPattern, EnumFacing facing,Set<BlockPos> dusts, TileEntityDustActive entity,IRune creator) {
+		super(actualPattern, facing, dusts, entity,creator);
 	}
 	private boolean beacon=false;
 	private int beaconColor=0xFFFFFF;
-	/* (non-Javadoc)
-	 * @see com.zpig333.runesofwizardry.api.RuneEntity#getRuneID()
-	 */
-	@Override
-	public String getRuneID() {
-		return "runeTorch";
-	}
 
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[])

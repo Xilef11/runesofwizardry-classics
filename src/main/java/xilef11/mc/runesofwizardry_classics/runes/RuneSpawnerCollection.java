@@ -53,9 +53,12 @@ public class RuneSpawnerCollection extends ClassicRune {
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntitySpawnerCollection(actualPattern, front, dusts, entity);
+		return new RuneEntitySpawnerCollection(actualPattern, front, dusts, entity,this);
 	}
-
+	@Override
+	public String getID() {
+		return "runeSpawnerCollection";
+	}
 }
 
     
