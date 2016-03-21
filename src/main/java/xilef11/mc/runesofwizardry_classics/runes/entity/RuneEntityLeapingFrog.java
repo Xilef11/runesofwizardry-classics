@@ -2,7 +2,6 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 
 import java.util.Set;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;

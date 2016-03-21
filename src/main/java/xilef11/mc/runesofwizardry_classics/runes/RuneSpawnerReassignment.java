@@ -35,7 +35,7 @@ public class RuneSpawnerReassignment extends ClassicRune {
 		return null;
 		//No need for this rune, spawners can be set by using a spawn egg on them directly.
 //		return new ItemStack[][]{
-//				{new ItemStack(Items.spawn_egg),new ItemStack(Items.ender_pearl,2)}//SAC take 10 xp (might have to do something to ignore egg NBT)
+//				{new ItemStack(Items.spawn_egg),new ItemStack(Items.ender_pearl,2)}//take 10 xp (might have to do something to ignore egg NBT)
 //				};
 	}
 	
