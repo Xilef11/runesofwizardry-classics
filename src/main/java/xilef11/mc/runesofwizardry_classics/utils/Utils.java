@@ -34,4 +34,35 @@ public class Utils {
 		}
 		return enough;
 	}
+	/** stores coordinates for an array or whatever**/
+	public static class Coords{
+		public final int row,col;
+
+		public Coords(int r, int c) {
+			this.row = r;
+			this.col = c;
+		}
+
+		/* (non-Javadoc)
+		 * @see java.lang.Object#hashCode()
+		 */
+		@Override
+		public int hashCode() {
+			return row+col;//not the best, but should be sufficient
+		}
+
+		/* (non-Javadoc)
+		 * @see java.lang.Object#equals(java.lang.Object)
+		 */
+		@Override
+		public boolean equals(Object obj) {
+			if(obj==this)return true;
+			if(!(obj instanceof Coords))return false;
+			Coords o = (Coords)obj;
+			return this.row==o.row && this.col==o.col;
+		}
+		
+		
+		
+	}
 }

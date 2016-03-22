@@ -12,6 +12,7 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.StatCollector;
 import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
@@ -43,6 +44,10 @@ public class RuneEntityUnimplemented extends RuneEntity {
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice,boolean negated) {
 		player.addChatMessage(new ChatComponentTranslation(message, StatCollector.translateToLocal(runeName)));
 		RunesUtil.deactivateRune(this);
+		//return the sacrifice
+		for(ItemStack i:sacrifice){
+			Utils.spawnItemCentered(player.worldObj, getPos(), i);
+		}
 	}
 
 	/* (non-Javadoc)
