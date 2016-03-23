@@ -34,8 +34,7 @@ public class RuneEntityLeapingFrog extends RuneEntity {
 	public void update() {
 		World world = entity.getWorld();
 		if(!world.isRemote){
-			ticksExisted++;
-			if(ticksExisted%10==0){
+			if(entity.ticksExisted()%10==0){
 				BlockPos current = getPos().offset(face, 1+blocksplaced);
 				//Block down = world.getBlockState(current.down()).getBlock();
 				if(world.isAirBlock(current)&&world.isAnyLiquid(new AxisAlignedBB(current.down(), current.down()))){
@@ -50,7 +49,6 @@ public class RuneEntityLeapingFrog extends RuneEntity {
 		}
 
 	}
-	private int ticksExisted=0;
 	private int blocksplaced=0;
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
@@ -58,7 +56,6 @@ public class RuneEntityLeapingFrog extends RuneEntity {
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		ticksExisted = compound.getInteger("runeFrog.ticksExisted");
 		blocksplaced = compound.getInteger("runeFrog.blocksplaced");
 	}
 
@@ -68,7 +65,6 @@ public class RuneEntityLeapingFrog extends RuneEntity {
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setInteger("runeFrog.ticksExisted",ticksExisted);
 		compound.setInteger("runeFrog.blocksplaced",blocksplaced);
 	}
 	

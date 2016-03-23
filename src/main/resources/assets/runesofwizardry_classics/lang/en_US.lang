@@ -1,3 +1,4 @@
+#PARSE_ESCAPES
 #dusts
 item.runesofwizardry_classics_dust_classic.0.name=Plant Runic Dust
 item.runesofwizardry_classics_dust_classic.1.name=Gunpowder Runic Dust
@@ -76,7 +77,7 @@ runesofwizardry_classics.rune.healing.extrasac=2 levels
 runesofwizardry_classics.rune.spriteearth.extrasac=20 levels
 runesofwizardry_classics.rune.spritefire.extrasac=22 levels
 runesofwizardry_classics.rune.barrier.extrasac=3 levels
-runesofwizardry_classics.rune.void.extrasac=3 levels
+runesofwizardry_classics.rune.void.extrasac=3 levels\nSacrificed items will be stored\nActivate with no sacrifice to recover your items
 runesofwizardry_classics.rune.transport.extrasac=5 levels
 runesofwizardry_classics.rune.enchantingfirebow.extrasac=5 levels
 runesofwizardry_classics.rune.powerdistribution.extrasac=5 levels
@@ -94,3 +95,4 @@ runesofwizardry_classics.rune.enchantingsilktouch.shortdesc=When you want to bre
 runesofwizardry_classics.rune.enchantingfortune.shortdesc=Get ALL the diamonds
 runesofwizardry_classics.rune.dusk.shortdesc=Shorten the day
 runesofwizardry_classics.rune.dawn.shortdesc=Shorten the night
+runesofwizardry_classics.rune.void.shortdesc=Store your items in The Void
