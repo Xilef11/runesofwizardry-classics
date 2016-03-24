@@ -11,7 +11,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3i;
 import xilef11.mc.runesofwizardry_classics.Refs;
-import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
+import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityCompression;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
@@ -38,7 +38,15 @@ public class RuneCompression extends ClassicRune {
 				{new ItemStack(Blocks.iron_block),new ItemStack(Items.coal,-1)}//SAC might need to override Sacrificematches for this one (N coal)
 				};
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
+	
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".compression";
@@ -47,8 +55,9 @@ public class RuneCompression extends ClassicRune {
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntityUnimplemented(actualPattern, front, dusts, entity, this);
+		return new RuneEntityCompression(actualPattern, front, dusts, entity, this);
 	}
+	
 
 }
 

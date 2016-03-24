@@ -23,7 +23,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
  * @author Xilef11
  *
  */
-public class RuneDepths extends ClassicRune {
+public class RuneDepths extends VariableRune {
 	@Override
 	public String getID() {
 		return "runeDepths";

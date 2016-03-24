@@ -22,7 +22,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
  * @author Xilef11
  *
  */
-public class RuneRabbitHole extends ClassicRune {
+public class RuneRabbitHole extends VariableRune {
 
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupPattern()

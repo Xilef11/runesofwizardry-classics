@@ -1,5 +1,6 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 
+import java.util.Collection;
 import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,9 +48,11 @@ public class RuneEntityVoid extends RuneEntity {
 			}else{
 				IVoidStorageCapability storage = player.getCapability(VoidStorageCapability.VOID_STORAGE_CAPABILITY, null);
 				if(storage!=null){//in case something is wrong
-					for(ItemStack i:storage.getVoidInventory()){
+					Collection<ItemStack> inv = storage.getVoidInventory();
+					for(ItemStack i:inv){
 						Utils.spawnItemCentered(world, getPos(), i);
 					}
+					inv.clear();
 					ModLogger.logDebug("Spawned void inventory");
 				}else{
 					ModLogger.logError("player did not have VOID_STORAGE capability");

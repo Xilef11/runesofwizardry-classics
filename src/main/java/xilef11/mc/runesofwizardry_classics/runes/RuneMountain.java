@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 
-public class RuneMountain extends ClassicRune {
+public class RuneMountain extends VariableRune {
 
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {

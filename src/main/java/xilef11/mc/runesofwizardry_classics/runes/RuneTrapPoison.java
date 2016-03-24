@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.util.Set;
 
 import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
+import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -16,7 +18,7 @@ import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 
-public class RuneTrapPoison extends ClassicRune {
+public class RuneTrapPoison extends VariableRune {
 
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
@@ -49,7 +51,15 @@ public class RuneTrapPoison extends ClassicRune {
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
 		return new RuneEntityUnimplemented(actualPattern, front, dusts, entity, this);
 	}
-
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.VariableRune#variablesOK(net.minecraft.item.ItemStack[][])
+	 */
+	@Override
+	protected boolean variablesOK(ItemStack[][] foundPattern) {
+		Coords any = getVariableDusts().iterator().next();
+		EnumDustTypes type = EnumDustTypes.getByMeta(foundPattern[any.row][any.col].getMetadata());
+		return super.variablesOK(foundPattern) && type!=EnumDustTypes.PLANT;
+	}
 }
 
     

@@ -23,7 +23,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
  * @author Xilef11
  *
  */
-public class RuneHealing extends ClassicRune {
+public class RuneHealing extends VariableRune {
 
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupPattern()
