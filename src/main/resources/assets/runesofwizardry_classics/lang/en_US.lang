@@ -85,6 +85,7 @@ runesofwizardry_classics.rune.teleportation.extrasac=5 levels on activation + 3 
 runesofwizardry_classics.rune.wisdom.extrasac=6 levels
 runesofwizardry_classics.rune.levelearth.extrasac=5 levels for plant dust, 6 for gunpowder, 7 for lapis, 8 for blaze
 runesofwizardry_classics.rune.compression.extrasac=Get 1 diamond for every 32 coal sacrificed
+runesofwizardry_classics.rune.detonation.extrasac=Center dust determines explosion strength\nFuse determines delay before explosion (plant waits for an entity to trigger)
 
 #descriptions
 runesofwizardry_classics.rune.torch.shortdesc=Spawn a torch
@@ -99,3 +100,6 @@ runesofwizardry_classics.rune.dusk.shortdesc=Shorten the day
 runesofwizardry_classics.rune.dawn.shortdesc=Shorten the night
 runesofwizardry_classics.rune.void.shortdesc=Store your items in The Void
 runesofwizardry_classics.rune.compression.shortdesc=Coal to Diamonds
+runesofwizardry_classics.rune.speed.shortdesc=Run like the wind
+runesofwizardry_classics.rune.healing.shortdesc=Circle of Healing
+runesofwizardry_classics.rune.detonation.shortdesc=Landmine

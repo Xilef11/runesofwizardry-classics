@@ -2,6 +2,7 @@
 package xilef11.mc.runesofwizardry_classics.runes;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 import net.minecraft.init.Items;
@@ -10,13 +11,14 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3i;
 import xilef11.mc.runesofwizardry_classics.Refs;
-import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
+import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityDetonation;
+import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 
-public class RuneDetonation extends VariableRune {
+public class RuneDetonation extends ClassicRune {
 
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
@@ -28,7 +30,7 @@ public class RuneDetonation extends VariableRune {
 	}
 	@Override
 	protected Vec3i setupEntityPos() {
-		return new Vec3i(0,1,0);
+		return new Vec3i(1,1,0);
 	}
 
 	@Override
@@ -46,17 +48,62 @@ public class RuneDetonation extends VariableRune {
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntityUnimplemented(actualPattern, front, dusts, entity, this);
+		return new RuneEntityDetonation(actualPattern, front, dusts, entity, this);
+	}
+	private Set<Coords> center=null;
+	public Set<Coords> getCenter(){
+		if(center==null){
+			center = new HashSet<Coords>();
+			center.add(new Coords(5,5));
+			center.add(new Coords(5,6));
+			center.add(new Coords(6,5));
+			center.add(new Coords(6,6));
+		}
+		return center;
+	}
+	private Set<Coords> fuse=null;
+	public Set<Coords> getFuse(){
+		if(fuse==null){
+			fuse=new HashSet<Coords>();
+			fuse.add(new Coords(2,3));
+			fuse.add(new Coords(3,3));
+			fuse.add(new Coords(3,4));
+			fuse.add(new Coords(4,4));
+		}
+		return fuse;
 	}
 	/* (non-Javadoc)
-	 * @see xilef11.mc.runesofwizardry_classics.runes.VariableRune#variablesOK(net.minecraft.item.ItemStack[][])
+	 * @see com.zpig333.runesofwizardry.api.IRune#patternMatchesExtraCondition(net.minecraft.item.ItemStack[][], net.minecraft.item.ItemStack[][])
 	 */
 	@Override
-	protected boolean variablesOK(ItemStack[][] foundPattern) {
-		//TODO in this one, the center can be different from the "fuse"
-		return super.variablesOK(foundPattern);
+	public boolean patternMatchesExtraCondition(ItemStack[][] foundPattern) {
+		return fuseOK(foundPattern)&&centerOK(foundPattern);
 	}
-
+	private boolean centerOK(ItemStack[][] foundPattern) {
+		ItemStack first = null;
+		for(Coords c:getCenter()){
+			if(first==null)first=foundPattern[c.row][c.col];
+			if(!ItemStack.areItemStacksEqual(first, foundPattern[c.row][c.col]))return false;
+		}
+		return true;
+	}
+	private boolean fuseOK(ItemStack[][] foundPattern) {
+		ItemStack first = null;
+		for(Coords c:getFuse()){
+			if(first==null)first=foundPattern[c.row][c.col];
+			if(!ItemStack.areItemStacksEqual(first, foundPattern[c.row][c.col]))return false;
+		}
+		return true;
+	}
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
+	
+	
 }
 
     

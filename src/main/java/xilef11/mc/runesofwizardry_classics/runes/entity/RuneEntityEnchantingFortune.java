@@ -31,15 +31,22 @@ public class RuneEntityEnchantingFortune extends RuneEntity {
 			if(negated || Utils.takeXP(player, 15)){
 				//find the bow stack
 				ItemStack toEnchant=null;
+				boolean sword=false;
 				if(sacrifice!=null){
 					for(ItemStack i:sacrifice){
-						if(i.getItem()==Items.diamond_pickaxe || i.getItem()==Items.diamond_shovel){
+						if(i.getItem()==Items.diamond_pickaxe){
 							toEnchant=i;
+							sword=false;
+						}
+						if(i.getItem()==Items.diamond_sword){
+							toEnchant=i;
+							sword=true;
 						}
 					}
 				}
 				if(toEnchant==null && negated)toEnchant=new ItemStack(Items.diamond_pickaxe);
-				toEnchant.addEnchantment(Enchantment.fortune, Enchantment.fortune.getMaxLevel()+1);
+				if(!sword)toEnchant.addEnchantment(Enchantment.fortune, Enchantment.fortune.getMaxLevel()+1);
+				else toEnchant.addEnchantment(Enchantment.looting, Enchantment.looting.getMaxLevel()+1);
 				toEnchant.setItemDamage(0);
 				Utils.spawnItemCentered(world, getPos(), toEnchant);
 				this.onPatternBroken();

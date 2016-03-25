@@ -37,7 +37,7 @@ public abstract class VariableRune extends ClassicRune {
 	 * @see com.zpig333.runesofwizardry.api.IRune#patternMatches(net.minecraft.item.ItemStack[][], net.minecraft.item.ItemStack[][])
 	 */
 	@Override
-	public boolean patternMatchesExtraCondition(ItemStack[][] thisPattern,ItemStack[][] foundPattern) {
+	public boolean patternMatchesExtraCondition(ItemStack[][] foundPattern) {
 		return variablesOK(foundPattern);
 	}
 	/** checks if all variable dusts are the same in the found pattern
