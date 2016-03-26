@@ -6,14 +6,14 @@ package xilef11.mc.runesofwizardry_classics.runes;
 import java.io.IOException;
 import java.util.Set;
 
-import xilef11.mc.runesofwizardry_classics.Refs;
-import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3i;
+import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityDepths;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
@@ -53,7 +53,7 @@ public class RuneDepths extends VariableRune {
 				{new ItemStack(Items.coal,2)},//lapis and blaze
 				{new ItemStack(Blocks.log,2)}//plant and gunpowder
 		};
-		//SAC will have to do checks for dust type and hole in onActivation
+		//will have to do checks for dust type and hole in onActivation
 	}
 
 	/* (non-Javadoc)
@@ -63,14 +63,21 @@ public class RuneDepths extends VariableRune {
 	public String getName() {
 		return Refs.Lang.RUNE+".depths";
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
+	 */
+	@Override
+	protected boolean hasExtraSacrifice() {
+		return true;
+	}
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#createRune(net.minecraft.item.ItemStack[][], net.minecraft.util.EnumFacing, java.util.Set, com.zpig333.runesofwizardry.tileentity.TileEntityDustActive)
 	 */
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntityUnimplemented(actualPattern, front, dusts, entity, this);
+		return new RuneEntityDepths(actualPattern, front, dusts, entity, this);
 	}
 
 }

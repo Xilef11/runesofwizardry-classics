@@ -86,6 +86,7 @@ runesofwizardry_classics.rune.wisdom.extrasac=6 levels
 runesofwizardry_classics.rune.levelearth.extrasac=5 levels for plant dust, 6 for gunpowder, 7 for lapis, 8 for blaze
 runesofwizardry_classics.rune.compression.extrasac=Get 1 diamond for every 32 coal sacrificed
 runesofwizardry_classics.rune.detonation.extrasac=Center dust determines explosion strength\nFuse determines delay before explosion (plant waits for an entity to trigger)
+runesofwizardry_classics.rune.depths.extrasac=Dust type determines depth\nSacrifice wood for Plant and Gunpowder,\nCoal for Lapis and Blaze\nThere must be a hole in the center of the rune
 
 #descriptions
 runesofwizardry_classics.rune.torch.shortdesc=Spawn a torch
@@ -103,3 +104,4 @@ runesofwizardry_classics.rune.compression.shortdesc=Coal to Diamonds
 runesofwizardry_classics.rune.speed.shortdesc=Run like the wind
 runesofwizardry_classics.rune.healing.shortdesc=Circle of Healing
 runesofwizardry_classics.rune.detonation.shortdesc=Landmine
+runesofwizardry_classics.rune.depths.shortdesc=Dig straight down

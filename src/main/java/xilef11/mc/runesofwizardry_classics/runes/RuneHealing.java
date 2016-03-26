@@ -52,7 +52,7 @@ public class RuneHealing extends VariableRune {
 		return new ItemStack[][]{
 				{new ItemStack(Items.coal,2)}
 		};
-		//SAC Take 2 xp levels upon activation
+		//Take 2 xp levels upon activation
 	}
 	
 	/* (non-Javadoc)

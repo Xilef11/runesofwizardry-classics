@@ -50,7 +50,6 @@ public class RuneEntitySpeed extends RuneEntity {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 
 	}
 
