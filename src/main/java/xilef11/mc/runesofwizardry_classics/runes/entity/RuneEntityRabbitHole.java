@@ -11,7 +11,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.BlockFluidBase;
+import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneRabbitHole;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
@@ -52,8 +52,6 @@ public class RuneEntityRabbitHole extends RuneEntity {
 				break;
 			default:this.onPatternBroken();return;
 			}
-//			BlockPos nw = getPos().add(-rad, height+cover, -rad);
-//			BlockPos se = getPos().add(rad, cover, rad);
 			torch = getPos().down(height+cover);
 			for(int x=-rad;x<=rad;x++){
 				for(int z=-rad;z<=rad;z++){
@@ -65,13 +63,12 @@ public class RuneEntityRabbitHole extends RuneEntity {
 								world.setBlockState(current.up(), Blocks.cobblestone.getDefaultState());
 							}
 						}else if(y==-height){//bottom slice
-							//not sure if this is the right instanceof
-							if(world.getBlockState(current.down()).getBlock() instanceof BlockFluidBase){
+							if(world.isAnyLiquid(new AxisAlignedBB(current.down(), current.add(1,0,1)))){
 								world.setBlockState(current.down(), Blocks.cobblestone.getDefaultState());
 							}
 						}
 						//don't break obsidian or bedrock
-						if(world.getBlockState(current).getBlock().getBlockHardness(world, current)<Blocks.obsidian.getBlockHardness(world, current)){
+						if(world.getBlockState(current).getBlock().getBlockHardness(world, current)<Blocks.obsidian.getBlockHardness(world, current) && world.getBlockState(current).getBlock()!=Blocks.bedrock){
 							world.setBlockToAir(current);
 						}
 					}
@@ -105,7 +102,6 @@ public class RuneEntityRabbitHole extends RuneEntity {
 	private int delay=0;
 	@Override
 	public void update() {
-		//FIXME this part is broken
 		if(torch==null && !setTorchPos())return;
 		World world = entity.getWorld();
 			if(!world.isRemote){
@@ -114,18 +110,22 @@ public class RuneEntityRabbitHole extends RuneEntity {
 				List<EntityPlayer> up = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(getPos(), getPos().add(1,2,1)));
 				for(EntityPlayer p:up){
 					if(p.isSneaking()){
-						p.setPosition(torch.getX()+0.5, torch.getY()+1.5, torch.getZ()+0.5);
+						ModLogger.logInfo("Torch: "+torch);
+						p.setPositionAndUpdate(torch.getX()+0.5, torch.getY()+0.5, torch.getZ()+0.5);
 						p.fallDistance=0;
-						delay=45;
+						delay=15;
+						world.playSoundAtEntity(p, "mob.endermen.portal", 0.5F, 3.0F);
 					}
 				}
 				if(up.isEmpty()){
 					up = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(torch, torch.add(1,2,1)));
 					for(EntityPlayer p:up){
 						if(p.isSneaking()){
-							p.setPosition(getPos().getX()+0.5, getPos().getY()+1.5, getPos().getZ()+0.5);
+							ModLogger.logInfo("pos: "+getPos());
+							p.setPositionAndUpdate(getPos().getX()+0.5, getPos().getY()+0.5, getPos().getZ()+0.5);
 							p.fallDistance=0;
-							delay=45;
+							delay=15;
+							world.playSoundAtEntity(p, "mob.endermen.portal", 0.5F, 3.0F);
 						}
 					}
 				}
