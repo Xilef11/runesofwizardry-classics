@@ -29,7 +29,9 @@ public class ModLogger {
 	public static void logTrace(Object obj){
 		log(Level.TRACE, obj);
 	}
-
+	public static void logWarn(Object obj){
+		log(Level.WARN,obj);
+	}
 	public static void logException(Level level, Throwable ex, Object message){
 		FMLLog.log(Refs.MODID, level, ex, String.valueOf(message));
 	}

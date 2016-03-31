@@ -28,6 +28,7 @@ public class Utils {
 	 * @return true if the levels have been removed, false if the player didn't have enough
 	 */
 	public static boolean takeXP(EntityPlayer player, int levels){
+		if(player.capabilities.isCreativeMode)return true;
 		boolean enough =player.experienceLevel>=levels;
 		if(enough){
 			player.removeExperienceLevel(10);

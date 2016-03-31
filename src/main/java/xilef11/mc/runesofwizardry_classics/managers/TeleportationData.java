@@ -1,9 +1,9 @@
 package xilef11.mc.runesofwizardry_classics.managers;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -45,7 +45,7 @@ public class TeleportationData extends WorldSavedData {
 		return instance;
 	}
 	//the key is the "id" of a blockstate in the form blockid@meta
-	private Map<String,List<BlockPos>> networks = new HashMap<String, List<BlockPos>>();
+	private Map<String,Set<BlockPos>> networks = new HashMap<String, Set<BlockPos>>();
 	/**
 	 * Adds a teleport location to a network
 	 * @param state the BlockState that identifies the network
@@ -56,6 +56,11 @@ public class TeleportationData extends WorldSavedData {
 		String key = getStateID(state);
 		//add the position for this state
 		addLocation(key, pos);
+		this.markDirty();
+		/*markDirty here instead of in addLocation 
+		 * because addLocation is called when reading from NBT (which is not a change in the data)
+		 * maybe add it to readFromNBT if saving doesn't work properly on servers
+		 */
 	}
 	/**
 	 * Removes a teleport location from a network
@@ -64,27 +69,28 @@ public class TeleportationData extends WorldSavedData {
 	 */
 	public void removeLocation(IBlockState state, BlockPos pos){
 		String key = getStateID(state);
-		List<BlockPos> locations = networks.get(key);
+		Set<BlockPos> locations = networks.get(key);
 		if(locations!=null){
 			locations.remove(pos);
 		}else{
-			ModLogger.logError("Trying to remove a teleport destination with inexistant key: "+key+" for state: "+state+" at pos: ");
+			ModLogger.logWarn("Trying to remove a teleport destination with inexistant key: "+key+" for state: "+state+" at pos: ");
 		}
+		this.markDirty();
 	}
 	/**
-	 * Returns a list of possible destinations for a teleportation network, or null if none exists.
+	 * Returns a set of possible destinations for a teleportation network, or null if none exists.
 	 * @param state the IBlockState that identifies the teleportation network
-	 * @return a List of the possible destinations (/!\ Not a copy), or null if there are none.
+	 * @return a set of the possible destinations (/!\ Not a copy), or null if there are none.
 	 */
-	public List<BlockPos> getDestinations(IBlockState state){
+	public Set<BlockPos> getDestinations(IBlockState state){
 		return networks.get(getStateID(state));
 	}
 	
 	private void addLocation(String key, BlockPos pos){
 		//get the list of positions attached to this blockstate id
-		List<BlockPos> locations = networks.get(key);
+		Set<BlockPos> locations = networks.get(key);
 		if(locations==null){
-			locations = new LinkedList<BlockPos>();
+			locations = new HashSet<BlockPos>();
 			networks.put(key, locations);
 		}
 		//add the position to the list
@@ -101,6 +107,7 @@ public class TeleportationData extends WorldSavedData {
 	}
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
+		//WizardryLogger.logInfo("Reading teleportation data from NBT");
 		networks.clear();//clear the network map to avoid duplicates on packet reception
 		NBTTagList keys = (NBTTagList) nbt.getTag(DATA_NAME);
 		for(int i=0;i<keys.tagCount();i++){
@@ -121,6 +128,7 @@ public class TeleportationData extends WorldSavedData {
 	}
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
+		//WizardryLogger.logInfo("Writing teleportation data to NBT");
 		NBTTagList keys = new NBTTagList();
 		for(String state:networks.keySet()){
 			NBTTagCompound key = new NBTTagCompound();

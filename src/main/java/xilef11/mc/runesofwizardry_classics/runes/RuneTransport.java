@@ -4,12 +4,12 @@ package xilef11.mc.runesofwizardry_classics.runes;
 import java.io.IOException;
 import java.util.Set;
 
-import xilef11.mc.runesofwizardry_classics.Refs;
-import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3i;
+import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityTransport;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
@@ -27,12 +27,12 @@ public class RuneTransport extends ClassicRune {
 
 	@Override
 	protected Vec3i setupEntityPos() {
-		return new Vec3i(1,0,0);
+		return new Vec3i(0,1,0);//FIXME this is reversed FSR
 	}
 
 	@Override
 	protected ItemStack[][] setupSacrifice() {
-		return null;//SAC take 5 xp
+		return null;//take 5 xp
 	}
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
@@ -49,7 +49,7 @@ public class RuneTransport extends ClassicRune {
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntityUnimplemented(actualPattern, front, dusts, entity, this);
+		return new RuneEntityTransport(actualPattern, front, dusts, entity, this);
 	}
 
 }
