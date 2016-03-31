@@ -1,4 +1,4 @@
-package xilef11.mc.runesofwizardry_classics.capability;
+package xilef11.mc.runesofwizardry_classics.managers;
 
 import java.util.Collection;
 import java.util.LinkedList;
