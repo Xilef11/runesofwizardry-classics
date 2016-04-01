@@ -63,7 +63,8 @@ public class RuneEntityRabbitHole extends RuneEntity {
 								world.setBlockState(current.up(), Blocks.cobblestone.getDefaultState());
 							}
 						}else if(y==-height){//bottom slice
-							if(world.isAnyLiquid(new AxisAlignedBB(current.down(), current.add(1,0,1)))){
+							//this makes sure we have a platform to land on by filling air + liquid blocks
+							if(!world.getBlockState(current.down()).getBlock().getMaterial().isSolid()){
 								world.setBlockState(current.down(), Blocks.cobblestone.getDefaultState());
 							}
 						}
