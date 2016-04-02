@@ -25,7 +25,7 @@ public class RuneSarlacc extends ClassicRune {
 
 	@Override
 	protected Vec3i setupEntityPos() {
-		return new Vec3i(3,4,0);//FIXME reversed? book is OK
+		return new Vec3i(4,3,0);
 	}
 	@Override
 	public String getID() {

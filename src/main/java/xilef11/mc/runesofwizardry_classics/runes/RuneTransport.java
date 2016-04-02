@@ -27,7 +27,7 @@ public class RuneTransport extends ClassicRune {
 
 	@Override
 	protected Vec3i setupEntityPos() {
-		return new Vec3i(0,1,0);//FIXME this is reversed FSR
+		return new Vec3i(1,0,0);
 	}
 
 	@Override
