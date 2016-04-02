@@ -87,6 +87,7 @@ runesofwizardry_classics.rune.levelearth.extrasac=5 levels for plant dust, 6 for
 runesofwizardry_classics.rune.compression.extrasac=Get 1 diamond for every 32 coal sacrificed
 runesofwizardry_classics.rune.detonation.extrasac=Center dust determines explosion strength\nFuse determines delay before explosion (plant waits for an entity to trigger)
 runesofwizardry_classics.rune.depths.extrasac=Dust type determines depth\nSacrifice wood for Plant and Gunpowder,\nCoal for Lapis and Blaze\nThere must be a hole in the center of the rune
+runesofwizardry_classics.rune.sarlacc.extrasac=Lasts 1 day.\nEvery mob killed extends its lifetime by 1/8 day,\nEvery Item destroyed extends its lifetime by 1/2 second.
 
 #descriptions
 runesofwizardry_classics.rune.torch.shortdesc=Spawn a torch
@@ -111,3 +112,4 @@ runesofwizardry_classics.rune.trapfire.shortdesc=Watch them burn
 runesofwizardry_classics.rune.rabbithole.shortdesc=Instant Hideout. Not the entrance to Wonderland
 runesofwizardry_classics.rune.teleportation.shortdesc=Teleports players to another Rune of Teleportation on its network.
 runesofwizardry_classics.rune.transport.shortdesc=Teleports players to a Rune of Teleportation on its network
+runesofwizardry_classics.rune.sarlacc.shortdesc=Kills mobs for double XP, but destroys their drops

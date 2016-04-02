@@ -16,6 +16,7 @@ public final class Refs {
 	public static final String GUI_FACTORY="xilef11.mc.runesofwizardry_classics.client.gui.GuiFactory";
 	public static final String PATTERN_PATH=MODID+":patterns/";
 	public static final int TICKS_PER_DAY=24000;
+	public static final int TPS=20;
 	public static final class Lang{
 		private Lang(){}
 		public static final String RUNE=MODID+".rune";
