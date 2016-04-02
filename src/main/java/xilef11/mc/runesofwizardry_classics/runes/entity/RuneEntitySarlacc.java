@@ -41,14 +41,13 @@ public class RuneEntitySarlacc extends RuneEntity {
 			Set<BlockPos> dusts, TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 		//calculate NW and SE positions
-		//FIXME will need to tweak this area...
 		if(facing==EnumFacing.NORTH || facing ==EnumFacing.SOUTH){
 			//short side is North-south axis
-			nwd = getPos().north(3).west(4);
+			nwd = getPos().north(3).west(4).up();
 			seu = getPos().south(4).east(5).up(3);
 		}else{
 			//short side is E-W axis
-			nwd = getPos().north(4).west(3);
+			nwd = getPos().north(4).west(3).up();
 			seu = getPos().south(5).east(4).up(3);
 		}
 	}
@@ -101,7 +100,7 @@ public class RuneEntitySarlacc extends RuneEntity {
 					EntityPlayer p = (EntityPlayer)e;
 					if(p.getName().equals(activator)) {//slow damage to the owner
 						if (e.ticksExisted%Refs.TPS==0 && e.ticksExisted!=0) {
-							//p.attackEntityFrom(DamageSource.magic, 2);
+							p.attackEntityFrom(DamageSource.magic, 2);
 						}
 					}else{//fast damage to other players (but not as fast as mobs)
 						p.attackEntityFrom(DamageSource.magic, 1);
