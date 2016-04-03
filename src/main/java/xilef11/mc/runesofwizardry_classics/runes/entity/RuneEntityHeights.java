@@ -29,9 +29,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
  * Weird behaviour in caves (fills up blocks above its path with cobble)
  * 
  * Modifications: 
- * we'll keep the air blocks *above* the rune in the moved column
- * (maybe try to keep at least 2 air blocks above the column)
- * breaking the highest moved block (with air above?) in the column will also bring it down
+ * breaking the highest moved block in the column will also bring it down
  */
 public class RuneEntityHeights extends RuneEntity {
 	private static final int DEPTH=16;//depth of the column
@@ -63,13 +61,8 @@ public class RuneEntityHeights extends RuneEntity {
 						highest = getPos().up(highestBlock-2).offset(face);
 				if(!down){//move the column up
 					if(currentDepth==0){//if the column is fully up and we broke either the top block or the "ground block"
-						BlockPos top = getPos().up(DEPTH-2).offset(face);//"ground" level block
-						//when there is 1 over the top, highest is 1 too high, otherwise, highest is OK
-						//TOP tends to be too high too
-						//looks like its working with -2 above.
-						//FIXME often, highest is air immediately when the pillar is done
-						//when there is no block (or 2)  above the "ground" one, highest is 1 too high
-						//when there is one, everything is good
+						BlockPos top = getPos().up(DEPTH-1).offset(face);//"ground" level block
+						
 						if(world.isAirBlock(highest)||world.isAirBlock(top)){
 							down=true;
 						}
@@ -80,10 +73,10 @@ public class RuneEntityHeights extends RuneEntity {
 					//not picking up anything -- fixed with the -2 above
 					List<Entity> entities = world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(highest, highest.add(1,2,1)));
 					for(Entity e: entities){
-						e.setPositionAndUpdate(highest.getX()+0.5, highest.getY()+1, highest.getZ()+0.5);
+						e.setPositionAndUpdate(highest.getX()+0.5, highest.getY()+2, highest.getZ()+0.5);
 					}
 					//raise the column
-					for(int y = 0;y<=highestBlock+currentDepth;y++){
+					for(int y = 0;y<=highestBlock+currentDepth-1;y++){
 						if(y==0){//top block
 							if(!world.isAirBlock(highest.up())){
 								//figure out something to keep air blocks in our column
@@ -94,7 +87,7 @@ public class RuneEntityHeights extends RuneEntity {
 								highest=highest.up();
 								highestBlock++;
 								y--;
-								break;
+								continue;
 							}
 						}
 						BlockPos current = highest.down(y);
@@ -103,8 +96,7 @@ public class RuneEntityHeights extends RuneEntity {
 							state = Blocks.cobblestone.getDefaultState();
 						}
 						if(state.getBlock()==Blocks.bedrock || world.getBlockState(current.up()).getBlock()==Blocks.bedrock){
-							//this.onPatternBroken();
-							return;//stop moving the column if we get to bedrock
+							break;//stop moving the column if we get to bedrock
 						}
 						NBTTagCompound temp = new NBTTagCompound();//to save TE data
 						TileEntity te = world.getTileEntity(current);//get the TE, if any
@@ -126,28 +118,20 @@ public class RuneEntityHeights extends RuneEntity {
 						return;
 					}
 					//drop
-					//raise the column
 					for(int y = 0;y<=highestBlock+currentDepth;y++){
-						if(y==0){//top block
+						if(y==0){//bottom
 							if(!world.isAirBlock(lowest.down())){
-								//TODO figure out something to keep air blocks in our column
-								/*if we don't have an air block above our column, 
-								 * add that block to the pillar and retry
-								 */
-								lowest=lowest.down();
-								//highestBlock++;
-								y--;
-								break;
+								//or we could just return and stay blocked until the blockage gets cleared
+								//this.onPatternBroken();
+								return;
 							}
 						}
 						BlockPos current = lowest.up(y);
 						IBlockState state = world.getBlockState(current);
-//						if((current.getY()<getPos().getY() && !state.getBlock().getMaterial().isSolid())){
-//							state = Blocks.cobblestone.getDefaultState();
-//						}
 						if(state.getBlock()==Blocks.bedrock || world.getBlockState(current.down()).getBlock()==Blocks.bedrock){
-							//this.onPatternBroken();
-							return;//stop moving the column if we get to bedrock
+//							this.onPatternBroken();
+//							return;//stop moving the column if we get to bedrock
+							break;
 						}
 						NBTTagCompound temp = new NBTTagCompound();//to save TE data
 						TileEntity te = world.getTileEntity(current);//get the TE, if any
