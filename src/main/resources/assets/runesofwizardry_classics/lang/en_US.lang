@@ -64,7 +64,7 @@ runesofwizardry_classics.rune.mountain=Rune of the Mountain
 runesofwizardry_classics.rune.sarlacc=Rune of Sarlacc
 
 #extra sacrifice info
-runesofwizardry_classics.rune.resurrection.extrasac=Two drops from the resurrected mob
+runesofwizardry_classics.rune.resurrection.extrasac=Two drops from the resurrected mob are to be placed on the rune after it has been activated
 runesofwizardry_classics.rune.mountain.extrasac=A live Iron Golem + 10 levels
 runesofwizardry_classics.rune.enchantingsilktouch.extrasac=10 levels
 runesofwizardry_classics.rune.enchantingfortune.extrasac=15 levels
@@ -117,3 +117,4 @@ runesofwizardry_classics.rune.heights.shortdesc=Rises a pillar to the sky.\nIf y
 runesofwizardry_classics.rune.farm.shortdesc=Spawns a farm with random crops
 runesofwizardry_classics.rune.barrier.shortdesc=Lifts a wall from the ground
 runesofwizardry_classics.rune.entrapment.shortdesc=Locks up nearby mobs and players
+runesofwizardry_classics.rune.resurrection.shortdesc=Makes a mob rise from its drops
