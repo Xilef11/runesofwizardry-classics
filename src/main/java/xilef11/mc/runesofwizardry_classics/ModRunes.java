@@ -17,7 +17,7 @@ import xilef11.mc.runesofwizardry_classics.runes.RuneDusk;
 import xilef11.mc.runesofwizardry_classics.runes.RuneEnchantingFireBow;
 import xilef11.mc.runesofwizardry_classics.runes.RuneEnchantingFortune;
 import xilef11.mc.runesofwizardry_classics.runes.RuneEnchantingSilkTouch;
-import xilef11.mc.runesofwizardry_classics.runes.RuneEntrapment;
+import xilef11.mc.runesofwizardry_classics.runes.RuneTrapCage;
 import xilef11.mc.runesofwizardry_classics.runes.RuneFarm;
 import xilef11.mc.runesofwizardry_classics.runes.RuneFire;
 import xilef11.mc.runesofwizardry_classics.runes.RuneHealing;
@@ -85,7 +85,7 @@ public class ModRunes {
 		runes.add(new RuneTrapLightning());
 		runes.add(new RuneTrapPoison());
 		runes.add(new RuneDetonation());
-		runes.add(new RuneEntrapment());
+		runes.add(new RuneTrapCage());
 		runes.add(new RuneLockedTime());
 		runes.add(new RuneVoid());
 		runes.add(new RuneBarrier());
