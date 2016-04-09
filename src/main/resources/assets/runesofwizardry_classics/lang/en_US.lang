@@ -88,6 +88,7 @@ runesofwizardry_classics.rune.compression.extrasac=Get 1 diamond for every 32 co
 runesofwizardry_classics.rune.detonation.extrasac=Center dust determines explosion strength\nFuse determines delay before explosion (plant waits for an entity to trigger)
 runesofwizardry_classics.rune.depths.extrasac=Dust type determines depth\nSacrifice wood for Plant and Gunpowder,\nCoal for Lapis and Blaze\nThere must be a hole in the center of the rune
 runesofwizardry_classics.rune.sarlacc.extrasac=Lasts 1 day.\nEvery mob killed extends its lifetime by 1/8 day,\nEvery Item destroyed extends its lifetime by 1/2 second.
+runesofwizardry_classics.rune.fire.extrasac=Lasts 1/4 of a day unless fueled\nItems must be thrown in one at a time or else they will burn
 
 #descriptions
 runesofwizardry_classics.rune.torch.shortdesc=Spawn a torch
@@ -119,3 +120,4 @@ runesofwizardry_classics.rune.barrier.shortdesc=Lifts a wall from the ground
 runesofwizardry_classics.rune.entrapment.shortdesc=Locks up nearby mobs and players
 runesofwizardry_classics.rune.resurrection.shortdesc=Makes a mob rise from its drops
 runesofwizardry_classics.rune.levelearth.shortdesc=Flattens Terrain
+runesofwizardry_classics.rune.fire.shortdesc=Creates a Flame that smelts items.

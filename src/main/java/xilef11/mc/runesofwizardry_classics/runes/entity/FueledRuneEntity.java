@@ -94,7 +94,6 @@ public abstract class FueledRuneEntity extends RuneEntity {
 		}
 		return true;
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
