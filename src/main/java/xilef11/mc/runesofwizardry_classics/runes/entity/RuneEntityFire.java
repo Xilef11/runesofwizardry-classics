@@ -73,12 +73,13 @@ public class RuneEntityFire extends FueledRuneEntity {
 			 * Now it just burns some non-smeltable items
 			 */
 			//smelt items
-			List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(center, center.add(1,1,1)));
+			List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(center, center.add(1,2,1)));
 			for(EntityItem e: items){
-				if(e.isDead){
+				if(e.isDead){//not causing the issue either
 					continue;
 				}
 				ReflectionHelper.setPrivateValue(Entity.class, e, true, "isImmuneToFire","field_70178_ae");
+				e.extinguish();
 				if(entity.ticksExisted()%TICK_RATE==0){//removing this condition seems to destroy less non-smeltable items FSR
 					ItemStack stack = e.getEntityItem();
 					ItemStack result = ItemStack.copyItemStack(FurnaceRecipes.instance().getSmeltingResult(stack));
@@ -95,6 +96,7 @@ public class RuneEntityFire extends FueledRuneEntity {
 						world.playSoundAtEntity(e, "random.fizz", 1, 1);
 					}else{
 						shoot(e);
+						e.extinguish();
 					}
 				}
 			}
@@ -103,9 +105,15 @@ public class RuneEntityFire extends FueledRuneEntity {
 
 	private void shoot(EntityItem item) {
 		float random = 0.12F;
-		item.motionX = (double)((float)item.worldObj.rand.nextGaussian() * random);
-		item.motionY = (double)((float)Math.abs(item.worldObj.rand.nextGaussian()) * random + 0.2F);
-		item.motionZ = (double)((float)item.worldObj.rand.nextGaussian() * random);
+		float xrand = (float)item.worldObj.rand.nextGaussian(),
+			  yrand = (float)Math.abs(item.worldObj.rand.nextGaussian()),
+			  zrand = (float)item.worldObj.rand.nextGaussian();
+		//It seems that this is NOT causing the issue
+		//xrand=yrand=zrand=1F;
+		//ModLogger.logInfo("Shoot rands: "+xrand + " "+yrand+" "+zrand);
+		item.motionX = (double)( xrand * random);
+		item.motionY = (double)(yrand * random + 0.2F);
+		item.motionZ = (double)(zrand * random);
 	}
 
 	/* (non-Javadoc)
