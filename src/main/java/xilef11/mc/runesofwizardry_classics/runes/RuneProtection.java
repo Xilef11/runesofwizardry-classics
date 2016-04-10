@@ -10,7 +10,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3i;
 import xilef11.mc.runesofwizardry_classics.Refs;
-import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
+import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityProtection;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
@@ -40,7 +40,7 @@ public class RuneProtection extends VariableRune {
 		return new ItemStack[][]{
 				{villagerEgg}
 				};
-		//SAC take 15 XP
+		//take 15 XP
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class RuneProtection extends VariableRune {
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntityUnimplemented(actualPattern, front, dusts, entity, this);
+		return new RuneEntityProtection(actualPattern, front, dusts, entity, this);
 	}
 
 }

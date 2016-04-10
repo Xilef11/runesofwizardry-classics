@@ -90,8 +90,8 @@ runesofwizardry_classics.rune.depths.extrasac=Dust type determines depth\nSacrif
 runesofwizardry_classics.rune.sarlacc.extrasac=Lasts 1 day.\nEvery mob killed extends its lifetime by 1/8 day,\nEvery Item destroyed extends its lifetime by 1/2 second.
 runesofwizardry_classics.rune.fire.extrasac=Lasts 1/4 of a day unless fueled\nItems must be thrown in one at a time or else they will burn\nMight destroy non-smeltable items
 runesofwizardry_classics.rune.lockedtime.extrasac=Lasts 1 day unless fueled\nWarning: May break mods
-runesofwizardry_classics.rune.hellstorm.extrasac=Lasts 1/2 of a day unless fueled.\Warning: May cause massive lag
-
+runesofwizardry_classics.rune.hellstorm.extrasac=Lasts 1/2 of a day unless fueled.\nWarning: May cause massive lag
+runesofwizardry_classics.rune.protection.extrasac=Lasts 1 day unless fueled.
 #descriptions
 runesofwizardry_classics.rune.torch.shortdesc=Spawn a torch
 runesofwizardry_classics.rune.bouncing.shortdesc=Magical trampoline!
@@ -125,3 +125,4 @@ runesofwizardry_classics.rune.levelearth.shortdesc=Flattens Terrain
 runesofwizardry_classics.rune.fire.shortdesc=Creates a Flame that smelts items.
 runesofwizardry_classics.rune.lockedtime.shortdesc=Locks the daY/night cycle and prevents blocks from falling
 runesofwizardry_classics.rune.hellstorm.shortdesc=Summons a Rain of Fire and Death
+runesofwizardry_classics.rune.protection.shortdesc=Pushes back hostile mobs
