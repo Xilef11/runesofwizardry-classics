@@ -92,6 +92,8 @@ runesofwizardry_classics.rune.fire.extrasac=Lasts 1/4 of a day unless fueled\nIt
 runesofwizardry_classics.rune.lockedtime.extrasac=Lasts 1 day unless fueled\nWarning: May break mods
 runesofwizardry_classics.rune.hellstorm.extrasac=Lasts 1/2 of a day unless fueled.\nWarning: May cause massive lag
 runesofwizardry_classics.rune.protection.extrasac=Lasts 1 day unless fueled.
+runesofwizardry_classics.rune.lumber.extrasac=Must be placed around a tree\nHas a chance of dropping extra itemsw
+
 #descriptions
 runesofwizardry_classics.rune.torch.shortdesc=Spawn a torch
 runesofwizardry_classics.rune.bouncing.shortdesc=Magical trampoline!
@@ -126,3 +128,4 @@ runesofwizardry_classics.rune.fire.shortdesc=Creates a Flame that smelts items.
 runesofwizardry_classics.rune.lockedtime.shortdesc=Locks the daY/night cycle and prevents blocks from falling
 runesofwizardry_classics.rune.hellstorm.shortdesc=Summons a Rain of Fire and Death
 runesofwizardry_classics.rune.protection.shortdesc=Pushes back hostile mobs
+runesofwizardry_classics.rune.lumber.extrasac=Chops down trees.
