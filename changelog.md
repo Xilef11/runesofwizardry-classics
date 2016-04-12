@@ -1,0 +1,3 @@
+- Initial release
+- Most runes are implemented
+- Uses Runes of Wizardry 0.5.0

@@ -23,9 +23,14 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+		maven{
+			url "https://plugins.gradle.org/m2/"
+		}
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+		classpath 'co.riiid:gradle-github-plugin:0.4.2'
+		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.7"
     }
 }
 /*
@@ -46,7 +51,7 @@ def majorVersion = "0"
 def minorVersion = "1"
 def bugfix = ""
 def devVersion = "-dev"
-def forgeVersion="1.8.9-11.15.1.1808"
+def forgeVersion="1.8.9-11.15.1.1855"
 
 version = "${mcVersion}-${majorVersion}.${minorVersion}${bugfix}${devVersion}"
 group= "xilef11.mc.runesofwizardry-classics" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -186,14 +191,14 @@ curseforge {
 if(project.hasProperty('curseKey')){
 	  apiKey = project.curseKey
 	  project {
-		id = //TODO set up on curseforge '229797'
+		id = '243956'
 		addGameVersion project.minecraft.version
 		addGameVersion 'Java 8'
 		addGameVersion 'Java 7'
 		//version pulled from ForgeGradle includes java 6
 		changelogType='markdown'
 		changelog = file('changelog.md').getText()+"\n\nBuilt with Forge "+forgeVersion
-		releaseType = alpha
+		releaseType = 'alpha'
 		mainArtifact jar
 	  }
   }else{

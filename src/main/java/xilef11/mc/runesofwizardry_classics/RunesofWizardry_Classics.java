@@ -10,12 +10,11 @@ import xilef11.mc.runesofwizardry_classics.items.DustVariable;
 
 import com.zpig333.runesofwizardry.api.DustRegistry;
 
-@Mod(modid = Refs.MODID, version = Refs.VERSION, name=Refs.NAME, guiFactory=Refs.GUI_FACTORY, dependencies = "before:runesofwizardry")
+@Mod(modid = Refs.MODID, version = Refs.VERSION, name=Refs.NAME, guiFactory=Refs.GUI_FACTORY, dependencies = "required-before:runesofwizardry@[1.8.9-0.5.0,)")
 public class RunesofWizardry_Classics
 {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
-		
 		ModLogger.logInfo("Registering Classic dusts");
 		ClassicDusts.instance = new ClassicDusts();
 		DustRegistry.registerDust(ClassicDusts.instance);
