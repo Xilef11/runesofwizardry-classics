@@ -55,7 +55,7 @@ def forgeVersion="1.8.9-11.15.1.1855"
 
 version = "${mcVersion}-${majorVersion}.${minorVersion}${bugfix}${devVersion}"
 group= "xilef11.mc.runesofwizardry-classics" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "runesofwizardry-classics"
+archivesBaseName = "RunesofWizardry-Classics"
 
 //must be run before all other configs (but after initially setting the version)
 task('setReleaseNumber') {
@@ -99,7 +99,7 @@ dependencies {
     // except that these dependencies get remapped to your current MCP mappings
     //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
     //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
+	
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
