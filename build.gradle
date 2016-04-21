@@ -132,6 +132,7 @@ task('incrementBuildNumber') << {
 	def buildscript = file("build.gradle")
 	def manifestContent=""
 	def versionCode=""
+	def buildnum=""
 	if(bugfix.length()==0){
 		def pattern = Pattern.compile("minorVersion = \"(\\d+)\"")
 		def text = buildscript.getText()
@@ -139,7 +140,8 @@ task('incrementBuildNumber') << {
 		matcher.find()
 		versionCode = Integer.parseInt(matcher.group(1))
 		manifestContent = matcher.replaceAll("minorVersion = \"" + ++versionCode + "\"")
-		println "incremented build number to ${mcVersion}-${majorVersion}.${versionCode}${bugfix}${devVersion}"
+		buildnum="${mcVersion}-${majorVersion}.${versionCode}${bugfix}${devVersion}"
+		println "incremented build number to ${buildnum}"
 	}else{
 		def pattern = Pattern.compile("bugfix = \"\\.(\\d+)\"")
 		def text = buildscript.getText()
@@ -147,14 +149,14 @@ task('incrementBuildNumber') << {
 		matcher.find()
 		versionCode = Integer.parseInt(matcher.group(1))
 		manifestContent = matcher.replaceAll("bugfix = \"." + ++versionCode + "\"")
-		println "incremented build number to ${mcVersion}-${majorVersion}.${minorVersion}.${versionCode}${devVersion}"
+		buildnum = "${mcVersion}-${majorVersion}.${minorVersion}.${versionCode}${devVersion}"
+		println "incremented build number to ${buildnum}"
 	}
 	
     buildscript.write(manifestContent)
 	
 	//commit
-	"git commit -a -m \"Increment version to ${mcVersion}-${majorVersion}.${versionCode}${bugfix}${devVersion} after release\"".execute()
-	//"git push".execute()//push the updated build number
+	"git commit -a -m \"Increment version to ${buildnum} after release\"".execute()
 }
 
 task gitPush << {
@@ -200,6 +202,9 @@ if(project.hasProperty('curseKey')){
 		changelog = file('changelog.md').getText()+"\n\nBuilt with Forge "+forgeVersion
 		releaseType = 'alpha'
 		mainArtifact jar
+		relations{
+			requiredLibrary 'runes-of-wizardry'
+		}
 	  }
   }else{
 	println "no CurseForge key found as project.curseKey"
