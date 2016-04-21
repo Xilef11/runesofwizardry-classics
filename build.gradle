@@ -48,7 +48,7 @@ apply plugin: "com.matthewprenger.cursegradle"
 //https://github.com/matthewprenger/CurseGradle for auto curseforge releases
 def mcVersion = "1.8.9"
 def majorVersion = "0"
-def minorVersion = "1"
+def minorVersion = "2"
 def bugfix = ""
 def devVersion = "-dev"
 def forgeVersion="1.8.9-11.15.1.1855"
