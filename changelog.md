@@ -1,3 +1,2 @@
-- Initial release
-- Most runes are implemented
-- Uses Runes of Wizardry 0.5.0
+- Mostly visual tweaks with the latest Runes of Wizardry features
+- Uses Runes of Wizardry 0.6.0
