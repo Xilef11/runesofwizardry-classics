@@ -13,6 +13,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneTrapFire;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
@@ -35,7 +36,7 @@ public class RuneEntityTrapFire extends RuneEntity {
 
 	@Override
 	public void update() {
-
+		if(entity.ticksExisted()==5*Refs.TPS)this.renderActive=false;
 	}
 
 	/* (non-Javadoc)

@@ -33,13 +33,14 @@ public class RuneEntityDusk extends RuneEntity {
 	public void update() {
 		World world = entity.getWorld();
 		if(!world.isRemote){
-			if(world.isDaytime()){
-				//quite "jumpy", not sure if we can do something about it
+			if(world.isDaytime()){//always true client-side
 				world.setWorldTime(world.getWorldTime()+25);
 				activatedAtNight=false;//we got to daytime
 			}else{//if we got to night time 
 				if(!activatedAtNight)this.onPatternBroken();
 			}
+		}else{
+			if(world.getCelestialAngle(0)<0.248 || world.getCelestialAngle(0)>0.752)world.setWorldTime(world.getWorldTime()+25);
 		}
 	}
 

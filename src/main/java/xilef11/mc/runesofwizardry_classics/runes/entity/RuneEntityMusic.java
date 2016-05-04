@@ -17,6 +17,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
 import com.zpig333.runesofwizardry.api.IRune;
@@ -45,9 +46,15 @@ public class RuneEntityMusic extends RuneEntity {
 	 */
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		World world = player.worldObj;
-		//TODO FX
-		if(!world.isRemote){
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zpig333.runesofwizardry.api.RuneEntity#update()
+	 */
+	@Override
+	public void update() {
+		World world = entity.getWorld();
+		if(!world.isRemote && entity.ticksExisted()==Refs.TPS*5){
 			//grab the list of records
 			Map<String,ItemRecord> recordMap = ReflectionHelper.getPrivateValue(ItemRecord.class, (ItemRecord)Items.record_13, "RECORDS","field_150928_b");//XXX recheck name when update
 			Collection<ItemRecord> records = recordMap.values();
@@ -62,16 +69,9 @@ public class RuneEntityMusic extends RuneEntity {
 			}
 			//spawn the record
 			Utils.spawnItemCentered(world, getPos(), new ItemStack(current));
+			world.playSoundEffect(getPos().getX(), getPos().getY(), getPos().getZ(), "mob.chicken.plop", 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()));
 			this.onPatternBroken();//deactivate
 		}
-
-	}
-
-	/* (non-Javadoc)
-	 * @see com.zpig333.runesofwizardry.api.RuneEntity#update()
-	 */
-	@Override
-	public void update() {
 	}
 
 }

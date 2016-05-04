@@ -10,7 +10,8 @@ import xilef11.mc.runesofwizardry_classics.items.DustVariable;
 
 import com.zpig333.runesofwizardry.api.DustRegistry;
 //note: loading before a dependency causes a noclassdeffound outside of a dev environment
-@Mod(modid = Refs.MODID, version = Refs.VERSION, name=Refs.NAME, guiFactory=Refs.GUI_FACTORY, dependencies = "required-after:runesofwizardry@[1.8.9-0.5.0,)")
+//@Mod(modid = Refs.MODID, version = Refs.VERSION, name=Refs.NAME, guiFactory=Refs.GUI_FACTORY, dependencies = "required-after:runesofwizardry@[1.8.9-0.5.0,)")
+@Mod(modid = Refs.MODID, version = Refs.VERSION, name=Refs.NAME, guiFactory=Refs.GUI_FACTORY, dependencies = "required-after:runesofwizardry")
 public class RunesofWizardry_Classics
 {
 	@EventHandler

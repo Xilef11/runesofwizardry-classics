@@ -25,8 +25,6 @@ public class RuneEntityBouncing extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		// TODO FX
-
 	}
 
 	@Override

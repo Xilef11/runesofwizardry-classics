@@ -8,6 +8,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneSpeed;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
@@ -43,14 +44,13 @@ public class RuneEntitySpeed extends RuneEntity {
 			}
 			//the original was activatable by redstone and gave the effect to all entityliving on the rune
 			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, duration, power));
-			this.onPatternBroken();
 		}
 
 	}
 
 	@Override
 	public void update() {
-
+		if(entity.ticksExisted()==2*Refs.TPS && !entity.getWorld().isRemote)this.onPatternBroken();
 	}
 
 }

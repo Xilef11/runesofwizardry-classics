@@ -9,6 +9,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.ModLogger;
+import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.managers.IVoidStorageCapability;
 import xilef11.mc.runesofwizardry_classics.managers.VoidStorageCapability;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
@@ -65,7 +66,7 @@ public class RuneEntityVoid extends RuneEntity {
 
 	@Override
 	public void update() {
-
+		if(entity.ticksExisted()==1*Refs.TPS)this.renderActive=false;
 	}
 
 }

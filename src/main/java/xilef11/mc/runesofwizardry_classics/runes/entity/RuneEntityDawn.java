@@ -27,22 +27,23 @@ public class RuneEntityDawn extends RuneEntity {
 		if(!world.isRemote){
 			activatedAtDay=world.isDaytime();
 		}
-		//maybe setup FX
+		this.renderActive=true;
 	}
 
 	@Override
 	public void update() {
 		World world = entity.getWorld();
 		if(!world.isRemote){
-			if(!world.isDaytime()){
-				//XXX quite "jumpy", maybe a smaller number?
+			if(!world.isDaytime()){//always false on the client
 				world.setWorldTime(world.getWorldTime()+25);
-				//System.out.println(world.getWorldTime());
-				//System.out.println(world.getTotalWorldTime());
 				activatedAtDay=false;//we got to night time
 			}else{//if we got to day time 
 				if(!activatedAtDay)this.onPatternBroken();
 			}
+		}else{
+			//night: 0.25 to 0.75
+			//ModLogger.logInfo(world.getCelestialAngle(0));
+			if(world.getCelestialAngle(0)>0.248 && world.getCelestialAngle(0)<0.752)world.setWorldTime(world.getWorldTime()+25);
 		}
 	}
 

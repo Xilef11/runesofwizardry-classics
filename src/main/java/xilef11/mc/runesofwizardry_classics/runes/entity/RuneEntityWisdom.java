@@ -77,7 +77,6 @@ public class RuneEntityWisdom extends RuneEntity {
 		if(!worldIn.isRemote && playerIn.getName().equals(user)){
 			//pause the rune
 			ticksSinceRC=0;
-			//TODO graphix
 			//give all xp
 			playerIn.addExperience(xpAbsorbed);
 			xpAbsorbed=0;

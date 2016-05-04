@@ -13,6 +13,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneLumber;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
@@ -64,7 +65,6 @@ public class RuneEntityLumber extends RuneEntity {
 		if(!world.isRemote){
 			BlockPos pos = getPos();
 			int x=pos.getX(),y=pos.getY(),z=pos.getZ();
-			//FIXME (minor) particles not working
 			if (Math.random() < 0.08){//spawn particles
 				for (int dx = -rad; dx <= rad; dx++){
 					for (int dy = -rad / 2; dy <= rad / 2; dy++){
@@ -180,6 +180,11 @@ public class RuneEntityLumber extends RuneEntity {
 	private static void spawnExplosionParticle(World world, double x, double y, double z){
 		double width = 1.3d;
 		double height = 1.3d;
-		world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, x + width/2, y + height/2, z + width/2, 0, 0, 0, 5);
+		if(world instanceof WorldServer){
+			WorldServer ws = (WorldServer)world;
+			ws.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, x + width/2, y + height/2, z + width/2,ws.rand.nextInt(5), 0d, 0d, 0d, 0d,5);
+		}else{
+			world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, x + width/2, y + height/2, z + width/2, 0, 0, 0, 5);
+		}
 	}
 }

@@ -13,6 +13,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.managers.TeleportationData;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
@@ -75,9 +76,13 @@ public class RuneEntityTransport extends RuneEntity {
 						//sound + particles for fun
 						world.playSoundEffect(getPos().getX(), getPos().getY(), getPos().getZ(), "mob.endermen.portal", 1.0F, 1.0F);
 						world.playSoundEffect(dest.getX(), dest.getY(), dest.getZ(), "mob.endermen.portal", 1.0F, 1.0F);
-						//FIXME (minor) particles not working
-						world.spawnParticle(EnumParticleTypes.PORTAL, getPos().getX(), getPos().getY(), getPos().getZ(), 0.5F, 0.5, 0.5);
-						world.spawnParticle(EnumParticleTypes.PORTAL, dest.getX(), dest.getY(), dest.getZ(), 0.5F, 0.5, 0.5);
+						if(world instanceof WorldServer){
+							WorldServer ws = (WorldServer)world;
+							ws.spawnParticle(EnumParticleTypes.SPELL_WITCH, getPos().getX(), getPos().getY(), getPos().getZ(), 10, 0d, 0d, 0d, 0);
+							//ws.spawnParticle(EnumParticleTypes.PORTAL, getPos().getX(), getPos().getY(), getPos().getZ(), 0.5F, 0.5, 0.5);
+							//ws.spawnParticle(EnumParticleTypes.PORTAL, dest.getX(), dest.getY(), dest.getZ(), 0.5F, 0.5, 0.5);
+							ws.spawnParticle(EnumParticleTypes.PORTAL, dest.getX(), dest.getY(), dest.getZ(), 10, 0.5, 0.5, 0.5, 10);
+						}
 					}else{
 						p.timeUntilPortal=4;//to avoid waiting again if unlucky
 					}

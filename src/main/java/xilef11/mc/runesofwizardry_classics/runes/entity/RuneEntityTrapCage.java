@@ -3,6 +3,7 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.List;
 import java.util.Set;
 
+import xilef11.mc.runesofwizardry_classics.Refs;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,6 +38,7 @@ public class RuneEntityTrapCage extends RuneEntity {
 	public void update() {
 		World world = entity.getWorld();
 		if(!world.isRemote){
+			if(entity.ticksExisted()==5*Refs.TPS)this.renderActive=false;
 			List<EntityLivingBase> ents = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPos().add(-RADIUS,-1,-RADIUS), getPos().add(RADIUS,1,RADIUS)));
 			if(!ents.isEmpty()){
 				boolean broken=false;

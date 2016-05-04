@@ -11,6 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneDetonation;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
@@ -60,6 +61,7 @@ public class RuneEntityDetonation extends RuneEntity {
 
 	@Override
 	public void update() {
+		if(entity.ticksExisted()==5*Refs.TPS)this.renderActive=false;
 		if(!entity.getWorld().isRemote){
 			if(fuselength>=0){
 				if(entity.ticksExisted()>=fuselength)boom();

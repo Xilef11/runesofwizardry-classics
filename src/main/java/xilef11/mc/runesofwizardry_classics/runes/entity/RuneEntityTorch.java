@@ -13,6 +13,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.ModLogger;
+import xilef11.mc.runesofwizardry_classics.Refs;
 
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
@@ -35,13 +36,7 @@ public class RuneEntityTorch extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice,boolean negated) {
 		ModLogger.logDebug("Activated torch rune with sacrifice: "+sacrifice);
-		if(sacrifice==null){
-			World world = entity.getWorld();
-			BlockPos pos = getPos();
-			entity.clear();
-			world.setBlockToAir(pos);
-			world.setBlockState(pos, Blocks.torch.getDefaultState());
-		}else{
+		if(sacrifice!=null){
 			this.beacon=true;
 			//TODO create beacon
 		}
@@ -52,8 +47,14 @@ public class RuneEntityTorch extends RuneEntity {
 	 */
 	@Override
 	public void update() {
+		World world = entity.getWorld();
 		if(beacon){
 			//probably stuff to do here
+		}else if(!world.isRemote && entity.ticksExisted()==2*Refs.TPS){
+			BlockPos pos = getPos();
+			entity.clear();
+			world.setBlockToAir(pos);
+			world.setBlockState(pos, Blocks.torch.getDefaultState());
 		}
 	}
 

@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
 import com.zpig333.runesofwizardry.api.IRune;
@@ -34,7 +35,6 @@ public class RuneEntitySpawnerCollection extends RuneEntity {
 	 */
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice,boolean negated) {
-		// TODO rendering fx
 		World world = player.worldObj;
 		if(!world.isRemote){
 			//take xp if not negated
@@ -47,15 +47,6 @@ public class RuneEntitySpawnerCollection extends RuneEntity {
 					return;
 				}
 			}
-			BlockPos spawnerPos = getPos().offset(face);
-			IBlockState spawnState = world.getBlockState(spawnerPos);
-			if(!(spawnState.getBlock()==Blocks.mob_spawner)){
-				this.onPatternBroken();//break the pattern
-			}else{
-				world.setBlockToAir(spawnerPos);
-				Utils.spawnItemCentered(world, spawnerPos, new ItemStack(Blocks.mob_spawner));
-			}
-			this.onPatternBroken();
 		}
 
 	}
@@ -65,7 +56,19 @@ public class RuneEntitySpawnerCollection extends RuneEntity {
 	 */
 	@Override
 	public void update() {
-
+		World world = entity.getWorld();
+		if(!world.isRemote && entity.ticksExisted()==Refs.TPS*5){
+			BlockPos spawnerPos = getPos().offset(face);
+			IBlockState spawnState = world.getBlockState(spawnerPos);
+			if(!(spawnState.getBlock()==Blocks.mob_spawner)){
+				this.onPatternBroken();//break the pattern
+			}else{
+				world.setBlockToAir(spawnerPos);
+				Utils.spawnItemCentered(world, spawnerPos, new ItemStack(Blocks.mob_spawner));
+				world.playSoundEffect(getPos().getX(), getPos().getY(), getPos().getZ(), "mob.chicken.plop", 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()));
+			}
+			this.onPatternBroken();
+		}
 	}
 
 }

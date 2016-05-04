@@ -59,7 +59,6 @@ public class RuneEntityRebirth extends RuneEntity {
 				}
 			}
 		}
-		// TODO start FX
 		
 	}
 

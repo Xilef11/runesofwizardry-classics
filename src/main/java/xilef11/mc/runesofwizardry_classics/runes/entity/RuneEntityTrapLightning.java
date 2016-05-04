@@ -15,6 +15,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneTrapLightning;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
@@ -42,6 +43,7 @@ public class RuneEntityTrapLightning extends RuneEntity {
 	@Override
 	public void update() {
 		World world = entity.getWorld();
+		if(entity.ticksExisted()==5*Refs.TPS)this.renderActive=false;
 		if(!world.isRemote&&entity.ticksExisted()>5*20){
 			int radius=0;
 			switch(EnumDustTypes.getByMeta(meta)){
