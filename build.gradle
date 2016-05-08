@@ -69,7 +69,7 @@ task('setReleaseNumber') {
 
 minecraft {
     version = forgeVersion
-    runDir = "run"
+    runDir = "run-1.8.9"
     
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
