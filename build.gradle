@@ -46,12 +46,12 @@ apply plugin: "com.matthewprenger.cursegradle"
 
 //https://github.com/riiid/gradle-github-plugin for auto github releases
 //https://github.com/matthewprenger/CurseGradle for auto curseforge releases
-def mcVersion = "1.8.9"
+def mcVersion = "1.9"
 def majorVersion = "0"
 def minorVersion = "3"
 def bugfix = ""
 def devVersion = "-dev"
-def forgeVersion="1.8.9-11.15.1.1875"
+def forgeVersion="1.9-12.16.1.1892"
 
 version = "${mcVersion}-${majorVersion}.${minorVersion}${bugfix}${devVersion}"
 group= "xilef11.mc.runesofwizardry-classics" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -76,7 +76,7 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "stable_20"
+    mappings = "snapshot_20160505"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 	replace '@VERSION@', project.version
 	replaceIn 'Refs.java'
