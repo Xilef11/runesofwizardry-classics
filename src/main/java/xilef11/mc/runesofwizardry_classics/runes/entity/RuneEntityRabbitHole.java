@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Set;
 
 import net.minecraft.block.BlockFalling;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -64,12 +67,13 @@ public class RuneEntityRabbitHole extends RuneEntity {
 							}
 						}else if(y==-height){//bottom slice
 							//this makes sure we have a platform to land on by filling air + liquid blocks
-							if(!world.getBlockState(current.down()).getBlock().getMaterial().isSolid()){
+							if(!world.getBlockState(current.down()).getMaterial().isSolid()){
 								world.setBlockState(current.down(), Blocks.COBBLESTONE.getDefaultState());
 							}
 						}
 						//don't break obsidian or bedrock
-						if(world.getBlockState(current).getBlock().getBlockHardness(world, current)<Blocks.OBSIDIAN.getBlockHardness(world, current) && world.getBlockState(current).getBlock()!=Blocks.BEDROCK){
+						IBlockState state = world.getBlockState(current);
+						if(state.getBlock().getBlockHardness(state,world, current)<Blocks.OBSIDIAN.getBlockHardness(Blocks.OBSIDIAN.getDefaultState(),world, current) && world.getBlockState(current).getBlock()!=Blocks.BEDROCK){
 							world.setBlockToAir(current);
 						}
 					}
@@ -115,7 +119,7 @@ public class RuneEntityRabbitHole extends RuneEntity {
 						p.setPositionAndUpdate(torch.getX()+0.5, torch.getY()+0.5, torch.getZ()+0.5);
 						p.fallDistance=0;
 						delay=15;
-						world.playSoundAtEntity(p, "mob.endermen.portal", 0.5F, 3.0F);
+						world.playSound(p.posX, p.posY, p.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 0.5F, 3.0F, true);
 					}
 				}
 				if(up.isEmpty()){
@@ -126,7 +130,7 @@ public class RuneEntityRabbitHole extends RuneEntity {
 							p.setPositionAndUpdate(getPos().getX()+0.5, getPos().getY()+0.5, getPos().getZ()+0.5);
 							p.fallDistance=0;
 							delay=15;
-							world.playSoundAtEntity(p, "mob.endermen.portal", 0.5F, 3.0F);
+							world.playSound(p.posX, p.posY, p.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 0.5F, 3.0F, true);
 						}
 					}
 				}

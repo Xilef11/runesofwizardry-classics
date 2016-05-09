@@ -49,7 +49,7 @@ public class RuneEntityWisdom extends RuneEntity {
 		World world = entity.getWorld();
 		if(!world.isRemote) {
 			if (ticksSinceRC>RCDelay) {
-				EntityPlayer player = world.getClosestPlayer(getPos().getX(), getPos().getY(), getPos().getZ(), 2);
+				EntityPlayer player = world.getClosestPlayer(getPos().getX(), getPos().getY(), getPos().getZ(), 2, false);
 				if(player!=null){
 					if(player.experience>0){
 						//TODO sounds maybe?

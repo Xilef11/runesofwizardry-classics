@@ -1,6 +1,6 @@
 package xilef11.mc.runesofwizardry_classics;
 
-import java.io.File;import java.util.HashMap;import java.util.Map;import net.minecraftforge.common.config.Configuration;import net.minecraftforge.fml.client.event.ConfigChangedEvent;import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;import xilef11.mc.runesofwizardry_classics.runes.ClassicRune;
+import java.io.File;import java.util.HashMap;import java.util.Map;import net.minecraft.util.text.translation.I18n;import net.minecraftforge.common.config.Configuration;import net.minecraftforge.fml.client.event.ConfigChangedEvent;import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;import xilef11.mc.runesofwizardry_classics.runes.ClassicRune;
 
 /**
  * This class handles the config file for the mod.
@@ -20,7 +20,7 @@ public class Config {
 
 	@SubscribeEvent
 	public void onConfigurationChanged(ConfigChangedEvent.OnConfigChangedEvent event){
-		if(event.modID.equals(Refs.MODID)){
+		if(event.getModID().equals(Refs.MODID)){
 			//resync configs
 			loadConfiguration();
 		}
@@ -39,7 +39,7 @@ public class Config {
 		config.setCategoryLanguageKey(CATEGORY_RUNES, Refs.Lang.CONFIG+".catruneperms");
 		for(ClassicRune rune:ModRunes.getRunes()){
 			String id = rune.getID();
-			String perms = config.getString(id, CATEGORY_RUNES, PERMISSIONS_ALL, StatCollector.translateToLocal(rune.getName()), new String[]{PERMISSIONS_ALL,PERMISSIONS_OP,PERMISSIONS_NONE},rune.getName());
+			String perms = config.getString(id, CATEGORY_RUNES, PERMISSIONS_ALL, I18n.translateToLocal(rune.getName()), new String[]{PERMISSIONS_ALL,PERMISSIONS_OP,PERMISSIONS_NONE},rune.getName());
 			runePerms.put(id,perms);
 		}
 		

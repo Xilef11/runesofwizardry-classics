@@ -2,8 +2,8 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 
 import java.util.Set;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -38,7 +38,7 @@ public class RuneEntityEnchantingFireBow extends RuneEntity {
 					}
 				}
 				if(bow==null && negated)bow = new ItemStack(Items.BOW);
-				bow.addEnchantment(Enchantment.flame, Enchantment.flame.getMaxLevel());
+				bow.addEnchantment(Enchantments.FLAME, Enchantments.FLAME.getMaxLevel());
 				bow.setItemDamage(0);
 				Utils.spawnItemCentered(world, getPos(), bow);
 				this.onPatternBroken();

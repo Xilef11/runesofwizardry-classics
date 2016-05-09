@@ -19,7 +19,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
@@ -91,7 +90,7 @@ public class RuneResurrection extends ClassicRune {
 		//if(dropToEntity!=null)return;
 		dropToEntity = new HashMap<String,List<String>>();
 		for(String entName:EntityList.getEntityNameList()){
-			Entity e = EntityList.createEntityByName(entName, MinecraftServer.getServer().getEntityWorld());
+			Entity e = EntityList.createEntityByName(entName, event.getWorld());//XXX to 
 			if(e instanceof EntityLiving){//if its a mob
 				EntityLiving ent = (EntityLiving)e;
 				e.captureDrops=true;
@@ -110,7 +109,7 @@ public class RuneResurrection extends ClassicRune {
 				}
 				for(EntityItem item:ent.capturedDrops){
 					ItemStack stack = item.getEntityItem();
-					String key = stack.getItem().getRegistryName()+stack.getMetadata();
+					String key = stack.getItem().getRegistryName().toString()+stack.getMetadata();
 					List<String> ids = dropToEntity.get(key);
 					if(ids==null){
 						ids=new LinkedList<String>();
@@ -131,7 +130,7 @@ public class RuneResurrection extends ClassicRune {
 	public String entityIDFromDrops(Collection<ItemStack> drops){
 		List<String> possible = null;
 		for(ItemStack s:drops){
-			String key = s.getItem().getRegistryName()+s.getMetadata();
+			String key = s.getItem().getRegistryName().toString()+s.getMetadata();
 			List<String> entities = dropToEntity.get(key);
 			if(entities==null)return null;
 			if(possible==null){

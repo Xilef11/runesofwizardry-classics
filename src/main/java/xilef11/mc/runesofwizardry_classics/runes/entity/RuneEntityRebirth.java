@@ -14,10 +14,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
 import com.zpig333.runesofwizardry.api.IRune;
@@ -82,25 +82,30 @@ public class RuneEntityRebirth extends RuneEntity {
 				//int id = entityIn.getEntityId();//not the same id as spawn eggs
 				//ItemMonsterPlacer
 				//try the forge map
-				Map<String, EntityEggInfo> eggs = EntityRegistry.getEggs();//this one is empty
-				EntityEggInfo egginfo = eggs.get(ent.getName());
-				if(egginfo==null){//try the vanilla map
-					Map<Integer,EntityEggInfo> egg2 = EntityList.entityEggs;
+				//Map<String, EntityEggInfo> eggs = EntityRegistry.getEggs();//this one is empty
+				EntityEggInfo egginfo=null;
+				//eggInfo= eggs.get(ent.getName());
+				//if(egginfo==null){//try the vanilla map
+					//TODO test this one, stuff changed
+					Map<String, EntityEggInfo> egg2 = EntityList.ENTITY_EGGS;
 					for(EntityEggInfo inf: egg2.values()){
-						String name = inf.name;
+						String name = inf.spawnedID;
 						if(name.equals(ent.getName())){
 							egginfo=inf;
 							break;
 						}
-					}
+				//	}
 				}
 				
 				//EntityEggInfo egginfo = eggs.get(id);//null with sheep and zombie?
 				if(egginfo!=null){//if the entity has an egg (?)
-					@SuppressWarnings("deprecation")
-					int spawnID = egginfo.spawnedID;
+					String spawnID = egginfo.spawnedID;
 					//XXX this will be NBT in 1.9
-					Utils.spawnItemCentered(worldIn, pos, new ItemStack(Items.SPAWN_EGG,1,spawnID));
+					ItemStack egg = new ItemStack(Items.SPAWN_EGG);
+					NBTTagCompound entityTag = new NBTTagCompound();
+					entityTag.setString("id", spawnID);
+					egg.getTagCompound().setTag("EntityTag", entityTag);
+					Utils.spawnItemCentered(worldIn, pos, egg);
 					this.onPatternBroken();//kill the rune
 					entityIn.setDead();//kill the entity
 				}

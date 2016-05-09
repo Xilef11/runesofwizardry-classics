@@ -63,7 +63,7 @@ public class RuneBouncing extends ClassicRune {
 	//event handling is done here because this is a singleton, not the rune entity
 	@SubscribeEvent
 	public void onEntityJump(LivingJumpEvent event){
-		EntityLivingBase ent = event.entityLiving;
+		EntityLivingBase ent = event.getEntityLiving();
 		World world = ent.worldObj;
 		if(!world.isRemote){
 			//basically, check if we are standing on placed dust, then check if its an active rune of bouncing

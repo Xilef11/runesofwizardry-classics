@@ -2,8 +2,8 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 
 import java.util.Set;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -39,7 +39,7 @@ public class RuneEntityEnchantingSilktouch extends RuneEntity {
 					}
 				}
 				if(toEnchant==null && negated)toEnchant=new ItemStack(Items.DIAMOND_PICKAXE);
-				toEnchant.addEnchantment(Enchantment.silkTouch, Enchantment.silkTouch.getMaxLevel());
+				toEnchant.addEnchantment(Enchantments.SILK_TOUCH, Enchantments.SILK_TOUCH.getMaxLevel());
 				toEnchant.setItemDamage(0);
 				Utils.spawnItemCentered(world, getPos(), toEnchant);
 				this.onPatternBroken();

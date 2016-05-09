@@ -34,7 +34,7 @@ public class RuneTrapCage extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.IRON_INGOT,6),new ItemStack(Items.redstone,2)}
+				{new ItemStack(Items.IRON_INGOT,6),new ItemStack(Items.REDSTONE,2)}
 				};
 	}
 

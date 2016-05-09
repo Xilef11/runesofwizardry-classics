@@ -37,7 +37,7 @@ public class RuneEntityLeapingFrog extends RuneEntity {
 			if(entity.ticksExisted()%10==0){
 				BlockPos current = getPos().offset(face, 1+blocksplaced);
 				//Block down = world.getBlockState(current.down()).getBlock();
-				if(world.isAirBlock(current)&&world.isAnyLiquid(new AxisAlignedBB(current.down(), current.down()))){
+				if(world.isAirBlock(current)&&world.containsAnyLiquid(new AxisAlignedBB(current.down(), current.down()))){
 					world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, current.getX(), current.getY(), current.getZ(), 0.5, 0, 0.5);
 					world.setBlockState(current, Blocks.WATERLILY.getDefaultState());
 					world.playAuxSFX(2005, current, 0);

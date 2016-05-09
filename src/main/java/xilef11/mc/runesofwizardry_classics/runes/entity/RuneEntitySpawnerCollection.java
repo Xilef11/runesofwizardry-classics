@@ -8,8 +8,10 @@ import java.util.Set;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.Refs;
@@ -65,7 +67,7 @@ public class RuneEntitySpawnerCollection extends RuneEntity {
 			}else{
 				world.setBlockToAir(spawnerPos);
 				Utils.spawnItemCentered(world, spawnerPos, new ItemStack(Blocks.MOB_SPAWNER));
-				world.playSoundEffect(getPos().getX(), getPos().getY(), getPos().getZ(), "mob.chicken.plop", 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()));
+				world.playSound(getPos().getX(), getPos().getY(), getPos().getZ(), SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()), false);
 			}
 			this.onPatternBroken();
 		}

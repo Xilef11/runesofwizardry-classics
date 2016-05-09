@@ -92,7 +92,7 @@ public class RuneEntityHeights extends RuneEntity {
 						}
 						BlockPos current = highest.down(y);
 						IBlockState state = world.getBlockState(current);
-						if((current.getY()<getPos().getY() && !state.getBlock().getMaterial().isSolid())){
+						if((current.getY()<getPos().getY() && !state.getMaterial().isSolid())){
 							state = Blocks.COBBLESTONE.getDefaultState();
 						}
 						if(state.getBlock()==Blocks.BEDROCK || world.getBlockState(current.up()).getBlock()==Blocks.BEDROCK){

@@ -5,8 +5,8 @@ import java.util.Set;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -49,12 +49,12 @@ public class RuneEntityHealing extends RuneEntity {
 				break;
 			case BLAZE: duration=32;power=4;food=8;sat=0.8F;//gives regen 4 (regen 5 just gives regen 1)
 				break;
-			default: duration=power=0;;food=0;sat=0;
+			default: duration=power=0;food=0;sat=0;
 				break;
 			}
 			List<EntityLivingBase> ents = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPos().add(-3, -1, -3), getPos().add(3,1,3)));
 			for(EntityLivingBase e:ents){
-				e.addPotionEffect(new PotionEffect(Potion.regeneration.id, duration*20, power-1));
+				e.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, duration*20, power-1));
 				if(e instanceof EntityPlayer){
 					EntityPlayer p = (EntityPlayer)e;
 					p.getFoodStats().addStats(food, sat);

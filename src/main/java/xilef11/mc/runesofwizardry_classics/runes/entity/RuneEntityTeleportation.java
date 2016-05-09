@@ -7,10 +7,12 @@ import java.util.Set;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -85,8 +87,8 @@ public class RuneEntityTeleportation extends RuneEntity {
 							//deal 3 hearts of damage
 							p.attackEntityFrom(DamageSource.magic, 6);
 							//sound + particles for fun
-							world.playSoundEffect(getPos().getX(), getPos().getY(), getPos().getZ(), "mob.endermen.portal", 1.0F, 1.0F);
-							world.playSoundEffect(dest.getX(), dest.getY(), dest.getZ(), "mob.endermen.portal", 1.0F, 1.0F);
+							world.playSound(getPos().getX(), getPos().getY(), getPos().getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F,false);
+							world.playSound(dest.getX(), dest.getY(), dest.getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F,false);
 							if(world instanceof WorldServer){
 								WorldServer ws = (WorldServer)world;
 								ws.spawnParticle(EnumParticleTypes.SPELL_WITCH, getPos().getX(), getPos().getY(), getPos().getZ(), 10, 0.5, 0.5, 0.5, 0);

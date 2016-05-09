@@ -3,6 +3,8 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Set;
 
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityArrow.PickupStatus;
+import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -40,12 +42,12 @@ public class RuneEntityHellstorm extends FueledRuneEntity {
 				BlockPos spawn = new BlockPos(x,pos.getY()+94,z);
 				while(!world.isAirBlock(spawn)&&spawn.getY()>pos.getY()+1)spawn=spawn.down();
 				//Original spawned arrows at a fixed height of 158
-				EntityArrow arrow = new EntityArrow(world, x, spawn.getY(), z);
+				EntityArrow arrow = new EntityTippedArrow(world, x, spawn.getY(), z);
 				arrow.motionX=0;
 				arrow.motionZ=0;
 				arrow.motionY=-2D;
 				arrow.setFire(30);
-				arrow.canBePickedUp=0;//why is this an int...
+				arrow.pickupStatus=PickupStatus.DISALLOWED;//why is this an int...
 				//arrow.setThrowableHeading(0, -1, 0, 2F, 0);
 				world.spawnEntityInWorld(arrow);
 			}

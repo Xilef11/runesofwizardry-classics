@@ -7,8 +7,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -63,7 +63,7 @@ public class RuneEntityTrapPoison extends RuneEntity {
 			//poison all entities in radius
 			List<EntityLivingBase> ents = worldIn.getEntitiesWithinAABB(EntityLivingBase.class,new AxisAlignedBB(getPos().add(-rad, -rad, -rad), getPos().add(rad,rad,rad)));
 			for(EntityLivingBase e:ents){
-				e.addPotionEffect(new PotionEffect(Potion.poison.id, (poisonbase + ((int)Math.floor(Math.random() * (double)poisonrand))) * 20, 2));
+				e.addPotionEffect(new PotionEffect(MobEffects.POISON, (poisonbase + ((int)Math.floor(Math.random() * (double)poisonrand))) * 20, 2));
 			}
 			this.onPatternBroken();
 		}

@@ -65,7 +65,8 @@ public class RuneEntityBarrier extends RuneEntity {
 							}
 							world.setBlockToAir(p);//remove the dust
 						}
-						world.markBlockForUpdate(p);
+						//world.markBlockForUpdate(p);
+						world.notifyBlockUpdate(p, world.getBlockState(p), world.getBlockState(p), 0);
 					}
 					for(int i=0;i<currentDepth.length;i++){
 						currentDepth[i]=DEPTH;
@@ -96,7 +97,7 @@ public class RuneEntityBarrier extends RuneEntity {
 						}
 						BlockPos current = highest.down(y).offset(left, x);
 						IBlockState state = world.getBlockState(current);
-						if((current.getY()<getPos().getY() && !state.getBlock().getMaterial().isSolid())){
+						if((current.getY()<getPos().getY() && !state.getMaterial().isSolid())){
 							state = Blocks.COBBLESTONE.getDefaultState();
 						}
 						if(state.getBlock()==Blocks.BEDROCK || world.getBlockState(current.up()).getBlock()==Blocks.BEDROCK){

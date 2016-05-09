@@ -7,10 +7,10 @@ import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 import org.apache.logging.log4j.Level;
@@ -99,14 +99,14 @@ public abstract class ClassicRune extends IRune {
 			//if(perm.equals(Config.PERMISSIONS_NONE))allowed=false;
 			if(perm.equals(Config.PERMISSIONS_ALL))allowed=true;
 			if(perm.equals(Config.PERMISSIONS_OP)){
-				String[] ops = MinecraftServer.getServer().getConfigurationManager().getOppedPlayerNames();
+				String[] ops = player.getServer().getPlayerList().getOppedPlayerNames();
 				for(String name:ops){
 					if(name.equals(player.getName()))allowed=true;
 				}
 				//TODO check if cheats enabled if single player
 			}
 		}
-		if(!allowed)player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".nopermission.message",StatCollector.translateToLocal(getName())));
+		if(!allowed)player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".nopermission.message",I18n.translateToLocal(getName())));
 		return allowed;
 	}
 	

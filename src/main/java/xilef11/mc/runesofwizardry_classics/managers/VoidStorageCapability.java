@@ -15,9 +15,9 @@ public class VoidStorageCapability{
 	}
 	@SubscribeEvent
 	public void onPlayerClone(PlayerEvent.Clone event){
-		if(event.wasDeath){
-			IVoidStorageCapability oldCap = event.original.getCapability(VOID_STORAGE_CAPABILITY, null);
-			IVoidStorageCapability newCap = event.entityPlayer.getCapability(VOID_STORAGE_CAPABILITY, null);
+		if(event.isWasDeath()){
+			IVoidStorageCapability oldCap = event.getOriginal().getCapability(VOID_STORAGE_CAPABILITY, null);
+			IVoidStorageCapability newCap = event.getEntityPlayer().getCapability(VOID_STORAGE_CAPABILITY, null);
 			for(ItemStack i:oldCap.getVoidInventory()){
 				newCap.addStackToVoid(i);
 			}

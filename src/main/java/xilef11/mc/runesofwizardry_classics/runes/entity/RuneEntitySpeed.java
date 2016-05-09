@@ -3,8 +3,8 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -43,7 +43,7 @@ public class RuneEntitySpeed extends RuneEntity {
 				break;
 			}
 			//the original was activatable by redstone and gave the effect to all entityliving on the rune
-			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, duration, power));
+			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, duration, power));
 		}
 
 	}

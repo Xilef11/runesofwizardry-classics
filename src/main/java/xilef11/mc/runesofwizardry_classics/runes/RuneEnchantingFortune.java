@@ -36,8 +36,8 @@ public class RuneEnchantingFortune extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.DIAMOND_ORE),new ItemStack(Blocks.lapis_ore),new ItemStack(Blocks.redstone_ore),new ItemStack(Items.DIAMOND_PICKAXE,1,OreDictionary.WILDCARD_VALUE)},
-				{new ItemStack(Blocks.DIAMOND_ORE),new ItemStack(Blocks.lapis_ore),new ItemStack(Blocks.redstone_ore),new ItemStack(Items.DIAMOND_SWORD,1,OreDictionary.WILDCARD_VALUE)}
+				{new ItemStack(Blocks.DIAMOND_ORE),new ItemStack(Blocks.LAPIS_ORE),new ItemStack(Blocks.REDSTONE_ORE),new ItemStack(Items.DIAMOND_PICKAXE,1,OreDictionary.WILDCARD_VALUE)},
+				{new ItemStack(Blocks.DIAMOND_ORE),new ItemStack(Blocks.LAPIS_ORE),new ItemStack(Blocks.REDSTONE_ORE),new ItemStack(Items.DIAMOND_SWORD,1,OreDictionary.WILDCARD_VALUE)}
 				};
 		//take 15 XP
 	}

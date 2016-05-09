@@ -31,7 +31,7 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(plantDust, coal, seeds,seeds);
 		//Gunpowder 2xPlant Runic Dust + 1xGunpowder = 12xGunpowder Runic Dust
 		GameRegistry.addShapelessRecipe(EnumDustTypes.GUNPOWDER.getStack(12),
-				EnumDustTypes.PLANT.getStack(1),EnumDustTypes.PLANT.getStack(1),new ItemStack(Items.gunpowder));
+				EnumDustTypes.PLANT.getStack(1),EnumDustTypes.PLANT.getStack(1),new ItemStack(Items.GUNPOWDER));
 		//Lapis 3xLapis + 1xCoal = 8xLapis Runic Dust
 		GameRegistry.addRecipe(new ShapelessOreRecipe(EnumDustTypes.LAPIS.getStack(8), "gemLapis","gemLapis","gemLapis",coal));
 		//blaze 3xLapis Runic Dust + 1xBlaze Powder = 12xBlaze Runic Dust

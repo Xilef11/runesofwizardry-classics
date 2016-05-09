@@ -35,12 +35,12 @@ public class RuneLockedTime extends ClassicRune {
 	@SubscribeEvent
 	public void onEntityCreation(EntityJoinWorldEvent event){
 		//XXX might want a config option to enable this
-		if(event.entity instanceof EntityFallingBlock){
-			if(LockedTimeData.get(event.world).getNumRunes()>0){
-				EntityFallingBlock fb = (EntityFallingBlock)event.entity;
+		if(event.getEntity() instanceof EntityFallingBlock){
+			if(LockedTimeData.get(event.getWorld()).getNumRunes()>0){
+				EntityFallingBlock fb = (EntityFallingBlock)event.getEntity();
 				IBlockState state = fb.getBlock();
 				fb.setDead();
-				event.world.setBlockState(fb.getPosition(), state);
+				event.getWorld().setBlockState(fb.getPosition(), state);
 				event.setCanceled(true);
 			}
 		}
@@ -61,7 +61,7 @@ public class RuneLockedTime extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.OBSIDIAN,4),new ItemStack(Items.SLIME_BALL,4),new ItemStack(Items.dye,1,EnumDyeColor.BLUE.getMetadata())}
+				{new ItemStack(Blocks.OBSIDIAN,4),new ItemStack(Items.SLIME_BALL,4),new ItemStack(Items.DYE,1,EnumDyeColor.BLUE.getMetadata())}
 				};
 	}
 

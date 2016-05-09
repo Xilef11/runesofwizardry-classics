@@ -2,8 +2,8 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 
 import java.util.Set;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -45,8 +45,8 @@ public class RuneEntityEnchantingFortune extends RuneEntity {
 					}
 				}
 				if(toEnchant==null && negated)toEnchant=new ItemStack(Items.DIAMOND_PICKAXE);
-				if(!sword)toEnchant.addEnchantment(Enchantment.fortune, Enchantment.fortune.getMaxLevel()+1);
-				else toEnchant.addEnchantment(Enchantment.looting, Enchantment.looting.getMaxLevel()+1);
+				if(!sword)toEnchant.addEnchantment(Enchantments.FORTUNE, Enchantments.FORTUNE.getMaxLevel()+1);
+				else toEnchant.addEnchantment(Enchantments.LOOTING, Enchantments.LOOTING.getMaxLevel()+1);
 				toEnchant.setItemDamage(0);
 				Utils.spawnItemCentered(world, getPos(), toEnchant);
 				this.onPatternBroken();

@@ -58,9 +58,9 @@ public class RuneEntityTrapLightning extends RuneEntity {
 			List<EntityLivingBase> ents =world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPos().add(-radius,-radius,-radius), getPos().add(radius,radius,radius))); 
 			if(!ents.isEmpty()){
 				for(EntityLivingBase e:ents){
-					world.addWeatherEffect(new EntityLightningBolt(world, e.posX, e.posY, e.posZ));
+					world.addWeatherEffect(new EntityLightningBolt(world, e.posX, e.posY, e.posZ,false));
 				}
-				world.addWeatherEffect(new EntityLightningBolt(world, getPos().getX(), getPos().getY(), getPos().getZ()));
+				world.addWeatherEffect(new EntityLightningBolt(world, getPos().getX(), getPos().getY(), getPos().getZ(),false));
 				this.onPatternBroken();
 			}
 		}
@@ -72,7 +72,7 @@ public class RuneEntityTrapLightning extends RuneEntity {
 	@Override
 	public boolean handleEntityCollision(World worldIn, BlockPos pos,IBlockState state, Entity entityIn) {
 		if(worldIn.isRemote && entityIn instanceof EntityItem &&entity.ticksExisted()>5*20){
-			worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, getPos().getX(), getPos().getY(), getPos().getZ()));
+			worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, getPos().getX(), getPos().getY(), getPos().getZ(),false));//TODO figure out what 'effectOnly' does
 			this.onPatternBroken();
 		}
 		return true;

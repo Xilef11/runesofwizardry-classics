@@ -78,10 +78,10 @@ public class RuneEntityLevelEarth extends RuneEntity {
 								continue;//not sure why air block is here
 							}
 							//replace liquid blocks with cobble
-							if(block.getMaterial().isLiquid()){
+							if(state.getMaterial().isLiquid()){
 								world.setBlockState(current, toFill);
 							}
-							if(world.getBlockState(current.up()).getBlock().getMaterial().isLiquid()){
+							if(world.getBlockState(current.up()).getMaterial().isLiquid()){
 								world.setBlockState(current.up(), toFill);
 							}
 							//fill in holes in the floor
@@ -121,7 +121,7 @@ public class RuneEntityLevelEarth extends RuneEntity {
 		super.writeToNBT(compound);
 		compound.setInteger("radius", radius);
 		compound.setInteger("height", height);
-		compound.setString("toFill",toFill.getBlock().getRegistryName());
+		compound.setString("toFill",toFill.getBlock().getRegistryName().toString());
 	}
 	
 }
