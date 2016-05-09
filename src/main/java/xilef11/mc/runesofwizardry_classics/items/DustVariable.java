@@ -3,9 +3,7 @@
  */
 package xilef11.mc.runesofwizardry_classics.items;
 
-import net.minecraft.item.ItemStack;
-
-import com.zpig333.runesofwizardry.item.dust.DustPlaceholder;
+import net.minecraft.item.ItemStack;import com.zpig333.runesofwizardry.item.dust.DustPlaceholder;
 
 /** This placeholder dust matches only dusts from this addon.
  * @author Xilef11

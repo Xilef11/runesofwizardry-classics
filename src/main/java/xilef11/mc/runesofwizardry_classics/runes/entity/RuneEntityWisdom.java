@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
@@ -88,7 +89,7 @@ public class RuneEntityWisdom extends RuneEntity {
 	 */
 	@Override
 	public boolean handleLeftClick(World worldIn, BlockPos pos,
-			EntityPlayer playerIn, Vec3 hit) {
+			EntityPlayer playerIn, Vec3d hit) {
 		return playerIn.getName()!=user;//prevent non-owners from breaking it
 	}
 

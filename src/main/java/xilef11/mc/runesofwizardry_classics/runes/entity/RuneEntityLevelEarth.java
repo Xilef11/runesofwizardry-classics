@@ -52,7 +52,7 @@ public class RuneEntityLevelEarth extends RuneEntity {
 				return;
 			}
 			Block under = entity.getWorld().getBlockState(getPos().down()).getBlock();
-			if(under==Blocks.COBBLESTONE||under==Blocks.dirt||under==Blocks.grass||under==Blocks.stone){
+			if(under==Blocks.COBBLESTONE||under==Blocks.DIRT||under==Blocks.GRASS||under==Blocks.STONE){
 				toFill=under.getDefaultState();
 			}else{
 				toFill=Blocks.COBBLESTONE.getDefaultState();

@@ -3,15 +3,7 @@
  */
 package xilef11.mc.runesofwizardry_classics.client.gui;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraftforge.common.config.ConfigElement;
-import net.minecraftforge.fml.client.config.GuiConfig;
-import net.minecraftforge.fml.client.config.IConfigElement;
-import xilef11.mc.runesofwizardry_classics.Config;
-import xilef11.mc.runesofwizardry_classics.Refs;
+import java.util.LinkedList;import java.util.List;import net.minecraft.client.gui.GuiScreen;import net.minecraftforge.common.config.ConfigElement;import net.minecraftforge.fml.client.config.GuiConfig;import net.minecraftforge.fml.client.config.IConfigElement;import xilef11.mc.runesofwizardry_classics.Config;import xilef11.mc.runesofwizardry_classics.Refs;
 
 /**
  * @author Xilef11

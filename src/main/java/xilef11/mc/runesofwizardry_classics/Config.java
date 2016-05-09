@@ -1,13 +1,6 @@
 package xilef11.mc.runesofwizardry_classics;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import xilef11.mc.runesofwizardry_classics.runes.ClassicRune;
+import java.io.File;import java.util.HashMap;import java.util.Map;import net.minecraftforge.common.config.Configuration;import net.minecraftforge.fml.client.event.ConfigChangedEvent;import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;import xilef11.mc.runesofwizardry_classics.runes.ClassicRune;
 
 /**
  * This class handles the config file for the mod.

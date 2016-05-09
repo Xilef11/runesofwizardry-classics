@@ -34,7 +34,7 @@ public class RuneSpriteFire extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.GHAST_TEAR),new ItemStack(Items.fire_charge,2)}//SAC take 22 XP
+				{new ItemStack(Items.GHAST_TEAR),new ItemStack(Items.FIRE_CHARGE,2)}//SAC take 22 XP
 				};
 	}
 	/* (non-Javadoc)

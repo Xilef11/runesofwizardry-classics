@@ -1,8 +1,6 @@
 package xilef11.mc.runesofwizardry_classics.managers;
 
-import java.util.Collection;
-
-import net.minecraft.item.ItemStack;
+import java.util.Collection;import net.minecraft.item.ItemStack;
 
 public interface IVoidStorageCapability {
 

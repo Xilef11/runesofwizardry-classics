@@ -1,21 +1,6 @@
 package xilef11.mc.runesofwizardry_classics.managers;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldSavedData;
-import net.minecraft.world.storage.MapStorage;
-import xilef11.mc.runesofwizardry_classics.ModLogger;
-import xilef11.mc.runesofwizardry_classics.Refs;
+import java.util.HashMap;import java.util.HashSet;import java.util.Map;import java.util.Set;import net.minecraft.block.Block;import net.minecraft.block.state.IBlockState;import net.minecraft.nbt.NBTTagCompound;import net.minecraft.nbt.NBTTagList;import net.minecraft.util.ResourceLocation;import net.minecraft.util.math.BlockPos;import net.minecraft.world.World;import net.minecraft.world.WorldSavedData;import net.minecraft.world.storage.MapStorage;import xilef11.mc.runesofwizardry_classics.ModLogger;import xilef11.mc.runesofwizardry_classics.Refs;
 /**
  * Manages and save the data for teleportation network
  * @see http://mcforge.readthedocs.org/en/latest/datastorage/worldsaveddata/

@@ -3,11 +3,7 @@
  */
 package xilef11.mc.runesofwizardry_classics.utils;
 
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.entity.item.EntityItem;import net.minecraft.entity.player.EntityPlayer;import net.minecraft.item.ItemStack;import net.minecraft.util.math.BlockPos;import net.minecraft.world.World;
 
 /** Misc. utility methods
  * @author Xilef11

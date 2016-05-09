@@ -3,11 +3,7 @@
  */
 package xilef11.mc.runesofwizardry_classics.client.gui;
 
-import java.util.Set;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraftforge.fml.client.IModGuiFactory;
+import java.util.Set;import net.minecraft.client.Minecraft;import net.minecraft.client.gui.GuiScreen;import net.minecraftforge.fml.client.IModGuiFactory;
 
 /**
  * @author Xilef11

@@ -1,8 +1,6 @@
 package xilef11.mc.runesofwizardry_classics;
 
-import net.minecraftforge.fml.common.FMLLog;
-
-import org.apache.logging.log4j.Level;
+import net.minecraftforge.fml.common.FMLLog;import org.apache.logging.log4j.Level;
 
 public class ModLogger {
 

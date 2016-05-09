@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import org.apache.logging.log4j.Level;
@@ -105,7 +106,7 @@ public abstract class ClassicRune extends IRune {
 				//TODO check if cheats enabled if single player
 			}
 		}
-		if(!allowed)player.addChatMessage(new ChatComponentTranslation(Refs.Lang.RUNE+".nopermission.message",StatCollector.translateToLocal(getName())));
+		if(!allowed)player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".nopermission.message",StatCollector.translateToLocal(getName())));
 		return allowed;
 	}
 	

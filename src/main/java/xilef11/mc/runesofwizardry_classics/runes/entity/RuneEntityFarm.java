@@ -1,21 +1,6 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 
-import java.util.Random;
-import java.util.Set;
-
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
-import xilef11.mc.runesofwizardry_classics.runes.RuneFarm;
-import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
-
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import java.util.Random;import java.util.Set;import net.minecraft.block.Block;import net.minecraft.entity.player.EntityPlayer;import net.minecraft.init.Blocks;import net.minecraft.item.ItemStack;import net.minecraft.util.EnumFacing;import net.minecraft.util.math.BlockPos;import net.minecraft.world.World;import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;import xilef11.mc.runesofwizardry_classics.runes.RuneFarm;import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;import com.zpig333.runesofwizardry.api.RuneEntity;import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 /*
  * Behaviour:
  * makes a nxn patch of farmland with water in the middle and crops planted
@@ -66,7 +51,7 @@ public class RuneEntityFarm extends RuneEntity {
 						BlockPos current = getPos().down().east(i).south(j);
 						Block block = world.getBlockState(current).getBlock();
 						//XXX this should be replaced by something in the config to avoid hardcoded stuff
-						if(block==Blocks.GRASS||block==Blocks.dirt||block==Blocks.sand||block==Blocks.farmland){
+						if(block==Blocks.GRASS||block==Blocks.DIRT||block==Blocks.SAND||block==Blocks.FARMLAND){
 							world.setBlockState(current, Blocks.FARMLAND.getDefaultState());
 							int meta = cropBase + rand.nextInt(cropRand);
 							if(meta>7)meta=7;//XXX replace with something like AGE.max value

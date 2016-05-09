@@ -1,14 +1,6 @@
 package xilef11.mc.runesofwizardry_classics;
 
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import xilef11.mc.runesofwizardry_classics.items.ClassicDusts;
-import xilef11.mc.runesofwizardry_classics.items.DustVariable;
-
-import com.zpig333.runesofwizardry.api.DustRegistry;
+import net.minecraftforge.common.MinecraftForge;import net.minecraftforge.fml.common.Mod;import net.minecraftforge.fml.common.Mod.EventHandler;import net.minecraftforge.fml.common.event.FMLInitializationEvent;import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;import xilef11.mc.runesofwizardry_classics.items.ClassicDusts;import xilef11.mc.runesofwizardry_classics.items.DustVariable;import com.zpig333.runesofwizardry.api.DustRegistry;
 //note: loading before a dependency causes a noclassdeffound outside of a dev environment
 @Mod(modid = Refs.MODID, version = Refs.VERSION, name=Refs.NAME, guiFactory=Refs.GUI_FACTORY, dependencies = "required-after:runesofwizardry@[1.8.9-0.6.0,)")
 //@Mod(modid = Refs.MODID, version = Refs.VERSION, name=Refs.NAME, guiFactory=Refs.GUI_FACTORY, dependencies = "required-after:runesofwizardry")

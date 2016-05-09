@@ -3,13 +3,7 @@
  */
 package xilef11.mc.runesofwizardry_classics;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
-import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
+import net.minecraft.init.Blocks;import net.minecraft.init.Items;import net.minecraft.item.ItemStack;import net.minecraftforge.fml.common.registry.GameRegistry;import net.minecraftforge.oredict.OreDictionary;import net.minecraftforge.oredict.ShapelessOreRecipe;import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 
 /** Registers the recipes
  * @author Xilef11

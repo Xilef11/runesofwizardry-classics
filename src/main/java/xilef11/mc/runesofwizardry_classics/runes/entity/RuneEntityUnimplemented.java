@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
@@ -40,7 +41,7 @@ public class RuneEntityUnimplemented extends RuneEntity {
 	 */
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice,boolean negated) {
-		player.addChatMessage(new ChatComponentTranslation(message, StatCollector.translateToLocal(runeName)));
+		player.addChatMessage(new TextComponentTranslation(message, StatCollector.translateToLocal(runeName)));
 		RunesUtil.deactivateRune(this);
 		//return the sacrifice
 		for(ItemStack i:sacrifice){

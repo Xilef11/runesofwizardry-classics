@@ -33,7 +33,7 @@ public class RuneEntityEnchantingSilktouch extends RuneEntity {
 				ItemStack toEnchant=null;
 				if(sacrifice!=null){
 					for(ItemStack i:sacrifice){
-						if(i.getItem()==Items.DIAMOND_PICKAXE || i.getItem()==Items.diamond_shovel){
+						if(i.getItem()==Items.DIAMOND_PICKAXE || i.getItem()==Items.DIAMOND_SHOVEL){
 							toEnchant=i;
 						}
 					}

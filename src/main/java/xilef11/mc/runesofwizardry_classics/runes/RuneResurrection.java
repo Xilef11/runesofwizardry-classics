@@ -95,7 +95,7 @@ public class RuneResurrection extends ClassicRune {
 			if(e instanceof EntityLiving){//if its a mob
 				EntityLiving ent = (EntityLiving)e;
 				e.captureDrops=true;
-				Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, (EntityLivingBase)ent, new String[]{"dropFewItems.,"func_70628_a"},boolean.class,int.class);
+				Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, (EntityLivingBase)ent, new String[]{"dropFewItems","func_70628_a"},boolean.class,int.class);
 				try {
 					getdrops.invoke(ent,true, 10);
 				} catch (IllegalAccessException e1) {
