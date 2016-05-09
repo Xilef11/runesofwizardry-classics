@@ -35,7 +35,7 @@ public class RuneDusk extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.nether_wart,4),new ItemStack(Items.dye,1,EnumDyeColor.BLUE.getMetadata())}
+				{new ItemStack(Items.NETHER_WART,4),new ItemStack(Items.dye,1,EnumDyeColor.BLUE.getMetadata())}
 				};
 	}
 

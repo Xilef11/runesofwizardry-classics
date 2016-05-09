@@ -36,7 +36,7 @@ public class RuneTrapPoison extends VariableRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.spider_eye)}
+				{new ItemStack(Items.SPIDER_EYE)}
 				};
 		//make sure dust is gunpowder or better
 	}

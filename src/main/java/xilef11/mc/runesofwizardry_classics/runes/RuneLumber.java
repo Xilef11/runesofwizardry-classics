@@ -51,7 +51,7 @@ public class RuneLumber extends VariableRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.stick,2),new ItemStack(Blocks.log,3)}
+				{new ItemStack(Items.STICK,2),new ItemStack(Blocks.LOG,3)}
 		};
 	}
 

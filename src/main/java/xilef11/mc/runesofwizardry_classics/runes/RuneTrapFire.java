@@ -36,7 +36,7 @@ public class RuneTrapFire extends VariableRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.flint,3)}
+				{new ItemStack(Items.FLINT,3)}
 				};
 	}
 

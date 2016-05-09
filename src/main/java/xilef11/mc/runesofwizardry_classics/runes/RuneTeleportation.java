@@ -34,7 +34,7 @@ public class RuneTeleportation extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.ender_eye)}//take 5 XP at init + 3 hearth/teleport
+				{new ItemStack(Items.ENDER_EYE)}//take 5 XP at init + 3 hearth/teleport
 				};
 	}
 	/* (non-Javadoc)

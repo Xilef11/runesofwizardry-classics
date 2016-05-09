@@ -31,7 +31,7 @@ public class RuneSpawnerCollection extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.gold_ingot,6)}//SAC take 10 XP
+				{new ItemStack(Items.GOLD_INGOT,6)}//SAC take 10 XP
 				};
 	}
 	

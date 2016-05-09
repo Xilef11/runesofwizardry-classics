@@ -34,7 +34,7 @@ public class RunePowerDistribution extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.iron_ingot,3)}//SAC take 5 XP
+				{new ItemStack(Items.IRON_INGOT,3)}//SAC take 5 XP
 				};
 	}
 	/* (non-Javadoc)

@@ -33,7 +33,7 @@ public class RuneFarm extends VariableRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.iron_ingot,8)}
+				{new ItemStack(Items.IRON_INGOT,8)}
 		};
 	}
 

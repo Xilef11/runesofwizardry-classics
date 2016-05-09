@@ -99,7 +99,7 @@ public class RuneEntityBarrier extends RuneEntity {
 						if((current.getY()<getPos().getY() && !state.getBlock().getMaterial().isSolid())){
 							state = Blocks.COBBLESTONE.getDefaultState();
 						}
-						if(state.getBlock()==Blocks.BEDROCK || world.getBlockState(current.up()).getBlock()==Blocks.bedrock){
+						if(state.getBlock()==Blocks.BEDROCK || world.getBlockState(current.up()).getBlock()==Blocks.BEDROCK){
 							break col;//stop moving the column if we get to bedrock
 						}
 						NBTTagCompound temp = new NBTTagCompound();//to save TE data

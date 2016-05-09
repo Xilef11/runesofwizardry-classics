@@ -62,7 +62,7 @@ public class RuneResurrection extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.soul_sand,4)}//SAC 2x mob drops...
+				{new ItemStack(Blocks.SOUL_SAND,4)}//SAC 2x mob drops...
 				};
 	}
 	
@@ -95,7 +95,7 @@ public class RuneResurrection extends ClassicRune {
 			if(e instanceof EntityLiving){//if its a mob
 				EntityLiving ent = (EntityLiving)e;
 				e.captureDrops=true;
-				Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, (EntityLivingBase)ent, new String[]{"dropFewItems","func_70628_a"},boolean.class,int.class);
+				Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, (EntityLivingBase)ent, new String[]{"dropFewItems.,"func_70628_a"},boolean.class,int.class);
 				try {
 					getdrops.invoke(ent,true, 10);
 				} catch (IllegalAccessException e1) {

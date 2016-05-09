@@ -33,7 +33,7 @@ public class RuneHeights extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.iron_ore)}
+				{new ItemStack(Blocks.IRON_ORE)}
 		};
 	}
 

@@ -36,7 +36,7 @@ public class RuneDetonation extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.gunpowder,2)}
+				{new ItemStack(Items.GUNPOWDER,2)}
 				};
 	}
 

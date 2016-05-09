@@ -34,7 +34,7 @@ public class RuneMountain extends VariableRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.red_flower)}
+				{new ItemStack(Blocks.RED_FLOWER)}
 				};//SAC take 1 live iron golem + 10 XP
 	}
 	

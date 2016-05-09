@@ -31,7 +31,7 @@ public class RuneRebirth extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.diamond),new ItemStack(Items.egg)}//SAC take 10 xp and 1 live entityLiving
+				{new ItemStack(Items.DIAMOND),new ItemStack(Items.egg)}//SAC take 10 xp and 1 live entityLiving
 				};
 	}
 	

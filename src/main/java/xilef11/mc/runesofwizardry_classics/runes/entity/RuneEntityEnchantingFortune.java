@@ -34,17 +34,17 @@ public class RuneEntityEnchantingFortune extends RuneEntity {
 				boolean sword=false;
 				if(sacrifice!=null){
 					for(ItemStack i:sacrifice){
-						if(i.getItem()==Items.diamond_pickaxe){
+						if(i.getItem()==Items.DIAMOND_PICKAXE){
 							toEnchant=i;
 							sword=false;
 						}
-						if(i.getItem()==Items.diamond_sword){
+						if(i.getItem()==Items.DIAMOND_SWORD){
 							toEnchant=i;
 							sword=true;
 						}
 					}
 				}
-				if(toEnchant==null && negated)toEnchant=new ItemStack(Items.diamond_pickaxe);
+				if(toEnchant==null && negated)toEnchant=new ItemStack(Items.DIAMOND_PICKAXE);
 				if(!sword)toEnchant.addEnchantment(Enchantment.fortune, Enchantment.fortune.getMaxLevel()+1);
 				else toEnchant.addEnchantment(Enchantment.looting, Enchantment.looting.getMaxLevel()+1);
 				toEnchant.setItemDamage(0);

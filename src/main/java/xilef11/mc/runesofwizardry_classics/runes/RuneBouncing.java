@@ -46,7 +46,7 @@ public class RuneBouncing extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.slime_ball,4)}
+				{new ItemStack(Items.SLIME_BALL,4)}
 				};
 	}
 

@@ -35,7 +35,7 @@ public class RuneSpriteEarth extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.ghast_tear),new ItemStack(Blocks.glass,16)}//SAC take 20 XP
+				{new ItemStack(Items.GHAST_TEAR),new ItemStack(Blocks.GLASS,16)}//SAC take 20 XP
 				};
 	}
 	

@@ -57,7 +57,7 @@ public class RuneEntityTrapCage extends RuneEntity {
 								BlockPos p = pos.add(x, y, z);
 								Block b = world.getBlockState(p).getBlock();
 								if((b.isReplaceable(world, p)||b==WizardryRegistry.dust_placed)&&!(x==0&&z==0)){
-									world.setBlockState(p, Blocks.iron_bars.getDefaultState());
+									world.setBlockState(p, Blocks.IRON_BARS.getDefaultState());
 								}
 							}
 						}

@@ -43,7 +43,7 @@ public class RuneEntityFire extends FueledRuneEntity {
 		if(!world.isRemote){
 			BlockPos center = getPos().offset(face);
 			if(world.isAirBlock(center)&&world.isSideSolid(center.down(), EnumFacing.UP)){
-				world.setBlockState(center, Blocks.fire.getDefaultState());
+				world.setBlockState(center, Blocks.FIRE.getDefaultState());
 			}else{
 				RunesUtil.deactivateRune(this);//or we could kill it
 			}
@@ -60,12 +60,12 @@ public class RuneEntityFire extends FueledRuneEntity {
 			BlockPos center = getPos().offset(face);
 			//recreate the flame if it went out
 			if(world.isAirBlock(center)&&world.isSideSolid(center.down(), EnumFacing.UP)){
-				world.setBlockState(center, Blocks.fire.getDefaultState());
-			}else if(!(world.getBlockState(center).getBlock()==Blocks.fire)){
+				world.setBlockState(center, Blocks.FIRE.getDefaultState());
+			}else if(!(world.getBlockState(center).getBlock()==Blocks.FIRE)){
 				this.onPatternBroken();
 			}
 			//dies under rain
-			if(world.isRaining()&&world.canBlockSeeSky(center)&&world.getBlockState(center).getBlock()==Blocks.fire){
+			if(world.isRaining()&&world.canBlockSeeSky(center)&&world.getBlockState(center).getBlock()==Blocks.FIRE){
 				this.onPatternBroken();
 				return;
 			}
@@ -125,7 +125,7 @@ public class RuneEntityFire extends FueledRuneEntity {
 		World world = entity.getWorld();
 		if(!world.isRemote){
 			BlockPos center = getPos().offset(face);
-			if(world.getBlockState(center).getBlock()==Blocks.fire){
+			if(world.getBlockState(center).getBlock()==Blocks.FIRE){
 				world.setBlockToAir(center);
 			}
 		}

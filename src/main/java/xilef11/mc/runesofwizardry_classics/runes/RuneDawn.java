@@ -34,7 +34,7 @@ public class RuneDawn extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.redstone,4),new ItemStack(Items.dye,1,EnumDyeColor.BLUE.getMetadata())}
+				{new ItemStack(Items.REDSTONE,4),new ItemStack(Items.dye,1,EnumDyeColor.BLUE.getMetadata())}
 				};
 	}
 

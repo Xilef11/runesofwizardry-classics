@@ -100,7 +100,7 @@ public class RuneEntityRebirth extends RuneEntity {
 					@SuppressWarnings("deprecation")
 					int spawnID = egginfo.spawnedID;
 					//XXX this will be NBT in 1.9
-					Utils.spawnItemCentered(worldIn, pos, new ItemStack(Items.spawn_egg,1,spawnID));
+					Utils.spawnItemCentered(worldIn, pos, new ItemStack(Items.SPAWN_EGG,1,spawnID));
 					this.onPatternBroken();//kill the rune
 					entityIn.setDead();//kill the entity
 				}

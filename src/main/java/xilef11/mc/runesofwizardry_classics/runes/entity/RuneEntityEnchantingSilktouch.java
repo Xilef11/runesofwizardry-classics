@@ -33,12 +33,12 @@ public class RuneEntityEnchantingSilktouch extends RuneEntity {
 				ItemStack toEnchant=null;
 				if(sacrifice!=null){
 					for(ItemStack i:sacrifice){
-						if(i.getItem()==Items.diamond_pickaxe || i.getItem()==Items.diamond_shovel){
+						if(i.getItem()==Items.DIAMOND_PICKAXE || i.getItem()==Items.diamond_shovel){
 							toEnchant=i;
 						}
 					}
 				}
-				if(toEnchant==null && negated)toEnchant=new ItemStack(Items.diamond_pickaxe);
+				if(toEnchant==null && negated)toEnchant=new ItemStack(Items.DIAMOND_PICKAXE);
 				toEnchant.addEnchantment(Enchantment.silkTouch, Enchantment.silkTouch.getMaxLevel());
 				toEnchant.setItemDamage(0);
 				Utils.spawnItemCentered(world, getPos(), toEnchant);

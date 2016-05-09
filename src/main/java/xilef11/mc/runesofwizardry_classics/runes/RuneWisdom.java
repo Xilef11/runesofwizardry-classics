@@ -34,7 +34,7 @@ public class RuneWisdom extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.iron_ingot,16)}//also take 6 XP
+				{new ItemStack(Items.IRON_INGOT,16)}//also take 6 XP
 				};
 	}
 	/* (non-Javadoc)

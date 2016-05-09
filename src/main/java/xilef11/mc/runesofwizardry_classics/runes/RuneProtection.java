@@ -33,7 +33,7 @@ public class RuneProtection extends VariableRune {
 
 	@Override
 	protected ItemStack[][] setupSacrifice() {
-		ItemStack villagerEgg = new ItemStack(Items.spawn_egg,1,120);//Looks like we're using meta, tag is 1.9
+		ItemStack villagerEgg = new ItemStack(Items.SPAWN_EGG,1,120);//Looks like we're using meta, tag is 1.9
 //		NBTTagCompound id = new NBTTagCompound();
 //		id.setString("id", "Villager");
 //		villagerEgg.getTagCompound().setTag("EntityTag", id);

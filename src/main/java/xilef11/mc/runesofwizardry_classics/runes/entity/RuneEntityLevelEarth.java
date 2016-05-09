@@ -28,7 +28,7 @@ public class RuneEntityLevelEarth extends RuneEntity {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
 	private int radius=0,height=0;
-	private IBlockState toFill=Blocks.cobblestone.getDefaultState();
+	private IBlockState toFill=Blocks.COBBLESTONE.getDefaultState();
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
@@ -52,10 +52,10 @@ public class RuneEntityLevelEarth extends RuneEntity {
 				return;
 			}
 			Block under = entity.getWorld().getBlockState(getPos().down()).getBlock();
-			if(under==Blocks.cobblestone||under==Blocks.dirt||under==Blocks.grass||under==Blocks.stone){
+			if(under==Blocks.COBBLESTONE||under==Blocks.dirt||under==Blocks.grass||under==Blocks.stone){
 				toFill=under.getDefaultState();
 			}else{
-				toFill=Blocks.cobblestone.getDefaultState();
+				toFill=Blocks.COBBLESTONE.getDefaultState();
 			}
 		}
 	}
@@ -74,7 +74,7 @@ public class RuneEntityLevelEarth extends RuneEntity {
 							IBlockState state = world.getBlockState(current);
 							Block block = state.getBlock();
 							//XXX maybe add a config blacklist here
-							if(block.hasTileEntity(state)||block==WizardryRegistry.dust_placed||block==Blocks.bedrock){
+							if(block.hasTileEntity(state)||block==WizardryRegistry.dust_placed||block==Blocks.BEDROCK){
 								continue;//not sure why air block is here
 							}
 							//replace liquid blocks with cobble
@@ -108,9 +108,9 @@ public class RuneEntityLevelEarth extends RuneEntity {
 		super.readFromNBT(compound);
 		radius=compound.getInteger("radius");
 		height=compound.getInteger("height");
-		Block b =Block.blockRegistry.getObject(new ResourceLocation(compound.getString("toFill")));
+		Block b =Block.REGISTRY.getObject(new ResourceLocation(compound.getString("toFill")));
 		if(b!=null)toFill = b.getDefaultState();
-		else toFill=Blocks.cobblestone.getDefaultState();
+		else toFill=Blocks.COBBLESTONE.getDefaultState();
 	}
 
 	/* (non-Javadoc)

@@ -33,7 +33,7 @@ public class RuneLeapingFrog extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.leaves,4)}
+				{new ItemStack(Blocks.LEAVES,4)}
 		};
 	}
 

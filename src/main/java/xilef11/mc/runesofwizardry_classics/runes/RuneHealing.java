@@ -50,7 +50,7 @@ public class RuneHealing extends VariableRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.coal,2)}
+				{new ItemStack(Items.COAL,2)}
 		};
 		//Take 2 xp levels upon activation
 	}

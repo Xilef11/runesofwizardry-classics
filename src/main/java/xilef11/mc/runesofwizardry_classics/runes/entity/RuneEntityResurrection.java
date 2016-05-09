@@ -40,13 +40,13 @@ public class RuneEntityResurrection extends RuneEntity {
 		if(!world.isRemote){
 			List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos().add(-RAD,0,-RAD), getPos().add(RAD,1,RAD)));
 			List<ItemStack> stacks = new LinkedList<ItemStack>();
-			int numItems = 0;
+			int numItems.= 0;
 			for(EntityItem ei:items){
 				ItemStack s = ei.getEntityItem();
 				stacks.add(s);
-				numItems+=s.stackSize;
+				numItems.=s.stackSize;
 			}
-			if(numItems>1){
+			if(numItems.1){
 				//try to get the entity
 				String id = ((RuneResurrection)creator).entityIDFromDrops(stacks);
 				//spawn the entity

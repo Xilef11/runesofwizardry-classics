@@ -93,9 +93,9 @@ public class RuneEntityHeights extends RuneEntity {
 						BlockPos current = highest.down(y);
 						IBlockState state = world.getBlockState(current);
 						if((current.getY()<getPos().getY() && !state.getBlock().getMaterial().isSolid())){
-							state = Blocks.cobblestone.getDefaultState();
+							state = Blocks.COBBLESTONE.getDefaultState();
 						}
-						if(state.getBlock()==Blocks.bedrock || world.getBlockState(current.up()).getBlock()==Blocks.bedrock){
+						if(state.getBlock()==Blocks.BEDROCK || world.getBlockState(current.up()).getBlock()==Blocks.BEDROCK){
 							break;//stop moving the column if we get to bedrock
 						}
 						NBTTagCompound temp = new NBTTagCompound();//to save TE data
@@ -128,7 +128,7 @@ public class RuneEntityHeights extends RuneEntity {
 						}
 						BlockPos current = lowest.up(y);
 						IBlockState state = world.getBlockState(current);
-						if(state.getBlock()==Blocks.bedrock || world.getBlockState(current.down()).getBlock()==Blocks.bedrock){
+						if(state.getBlock()==Blocks.BEDROCK || world.getBlockState(current.down()).getBlock()==Blocks.BEDROCK){
 //							this.onPatternBroken();
 //							return;//stop moving the column if we get to bedrock
 							break;

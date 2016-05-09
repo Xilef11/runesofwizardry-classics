@@ -56,7 +56,7 @@ public class RuneEntityMusic extends RuneEntity {
 		World world = entity.getWorld();
 		if(!world.isRemote && entity.ticksExisted()==Refs.TPS*5){
 			//grab the list of records
-			Map<String,ItemRecord> recordMap = ReflectionHelper.getPrivateValue(ItemRecord.class, (ItemRecord)Items.record_13, "RECORDS","field_150928_b");//XXX recheck name when update
+			Map<String,ItemRecord> recordMap = ReflectionHelper.getPrivateValue(ItemRecord.class, (ItemRecord)Items.RECORD_13, "RECORDS","field_150928_b");//XXX recheck name when update
 			Collection<ItemRecord> records = recordMap.values();
 			//select a random number
 			Random rand = new Random();

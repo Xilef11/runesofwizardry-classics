@@ -50,7 +50,7 @@ public class RuneEntityLumber extends RuneEntity {
 			IBlockState state = world.getBlockState(getPos().offset(face));
 			Block block = state.getBlock();
 			ItemStack stack = new ItemStack(block, 1, block.getMetaFromState(state));
-			if(!Utils.stacksEqualWildcardSize(new ItemStack(Blocks.log),stack , true)){
+			if(!Utils.stacksEqualWildcardSize(new ItemStack(Blocks.LOG),stack , true)){
 				this.onPatternBroken();return;
 			}
 		}
@@ -107,7 +107,7 @@ public class RuneEntityLumber extends RuneEntity {
 		}
 		if(Math.random()<stickC){//sticks
 			for(int a=rand.nextInt(maxStick);a>0;a--){
-				xilef11.mc.runesofwizardry_classics.utils.Utils.spawnItemCentered(world, current, new ItemStack(Items.stick));
+				xilef11.mc.runesofwizardry_classics.utils.Utils.spawnItemCentered(world, current, new ItemStack(Items.STICK));
 			}
 		}
 		//break the block
@@ -168,14 +168,14 @@ public class RuneEntityLumber extends RuneEntity {
 		Block block = state.getBlock();
 		ItemStack stack = new ItemStack(block, 1, block.getMetaFromState(state));
 		if(stack.getItem()==null)return false;
-		return Utils.stacksEqualWildcardSize(new ItemStack(Blocks.leaves),stack , true);
+		return Utils.stacksEqualWildcardSize(new ItemStack(Blocks.LEAVES),stack , true);
 	}
 	private static boolean isWood(World world, BlockPos pos){
 		IBlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
 		ItemStack stack = new ItemStack(block, 1, block.getMetaFromState(state));
 		if(stack.getItem()==null)return false;
-		return Utils.stacksEqualWildcardSize(new ItemStack(Blocks.log),stack , true);
+		return Utils.stacksEqualWildcardSize(new ItemStack(Blocks.LOG),stack , true);
 	}
 	private static void spawnExplosionParticle(World world, double x, double y, double z){
 		double width = 1.3d;

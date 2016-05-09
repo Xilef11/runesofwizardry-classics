@@ -54,7 +54,7 @@ public class RuneEntityTorch extends RuneEntity {
 			BlockPos pos = getPos();
 			entity.clear();
 			world.setBlockToAir(pos);
-			world.setBlockState(pos, Blocks.torch.getDefaultState());
+			world.setBlockState(pos, Blocks.TORCH.getDefaultState());
 		}
 	}
 

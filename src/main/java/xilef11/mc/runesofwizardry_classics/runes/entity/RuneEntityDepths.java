@@ -42,13 +42,13 @@ public class RuneEntityDepths extends RuneEntity {
 			int size=1;
 			//sacrifice + size is dependant on dust used
 			switch(type){
-			case PLANT:size=8;wanted = new ItemStack(Blocks.log,2);
+			case PLANT:size=8;wanted = new ItemStack(Blocks.LOG,2);
 				break;
-			case GUNPOWDER:size=16;wanted = new ItemStack(Blocks.log,2);
+			case GUNPOWDER:size=16;wanted = new ItemStack(Blocks.LOG,2);
 				break;
-			case LAPIS:size=20;wanted = new ItemStack(Items.coal,2);
+			case LAPIS:size=20;wanted = new ItemStack(Items.COAL,2);
 				break;
-			case BLAZE:size=48;wanted = new ItemStack(Items.coal,2);
+			case BLAZE:size=48;wanted = new ItemStack(Items.COAL,2);
 				break;
 			default:size=0;
 				break;

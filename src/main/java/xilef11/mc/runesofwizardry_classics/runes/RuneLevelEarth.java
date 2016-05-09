@@ -34,7 +34,7 @@ public class RuneLevelEarth extends VariableRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.iron_ore,5)}//SAC take XP according to dust
+				{new ItemStack(Blocks.IRON_ORE,5)}//SAC take XP according to dust
 				};
 	}
 	/* (non-Javadoc)

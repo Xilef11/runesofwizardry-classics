@@ -36,8 +36,8 @@ public class RuneEnchantingSilkTouch extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.diamond_pickaxe,1,OreDictionary.WILDCARD_VALUE),new ItemStack(Blocks.gold_block)},
-				{new ItemStack(Items.diamond_shovel,1,OreDictionary.WILDCARD_VALUE),new ItemStack(Blocks.gold_block)}
+				{new ItemStack(Items.DIAMOND_PICKAXE,1,OreDictionary.WILDCARD_VALUE),new ItemStack(Blocks.GOLD_BLOCK)},
+				{new ItemStack(Items.DIAMOND_SHOVEL,1,OreDictionary.WILDCARD_VALUE),new ItemStack(Blocks.GOLD_BLOCK)}
 				//take 10 XP
 				};
 	}

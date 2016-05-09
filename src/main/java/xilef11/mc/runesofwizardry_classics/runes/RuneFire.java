@@ -50,7 +50,7 @@ public class RuneFire extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.log,8),new ItemStack(Items.rotten_flesh)}	
+				{new ItemStack(Blocks.LOG,8),new ItemStack(Items.ROTTEN_FLESH)}	
 		};
 	}
 

@@ -31,7 +31,7 @@ public class RuneMusic extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.diamond)}
+				{new ItemStack(Items.DIAMOND)}
 				};
 	}
 

@@ -34,7 +34,7 @@ public class RuneBarrier extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.iron_ore)}//take 3 xp
+				{new ItemStack(Blocks.IRON_ORE)}//take 3 xp
 				};
 	}
 	/* (non-Javadoc)

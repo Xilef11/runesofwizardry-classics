@@ -37,7 +37,7 @@ public class RuneEnchantingFireBow extends ClassicRune {
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
 				//SAC might want to do stuff to accept any bow
-				{new ItemStack(Items.fire_charge,9),new ItemStack(Items.bow,1,OreDictionary.WILDCARD_VALUE),new ItemStack(Blocks.gold_block)}// take 5 XP
+				{new ItemStack(Items.FIRE_CHARGE,9),new ItemStack(Items.BOW,1,OreDictionary.WILDCARD_VALUE),new ItemStack(Blocks.GOLD_BLOCK)}// take 5 XP
 				};
 	}
 	/* (non-Javadoc)

@@ -60,11 +60,11 @@ public class RuneEntitySpawnerCollection extends RuneEntity {
 		if(!world.isRemote && entity.ticksExisted()==Refs.TPS*5){
 			BlockPos spawnerPos = getPos().offset(face);
 			IBlockState spawnState = world.getBlockState(spawnerPos);
-			if(!(spawnState.getBlock()==Blocks.mob_spawner)){
+			if(!(spawnState.getBlock()==Blocks.MOB_SPAWNER)){
 				this.onPatternBroken();//break the pattern
 			}else{
 				world.setBlockToAir(spawnerPos);
-				Utils.spawnItemCentered(world, spawnerPos, new ItemStack(Blocks.mob_spawner));
+				Utils.spawnItemCentered(world, spawnerPos, new ItemStack(Blocks.MOB_SPAWNER));
 				world.playSoundEffect(getPos().getX(), getPos().getY(), getPos().getZ(), "mob.chicken.plop", 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()));
 			}
 			this.onPatternBroken();

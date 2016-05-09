@@ -32,12 +32,12 @@ public class RuneEntityEnchantingFireBow extends RuneEntity {
 				ItemStack bow=null;
 				if(sacrifice!=null){
 					for(ItemStack i:sacrifice){
-						if(i.getItem()==Items.bow){
+						if(i.getItem()==Items.BOW){
 							bow=i;
 						}
 					}
 				}
-				if(bow==null && negated)bow = new ItemStack(Items.bow);
+				if(bow==null && negated)bow = new ItemStack(Items.BOW);
 				bow.addEnchantment(Enchantment.flame, Enchantment.flame.getMaxLevel());
 				bow.setItemDamage(0);
 				Utils.spawnItemCentered(world, getPos(), bow);

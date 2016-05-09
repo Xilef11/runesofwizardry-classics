@@ -34,7 +34,7 @@ public class RuneHellstorm extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.blaze_rod,2)}
+				{new ItemStack(Items.BLAZE_ROD,2)}
 				};
 	}
 

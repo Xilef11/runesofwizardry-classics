@@ -71,7 +71,7 @@ public class RuneEntityTrapFire extends RuneEntity {
 						BlockPos current = getPos().add(dx, dy, dz);
 						//if we have an air block over a non-air block
 						if(!worldIn.isAirBlock(current.down())&&worldIn.isAirBlock(current)&&(Math.random()<fire)){
-							worldIn.setBlockState(current, Blocks.fire.getDefaultState());
+							worldIn.setBlockState(current, Blocks.FIRE.getDefaultState());
 						}
 					}
 				}

@@ -60,23 +60,23 @@ public class RuneEntityRabbitHole extends RuneEntity {
 						if(y==-1){
 							//top slice
 							if(world.getBlockState(current.up()).getBlock() instanceof BlockFalling){
-								world.setBlockState(current.up(), Blocks.cobblestone.getDefaultState());
+								world.setBlockState(current.up(), Blocks.COBBLESTONE.getDefaultState());
 							}
 						}else if(y==-height){//bottom slice
 							//this makes sure we have a platform to land on by filling air + liquid blocks
 							if(!world.getBlockState(current.down()).getBlock().getMaterial().isSolid()){
-								world.setBlockState(current.down(), Blocks.cobblestone.getDefaultState());
+								world.setBlockState(current.down(), Blocks.COBBLESTONE.getDefaultState());
 							}
 						}
 						//don't break obsidian or bedrock
-						if(world.getBlockState(current).getBlock().getBlockHardness(world, current)<Blocks.obsidian.getBlockHardness(world, current) && world.getBlockState(current).getBlock()!=Blocks.bedrock){
+						if(world.getBlockState(current).getBlock().getBlockHardness(world, current)<Blocks.OBSIDIAN.getBlockHardness(world, current) && world.getBlockState(current).getBlock()!=Blocks.BEDROCK){
 							world.setBlockToAir(current);
 						}
 					}
 				}
 			}
 			//place the torch
-			world.setBlockState(torch, Blocks.torch.getDefaultState());
+			world.setBlockState(torch, Blocks.TORCH.getDefaultState());
 		}
 	}
 

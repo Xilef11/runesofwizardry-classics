@@ -34,7 +34,7 @@ public class RuneSpeed extends VariableRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.sugar,3),new ItemStack(Items.blaze_powder)}
+				{new ItemStack(Items.SUGAR,3),new ItemStack(Items.BLAZE_POWDER)}
 				};
 	}
 

@@ -28,15 +28,15 @@ public class RuneEntityCompression extends RuneEntity {
 		if(!world.isRemote){
 			int numCoal=0;
 			for(ItemStack i:sacrifice){
-				if(i.getItem()==Items.coal)numCoal+=i.stackSize;
+				if(i.getItem()==Items.COAL)numCoal+=i.stackSize;
 			}
 			if(negated && numCoal==0)numCoal=32;
 			int numDiamonds = numCoal/32;
 			while(numDiamonds>64){
-				Utils.spawnItemCentered(world, getPos(), new ItemStack(Items.diamond,64));
+				Utils.spawnItemCentered(world, getPos(), new ItemStack(Items.DIAMOND,64));
 				numDiamonds-=64;
 			}
-			Utils.spawnItemCentered(world, getPos(), new ItemStack(Items.diamond,numDiamonds));
+			Utils.spawnItemCentered(world, getPos(), new ItemStack(Items.DIAMOND,numDiamonds));
 			this.onPatternBroken();
 		}
 

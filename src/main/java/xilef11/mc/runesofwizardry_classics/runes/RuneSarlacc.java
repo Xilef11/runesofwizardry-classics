@@ -34,7 +34,7 @@ public class RuneSarlacc extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.nether_star)}
+				{new ItemStack(Items.NETHER_STAR)}
 				};
 	}
 

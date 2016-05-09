@@ -61,7 +61,7 @@ public class RuneLockedTime extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.obsidian,4),new ItemStack(Items.slime_ball,4),new ItemStack(Items.dye,1,EnumDyeColor.BLUE.getMetadata())}
+				{new ItemStack(Blocks.OBSIDIAN,4),new ItemStack(Items.SLIME_BALL,4),new ItemStack(Items.dye,1,EnumDyeColor.BLUE.getMetadata())}
 				};
 	}
 

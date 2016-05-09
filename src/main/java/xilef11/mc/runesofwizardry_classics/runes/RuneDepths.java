@@ -50,8 +50,8 @@ public class RuneDepths extends VariableRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Items.coal,2)},//lapis and blaze
-				{new ItemStack(Blocks.log,2)}//plant and gunpowder
+				{new ItemStack(Items.COAL,2)},//lapis and blaze
+				{new ItemStack(Blocks.LOG,2)}//plant and gunpowder
 		};
 		//will have to do checks for dust type and hole in onActivation
 	}
