@@ -9,8 +9,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
@@ -97,9 +97,9 @@ public class RuneEntityBarrier extends RuneEntity {
 						BlockPos current = highest.down(y).offset(left, x);
 						IBlockState state = world.getBlockState(current);
 						if((current.getY()<getPos().getY() && !state.getBlock().getMaterial().isSolid())){
-							state = Blocks.cobblestone.getDefaultState();
+							state = Blocks.COBBLESTONE.getDefaultState();
 						}
-						if(state.getBlock()==Blocks.bedrock || world.getBlockState(current.up()).getBlock()==Blocks.bedrock){
+						if(state.getBlock()==Blocks.BEDROCK || world.getBlockState(current.up()).getBlock()==Blocks.bedrock){
 							break col;//stop moving the column if we get to bedrock
 						}
 						NBTTagCompound temp = new NBTTagCompound();//to save TE data

@@ -1,10 +1,10 @@
 package xilef11.mc.runesofwizardry_classics.managers;
 
-import xilef11.mc.runesofwizardry_classics.Refs;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSavedData;
 import net.minecraft.world.storage.MapStorage;
+import xilef11.mc.runesofwizardry_classics.Refs;
 /** Saves the number of active runes of Locked Time in a world, to stop falling blocks **/
 public class LockedTimeData extends WorldSavedData{
 	private static final String DATA_NAME = Refs.MODID + "_LockedTimeData";

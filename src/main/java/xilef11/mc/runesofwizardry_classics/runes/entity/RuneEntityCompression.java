@@ -2,13 +2,13 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 
 import java.util.Set;
 
-import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;

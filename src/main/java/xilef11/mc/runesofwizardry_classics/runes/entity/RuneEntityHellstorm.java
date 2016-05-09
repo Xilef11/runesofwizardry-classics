@@ -4,8 +4,8 @@ import java.util.Set;
 
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.Refs;
 
