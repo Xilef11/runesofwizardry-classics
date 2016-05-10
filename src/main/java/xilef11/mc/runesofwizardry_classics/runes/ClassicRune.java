@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +19,6 @@ import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
 
 import com.zpig333.runesofwizardry.api.IRune;
-
 /**
  * @author Xilef11
  *
@@ -29,7 +27,6 @@ public abstract class ClassicRune extends IRune {
 	private ItemStack[][] pattern=null;
 	private ItemStack[][] sacrifice=null;
 	private Vec3i entityPos=null;
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getPattern()
 	 */
@@ -44,10 +41,7 @@ public abstract class ClassicRune extends IRune {
 		}
 		return pattern;
 	}
-
 	protected abstract ItemStack[][] setupPattern() throws IOException;
-	
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getEntityPosition()
 	 */
@@ -58,9 +52,7 @@ public abstract class ClassicRune extends IRune {
 		}
 		return entityPos;
 	}
-
 	protected abstract Vec3i setupEntityPos();
-
 	public abstract String getID();
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getSacrifice()
@@ -78,7 +70,6 @@ public abstract class ClassicRune extends IRune {
 	protected boolean hasExtraSacrifice(){
 		return false;
 	}
-	
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getName()
 	 */
@@ -86,7 +77,6 @@ public abstract class ClassicRune extends IRune {
 	public String getExtraSacrificeInfo() {
 		return hasExtraSacrifice()? getName()+".extrasac" : null;
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#canBeActivatedByPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.world.World, net.minecraft.util.BlockPos)
 	 */
@@ -109,6 +99,4 @@ public abstract class ClassicRune extends IRune {
 		if(!allowed)player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".nopermission.message",I18n.translateToLocal(getName())));
 		return allowed;
 	}
-	
-
 }

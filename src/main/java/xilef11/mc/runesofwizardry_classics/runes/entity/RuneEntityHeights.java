@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.List;
 import java.util.Set;
 
@@ -27,19 +26,17 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
  * Trying to move a TE kills the rune (?) (we could semi-easily move TEs)
  * breaking the 16th block above the rune brings the column down
  * Weird behaviour in caves (fills up blocks above its path with cobble)
- * 
- * Modifications: 
+ *
+ * Modifications:
  * breaking the highest moved block in the column will also bring it down
  */
 public class RuneEntityHeights extends RuneEntity {
 	private static final int DEPTH=16;//depth of the column
 	private static final int TICKS_BLOCK=20;//number of ticks between each block lifted
-
 	public RuneEntityHeights(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
@@ -62,7 +59,6 @@ public class RuneEntityHeights extends RuneEntity {
 				if(!down){//move the column up
 					if(currentDepth==0){//if the column is fully up and we broke either the top block or the "ground block"
 						BlockPos top = getPos().up(DEPTH-1).offset(face);//"ground" level block
-						
 						if(world.isAirBlock(highest)||world.isAirBlock(top)){
 							down=true;
 						}
@@ -81,7 +77,7 @@ public class RuneEntityHeights extends RuneEntity {
 							if(!world.isAirBlock(highest.up())){
 								//figure out something to keep air blocks in our column
 								//or don't, and always crush empty space
-								/*if we don't have an air block above our column, 
+								/*if we don't have an air block above our column,
 								 * add that block to the pillar and retry
 								 */
 								highest=highest.up();
@@ -103,7 +99,7 @@ public class RuneEntityHeights extends RuneEntity {
 						world.setBlockState(current.up(), state);//"move" the block up"
 						if(te != null){
 							te.writeToNBT(temp);//save TE data
-							te = world.getTileEntity(current.up()); 
+							te = world.getTileEntity(current.up());
 							if(te!=null){//shouldn't be, but safer this way
 								te.readFromNBT(temp);//restore TE data
 							}
@@ -138,7 +134,7 @@ public class RuneEntityHeights extends RuneEntity {
 						world.setBlockState(current.down(), state);//"move" the block down
 						if(te != null){
 							te.writeToNBT(temp);//save TE data
-							te = world.getTileEntity(current.down()); 
+							te = world.getTileEntity(current.down());
 							if(te!=null){//shouldn't be, but safer this way
 								te.readFromNBT(temp);//restore TE data
 							}
@@ -151,7 +147,6 @@ public class RuneEntityHeights extends RuneEntity {
 			}
 		}
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -162,7 +157,6 @@ public class RuneEntityHeights extends RuneEntity {
 		highestBlock=compound.getInteger("highestBlock");;
 		down=compound.getBoolean("goingDown");
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -173,5 +167,4 @@ public class RuneEntityHeights extends RuneEntity {
 		compound.setInteger("highestBlock", highestBlock);
 		compound.setBoolean("goingDown", down);
 	}
-
 }

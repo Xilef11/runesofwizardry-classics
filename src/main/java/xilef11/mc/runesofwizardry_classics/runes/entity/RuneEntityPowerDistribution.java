@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,20 +20,16 @@ import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustPlaced;
-
 public class RuneEntityPowerDistribution extends FueledRuneEntity {
-
 	public RuneEntityPowerDistribution(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,
 			TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	protected int initialTicks() {
 		return Refs.TPS;//not really used, but must be >0
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#onFuelRunOut()
 	 */
@@ -43,7 +38,6 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 		//not really used
 		this.ticksLeft=0;//make sure it never goes under 0
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[], boolean)
 	 */
@@ -159,7 +153,6 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 		}
 		initialised=false;
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -174,7 +167,6 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 		}
 		compound.setTag("PoweredRunes", runes);
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#registerTo(xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityPowerDistribution)
 	 */
@@ -198,6 +190,4 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 			f.unregisterFrom(this);
 		}
 	}
-
-	
 }

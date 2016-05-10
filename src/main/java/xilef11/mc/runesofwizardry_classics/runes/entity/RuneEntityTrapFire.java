@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.List;
 import java.util.Set;
 
@@ -20,25 +19,19 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityTrapFire extends RuneEntity {
-
 	public RuneEntityTrapFire(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneTrapFire creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-
 	}
-
 	@Override
 	public void update() {
 		if(entity.ticksExisted()==5*Refs.TPS)this.renderActive=false;
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#handleEntityCollision(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.entity.Entity)
 	 */
@@ -80,6 +73,4 @@ public class RuneEntityTrapFire extends RuneEntity {
 		}
 		return true;
 	}
-	
-
 }

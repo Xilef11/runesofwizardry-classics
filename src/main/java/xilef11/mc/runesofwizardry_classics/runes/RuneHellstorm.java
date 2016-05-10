@@ -1,6 +1,4 @@
-
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.util.Set;
 
@@ -15,14 +13,11 @@ import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityHellstorm;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneHellstorm extends ClassicRune {
-
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeHellstorm.json");
 	}
-
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,1,0);
@@ -37,18 +32,15 @@ public class RuneHellstorm extends ClassicRune {
 				{new ItemStack(Items.BLAZE_ROD,2)}
 				};
 	}
-
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".hellstorm";
 	}
-
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
 		return new RuneEntityHellstorm(actualPattern, front, dusts, entity, this);
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
 	 */
@@ -56,7 +48,4 @@ public class RuneHellstorm extends ClassicRune {
 	protected boolean hasExtraSacrifice() {
 		return true;
 	}
-	
 }
-
-    

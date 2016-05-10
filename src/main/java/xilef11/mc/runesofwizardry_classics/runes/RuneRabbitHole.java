@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.util.Set;
 
@@ -17,13 +16,11 @@ import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityRabbitHole;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 /**
  * @author Xilef11
  *
  */
 public class RuneRabbitHole extends VariableRune {
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupPattern()
 	 */
@@ -42,7 +39,6 @@ public class RuneRabbitHole extends VariableRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(0,0,0);
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupSacrifice()
 	 */
@@ -50,7 +46,6 @@ public class RuneRabbitHole extends VariableRune {
 	protected ItemStack[][] setupSacrifice() {
 		return null; //SAC take 2 hunger upon activation
 	}
-	
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
 	 */
@@ -58,7 +53,6 @@ public class RuneRabbitHole extends VariableRune {
 	protected boolean hasExtraSacrifice() {
 		return true;
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getName()
 	 */
@@ -66,7 +60,6 @@ public class RuneRabbitHole extends VariableRune {
 	public String getName() {
 		return Refs.Lang.RUNE+".rabbitHole";
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#createRune(net.minecraft.item.ItemStack[][], net.minecraft.util.EnumFacing, java.util.Set, com.zpig333.runesofwizardry.tileentity.TileEntityDustActive)
 	 */
@@ -74,5 +67,4 @@ public class RuneRabbitHole extends VariableRune {
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,Set<BlockPos> dusts, TileEntityDustActive entity) {
 		return new RuneEntityRabbitHole(actualPattern, front, dusts, entity, this);
 	}
-
 }

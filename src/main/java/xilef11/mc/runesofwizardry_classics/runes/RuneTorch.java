@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.util.Set;
 
 import net.minecraft.init.Items;
@@ -16,13 +15,11 @@ import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityTorch;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 /**
  * @author Xilef11
  *
  */
 public class RuneTorch extends VariableRune {
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getName()
 	 */
@@ -30,7 +27,6 @@ public class RuneTorch extends VariableRune {
 	public String getName() {
 		return Refs.Lang.RUNE+".torch";
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#createRune(net.minecraft.item.ItemStack[][], net.minecraft.util.EnumFacing, java.util.Set, com.zpig333.runesofwizardry.tileentity.TileEntityDustActive)
 	 */
@@ -39,7 +35,6 @@ public class RuneTorch extends VariableRune {
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
 		return new RuneEntityTorch(actualPattern, front, dusts, entity,this);
 	}
-
 	@Override
 	protected ItemStack[][] setupPattern() {
 		ItemStack variable = new ItemStack(DustVariable.instance);
@@ -58,7 +53,6 @@ public class RuneTorch extends VariableRune {
 				{new ItemStack(Items.FLINT)}
 		};
 	}
-
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(0,0,0);

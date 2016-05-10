@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.List;
 import java.util.Set;
 
@@ -21,27 +20,21 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityTrapPoison extends RuneEntity {
-
 	public RuneEntityTrapPoison(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneTrapPoison creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
 		// Nothing to do here
-
 	}
-
 	@Override
 	public void update() {
 		if(entity.ticksExisted()==5*Refs.TPS)this.renderActive=false;
 		// not here
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#handleEntityCollision(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.entity.Entity)
 	 */
@@ -63,12 +56,10 @@ public class RuneEntityTrapPoison extends RuneEntity {
 			//poison all entities in radius
 			List<EntityLivingBase> ents = worldIn.getEntitiesWithinAABB(EntityLivingBase.class,new AxisAlignedBB(getPos().add(-rad, -rad, -rad), getPos().add(rad,rad,rad)));
 			for(EntityLivingBase e:ents){
-				e.addPotionEffect(new PotionEffect(MobEffects.POISON, (poisonbase + ((int)Math.floor(Math.random() * (double)poisonrand))) * 20, 2));
+				e.addPotionEffect(new PotionEffect(MobEffects.POISON, (poisonbase + ((int)Math.floor(Math.random() * poisonrand))) * 20, 2));
 			}
 			this.onPatternBroken();
 		}
 		return true;
 	}
-	
-
 }

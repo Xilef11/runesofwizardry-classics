@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.util.Set;
 
@@ -19,13 +18,11 @@ import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityLumber;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 /**
  * @author Xilef11
  *
  */
 public class RuneLumber extends VariableRune {
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupPattern()
 	 */
@@ -44,7 +41,6 @@ public class RuneLumber extends VariableRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,2,0);
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupSacrifice()
 	 */
@@ -54,7 +50,6 @@ public class RuneLumber extends VariableRune {
 				{new ItemStack(Items.STICK,2),new ItemStack(Blocks.LOG,3)}
 		};
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getName()
 	 */
@@ -62,7 +57,6 @@ public class RuneLumber extends VariableRune {
 	public String getName() {
 		return Refs.Lang.RUNE+".lumber";
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#createRune(net.minecraft.item.ItemStack[][], net.minecraft.util.EnumFacing, java.util.Set, com.zpig333.runesofwizardry.tileentity.TileEntityDustActive)
 	 */
@@ -78,5 +72,4 @@ public class RuneLumber extends VariableRune {
 	protected boolean hasExtraSacrifice() {
 		return true;
 	}
-	
 }

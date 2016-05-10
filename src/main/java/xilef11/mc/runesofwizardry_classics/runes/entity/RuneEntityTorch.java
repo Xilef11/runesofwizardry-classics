@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +17,6 @@ import xilef11.mc.runesofwizardry_classics.Refs;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 /**
  * @author Xilef11
  *
@@ -29,7 +27,6 @@ public class RuneEntityTorch extends RuneEntity {
 	}
 	private boolean beacon=false;
 	private int beaconColor=0xFFFFFF;
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[])
 	 */
@@ -41,7 +38,6 @@ public class RuneEntityTorch extends RuneEntity {
 			//TODO create beacon
 		}
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#update()
 	 */
@@ -57,7 +53,6 @@ public class RuneEntityTorch extends RuneEntity {
 			world.setBlockState(pos, Blocks.TORCH.getDefaultState());
 		}
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -67,7 +62,6 @@ public class RuneEntityTorch extends RuneEntity {
 		beacon = compound.getBoolean("isBeacon");
 		beaconColor = compound.getInteger("beaconColor");
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -77,5 +71,4 @@ public class RuneEntityTorch extends RuneEntity {
 		compound.setBoolean("isBeacon", beacon);
 		compound.setInteger("beaconColor", beaconColor);
 	}
-	
 }

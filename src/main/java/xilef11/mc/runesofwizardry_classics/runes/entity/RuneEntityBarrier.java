@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Iterator;
 import java.util.Set;
 
@@ -29,7 +28,6 @@ public class RuneEntityBarrier extends RuneEntity {
 			Set<BlockPos> dusts, TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
@@ -41,7 +39,6 @@ public class RuneEntityBarrier extends RuneEntity {
 			}
 			//we will need to change the rune's posSet before moving the first block to avoid breaking things
 		}
-
 	}
 	private int currentDepth[]=new int[RAD*2+1];
 	private int[] highestBlock=new int[RAD*2+1];
@@ -86,7 +83,7 @@ public class RuneEntityBarrier extends RuneEntity {
 								//FIXME we're "eating" blocks FSR - only if they're *just* above the dust
 								//figure out something to keep air blocks in our column
 								//or don't, and always crush empty space
-								/*if we don't have an air block above our column, 
+								/*if we don't have an air block above our column,
 								 * add that block to the pillar and retry
 								 */
 								highest=highest.up();
@@ -108,7 +105,7 @@ public class RuneEntityBarrier extends RuneEntity {
 						world.setBlockState(current.up(), state);//"move" the block up"
 						if(te != null){
 							te.writeToNBT(temp);//save TE data
-							te = world.getTileEntity(current.up()); 
+							te = world.getTileEntity(current.up());
 							if(te!=null){//shouldn't be, but safer this way
 								te.readFromNBT(temp);//restore TE data
 							}
@@ -125,9 +122,7 @@ public class RuneEntityBarrier extends RuneEntity {
 				if(done)this.onPatternBroken();
 			}
 		}
-
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -137,7 +132,6 @@ public class RuneEntityBarrier extends RuneEntity {
 		highestBlock = compound.getIntArray("highest");
 		currentDepth = compound.getIntArray("currentDepth");
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -147,5 +141,4 @@ public class RuneEntityBarrier extends RuneEntity {
 		compound.setIntArray("highest", highestBlock);
 		compound.setIntArray("currentDepth", currentDepth);
 	}
-	
 }

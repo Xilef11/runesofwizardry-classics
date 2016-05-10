@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Random;
 import java.util.Set;
 
@@ -21,14 +20,11 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 import com.zpig333.runesofwizardry.util.Utils;
-
 public class RuneEntityLumber extends RuneEntity {
-
 	public RuneEntityLumber(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneLumber creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
@@ -54,7 +50,6 @@ public class RuneEntityLumber extends RuneEntity {
 				this.onPatternBroken();return;
 			}
 		}
-
 	}
 	private EnumDustTypes dust=EnumDustTypes.PLANT;
 	private int rad=0,maxDouble=0,maxStick=0,maxDust=0;

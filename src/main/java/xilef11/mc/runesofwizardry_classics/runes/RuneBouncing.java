@@ -1,6 +1,4 @@
-
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.util.Set;
 
@@ -24,7 +22,6 @@ import com.zpig333.runesofwizardry.core.WizardryRegistry;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustPlaced;
-
 public class RuneBouncing extends ClassicRune {
 	public RuneBouncing(){
 		MinecraftForge.EVENT_BUS.register(this);
@@ -37,24 +34,20 @@ public class RuneBouncing extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeBouncing.json");
 	}
-
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(0,0,0);
 	}
-
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
 				{new ItemStack(Items.SLIME_BALL,4)}
 				};
 	}
-
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".bouncing";
 	}
-
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
@@ -83,5 +76,3 @@ public class RuneBouncing extends ClassicRune {
 		}
 	}
 }
-
-    

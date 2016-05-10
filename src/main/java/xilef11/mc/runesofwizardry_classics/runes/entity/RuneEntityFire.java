@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.List;
 import java.util.Set;
 
@@ -21,19 +20,16 @@ import xilef11.mc.runesofwizardry_classics.Refs;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.core.rune.RunesUtil;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityFire extends FueledRuneEntity {
 	private static final int TICK_RATE=3;
 	public RuneEntityFire(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	protected int initialTicks() {
 		return Refs.TICKS_PER_DAY/4;
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[], boolean)
 	 */
@@ -104,7 +100,6 @@ public class RuneEntityFire extends FueledRuneEntity {
 			}
 		}
 	}
-
 	private void shoot(EntityItem item) {
 		float random = 0.12F;
 		float xrand = (float)item.worldObj.rand.nextGaussian(),
@@ -113,11 +108,10 @@ public class RuneEntityFire extends FueledRuneEntity {
 		//It seems that this is NOT causing the issue
 		//xrand=yrand=zrand=1F;
 		//ModLogger.logInfo("Shoot rands: "+xrand + " "+yrand+" "+zrand);
-		item.motionX = (double)( xrand * random);
-		item.motionY = (double)(yrand * random + 0.2F);
-		item.motionZ = (double)(zrand * random);
+		item.motionX = xrand * random;
+		item.motionY = yrand * random + 0.2F;
+		item.motionZ = zrand * random;
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#onPatternBroken()
 	 */
@@ -132,5 +126,4 @@ public class RuneEntityFire extends FueledRuneEntity {
 			}
 		}
 	}
-
 }

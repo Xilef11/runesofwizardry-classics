@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.List;
 import java.util.Set;
 
@@ -19,14 +18,11 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityHealing extends RuneEntity {
-
 	public RuneEntityHealing(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneHealing creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
@@ -61,14 +57,11 @@ public class RuneEntityHealing extends RuneEntity {
 				}
 			}
 		}
-
 	}
-
 	@Override
 	public void update() {
 			if(entity.ticksExisted()>=100){
 				this.onPatternBroken();
 			}
 	}
-
 }

@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -25,13 +24,11 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 /**
  * @author Xilef11
  *
  */
 public class RuneEntityMusic extends RuneEntity {
-
 	/**
 	 * @param actualPattern
 	 * @param facing
@@ -42,14 +39,12 @@ public class RuneEntityMusic extends RuneEntity {
 			Set<BlockPos> dusts, TileEntityDustActive entity,IRune creator) {
 		super(actualPattern, facing, dusts, entity,creator);
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[], boolean)
 	 */
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#update()
 	 */
@@ -76,5 +71,4 @@ public class RuneEntityMusic extends RuneEntity {
 			this.onPatternBroken();//deactivate
 		}
 	}
-
 }

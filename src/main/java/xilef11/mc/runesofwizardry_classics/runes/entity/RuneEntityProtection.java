@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.List;
 import java.util.Set;
 
@@ -20,19 +19,15 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityProtection extends FueledRuneEntity {
-
 	public RuneEntityProtection(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneProtection creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	protected int initialTicks() {
 		return Refs.TICKS_PER_DAY;
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[], boolean)
 	 */
@@ -83,7 +78,7 @@ public class RuneEntityProtection extends FueledRuneEntity {
 						//get the angle (RAD) with the center of our rune
 						double mobAngle	= Math.atan2(dz, dx);
 						//get how close the mob is to the center, proportionally to the radius
-						float propDist = (((float)radius / dist) * 0.5F);
+						float propDist = ((radius / dist) * 0.5F);
 						//push it back
 						e.motionX+=MathHelper.cos((float) mobAngle)*propDist;
 						e.motionZ+=MathHelper.sin((float) mobAngle)*propDist;
@@ -92,7 +87,6 @@ public class RuneEntityProtection extends FueledRuneEntity {
 			}
 		}
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -101,7 +95,6 @@ public class RuneEntityProtection extends FueledRuneEntity {
 		super.readFromNBT(compound);
 		radius=compound.getInteger("radius");
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -110,6 +103,4 @@ public class RuneEntityProtection extends FueledRuneEntity {
 		super.writeToNBT(compound);
 		compound.setInteger("radius", radius);
 	}
-	
-
 }

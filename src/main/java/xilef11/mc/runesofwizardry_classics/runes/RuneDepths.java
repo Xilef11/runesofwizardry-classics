@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.util.Set;
 
@@ -18,7 +17,6 @@ import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityDepths;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 /**
  * @author Xilef11
  *
@@ -35,7 +33,6 @@ public class RuneDepths extends VariableRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeDepths.json");
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupEntityPos()
 	 */
@@ -43,7 +40,6 @@ public class RuneDepths extends VariableRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,2,0);
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupSacrifice()
 	 */
@@ -55,7 +51,6 @@ public class RuneDepths extends VariableRune {
 		};
 		//will have to do checks for dust type and hole in onActivation
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getName()
 	 */
@@ -63,7 +58,6 @@ public class RuneDepths extends VariableRune {
 	public String getName() {
 		return Refs.Lang.RUNE+".depths";
 	}
-	
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
 	 */
@@ -79,5 +73,4 @@ public class RuneDepths extends VariableRune {
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
 		return new RuneEntityDepths(actualPattern, front, dusts, entity, this);
 	}
-
 }

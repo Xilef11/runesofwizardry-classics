@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.block.state.IBlockState;
@@ -20,13 +19,11 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 /**
  * @author Xilef11
  *
  */
 public class RuneEntityRebirth extends RuneEntity {
-
 	/**
 	 * @param actualPattern
 	 * @param facing
@@ -37,7 +34,6 @@ public class RuneEntityRebirth extends RuneEntity {
 			Set<BlockPos> dusts, TileEntityDustActive entity,IRune creator) {
 		super(actualPattern, facing, dusts, entity,creator);
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[], boolean)
 	 */
@@ -56,9 +52,7 @@ public class RuneEntityRebirth extends RuneEntity {
 				}
 			}
 		}
-		
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#update()
 	 */
@@ -66,7 +60,6 @@ public class RuneEntityRebirth extends RuneEntity {
 	public void update() {
 		// not much here
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#handleEntityCollision(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.entity.Entity)
 	 */
@@ -86,5 +79,4 @@ public class RuneEntityRebirth extends RuneEntity {
 		}
 		return true;
 	}
-	
 }

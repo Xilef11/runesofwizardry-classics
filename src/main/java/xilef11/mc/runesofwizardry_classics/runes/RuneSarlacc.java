@@ -1,6 +1,4 @@
-
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.util.Set;
 
@@ -15,14 +13,11 @@ import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntitySarlacc;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneSarlacc extends ClassicRune {
-
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeSarlacc.json");
 	}
-
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(4,3,0);
@@ -37,18 +32,15 @@ public class RuneSarlacc extends ClassicRune {
 				{new ItemStack(Items.NETHER_STAR)}
 				};
 	}
-
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".sarlacc";
 	}
-
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
 		return new RuneEntitySarlacc(actualPattern, front, dusts, entity, this);
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
 	 */
@@ -56,7 +48,4 @@ public class RuneSarlacc extends ClassicRune {
 	protected boolean hasExtraSacrifice() {
 		return true;
 	}
-	
 }
-
-    

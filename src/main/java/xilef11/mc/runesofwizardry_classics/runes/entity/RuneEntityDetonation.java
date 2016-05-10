@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.block.state.IBlockState;
@@ -18,9 +17,7 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityDetonation extends RuneEntity {
-
 	public RuneEntityDetonation(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneDetonation creator) {
 		super(actualPattern, facing, dusts, entity, creator);
@@ -58,7 +55,6 @@ public class RuneEntityDetonation extends RuneEntity {
 			}
 		}
 	}
-
 	@Override
 	public void update() {
 		if(entity.ticksExisted()==5*Refs.TPS)this.renderActive=false;
@@ -68,7 +64,6 @@ public class RuneEntityDetonation extends RuneEntity {
 			}
 		}
 	}
-	
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#handleEntityCollision(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.entity.Entity)
 	 */
@@ -79,15 +74,12 @@ public class RuneEntityDetonation extends RuneEntity {
 		}
 		return true;
 	}
-
 	private void boom(){
 		this.onPatternBroken();
 		EntityXPOrb dummy = new EntityXPOrb(entity.getWorld(), getPos().getX()+0.5, getPos().getY()+0.5, getPos().getZ()+0.5, 0);
-		
 		entity.getWorld().createExplosion(dummy, getPos().getX()+0.5, getPos().getY()+0.5, getPos().getZ()+0.5, (float)(power*power)/10000 + 2F, true);
 		//Might need to create the explosion manually else it may vary between clients
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -97,7 +89,6 @@ public class RuneEntityDetonation extends RuneEntity {
 		fuselength=compound.getInteger("fuse");
 		power = compound.getInteger("boomPower");
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -107,5 +98,4 @@ public class RuneEntityDetonation extends RuneEntity {
 		compound.setInteger("fuse", fuselength);
 		compound.setInteger("boomPower", power);
 	}
-	
 }

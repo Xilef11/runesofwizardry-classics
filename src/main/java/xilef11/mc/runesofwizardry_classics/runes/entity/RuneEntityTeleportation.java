@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -24,14 +23,12 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityTeleportation extends RuneEntity {
 	public RuneEntityTeleportation(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,
 			TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
 		World world = player.worldObj;
@@ -47,9 +44,7 @@ public class RuneEntityTeleportation extends RuneEntity {
 			TeleportationData locations = TeleportationData.get(world);
 			locations.registerLocation(state, getPos());
 		}
-
 	}
-
 	@Override
 	public void update() {
 		World world = entity.getWorld();
@@ -96,7 +91,6 @@ public class RuneEntityTeleportation extends RuneEntity {
 								//ws.spawnParticle(EnumParticleTypes.PORTAL, dest.getX(), dest.getY(), dest.getZ(), 0.5F, 0.5, 0.5);
 								ws.spawnParticle(EnumParticleTypes.PORTAL, dest.getX(), dest.getY(), dest.getZ(), 10, 0.5, 0.5, 0.5, 10);
 							}
-							
 						}
 					}else{
 						p.timeUntilPortal=4;//to avoid waiting again if unlucky
@@ -107,7 +101,6 @@ public class RuneEntityTeleportation extends RuneEntity {
 			}
 		}
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onPatternBroken()
 	 */
@@ -122,5 +115,4 @@ public class RuneEntityTeleportation extends RuneEntity {
 		}
 		super.onPatternBroken();
 	}
-
 }

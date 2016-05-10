@@ -1,6 +1,4 @@
-
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.util.Set;
 
@@ -17,9 +15,7 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneTrapFire extends VariableRune {
-
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeTrapFire.json");
@@ -32,19 +28,16 @@ public class RuneTrapFire extends VariableRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(0,0,0);
 	}
-
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
 				{new ItemStack(Items.FLINT,3)}
 				};
 	}
-
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".trapfire";
 	}
-
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
@@ -59,8 +52,4 @@ public class RuneTrapFire extends VariableRune {
 		EnumDustTypes type = EnumDustTypes.getByMeta(foundPattern[any.row][any.col].getMetadata());
 		return super.variablesOK(foundPattern) && type!=EnumDustTypes.PLANT;
 	}
-	
-
 }
-
-    

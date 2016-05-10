@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,7 +26,6 @@ import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustPlaced;
-
 /** This class is for runes that use fuel
  * @author Xilef11
  *
@@ -39,7 +37,6 @@ public abstract class FueledRuneEntity extends RuneEntity {
 			Set<BlockPos> dusts, TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[], boolean)
 	 */
@@ -58,7 +55,6 @@ public abstract class FueledRuneEntity extends RuneEntity {
 	protected void onFuelRunOut(){
 		this.onPatternBroken();
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onPatternBroken()
 	 */
@@ -70,7 +66,6 @@ public abstract class FueledRuneEntity extends RuneEntity {
 			unregisterFrom(p);
 		}
 	}
-
 	/** Adds fuel to this rune. 1 life tick is added per fuel tick (by default) **/
 	protected void addFuel(int fuelTicks){
 		this.ticksLeft+=fuelTicks;
@@ -156,7 +151,6 @@ public abstract class FueledRuneEntity extends RuneEntity {
 		super.readFromNBT(compound);
 		ticksLeft = compound.getInteger("FueledRune:ticksLeft");
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -165,5 +159,4 @@ public abstract class FueledRuneEntity extends RuneEntity {
 		super.writeToNBT(compound);
 		compound.setInteger("FueledRune:ticksLeft", ticksLeft);
 	}
-
 }

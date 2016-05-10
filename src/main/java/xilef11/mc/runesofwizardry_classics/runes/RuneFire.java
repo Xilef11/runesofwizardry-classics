@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.util.Set;
 
@@ -18,13 +17,11 @@ import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityFire;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 /**
  * @author Xilef11
  *
  */
 public class RuneFire extends ClassicRune {
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupPattern()
 	 */
@@ -43,17 +40,15 @@ public class RuneFire extends ClassicRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,2,0);
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupSacrifice()
 	 */
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.LOG,8),new ItemStack(Items.ROTTEN_FLESH)}	
+				{new ItemStack(Blocks.LOG,8),new ItemStack(Items.ROTTEN_FLESH)}
 		};
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getName()
 	 */
@@ -61,7 +56,6 @@ public class RuneFire extends ClassicRune {
 	public String getName() {
 		return Refs.Lang.RUNE+".fire";
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#createRune(net.minecraft.item.ItemStack[][], net.minecraft.util.EnumFacing, java.util.Set, com.zpig333.runesofwizardry.tileentity.TileEntityDustActive)
 	 */
@@ -77,5 +71,4 @@ public class RuneFire extends ClassicRune {
 	protected boolean hasExtraSacrifice() {
 		return true;
 	}
-	
 }

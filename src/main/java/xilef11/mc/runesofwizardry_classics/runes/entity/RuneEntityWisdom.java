@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.block.state.IBlockState;
@@ -17,7 +16,6 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityWisdom extends RuneEntity {
 	private static final byte RCDelay = 5*20;//delay in ticks between r-click and taking xp
 	private String user;//username of activating player
@@ -27,7 +25,6 @@ public class RuneEntityWisdom extends RuneEntity {
 			Set<BlockPos> dusts, TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
@@ -40,9 +37,7 @@ public class RuneEntityWisdom extends RuneEntity {
 				this.onPatternBrokenByPlayer(player);
 			}
 		}
-
 	}
-
 	@Override
 	public void update() {
 		//absorb player XP
@@ -66,7 +61,6 @@ public class RuneEntityWisdom extends RuneEntity {
 			}
 		}
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#handleRightClick(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.entity.player.EntityPlayer, net.minecraft.util.EnumFacing, float, float, float)
 	 */
@@ -83,7 +77,6 @@ public class RuneEntityWisdom extends RuneEntity {
 		}
 		return true;
 	}
-	
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#handleLeftClick(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.entity.player.EntityPlayer, net.minecraft.util.Vec3)
 	 */
@@ -92,7 +85,6 @@ public class RuneEntityWisdom extends RuneEntity {
 			EntityPlayer playerIn, Vec3d hit) {
 		return playerIn.getName()!=user;//prevent non-owners from breaking it
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#handleEntityCollision(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.entity.Entity)
 	 */
@@ -106,7 +98,6 @@ public class RuneEntityWisdom extends RuneEntity {
 		}
 		return true;
 	}
-	
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onPatternBroken()
 	 */
@@ -123,7 +114,6 @@ public class RuneEntityWisdom extends RuneEntity {
 		}
 		super.onPatternBroken();
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -134,7 +124,6 @@ public class RuneEntityWisdom extends RuneEntity {
 		user = compound.getString("Activator");
 		xpAbsorbed=compound.getInteger("xpHeld");
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -145,5 +134,4 @@ public class RuneEntityWisdom extends RuneEntity {
 		compound.setString("Activator", user);
 		compound.setInteger("xpHeld", xpAbsorbed);
 	}
-	
 }

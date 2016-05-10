@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.List;
 import java.util.Set;
 
@@ -60,7 +59,6 @@ public class RuneEntitySarlacc extends RuneEntity {
 			activator=player.getName();
 		}
 	}
-
 	@Override
 	public void update() {
 		World world = entity.getWorld();
@@ -114,7 +112,6 @@ public class RuneEntitySarlacc extends RuneEntity {
 			}
 		}
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -124,7 +121,6 @@ public class RuneEntitySarlacc extends RuneEntity {
 		ticksremaining=compound.getInteger("ticksLeft");
 		activator=compound.getString("activator");
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */

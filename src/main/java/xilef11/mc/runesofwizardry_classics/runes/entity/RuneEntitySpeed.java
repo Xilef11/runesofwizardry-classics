@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,14 +14,11 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntitySpeed extends RuneEntity {
-
 	public RuneEntitySpeed(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneSpeed creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
@@ -45,12 +41,9 @@ public class RuneEntitySpeed extends RuneEntity {
 			//the original was activatable by redstone and gave the effect to all entityliving on the rune
 			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, duration, power));
 		}
-
 	}
-
 	@Override
 	public void update() {
 		if(entity.ticksExisted()==2*Refs.TPS && !entity.getWorld().isRemote)this.onPatternBroken();
 	}
-
 }

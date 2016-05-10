@@ -1,6 +1,4 @@
-
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -37,9 +35,7 @@ import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityResurrection;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneResurrection extends ClassicRune {
-	
 	public static Map<String,List<String>> dropToEntity=null;
 	public RuneResurrection() {
 		super();
@@ -49,7 +45,6 @@ public class RuneResurrection extends ClassicRune {
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeResurrection.json");
 	}
-
 	@Override
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,1,0);
@@ -64,8 +59,6 @@ public class RuneResurrection extends ClassicRune {
 				{new ItemStack(Blocks.SOUL_SAND,4)}//SAC 2x mob drops...
 				};
 	}
-	
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#hasExtraSacrifice()
 	 */
@@ -73,12 +66,10 @@ public class RuneResurrection extends ClassicRune {
 	protected boolean hasExtraSacrifice() {
 		return true;
 	}
-
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".resurrection";
 	}
-
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
@@ -90,7 +81,7 @@ public class RuneResurrection extends ClassicRune {
 		//if(dropToEntity!=null)return;
 		dropToEntity = new HashMap<String,List<String>>();
 		for(String entName:EntityList.getEntityNameList()){
-			Entity e = EntityList.createEntityByName(entName, event.getWorld()); 
+			Entity e = EntityList.createEntityByName(entName, event.getWorld());
 			if(e instanceof EntityLiving){//if its a mob
 				EntityLiving ent = (EntityLiving)e;
 				e.captureDrops=true;
@@ -121,7 +112,6 @@ public class RuneResurrection extends ClassicRune {
 			}
 		}
 	}
-
 	/**
 	 * Returns the ID of a random entity that might drop all items passed in (ignores NBT)
 	 * @param drops the stacks for which to get a random entity
@@ -147,7 +137,4 @@ public class RuneResurrection extends ClassicRune {
 		Random rand = new Random();
 		return possible.get(rand.nextInt(possible.size()));
 	}
-
 }
-
-    

@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.entity.projectile.EntityArrow;
@@ -13,14 +12,11 @@ import xilef11.mc.runesofwizardry_classics.Refs;
 
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityHellstorm extends FueledRuneEntity {
-
 	public RuneEntityHellstorm(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	protected int initialTicks() {
 		return Refs.TICKS_PER_DAY/2;
@@ -53,5 +49,4 @@ public class RuneEntityHellstorm extends FueledRuneEntity {
 			}
 		}
 	}
-	
 }

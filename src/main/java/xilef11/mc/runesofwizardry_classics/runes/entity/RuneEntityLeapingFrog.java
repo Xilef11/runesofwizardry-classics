@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,21 +14,17 @@ import net.minecraft.world.World;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityLeapingFrog extends RuneEntity {
-
 	public RuneEntityLeapingFrog(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,
 			TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
 		//start FX?
 	}
-
 	@Override
 	public void update() {
 		World world = entity.getWorld();
@@ -47,7 +42,6 @@ public class RuneEntityLeapingFrog extends RuneEntity {
 				}
 			}
 		}
-
 	}
 	private int blocksplaced=0;
 	/* (non-Javadoc)
@@ -58,7 +52,6 @@ public class RuneEntityLeapingFrog extends RuneEntity {
 		super.readFromNBT(compound);
 		blocksplaced = compound.getInteger("runeFrog.blocksplaced");
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -67,6 +60,4 @@ public class RuneEntityLeapingFrog extends RuneEntity {
 		super.writeToNBT(compound);
 		compound.setInteger("runeFrog.blocksplaced",blocksplaced);
 	}
-	
-
 }

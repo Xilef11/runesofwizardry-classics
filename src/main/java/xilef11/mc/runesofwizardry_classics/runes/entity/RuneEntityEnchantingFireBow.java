@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,15 +13,12 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityEnchantingFireBow extends RuneEntity {
-
 	public RuneEntityEnchantingFireBow(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,
 			TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
 		World world = player.worldObj;
@@ -46,13 +42,9 @@ public class RuneEntityEnchantingFireBow extends RuneEntity {
 				this.onPatternBrokenByPlayer(player);
 			}
 		}
-
 	}
-
 	@Override
 	public void update() {
 		// not much until we have FX
-
 	}
-
 }

@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.util.Set;
 
@@ -15,9 +14,7 @@ import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityDawn;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneDawn extends ClassicRune {
-
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeDawn.json");
@@ -30,23 +27,19 @@ public class RuneDawn extends ClassicRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,1,0);//dosen't matter for this one, but center is 1,1
 	}
-
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
 				{new ItemStack(Items.REDSTONE,4),new ItemStack(Items.DYE,1,EnumDyeColor.BLUE.getMetadata())}
 				};
 	}
-
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".dawn";
 	}
-
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
 		return new RuneEntityDawn(actualPattern, front, dusts, entity, this);
 	}
-
 }

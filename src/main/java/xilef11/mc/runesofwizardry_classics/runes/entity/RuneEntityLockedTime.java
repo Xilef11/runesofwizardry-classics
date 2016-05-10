@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,14 +12,12 @@ import xilef11.mc.runesofwizardry_classics.managers.LockedTimeData;
 import xilef11.mc.runesofwizardry_classics.runes.RuneLockedTime;
 
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityLockedTime extends FueledRuneEntity {
 	private long time=0;
 	public RuneEntityLockedTime(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneLockedTime creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-	
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[], boolean)
 	 */
@@ -34,7 +31,6 @@ public class RuneEntityLockedTime extends FueledRuneEntity {
 			LockedTimeData.get(world).addRune();
 		}
 	}
-	
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#onPatternBroken()
 	 */
@@ -43,7 +39,6 @@ public class RuneEntityLockedTime extends FueledRuneEntity {
 		super.onPatternBroken();
 		LockedTimeData.get(entity.getWorld()).removeRune();
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#update()
 	 */
@@ -59,12 +54,10 @@ public class RuneEntityLockedTime extends FueledRuneEntity {
 			world.setWorldTime(time);
 		}
 	}
-
 	@Override
 	protected int initialTicks() {
 		return Refs.TICKS_PER_DAY;
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -73,7 +66,6 @@ public class RuneEntityLockedTime extends FueledRuneEntity {
 		super.readFromNBT(compound);
 		time = compound.getLong("WorldTime");
 	}
-
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -82,5 +74,4 @@ public class RuneEntityLockedTime extends FueledRuneEntity {
 		super.writeToNBT(compound);
 		compound.setLong("WorldTime", time);
 	}
-	
 }

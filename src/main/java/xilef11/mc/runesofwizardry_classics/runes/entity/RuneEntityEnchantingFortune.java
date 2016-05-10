@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,15 +13,12 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityEnchantingFortune extends RuneEntity {
-
 	public RuneEntityEnchantingFortune(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,
 			TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
@@ -54,12 +50,8 @@ public class RuneEntityEnchantingFortune extends RuneEntity {
 				this.onPatternBrokenByPlayer(player);
 			}
 		}
-
 	}
-
 	@Override
 	public void update() {
-
 	}
-
 }

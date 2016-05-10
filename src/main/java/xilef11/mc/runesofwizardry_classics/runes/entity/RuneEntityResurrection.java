@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -21,7 +20,6 @@ import xilef11.mc.runesofwizardry_classics.runes.RuneResurrection;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityResurrection extends RuneEntity {
 	public RuneEntityResurrection(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,
@@ -67,7 +65,5 @@ public class RuneEntityResurrection extends RuneEntity {
 				}
 			}
 		}
-
 	}
-
 }

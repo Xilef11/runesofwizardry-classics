@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.block.Block;
@@ -59,7 +58,6 @@ public class RuneEntityLevelEarth extends RuneEntity {
 			}
 		}
 	}
-
 	@Override
 	public void update() {
 		World world = entity.getWorld();
@@ -97,9 +95,7 @@ public class RuneEntityLevelEarth extends RuneEntity {
 				if(entity.ticksExisted()/TICKRATE>radius+height)this.onPatternBroken();
 			}
 		}
-
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -112,7 +108,6 @@ public class RuneEntityLevelEarth extends RuneEntity {
 		if(b!=null)toFill = b.getDefaultState();
 		else toFill=Blocks.COBBLESTONE.getDefaultState();
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -123,5 +118,4 @@ public class RuneEntityLevelEarth extends RuneEntity {
 		compound.setInteger("height", height);
 		compound.setString("toFill",toFill.getBlock().getRegistryName().toString());
 	}
-	
 }

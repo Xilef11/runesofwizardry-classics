@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +14,7 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 public abstract class VariableRune extends ClassicRune {
 	private Set<Coords> variables=null;
 	/**
-	 * Returns all variable dust positions in this rune. 
+	 * Returns all variable dust positions in this rune.
 	 * Not a super efficient default implementation, subclasses should override if they know the variable positions at compile time
 	 */
 	public Set<Coords> getVariableDusts(){
@@ -53,7 +52,4 @@ public abstract class VariableRune extends ClassicRune {
 		}
 		return true;
 	}
-	
-	
-
 }

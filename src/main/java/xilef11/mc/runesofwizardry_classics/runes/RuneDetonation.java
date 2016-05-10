@@ -1,6 +1,4 @@
-
 package xilef11.mc.runesofwizardry_classics.runes;
-
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,9 +15,7 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneDetonation extends ClassicRune {
-
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeDetonation.json");
@@ -32,19 +28,16 @@ public class RuneDetonation extends ClassicRune {
 	protected Vec3i setupEntityPos() {
 		return new Vec3i(1,1,0);
 	}
-
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
 				{new ItemStack(Items.GUNPOWDER,2)}
 				};
 	}
-
 	@Override
 	public String getName() {
 		return Refs.Lang.RUNE+".detonation";
 	}
-
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
@@ -102,8 +95,4 @@ public class RuneDetonation extends ClassicRune {
 	protected boolean hasExtraSacrifice() {
 		return true;
 	}
-	
-	
 }
-
-    

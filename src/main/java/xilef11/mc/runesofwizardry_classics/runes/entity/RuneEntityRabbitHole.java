@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.List;
 import java.util.Set;
 
@@ -21,9 +20,7 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityRabbitHole extends RuneEntity {
-
 	public RuneEntityRabbitHole(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneRabbitHole creator) {
 		super(actualPattern, facing, dusts, entity, creator);
@@ -83,7 +80,6 @@ public class RuneEntityRabbitHole extends RuneEntity {
 			world.setBlockState(torch, Blocks.TORCH.getDefaultState());
 		}
 	}
-
 	private EnumDustTypes findDustType() {
 		Coords c = ((RuneRabbitHole)creator).getVariableDusts().iterator().next();
 		return EnumDustTypes.getByMeta(placedPattern[c.row][c.col].getMetadata());
@@ -139,5 +135,4 @@ public class RuneEntityRabbitHole extends RuneEntity {
 			}
 		}
 	}
-
 }

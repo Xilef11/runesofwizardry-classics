@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +17,6 @@ import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.RunesUtil;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 /** This RuneEntity serves as a placeholder so runes may be registered even if they're not implemented
  * @author Xilef11
  *
@@ -36,7 +34,6 @@ public class RuneEntityUnimplemented extends RuneEntity {
 		super(actualPattern, facing, dusts, entity,rune);
 		this.runeName=rune.getName();
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[])
 	 */
@@ -49,7 +46,6 @@ public class RuneEntityUnimplemented extends RuneEntity {
 			Utils.spawnItemCentered(player.worldObj, getPos(), i);
 		}
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#update()
 	 */
@@ -57,5 +53,4 @@ public class RuneEntityUnimplemented extends RuneEntity {
 	public void update() {
 		//NOP
 	}
-
 }

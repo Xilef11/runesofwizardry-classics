@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.List;
 import java.util.Set;
 
@@ -22,9 +21,7 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 public class RuneEntityTrapLightning extends RuneEntity {
-
 	public RuneEntityTrapLightning(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,
 			TileEntityDustActive entity, RuneTrapLightning creator) {
@@ -39,7 +36,6 @@ public class RuneEntityTrapLightning extends RuneEntity {
 			meta=placedPattern[c.row][c.col].getMetadata();
 		}
 	}
-
 	@Override
 	public void update() {
 		World world = entity.getWorld();
@@ -55,7 +51,7 @@ public class RuneEntityTrapLightning extends RuneEntity {
 			break;
 			default: this.onPatternBroken();return;
 			}
-			List<EntityLivingBase> ents =world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPos().add(-radius,-radius,-radius), getPos().add(radius,radius,radius))); 
+			List<EntityLivingBase> ents =world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPos().add(-radius,-radius,-radius), getPos().add(radius,radius,radius)));
 			if(!ents.isEmpty()){
 				for(EntityLivingBase e:ents){
 					world.addWeatherEffect(new EntityLightningBolt(world, e.posX, e.posY, e.posZ,false));
@@ -65,7 +61,6 @@ public class RuneEntityTrapLightning extends RuneEntity {
 			}
 		}
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#handleEntityCollision(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.entity.Entity)
 	 */
@@ -77,7 +72,6 @@ public class RuneEntityTrapLightning extends RuneEntity {
 		}
 		return true;
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#readFromNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -86,7 +80,6 @@ public class RuneEntityTrapLightning extends RuneEntity {
 		meta = compound.getInteger("dustMeta");
 		super.readFromNBT(compound);
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#writeToNBT(net.minecraft.nbt.NBTTagCompound)
 	 */
@@ -95,6 +88,4 @@ public class RuneEntityTrapLightning extends RuneEntity {
 		compound.setInteger("dustMeta", meta);
 		super.writeToNBT(compound);
 	}
-	
-	
 }

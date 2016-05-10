@@ -1,5 +1,4 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.List;
 import java.util.Set;
 
@@ -23,14 +22,11 @@ import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.WizardryRegistry;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 import com.zpig333.runesofwizardry.util.Utils;
-
 public class RuneEntityDepths extends RuneEntity {
-
 	public RuneEntityDepths(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneDepths creator) {
 		super(actualPattern, facing, dusts, entity, creator);
 	}
-
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
@@ -76,7 +72,6 @@ public class RuneEntityDepths extends RuneEntity {
 			if(negated)xilef11.mc.runesofwizardry_classics.utils.Utils.spawnItemCentered(world, getPos(), new ItemStack(WizardryRegistry.sacrifice_negator));
 		}
 	}
-
 	@Override
 	public void update() {
 		BlockPos topLeft = getPos().offset(this.face,2).offset(face.rotateYCCW(),1).down();
@@ -87,5 +82,4 @@ public class RuneEntityDepths extends RuneEntity {
 		}
 		if(entity.ticksExisted()>40)this.onPatternBroken();
 	}
-
 }

@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package xilef11.mc.runesofwizardry_classics.runes.entity;
-
 import java.util.Set;
 
 import net.minecraft.block.state.IBlockState;
@@ -20,18 +19,15 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-
 /**
  * @author Xilef11
  *
  */
 public class RuneEntitySpawnerCollection extends RuneEntity {
-
 	public RuneEntitySpawnerCollection(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts, TileEntityDustActive entity,IRune creator) {
 		super(actualPattern, facing, dusts, entity,creator);
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[])
 	 */
@@ -50,9 +46,7 @@ public class RuneEntitySpawnerCollection extends RuneEntity {
 				}
 			}
 		}
-
 	}
-
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.RuneEntity#update()
 	 */
@@ -72,5 +66,4 @@ public class RuneEntitySpawnerCollection extends RuneEntity {
 			this.onPatternBroken();
 		}
 	}
-
 }
