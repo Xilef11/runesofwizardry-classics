@@ -90,7 +90,7 @@ public class RuneResurrection extends ClassicRune {
 		//if(dropToEntity!=null)return;
 		dropToEntity = new HashMap<String,List<String>>();
 		for(String entName:EntityList.getEntityNameList()){
-			Entity e = EntityList.createEntityByName(entName, event.getWorld());//XXX to 
+			Entity e = EntityList.createEntityByName(entName, event.getWorld()); 
 			if(e instanceof EntityLiving){//if its a mob
 				EntityLiving ent = (EntityLiving)e;
 				e.captureDrops=true;

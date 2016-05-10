@@ -72,7 +72,7 @@ public class RuneEntityTrapLightning extends RuneEntity {
 	@Override
 	public boolean handleEntityCollision(World worldIn, BlockPos pos,IBlockState state, Entity entityIn) {
 		if(worldIn.isRemote && entityIn instanceof EntityItem &&entity.ticksExisted()>5*20){
-			worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, getPos().getX(), getPos().getY(), getPos().getZ(),false));//TODO figure out what 'effectOnly' does
+			worldIn.addWeatherEffect(new EntityLightningBolt(worldIn, getPos().getX(), getPos().getY(), getPos().getZ(),false));
 			this.onPatternBroken();
 		}
 		return true;

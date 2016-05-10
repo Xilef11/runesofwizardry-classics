@@ -72,7 +72,7 @@ public class RuneEntityDepths extends RuneEntity {
 			BlockPos last = beginPos.down(1);
 			//world.spawnEntityInWorld(new EntityLightningBolt(world, last.getX(), last.getY()+1, last.getZ()));
 			//lightning eats sacrifice negator, so we'll spawn a new one
-			world.addWeatherEffect(new EntityLightningBolt(world, last.getX(), last.getY()+1, last.getZ(),true));//XXX might need a +.5
+			world.addWeatherEffect(new EntityLightningBolt(world, last.getX(), last.getY()+1, last.getZ(),true));
 			if(negated)xilef11.mc.runesofwizardry_classics.utils.Utils.spawnItemCentered(world, getPos(), new ItemStack(WizardryRegistry.sacrifice_negator));
 		}
 	}

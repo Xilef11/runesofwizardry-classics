@@ -3,13 +3,10 @@
  */
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 
-import java.util.Map;
 import java.util.Set;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -78,37 +75,13 @@ public class RuneEntityRebirth extends RuneEntity {
 		if(!worldIn.isRemote){
 			if(entityIn instanceof EntityLivingBase){
 				EntityLivingBase ent = (EntityLivingBase)entityIn;
-				
-				//int id = entityIn.getEntityId();//not the same id as spawn eggs
-				//ItemMonsterPlacer
-				//try the forge map
-				//Map<String, EntityEggInfo> eggs = EntityRegistry.getEggs();//this one is empty
-				EntityEggInfo egginfo=null;
-				//eggInfo= eggs.get(ent.getName());
-				//if(egginfo==null){//try the vanilla map
-					//TODO test this one, stuff changed
-					Map<String, EntityEggInfo> egg2 = EntityList.ENTITY_EGGS;
-					for(EntityEggInfo inf: egg2.values()){
-						String name = inf.spawnedID;
-						if(name.equals(ent.getName())){
-							egginfo=inf;
-							break;
-						}
-				//	}
-				}
-				
-				//EntityEggInfo egginfo = eggs.get(id);//null with sheep and zombie?
-				if(egginfo!=null){//if the entity has an egg (?)
-					String spawnID = egginfo.spawnedID;
-					//XXX this will be NBT in 1.9
 					ItemStack egg = new ItemStack(Items.SPAWN_EGG);
 					NBTTagCompound entityTag = new NBTTagCompound();
-					entityTag.setString("id", spawnID);
-					egg.getTagCompound().setTag("EntityTag", entityTag);
+					entityTag.setString("id", ent.getName());
+					egg.setTagInfo("EntityTag", entityTag);
 					Utils.spawnItemCentered(worldIn, pos, egg);
 					this.onPatternBroken();//kill the rune
 					entityIn.setDead();//kill the entity
-				}
 			}
 		}
 		return true;
