@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +18,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
@@ -36,7 +38,7 @@ import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneResurrection extends ClassicRune {
-	public static Map<String,List<String>> dropToEntity=null;
+	public static Map<String,Set<String>> dropToEntity=null;
 	public RuneResurrection() {
 		super();
 		MinecraftForge.EVENT_BUS.register(this);
@@ -78,16 +80,22 @@ public class RuneResurrection extends ClassicRune {
 	//not guaranteed to work with modded entities though
 	@SubscribeEvent
 	public void initDropsTable(WorldEvent.Load event){
-		//if(dropToEntity!=null)return;
-		dropToEntity = new HashMap<String,List<String>>();
+		//FIXME most mobs drop nothing?
+		ModLogger.logInfo("Creating drop table for world: "+event.getWorld().provider.getDimensionType());
+		if(dropToEntity!=null){
+			ModLogger.logInfo("drop table already exists");
+			//return;
+		}else{
+			dropToEntity = new HashMap<String,Set<String>>();
+		}
 		for(String entName:EntityList.getEntityNameList()){
 			Entity e = EntityList.createEntityByName(entName, event.getWorld());
 			if(e instanceof EntityLiving){//if its a mob
 				EntityLiving ent = (EntityLiving)e;
 				e.captureDrops=true;
-				Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, (EntityLivingBase)ent, new String[]{"dropFewItems","func_70628_a"},boolean.class,int.class);
+				Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, (EntityLivingBase)ent, new String[]{"dropLoot","func_184610_a"},boolean.class,int.class,DamageSource.class);
 				try {
-					getdrops.invoke(ent,true, 10);
+					getdrops.invoke(ent,true, 10,DamageSource.generic);
 				} catch (IllegalAccessException e1) {
 					ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
 					continue;
@@ -101,9 +109,9 @@ public class RuneResurrection extends ClassicRune {
 				for(EntityItem item:ent.capturedDrops){
 					ItemStack stack = item.getEntityItem();
 					String key = stack.getItem().getRegistryName().toString()+stack.getMetadata();
-					List<String> ids = dropToEntity.get(key);
+					Set<String> ids = dropToEntity.get(key);
 					if(ids==null){
-						ids=new LinkedList<String>();
+						ids=new HashSet<String>();
 						dropToEntity.put(key, ids);
 					}
 					ids.add(entName);
@@ -119,9 +127,10 @@ public class RuneResurrection extends ClassicRune {
 	 */
 	public String entityIDFromDrops(Collection<ItemStack> drops){
 		List<String> possible = null;
+		if(dropToEntity==null)return "";
 		for(ItemStack s:drops){
 			String key = s.getItem().getRegistryName().toString()+s.getMetadata();
-			List<String> entities = dropToEntity.get(key);
+			Set<String> entities = dropToEntity.get(key);
 			if(entities==null)return null;
 			if(possible==null){
 				possible = new LinkedList<String>();

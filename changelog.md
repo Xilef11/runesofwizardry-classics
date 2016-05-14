@@ -1,2 +1,1 @@
-- Updated to 1.9
-- Uses Runes of Wizardry 0.6.1
+- Fixed rune of resurrection not finding mob from drops
