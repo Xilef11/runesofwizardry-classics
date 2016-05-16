@@ -80,6 +80,7 @@ public class RuneResurrection extends ClassicRune {
 	//not guaranteed to work with modded entities though
 	@SubscribeEvent
 	public void initDropsTable(WorldEvent.Load event){
+		if(event.getWorld().isRemote)return;//server side only
 		//FIXME most mobs drop nothing?
 		ModLogger.logInfo("Creating drop table for world: "+event.getWorld().provider.getDimensionType());
 		if(dropToEntity!=null){
