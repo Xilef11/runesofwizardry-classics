@@ -17,6 +17,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
@@ -80,8 +81,9 @@ public class RuneResurrection extends ClassicRune {
 	//not guaranteed to work with modded entities though
 	@SubscribeEvent
 	public void initDropsTable(WorldEvent.Load event){
+		//TODO iterate through loot tables instead of creating and killing an entity
+		//also, FSR a crash in here will not crash the server but cause a HUGE log file (infinite loop)
 		if(event.getWorld().isRemote)return;//server side only
-		//FIXME most mobs drop nothing?
 		ModLogger.logInfo("Creating drop table for world: "+event.getWorld().provider.getDimensionType());
 		if(dropToEntity!=null){
 			ModLogger.logInfo("drop table already exists");
@@ -108,8 +110,21 @@ public class RuneResurrection extends ClassicRune {
 					continue;
 				}
 				for(EntityItem item:ent.capturedDrops){
+					if(item==null){
+						ModLogger.logError("Error - NULL entityItem- while finding drops of entity: "+entName);
+						continue;
+					}
 					ItemStack stack = item.getEntityItem();
-					String key = stack.getItem().getRegistryName().toString()+stack.getMetadata();
+					if(stack==null){
+						ModLogger.logError("Error - NULL ItemStack (in a valid EntityItem) - while finding drops of entity: "+entName);
+						continue;
+					}
+					Item i = stack.getItem();
+					if(i==null){
+						ModLogger.logError("Error - NULL Item (in a non-null ItemStack) - while finding drops of entity: "+entName);
+						continue;
+					}
+					String key = i.getRegistryName().toString()+stack.getMetadata();
 					Set<String> ids = dropToEntity.get(key);
 					if(ids==null){
 						ids=new HashSet<String>();
