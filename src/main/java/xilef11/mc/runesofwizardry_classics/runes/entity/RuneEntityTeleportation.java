@@ -82,8 +82,8 @@ public class RuneEntityTeleportation extends RuneEntity {
 							//deal 3 hearts of damage
 							p.attackEntityFrom(DamageSource.magic, 6);
 							//sound + particles for fun
-							world.playSound(getPos().getX(), getPos().getY(), getPos().getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F,false);
-							world.playSound(dest.getX(), dest.getY(), dest.getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F,false);
+							world.playSound(null,getPos().getX(), getPos().getY(), getPos().getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);
+							world.playSound(null,dest.getX(), dest.getY(), dest.getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);
 							if(world instanceof WorldServer){
 								WorldServer ws = (WorldServer)world;
 								ws.spawnParticle(EnumParticleTypes.SPELL_WITCH, getPos().getX(), getPos().getY(), getPos().getZ(), 10, 0.5, 0.5, 0.5, 0);

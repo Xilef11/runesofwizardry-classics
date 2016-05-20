@@ -91,7 +91,7 @@ public class RuneEntityFire extends FueledRuneEntity {
 							toSpawn.extinguish();
 						}
 						e.setDead();
-						world.playSound(e.posX, e.posY, e.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1, false);
+						world.playSound(null,e.posX, e.posY, e.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 					}else{
 						shoot(e);
 						e.extinguish();

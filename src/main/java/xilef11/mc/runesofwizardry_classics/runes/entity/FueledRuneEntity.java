@@ -95,7 +95,7 @@ public abstract class FueledRuneEntity extends RuneEntity {
 				int burnTime = TileEntityFurnace.getItemBurnTime(stack);
 				if(burnTime!=0){
 					this.addFuel(burnTime*stack.stackSize);
-					worldIn.playSound(entityIn.posX, entityIn.posY, entityIn.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1, false);
+					worldIn.playSound(null,entityIn.posX, entityIn.posY, entityIn.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 					worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, entityIn.posX, entityIn.posY, entityIn.posZ, 0, 0, 0);
 					entityIn.setDead();
 				}

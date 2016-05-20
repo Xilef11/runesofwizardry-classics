@@ -60,7 +60,7 @@ public class RuneEntityResurrection extends RuneEntity {
 					//XXX could add a delay before spawning the entity
 					world.spawnEntityInWorld(e);
 					//world.playSoundAtEntity(e, "mob.chicken.plop", 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
-					world.playSound(e.posX, e.posY, e.posZ, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F, false);
+					world.playSound(null,e.posX, e.posY, e.posZ, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 					this.onPatternBroken();
 				}
 			}

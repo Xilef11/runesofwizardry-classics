@@ -67,7 +67,7 @@ public class RuneEntityMusic extends RuneEntity {
 			//spawn the record
 			Utils.spawnItemCentered(world, getPos(), new ItemStack(current));
 			//world.playSoundEffect(getPos().getX(), getPos().getY(), getPos().getZ(), "mob.chicken.plop", 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()));
-			world.playSound(getPos().getX(), getPos().getY(), getPos().getZ(), SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()), false);
+			world.playSound(null,getPos().getX(), getPos().getY(), getPos().getZ(), SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()));
 			this.onPatternBroken();//deactivate
 		}
 	}

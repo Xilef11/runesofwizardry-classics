@@ -61,7 +61,7 @@ public class RuneEntitySpawnerCollection extends RuneEntity {
 			}else{
 				world.setBlockToAir(spawnerPos);
 				Utils.spawnItemCentered(world, spawnerPos, new ItemStack(Blocks.MOB_SPAWNER));
-				world.playSound(getPos().getX(), getPos().getY(), getPos().getZ(), SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()), false);
+				world.playSound(null,getPos().getX(), getPos().getY(), getPos().getZ(), SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()));
 			}
 			this.onPatternBroken();
 		}

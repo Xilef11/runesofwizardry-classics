@@ -115,7 +115,7 @@ public class RuneEntityRabbitHole extends RuneEntity {
 						p.setPositionAndUpdate(torch.getX()+0.5, torch.getY()+0.5, torch.getZ()+0.5);
 						p.fallDistance=0;
 						delay=15;
-						world.playSound(p.posX, p.posY, p.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 0.5F, 3.0F, true);
+						world.playSound(null,p.posX, p.posY, p.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 0.5F, 3.0F);
 					}
 				}
 				if(up.isEmpty()){
@@ -126,7 +126,7 @@ public class RuneEntityRabbitHole extends RuneEntity {
 							p.setPositionAndUpdate(getPos().getX()+0.5, getPos().getY()+0.5, getPos().getZ()+0.5);
 							p.fallDistance=0;
 							delay=15;
-							world.playSound(p.posX, p.posY, p.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 0.5F, 3.0F, true);
+							world.playSound(null,p.posX, p.posY, p.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 0.5F, 3.0F);
 						}
 					}
 				}
