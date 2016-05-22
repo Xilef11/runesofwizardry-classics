@@ -88,6 +88,7 @@ public class RuneResurrection extends ClassicRune {
 	//not guaranteed to work with modded entities though
 	@SubscribeEvent
 	public void initDropsTable(WorldEvent.Load event){
+		if(event.world.isRemote)return;
 		//if(dropToEntity!=null)return;
 		dropToEntity = new HashMap<String,List<String>>();
 		for(String entName:EntityList.getEntityNameList()){
@@ -109,7 +110,9 @@ public class RuneResurrection extends ClassicRune {
 					continue;
 				}
 				for(EntityItem item:ent.capturedDrops){
+					if(item==null)continue;
 					ItemStack stack = item.getEntityItem();
+					if(stack==null||stack.getItem()==null)continue;
 					String key = stack.getItem().getRegistryName()+stack.getMetadata();
 					List<String> ids = dropToEntity.get(key);
 					if(ids==null){
