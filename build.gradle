@@ -48,10 +48,10 @@ apply plugin: "com.matthewprenger.cursegradle"
 //https://github.com/matthewprenger/CurseGradle for auto curseforge releases
 def mcVersion = "1.9"
 def majorVersion = "0"
-def minorVersion = "4"
-def bugfix = ""
+def minorVersion = "3"
+def bugfix = "1"
 def devVersion = "-dev"
-def forgeVersion="1.9-12.16.1.1892"
+def forgeVersion="1.9-12.16.1.1907"
 
 version = "${mcVersion}-${majorVersion}.${minorVersion}${bugfix}${devVersion}"
 group= "xilef11.mc.runesofwizardry-classics" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
