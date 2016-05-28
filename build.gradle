@@ -46,10 +46,10 @@ apply plugin: "com.matthewprenger.cursegradle"
 
 //https://github.com/riiid/gradle-github-plugin for auto github releases
 //https://github.com/matthewprenger/CurseGradle for auto curseforge releases
-def mcVersion = "1.9"
+def mcVersion = "1.9.4"
 def majorVersion = "0"
 def minorVersion = "3"
-def bugfix = ".2"
+def bugfix = ".3"
 def devVersion = "-dev"
 def forgeVersion="1.9.4-12.17.0.1922-1.9.4"
 
