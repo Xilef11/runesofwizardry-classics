@@ -70,7 +70,7 @@ public class RuneEntityRabbitHole extends RuneEntity {
 						}
 						//don't break obsidian or bedrock
 						IBlockState state = world.getBlockState(current);
-						if(state.getBlock().getBlockHardness(state,world, current)<Blocks.OBSIDIAN.getBlockHardness(Blocks.OBSIDIAN.getDefaultState(),world, current) && world.getBlockState(current).getBlock()!=Blocks.BEDROCK){
+						if(state.getBlockHardness(world, current)<Blocks.OBSIDIAN.getDefaultState().getBlockHardness(world, current) && world.getBlockState(current).getBlock()!=Blocks.BEDROCK){
 							world.setBlockToAir(current);
 						}
 					}

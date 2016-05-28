@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 import org.apache.logging.log4j.Level;
@@ -96,7 +95,7 @@ public abstract class ClassicRune extends IRune {
 				//TODO check if cheats enabled if single player
 			}
 		}
-		if(!allowed)player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".nopermission.message",I18n.translateToLocal(getName())));
+		if(!allowed)player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".nopermission.message",new TextComponentTranslation(getName())));
 		return allowed;
 	}
 }

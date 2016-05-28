@@ -1,4 +1,2 @@
-- Fixed rune of resurrection not finding mob from drops
-- Fixed dedicated server hangup
-- Fixed sounds
-Uses Runes of Wizardry 0.6.3
+- Update to 1.9.4
+Uses Runes of Wizardry 0.6.4
