@@ -51,7 +51,7 @@ def majorVersion = "0"
 def minorVersion = "3"
 def bugfix = ".3"
 def devVersion = "-dev"
-def forgeVersion="1.9.4-12.17.0.1922-1.9.4"
+def forgeVersion="1.9.4-12.17.0.1937"
 
 version = "${mcVersion}-${majorVersion}.${minorVersion}${bugfix}${devVersion}"
 group= "xilef11.mc.runesofwizardry-classics" // http://maven.apache.org/guides/mini/guide-naming-conventions.html

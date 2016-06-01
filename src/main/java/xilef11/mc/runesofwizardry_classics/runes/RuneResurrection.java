@@ -92,7 +92,13 @@ public class RuneResurrection extends ClassicRune {
 			dropToEntity = new HashMap<String,Set<String>>();
 		}
 		for(String entName:EntityList.getEntityNameList()){
-			Entity e = EntityList.createEntityByName(entName, event.getWorld());
+			Entity e=null;
+			try{
+				e = EntityList.createEntityByName(entName, event.getWorld());
+			}catch(NoClassDefFoundError err){
+				ModLogger.logError("Class for entity does not exist on the server: "+entName);
+				continue;
+			}
 			if(e instanceof EntityLiving){//if its a mob
 				EntityLiving ent = (EntityLiving)e;
 				e.captureDrops=true;
