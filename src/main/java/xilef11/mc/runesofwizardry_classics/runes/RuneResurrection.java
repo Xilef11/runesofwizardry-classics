@@ -21,8 +21,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
+import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.LootTable;
+import net.minecraft.world.storage.loot.LootTableManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -34,6 +38,7 @@ import scala.util.Random;
 import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityResurrection;
+import xilef11.mc.runesofwizardry_classics.utils.LootUtils;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
@@ -81,10 +86,14 @@ public class RuneResurrection extends ClassicRune {
 	//not guaranteed to work with modded entities though
 	@SubscribeEvent
 	public void initDropsTable(WorldEvent.Load event){
-		//TODO iterate through loot tables instead of creating and killing an entity
-		//also, FSR a crash in here will not crash the server but cause a HUGE log file (infinite loop)
-		if(event.getWorld().isRemote)return;//server side only
-		ModLogger.logInfo("Creating drop table for world: "+event.getWorld().provider.getDimensionType());
+		//TODO add config to choose between loot tables/JSON/hacky
+	}
+	public void initDropsTable_json(){
+		//TODO json
+	}
+	public void initDropsTable_entity(World world){
+		if(world.isRemote)return;//server side only
+		ModLogger.logInfo("Creating drop table for world: "+world.provider.getDimensionType());
 		if(dropToEntity!=null){
 			ModLogger.logInfo("drop table already exists");
 			//return;
@@ -94,37 +103,15 @@ public class RuneResurrection extends ClassicRune {
 		for(String entName:EntityList.getEntityNameList()){
 			Entity e=null;
 			try{
-				e = EntityList.createEntityByName(entName, event.getWorld());
+				e = EntityList.createEntityByName(entName, world);
 			}catch(NoClassDefFoundError err){
 				ModLogger.logError("Class for entity does not exist on the server: "+entName);
 				continue;
 			}
 			if(e instanceof EntityLiving){//if its a mob
 				EntityLiving ent = (EntityLiving)e;
-				e.captureDrops=true;
-				Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, (EntityLivingBase)ent, new String[]{"dropLoot","func_184610_a"},boolean.class,int.class,DamageSource.class);
-				try {
-					getdrops.invoke(ent,true, 10,DamageSource.generic);
-				} catch (IllegalAccessException e1) {
-					ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
-					continue;
-				} catch (IllegalArgumentException e1) {
-					ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
-					continue;
-				} catch (InvocationTargetException e1) {
-					ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
-					continue;
-				}
-				for(EntityItem item:ent.capturedDrops){
-					if(item==null){
-						ModLogger.logError("Error - NULL entityItem- while finding drops of entity: "+entName);
-						continue;
-					}
-					ItemStack stack = item.getEntityItem();
-					if(stack==null){
-						ModLogger.logError("Error - NULL ItemStack (in a valid EntityItem) - while finding drops of entity: "+entName);
-						continue;
-					}
+				List<ItemStack> list = getEntityLoot_Table(ent);//TODO config table vs hacky
+				for(ItemStack stack:list){
 					Item i = stack.getItem();
 					if(i==null){
 						ModLogger.logError("Error - NULL Item (in a non-null ItemStack) - while finding drops of entity: "+entName);
@@ -141,6 +128,43 @@ public class RuneResurrection extends ClassicRune {
 				ent.setDead();
 			}
 		}
+	}
+	
+	private List<ItemStack> getEntityLoot_Table(EntityLiving el){
+		ResourceLocation location = (ResourceLocation)ReflectionHelper.getPrivateValue(EntityLiving.class, el, "deathLootTable","field_184659_bA");
+		LootTableManager manager = el.worldObj.getLootTableManager();
+		LootTable table = manager.getLootTableFromLocation(location);
+		return LootUtils.tableToItemStacks(table);
+	}
+	private List<ItemStack> getEntityLoot_Hacky(EntityLiving ent){
+		List<ItemStack> result = new LinkedList<ItemStack>();
+		ent.captureDrops=true;
+		Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, (EntityLivingBase)ent, new String[]{"dropLoot","func_184610_a"},boolean.class,int.class,DamageSource.class);
+		try {
+			getdrops.invoke(ent,true, 10,DamageSource.generic);
+		} catch (IllegalAccessException e1) {
+			ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
+			return result;
+		} catch (IllegalArgumentException e1) {
+			ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
+			return result;
+		} catch (InvocationTargetException e1) {
+			ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
+			return result;
+		}
+		for(EntityItem item:ent.capturedDrops){
+			if(item==null){
+				ModLogger.logError("Error - NULL entityItem- while finding drops of entity: "+ent.getName());
+				continue;
+			}
+			ItemStack stack = item.getEntityItem();
+			if(stack==null){
+				ModLogger.logError("Error - NULL ItemStack (in a valid EntityItem) - while finding drops of entity: "+ent.getName());
+				continue;
+			}
+			result.add(stack);
+		}
+		return result;
 	}
 	/**
 	 * Returns the ID of a random entity that might drop all items passed in (ignores NBT)
