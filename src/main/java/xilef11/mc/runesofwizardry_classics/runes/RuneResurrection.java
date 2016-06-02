@@ -1,7 +1,13 @@
 package xilef11.mc.runesofwizardry_classics.runes;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,11 +41,16 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.apache.logging.log4j.Level;
 
 import scala.util.Random;
+import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityResurrection;
 import xilef11.mc.runesofwizardry_classics.utils.LootUtils;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
@@ -84,12 +95,33 @@ public class RuneResurrection extends ClassicRune {
 		return new RuneEntityResurrection(actualPattern, front, dusts, entity, this);
 	}
 	//not guaranteed to work with modded entities though
+	//FIXME we get a NPE now, guess we have to create the map at a different time
 	@SubscribeEvent
-	public void initDropsTable(WorldEvent.Load event){
-		//TODO add config to choose between loot tables/JSON/hacky
-	}
-	public void initDropsTable_json(){
-		//TODO json
+	public void initDropsTable(WorldEvent.Load event) throws FileNotFoundException{
+		if(!event.getWorld().isRemote){
+			if(Config.resurrectionMode.equals("JSON")){
+				File map = new File("config/"+Refs.MODID+"_ResurrectionMap.json");
+				if(map.exists()){
+					Reader read = new FileReader(map);
+					Gson gson = new Gson();
+					@SuppressWarnings("serial")
+					Type type = new TypeToken<Map<String,Set<String>>>(){}.getType();
+					dropToEntity = gson.fromJson(read,type);
+				}else{
+					initDropsTable_entity(event.getWorld());
+					Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
+					try {
+						gson.toJson(dropToEntity, new FileWriter(new File("config/"+Refs.MODID+"_ResurrectionMap.json")));
+					} catch (JsonIOException e) {
+						ModLogger.logException(Level.ERROR, e, "Couldn't write JSON map");
+					} catch (IOException e) {
+						ModLogger.logException(Level.ERROR, e, "Couldn't write JSON map");
+					}
+				}
+			}else{
+				initDropsTable_entity(event.getWorld());
+			}
+		}
 	}
 	public void initDropsTable_entity(World world){
 		if(world.isRemote)return;//server side only
@@ -110,7 +142,7 @@ public class RuneResurrection extends ClassicRune {
 			}
 			if(e instanceof EntityLiving){//if its a mob
 				EntityLiving ent = (EntityLiving)e;
-				List<ItemStack> list = getEntityLoot_Table(ent);//TODO config table vs hacky
+				List<ItemStack> list = Config.resurrectionMode.equals("Kill")? getEntityLoot_Hacky(ent) : getEntityLoot_Table(ent) ;
 				for(ItemStack stack:list){
 					Item i = stack.getItem();
 					if(i==null){
