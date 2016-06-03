@@ -34,8 +34,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTable;
 import net.minecraft.world.storage.loot.LootTableManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.world.WorldEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import org.apache.logging.log4j.Level;
@@ -96,19 +94,25 @@ public class RuneResurrection extends ClassicRune {
 	}
 	//not guaranteed to work with modded entities though
 	//FIXME we get a NPE now, guess we have to create the map at a different time
-	@SubscribeEvent
-	public void initDropsTable(WorldEvent.Load event) throws FileNotFoundException{
-		if(!event.getWorld().isRemote){
+	public void initDropsTable(World world){
+		if(!world.isRemote){
 			if(Config.resurrectionMode.equals("JSON")){
 				File map = new File("config/"+Refs.MODID+"_ResurrectionMap.json");
 				if(map.exists()){
-					Reader read = new FileReader(map);
+					Reader read;
+					try {
+						read = new FileReader(map);
+					} catch (FileNotFoundException e) {
+						ModLogger.logException(Level.WARN, e, "couldn't find drops initialisation file");
+						initDropsTable_entity(world);
+						return;
+					}
 					Gson gson = new Gson();
 					@SuppressWarnings("serial")
 					Type type = new TypeToken<Map<String,Set<String>>>(){}.getType();
 					dropToEntity = gson.fromJson(read,type);
 				}else{
-					initDropsTable_entity(event.getWorld());
+					initDropsTable_entity(world);
 					Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
 					try {
 						gson.toJson(dropToEntity, new FileWriter(new File("config/"+Refs.MODID+"_ResurrectionMap.json")));
@@ -119,7 +123,7 @@ public class RuneResurrection extends ClassicRune {
 					}
 				}
 			}else{
-				initDropsTable_entity(event.getWorld());
+				initDropsTable_entity(world);
 			}
 		}
 	}
@@ -137,7 +141,7 @@ public class RuneResurrection extends ClassicRune {
 			try{
 				e = EntityList.createEntityByName(entName, world);
 			}catch(NoClassDefFoundError err){
-				ModLogger.logError("Class for entity does not exist on the server: "+entName);
+				ModLogger.logException(Level.ERROR, err, "An entity has caused a client-side class to load on the server: "+entName+" ; Please report to that mod's author.");
 				continue;
 			}
 			if(e instanceof EntityLiving){//if its a mob
@@ -201,11 +205,12 @@ public class RuneResurrection extends ClassicRune {
 	/**
 	 * Returns the ID of a random entity that might drop all items passed in (ignores NBT)
 	 * @param drops the stacks for which to get a random entity
+	 * @param aWorld any Loaded World (the one that contains the rune would do)
 	 * @return a random entity that may drop the items passed, or null if there is none.
 	 */
-	public String entityIDFromDrops(Collection<ItemStack> drops){
+	public String entityIDFromDrops(Collection<ItemStack> drops,World aWorld){
 		List<String> possible = null;
-		if(dropToEntity==null)return "";
+		if(dropToEntity==null)initDropsTable(aWorld);
 		for(ItemStack s:drops){
 			String key = s.getItem().getRegistryName().toString()+s.getMetadata();
 			Set<String> entities = dropToEntity.get(key);

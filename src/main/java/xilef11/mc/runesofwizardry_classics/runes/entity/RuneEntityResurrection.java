@@ -48,7 +48,7 @@ public class RuneEntityResurrection extends RuneEntity {
 			}
 			if(numItems>1){
 				//try to get the entity
-				String id = ((RuneResurrection)creator).entityIDFromDrops(stacks);
+				String id = ((RuneResurrection)creator).entityIDFromDrops(stacks,world);
 				//spawn the entity
 				if(id!=null){
 					for(EntityItem ei:items){
