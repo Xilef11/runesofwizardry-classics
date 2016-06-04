@@ -52,13 +52,17 @@ public class LootUtils {
     			if(entry instanceof LootEntryItem){
     				LootEntryItem ei = (LootEntryItem)entry;
     				Item item = getItem(ei);
-    				for(LootFunction func:getFunctions(ei)){
+    				LootFunction[] functs = getFunctions(ei);
+    				boolean metaSet = false;
+    				for(LootFunction func:functs){
     					if(func instanceof SetMetadata){
+    						metaSet=true;
     						RandomValueRange range = (RandomValueRange)ReflectionHelper.getPrivateValue(SetMetadata.class, (SetMetadata)func, "metaRange","field_186573_b");
     						int meta = MathHelper.floor_float(range.getMin());
     						stacks.add(new ItemStack(item,1,meta));
     					}
     				}
+    				if(!metaSet)stacks.add(new ItemStack(item));
     			}
     			/* won't bother with this case for now
     			else if(entry instanceof LootEntryTable){

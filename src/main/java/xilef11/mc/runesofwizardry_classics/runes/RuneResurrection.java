@@ -1,10 +1,12 @@
 package xilef11.mc.runesofwizardry_classics.runes;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
@@ -93,7 +95,6 @@ public class RuneResurrection extends ClassicRune {
 		return new RuneEntityResurrection(actualPattern, front, dusts, entity, this);
 	}
 	//not guaranteed to work with modded entities though
-	//FIXME we get a NPE now, guess we have to create the map at a different time
 	public void initDropsTable(World world){
 		if(!world.isRemote){
 			if(Config.resurrectionMode.equals("JSON")){
@@ -115,7 +116,9 @@ public class RuneResurrection extends ClassicRune {
 					initDropsTable_entity(world);
 					Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
 					try {
-						gson.toJson(dropToEntity, new FileWriter(new File("config/"+Refs.MODID+"_ResurrectionMap.json")));
+						Writer out = new BufferedWriter(new FileWriter(new File("config/"+Refs.MODID+"_ResurrectionMap.json"))); 
+						gson.toJson(dropToEntity, out);
+						out.close();
 					} catch (JsonIOException e) {
 						ModLogger.logException(Level.ERROR, e, "Couldn't write JSON map");
 					} catch (IOException e) {
@@ -153,7 +156,7 @@ public class RuneResurrection extends ClassicRune {
 						ModLogger.logError("Error - NULL Item (in a non-null ItemStack) - while finding drops of entity: "+entName);
 						continue;
 					}
-					String key = i.getRegistryName().toString()+stack.getMetadata();
+					String key = i.getRegistryName().toString()+"@"+stack.getMetadata();
 					Set<String> ids = dropToEntity.get(key);
 					if(ids==null){
 						ids=new HashSet<String>();
@@ -168,6 +171,25 @@ public class RuneResurrection extends ClassicRune {
 	
 	private List<ItemStack> getEntityLoot_Table(EntityLiving el){
 		ResourceLocation location = (ResourceLocation)ReflectionHelper.getPrivateValue(EntityLiving.class, el, "deathLootTable","field_184659_bA");
+		if(location==null){
+			Method getLT = ReflectionHelper.findMethod(EntityLiving.class, el, new String[]{"getLootTable","func_184647_J"});
+			try {
+				location = (ResourceLocation)getLT.invoke(el);
+			} catch (IllegalAccessException e) {
+				ModLogger.logException(Level.ERROR, e, "Exception when trying to get LootTable from entity: "+el.getName());
+				return getEntityLoot_Hacky(el);
+			} catch (IllegalArgumentException e) {
+				ModLogger.logException(Level.ERROR, e, "Exception when trying to get LootTable from entity: "+el.getName());
+				return getEntityLoot_Hacky(el);
+			} catch (InvocationTargetException e) {
+				ModLogger.logException(Level.ERROR, e, "Exception when trying to get LootTable from entity: "+el.getName());
+				return getEntityLoot_Hacky(el);
+			}
+		}
+		if(location==null){
+			ModLogger.logWarn(el.getName()+" does not have a LootTable. falling back to kill method");
+			return getEntityLoot_Hacky(el);
+		}
 		LootTableManager manager = el.worldObj.getLootTableManager();
 		LootTable table = manager.getLootTableFromLocation(location);
 		return LootUtils.tableToItemStacks(table);
@@ -212,7 +234,7 @@ public class RuneResurrection extends ClassicRune {
 		List<String> possible = null;
 		if(dropToEntity==null)initDropsTable(aWorld);
 		for(ItemStack s:drops){
-			String key = s.getItem().getRegistryName().toString()+s.getMetadata();
+			String key = s.getItem().getRegistryName().toString()+"@"+s.getMetadata();
 			Set<String> entities = dropToEntity.get(key);
 			if(entities==null)return null;
 			if(possible==null){

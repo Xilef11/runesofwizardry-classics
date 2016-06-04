@@ -57,7 +57,6 @@ public class RuneEntityResurrection extends RuneEntity {
 					}
 					Entity e = EntityList.createEntityByName(id, world);
 					e.setPositionAndUpdate(getPos().getX()+0.5, getPos().getY()+0.5, getPos().getZ()+0.5);
-					//XXX could add a delay before spawning the entity
 					world.spawnEntityInWorld(e);
 					//world.playSoundAtEntity(e, "mob.chicken.plop", 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 					world.playSound(null,e.posX, e.posY, e.posZ, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);

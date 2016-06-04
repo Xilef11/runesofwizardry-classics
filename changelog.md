@@ -1,4 +1,3 @@
-- workaround for rune of resurrection crashes
-	* couldn't reproduce the crash, but a workaround was added + a config option to disable the rune completely
+- Switch Rune of Resurrection to LootTables/JSON
 
 Uses Runes of Wizardry 0.6.5
