@@ -11,6 +11,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneLevelEarth;
@@ -71,9 +72,8 @@ public class RuneEntityLevelEarth extends RuneEntity {
 							BlockPos current = getPos().add(x,y,z);
 							IBlockState state = world.getBlockState(current);
 							Block block = state.getBlock();
-							//XXX maybe add a config blacklist here
-							if(block.hasTileEntity(state)||block==WizardryRegistry.dust_placed||block==Blocks.BEDROCK){
-								continue;//not sure why air block is here
+							if(block==WizardryRegistry.dust_placed||block==Blocks.AIR||block.hasTileEntity(state)||block==Blocks.BEDROCK||Config.levelEarthBlackList.contains(block.getRegistryName().toString())){
+								continue;
 							}
 							//replace liquid blocks with cobble
 							if(state.getMaterial().isLiquid()){

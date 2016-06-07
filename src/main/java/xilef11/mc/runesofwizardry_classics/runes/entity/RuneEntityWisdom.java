@@ -47,7 +47,6 @@ public class RuneEntityWisdom extends RuneEntity {
 				EntityPlayer player = world.getClosestPlayer(getPos().getX(), getPos().getY(), getPos().getZ(), 2, false);
 				if(player!=null){
 					if(player.experience>0){
-						//TODO sounds maybe?
 						player.addExperience(-1);
 						xpAbsorbed++;
 					}else if(player.experienceLevel>0){

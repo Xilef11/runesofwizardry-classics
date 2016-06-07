@@ -14,6 +14,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneDepths;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
@@ -61,9 +62,11 @@ public class RuneEntityDepths extends RuneEntity {
 				BlockPos current = beginPos.down(dy);
 				IBlockState state = world.getBlockState(current);
 				Block toBreak = state.getBlock();
-				toBreak.onBlockDestroyedByPlayer(world, current, state);
-				toBreak.dropBlockAsItem(world, current, state, 0);
-				world.setBlockToAir(current);
+				if(toBreak!=Blocks.BEDROCK||!Config.levelEarthBlackList.contains(toBreak.getRegistryName().toString())){
+					toBreak.onBlockDestroyedByPlayer(world, current, state);
+					toBreak.dropBlockAsItem(world, current, state, 0);
+					world.setBlockToAir(current);
+				}
 			}
 			BlockPos last = beginPos.down(1);
 			//world.spawnEntityInWorld(new EntityLightningBolt(world, last.getX(), last.getY()+1, last.getZ()));

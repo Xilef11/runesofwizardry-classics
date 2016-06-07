@@ -14,6 +14,7 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.managers.LockedTimeData;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityLockedTime;
@@ -31,8 +32,7 @@ public class RuneLockedTime extends ClassicRune {
 	 */
 	@SubscribeEvent
 	public void onEntityCreation(EntityJoinWorldEvent event){
-		//XXX might want a config option to enable this
-		if(event.getEntity() instanceof EntityFallingBlock){
+		if(Config.lockedTimeFalling && (event.getEntity() instanceof EntityFallingBlock)){
 			if(LockedTimeData.get(event.getWorld()).getNumRunes()>0){
 				EntityFallingBlock fb = (EntityFallingBlock)event.getEntity();
 				IBlockState state = fb.getBlock();
