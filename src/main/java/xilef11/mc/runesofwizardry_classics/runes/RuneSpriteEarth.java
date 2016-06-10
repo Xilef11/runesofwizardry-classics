@@ -49,4 +49,12 @@ public class RuneSpriteEarth extends ClassicRune {
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
 		return new RuneEntityUnimplemented(actualPattern, front, dusts, entity, this);
 	}
+	/* (non-Javadoc)
+	 * @see com.zpig333.runesofwizardry.api.IRune#getShortDesc()
+	 */
+	@Override
+	public String getShortDesc() {
+		//Decorative/WIP
+		return Refs.Lang.DEC;
+	}
 }
