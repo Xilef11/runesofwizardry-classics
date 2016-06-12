@@ -177,9 +177,9 @@ public class RuneEntityLumber extends RuneEntity {
 		double height = 1.3d;
 		if(world instanceof WorldServer){
 			WorldServer ws = (WorldServer)world;
-			ws.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, x + width/2, y + height/2, z + width/2,ws.rand.nextInt(5), 0d, 0d, 0d, 0d,5);
+			ws.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, x + width/2, y + height/2, z + width/2,1, 0d, 0d, 0d, 0d,5);
 		}else{
-			world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, x + width/2, y + height/2, z + width/2, 0, 0, 0, 5);
+			world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, x + width/2, y + height/2, z + width/2, 0, 0, 0, 5);
 		}
 	}
 }
