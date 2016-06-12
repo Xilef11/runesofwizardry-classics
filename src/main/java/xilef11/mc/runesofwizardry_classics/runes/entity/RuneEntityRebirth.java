@@ -7,6 +7,7 @@ import java.util.Set;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -66,15 +67,16 @@ public class RuneEntityRebirth extends RuneEntity {
 	@Override
 	public boolean handleEntityCollision(World worldIn, BlockPos pos,IBlockState state, Entity entityIn) {
 		if(!worldIn.isRemote){
-			if(entityIn instanceof EntityLivingBase){
+			if((entityIn instanceof EntityLivingBase) && !(entityIn instanceof EntityPlayer)&&!(entityIn instanceof EntityArmorStand)){
+				//TODO also make sure the entity has a spawn egg and/or add config blacklist
 				EntityLivingBase ent = (EntityLivingBase)entityIn;
-					ItemStack egg = new ItemStack(Items.SPAWN_EGG);
-					NBTTagCompound entityTag = new NBTTagCompound();
-					entityTag.setString("id", ent.getName());
-					egg.setTagInfo("EntityTag", entityTag);
-					Utils.spawnItemCentered(worldIn, pos, egg);
-					this.onPatternBroken();//kill the rune
-					entityIn.setDead();//kill the entity
+				ItemStack egg = new ItemStack(Items.SPAWN_EGG);
+				NBTTagCompound entityTag = new NBTTagCompound();
+				entityTag.setString("id", ent.getName());
+				egg.setTagInfo("EntityTag", entityTag);
+				Utils.spawnItemCentered(worldIn, pos, egg);
+				this.onPatternBroken();//kill the rune
+				entityIn.setDead();//kill the entity
 			}
 		}
 		return true;
