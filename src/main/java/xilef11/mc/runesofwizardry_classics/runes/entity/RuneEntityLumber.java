@@ -20,6 +20,7 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 import com.zpig333.runesofwizardry.util.Utils;
+//TODO rework this one, it has wierd results in forests
 public class RuneEntityLumber extends RuneEntity {
 	public RuneEntityLumber(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneLumber creator) {
@@ -73,8 +74,8 @@ public class RuneEntityLumber extends RuneEntity {
 			}
 			if (entity.ticksExisted() > 100){//chop trees
 				for (int dx = -rad; dx <= rad; dx++){
-					for (int dy = -rad / 2; dy <= rad / 2; dy++){
-						for (int dz = -rad; dz <= rad; dz++){
+					for (int dy = -rad ; dy <= rad ; dy++){
+						for (int dz = -rad; dz <= RANGE; dz++){
 							BlockPos current = pos.add(dx,dy,dz);
 							if (isWood(world,current)){
 								chopTree(world,current,current);
@@ -124,10 +125,10 @@ public class RuneEntityLumber extends RuneEntity {
 		}
 	}
 	private void chopLeaves(World world, BlockPos current, BlockPos start){
-		int dx = Math.abs(current.getX()-start.getX()),
-				dy = Math.abs(current.getY()-start.getY()),
-				dz = Math.abs(current.getZ()-start.getZ());
-		if(dx>RANGE||dy>RANGE||dz>RANGE )return;//don't chop if the distance from the start block is more than 16 blocks
+		int dx = Math.abs(current.getX()-getPos().getX()),
+				dy = Math.abs(current.getY()-getPos().getY()),
+				dz = Math.abs(current.getZ()-getPos().getZ());
+		if(dx>rad||dy>rad||dz>rad )return;//don't chop if the distance from the start block is more than 16 blocks
 		Random rand = new Random();
 		if(Math.random()<dustChance){//drop dust
 			for(int a=rand.nextInt(maxDust);a>=0;a--){
