@@ -31,14 +31,23 @@ public abstract class ClassicRune extends IRune {
 	 */
 	@Override
 	public ItemStack[][] getPattern() {
-		if(pattern==null){
+		if(Config.cacheRuneInfo){
+			if(pattern==null){
+				try {
+					pattern=setupPattern();
+				} catch (IOException e) {
+					ModLogger.logException(Level.FATAL, e, "Could not set up pattern");
+				}
+			}
+			return pattern;
+		}else{
 			try {
-				pattern=setupPattern();
+				return setupPattern();
 			} catch (IOException e) {
 				ModLogger.logException(Level.FATAL, e, "Could not set up pattern");
+				return new ItemStack[4][4];
 			}
 		}
-		return pattern;
 	}
 	protected abstract ItemStack[][] setupPattern() throws IOException;
 	/* (non-Javadoc)
@@ -46,10 +55,14 @@ public abstract class ClassicRune extends IRune {
 	 */
 	@Override
 	public Vec3i getEntityPosition() {
-		if(entityPos==null){
-			entityPos = setupEntityPos();
+		if(Config.cacheRuneInfo){
+			if(entityPos==null){
+				entityPos = setupEntityPos();
+			}
+			return entityPos;
+		}else{
+			return setupEntityPos();
 		}
-		return entityPos;
 	}
 	protected abstract Vec3i setupEntityPos();
 	public abstract String getID();
@@ -58,10 +71,14 @@ public abstract class ClassicRune extends IRune {
 	 */
 	@Override
 	public ItemStack[][] getSacrifice() {
-		if(sacrifice==null){
-			sacrifice=setupSacrifice();
+		if(Config.cacheRuneInfo){
+			if(sacrifice==null){
+				sacrifice=setupSacrifice();
+			}
+			return sacrifice;
+		}else{
+			return setupSacrifice();
 		}
-		return sacrifice;
 	}
 	//this has slightly more overhead in case of a completely null sacrifice, but reduces it otherwise
 	protected abstract ItemStack[][] setupSacrifice();
