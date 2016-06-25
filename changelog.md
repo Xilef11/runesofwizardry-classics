@@ -1,1 +1,0 @@
-- added config option to disable caching of patterns
