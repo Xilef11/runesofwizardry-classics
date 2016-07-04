@@ -1,3 +1,0 @@
-- added stars and beams
-- fix rune of rebirth not working with mod entities
-- should support 1.9.4 to 1.10.2
