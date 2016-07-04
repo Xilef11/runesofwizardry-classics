@@ -33,6 +33,8 @@ public class RuneEntityLevelEarth extends RuneEntity {
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
 		if(!player.worldObj.isRemote){
+			//FX
+			entity.setupStar(0xFFFFFF, (114<<8)|(53<<4)|(62));
 			//set up the rune based on dust used
 			int xp=0;
 			Coords c = ((RuneLevelEarth)creator).getVariableDusts().iterator().next();

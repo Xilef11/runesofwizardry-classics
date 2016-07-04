@@ -1,0 +1,2 @@
+- added stars and beams
+- - should support 1.9.4 to 1.10.2

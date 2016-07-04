@@ -46,12 +46,17 @@ apply plugin: "com.matthewprenger.cursegradle"
 
 //https://github.com/riiid/gradle-github-plugin for auto github releases
 //https://github.com/matthewprenger/CurseGradle for auto curseforge releases
-def mcVersion = "1.9.4"
 def majorVersion = "0"
-def minorVersion = "3"
-def bugfix = ".6"
+def minorVersion = "4"
+def bugfix = ".0"
 def devVersion = "-dev"
 def forgeVersion="1.9.4-12.17.0.1987"
+def mcVersion = forgeVersion.substring(0,forgeVersion.indexOf('-'))
+
+def username = 'ForgeDevName'
+//set from command line with -Pdev_username=name
+if (project.hasProperty('dev_username'))
+username = "${dev_username}"
 
 version = "${mcVersion}-${majorVersion}.${minorVersion}${bugfix}${devVersion}"
 group= "xilef11.mc.runesofwizardry-classics" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -216,6 +221,7 @@ if(project.hasProperty('curseKey')){
 		addGameVersion 'Java 8'
 		addGameVersion 'Java 7'
 		addGameVersion '1.10'
+		addGameVersion '1.10.2'
 		//version pulled from ForgeGradle includes java 6
 		changelogType='markdown'
 		changelog = file('changelog.md').getText()+"\n\nBuilt with Forge "+forgeVersion+" and "+row

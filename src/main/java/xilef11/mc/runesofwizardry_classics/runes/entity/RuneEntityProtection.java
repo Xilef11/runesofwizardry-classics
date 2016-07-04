@@ -54,6 +54,8 @@ public class RuneEntityProtection extends FueledRuneEntity {
 			default:this.onPatternBroken();return;
 			}
 			radius*=8;
+			//FX
+			entity.setupStar(0xFFFFFF, (128<<4)|62);
 		}
 	}
 	private int radius=0;

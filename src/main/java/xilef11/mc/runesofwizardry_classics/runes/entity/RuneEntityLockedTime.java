@@ -29,6 +29,8 @@ public class RuneEntityLockedTime extends FueledRuneEntity {
 		if(!world.isRemote){
 			time = world.getWorldTime();
 			LockedTimeData.get(world).addRune();
+			entity.setupStar(0x00FFFF, 0x00FFFF);
+			entity.setDrawStar(true);
 		}
 	}
 	/* (non-Javadoc)

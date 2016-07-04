@@ -20,6 +20,7 @@ import xilef11.mc.runesofwizardry_classics.runes.RuneResurrection;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
 public class RuneEntityResurrection extends RuneEntity {
 	public RuneEntityResurrection(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,
@@ -30,7 +31,9 @@ public class RuneEntityResurrection extends RuneEntity {
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
 		if(!player.worldObj.isRemote){
-			//nothing I think
+			entity.setupStar(0xFFFFFF, 0xFFFFFF);
+			entity.setDrawStar(true);
+			entity.setupBeam(0xFFFFFF, BeamType.SPIRAL);
 		}
 	}
 	private static final int RAD=2;

@@ -52,6 +52,8 @@ public class RuneEntityRebirth extends RuneEntity {
 					return;
 				}
 			}
+			entity.setupStar(0xFFFFFF, 0xFFFFFF);
+			entity.setDrawStar(true);
 		}
 	}
 	/* (non-Javadoc)

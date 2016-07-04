@@ -33,6 +33,8 @@ public class RuneEntityWisdom extends RuneEntity {
 			if(negated || Utils.takeXP(player, 6)){
 				user = player.getName();
 				ticksSinceRC = 0;
+				entity.setupStar(0x00FF00, 0x00FF00,1,1,new Vec3d(0,-0.9,0));
+				entity.setDrawStar(true);
 			}else{
 				this.onPatternBrokenByPlayer(player);
 			}

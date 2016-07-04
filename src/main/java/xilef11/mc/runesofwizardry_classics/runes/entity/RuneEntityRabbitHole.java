@@ -32,6 +32,9 @@ public class RuneEntityRabbitHole extends RuneEntity {
 			ItemStack[] sacrifice, boolean negated) {
 		World world = player.worldObj;
 		if(!world.isRemote){
+			//FX
+			entity.setupStar(0xFFFFFF, 0xFFFFFF);
+			entity.setDrawStar(true);
 			if(!negated && !player.capabilities.isCreativeMode){
 				if(player.getFoodStats().getFoodLevel()>=4){
 					player.getFoodStats().addStats(-4, 0);
@@ -111,7 +114,7 @@ public class RuneEntityRabbitHole extends RuneEntity {
 				List<EntityPlayer> up = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(getPos(), getPos().add(1,2,1)));
 				for(EntityPlayer p:up){
 					if(p.isSneaking()){
-						ModLogger.logInfo("Torch: "+torch);
+						//ModLogger.logInfo("Torch: "+torch);
 						p.setPositionAndUpdate(torch.getX()+0.5, torch.getY()+0.5, torch.getZ()+0.5);
 						p.fallDistance=0;
 						delay=15;

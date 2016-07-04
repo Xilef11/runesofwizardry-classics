@@ -63,7 +63,8 @@ public class RuneEntityBarrier extends RuneEntity {
 							world.setBlockToAir(p);//remove the dust
 						}
 						//world.markBlockForUpdate(p);
-						world.notifyBlockUpdate(p, world.getBlockState(p), world.getBlockState(p), 0);
+						IBlockState state = world.getBlockState(p);
+						world.notifyBlockUpdate(p, state, state, 3);
 					}
 					for(int i=0;i<currentDepth.length;i++){
 						currentDepth[i]=DEPTH;

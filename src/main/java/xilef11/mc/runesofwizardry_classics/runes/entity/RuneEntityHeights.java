@@ -18,6 +18,7 @@ import xilef11.mc.runesofwizardry_classics.Refs;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
 /*
  * Behaviour:
  * Rises a 16-block column (moves all blocks in the column on each operations)
@@ -40,7 +41,8 @@ public class RuneEntityHeights extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		// Nothing here
+		entity.setupBeam(0x72723E, BeamType.BEACON);
+		entity.setDrawBeam(true);
 	}
 	private int currentDepth=DEPTH;
 	private int highestBlock=0;

@@ -13,6 +13,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import xilef11.mc.runesofwizardry_classics.Refs;
@@ -20,6 +21,7 @@ import xilef11.mc.runesofwizardry_classics.Refs;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
 /*Behaviour:
  * Lasts 1 day
  * Every mob kill adds 1/8 day
@@ -57,6 +59,8 @@ public class RuneEntitySarlacc extends RuneEntity {
 		if(!player.worldObj.isRemote){
 			ticksremaining=Refs.TICKS_PER_DAY;
 			activator=player.getName();
+			entity.setupStar(0xFFFFFF, 0xFFFFFF);
+			entity.setupBeam(0x3333FF, BeamType.SPIRAL, new Vec3d(0,1,0));
 		}
 	}
 	@Override

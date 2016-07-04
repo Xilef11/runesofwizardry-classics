@@ -26,7 +26,9 @@ public class RuneEntityLeapingFrog extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		//start FX?
+		//start FX
+		entity.setupStar(0xFFFFFF, 0x00FF00, 1, 1);
+		entity.setDrawStar(true);
 	}
 	@Override
 	public void update() {

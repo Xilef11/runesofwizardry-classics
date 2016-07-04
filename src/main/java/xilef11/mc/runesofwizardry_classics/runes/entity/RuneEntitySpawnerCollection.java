@@ -19,6 +19,7 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
 /**
  * @author Xilef11
  *
@@ -45,6 +46,10 @@ public class RuneEntitySpawnerCollection extends RuneEntity {
 					return;
 				}
 			}
+			entity.setupStar(0xFFFFFF, 0xFFFFFF,1.05F,1);
+			entity.setupBeam(0xFFFFFF, BeamType.SPIRAL);
+			entity.setDrawBeam(true);
+			entity.setDrawStar(true);
 		}
 	}
 	/* (non-Javadoc)

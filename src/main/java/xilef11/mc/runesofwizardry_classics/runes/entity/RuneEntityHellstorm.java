@@ -1,17 +1,20 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Set;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityArrow.PickupStatus;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.Refs;
 
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
 public class RuneEntityHellstorm extends FueledRuneEntity {
 	public RuneEntityHellstorm(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, IRune creator) {
@@ -21,6 +24,19 @@ public class RuneEntityHellstorm extends FueledRuneEntity {
 	protected int initialTicks() {
 		return Refs.TICKS_PER_DAY/2;
 	}
+	
+	/* (non-Javadoc)
+	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#onRuneActivatedbyPlayer(net.minecraft.entity.player.EntityPlayer, net.minecraft.item.ItemStack[], boolean)
+	 */
+	@Override
+	public void onRuneActivatedbyPlayer(EntityPlayer player,
+			ItemStack[] sacrifice, boolean negated) {
+		super.onRuneActivatedbyPlayer(player, sacrifice, negated);
+		entity.setupStar(0xFFFFFF, 0xFF0000, 1, 1,new Vec3d(0,-0.9,0));
+		entity.setDrawStar(true);
+		entity.setupBeam(0xFF0000, BeamType.SPIRAL);
+	}
+
 	//original radius was 100 blocks, with 20 arrows every 5 ticks
 	private static final int RAD=32,AMOUNT=6,TICKRATE=7;
 	/* (non-Javadoc)

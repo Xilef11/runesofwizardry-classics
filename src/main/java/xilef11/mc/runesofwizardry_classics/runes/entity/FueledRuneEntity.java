@@ -45,6 +45,8 @@ public abstract class FueledRuneEntity extends RuneEntity {
 			ItemStack[] sacrifice, boolean negated) {
 		if(!player.worldObj.isRemote){
 			this.ticksLeft=initialTicks();
+			entity.setupStar(0xFFFFFF, 0xFFFFFF, 1, 1);
+			entity.setDrawStar(true);
 			//register this rune to nearby runes of power distribution
 			findNearbyPowerRunes();
 		}

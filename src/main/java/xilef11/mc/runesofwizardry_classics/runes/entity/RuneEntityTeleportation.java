@@ -14,6 +14,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import xilef11.mc.runesofwizardry_classics.ModLogger;
@@ -43,6 +44,7 @@ public class RuneEntityTeleportation extends RuneEntity {
 			//register the teleport location
 			TeleportationData locations = TeleportationData.get(world);
 			locations.registerLocation(state, getPos());
+			entity.setupStar(0xFFFFFF, 0xFFFFFF,1,2,new Vec3d(0,0.5,0));
 		}
 	}
 	@Override

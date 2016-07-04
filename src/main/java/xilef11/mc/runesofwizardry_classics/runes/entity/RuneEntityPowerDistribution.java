@@ -54,6 +54,8 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 	//the runes that are being powered by this one
 	private List<FueledRuneEntity> poweredRunes=new LinkedList<FueledRuneEntity>();
 	private static final int TICKRATE=10;
+	private static final int STABLE_FUEL_CYCLES=10;
+	private int stableFuel=-1;
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#update()
 	 */
@@ -62,6 +64,7 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 		if(!initialised)init();
 		//super.update(); - don't consume fuel
 		if(!entity.getWorld().isRemote){
+			if(stableFuel<0)stableFuel = TICKRATE*poweredRunes.size()*STABLE_FUEL_CYCLES;
 			if(entity.ticksExisted()%TICKRATE==0){
 				//add fuel to the runes
 				for(FueledRuneEntity fe:poweredRunes){
@@ -70,6 +73,10 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 						ticksLeft-=TICKRATE;
 					}
 				}
+				double percent = ticksLeft/stableFuel;
+				int gb = (int)(255*percent);
+				int color = 0xFF0000|(gb<<4)|(gb);
+				if(entity.stardata!=null)entity.stardata.innercolor=color;
 			}
 		}
 	}
@@ -113,10 +120,14 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 	/**Adds a rune to be powered by this**/
 	public void register(FueledRuneEntity toPower){
 		poweredRunes.add(toPower);
+		if(toPower.entity.stardata!=null)toPower.entity.stardata.scale*=1.04F;
+		stableFuel = TICKRATE*poweredRunes.size()*STABLE_FUEL_CYCLES;
 	}
 	/**removes a rune to be powered by this**/
 	public void unregister(FueledRuneEntity toPower){
 		poweredRunes.remove(toPower);
+		if(toPower.entity.stardata!=null)toPower.entity.stardata.scale/=1.04F;
+		stableFuel = TICKRATE*poweredRunes.size()*STABLE_FUEL_CYCLES;
 	}
 	private Set<BlockPos> toInit=null;
 	private boolean initialised=false;

@@ -1,6 +1,7 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Set;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,6 +12,7 @@ import net.minecraft.world.World;
 import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
 public class RuneEntityDusk extends RuneEntity {
 	private boolean activatedAtNight=false;
 	public RuneEntityDusk(ItemStack[][] actualPattern, EnumFacing facing,
@@ -22,6 +24,10 @@ public class RuneEntityDusk extends RuneEntity {
 		World world = player.worldObj;
 		if(!world.isRemote){
 			activatedAtNight=!world.isDaytime();
+			if(activatedAtNight){
+				entity.setupStar(0xFFFFFF,0xFFFFFF);
+				entity.setDrawStar(true);
+			}
 		}
 		//maybe setup FX
 	}
@@ -30,6 +36,13 @@ public class RuneEntityDusk extends RuneEntity {
 		World world = entity.getWorld();
 		if(!world.isRemote){
 			if(world.isDaytime()){//always true client-side
+				if(entity.beamdata==null){
+					entity.setupBeam(0x000000, BeamType.SPIRAL);
+					entity.setDrawBeam(true);
+					entity.setDrawStar(false);
+					IBlockState state = world.getBlockState(getPos());
+					world.notifyBlockUpdate(getPos(), state, state, 3);
+				}
 				world.setWorldTime(world.getWorldTime()+25);
 				activatedAtNight=false;//we got to daytime
 			}else{//if we got to night time
