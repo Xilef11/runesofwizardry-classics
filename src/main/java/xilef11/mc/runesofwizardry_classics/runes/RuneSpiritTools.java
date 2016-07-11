@@ -10,11 +10,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
+import xilef11.mc.runesofwizardry_classics.items.ItemSpiritSword;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneSpiritTools extends ClassicRune {
+	public public RuneSpiritTools() {
+		//create the tool instances. this is called in preinit so it's OK to do it here
+		ItemSpiritSword.
+	}
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		ItemStack l = EnumDustTypes.LAPIS.getStack(1);
