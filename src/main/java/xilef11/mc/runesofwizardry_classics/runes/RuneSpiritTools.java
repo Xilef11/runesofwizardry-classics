@@ -11,14 +11,15 @@ import net.minecraft.util.math.Vec3i;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.items.ItemSpiritSword;
-import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
+import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntitySpiritTools;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneSpiritTools extends ClassicRune {
-	public public RuneSpiritTools() {
+	public RuneSpiritTools() {
 		//create the tool instances. this is called in preinit so it's OK to do it here
-		ItemSpiritSword.
+		ItemSpiritSword.instance();
+		
 	}
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
@@ -59,7 +60,7 @@ public class RuneSpiritTools extends ClassicRune {
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntityUnimplemented(actualPattern, front, dusts, entity, this);
+		return new RuneEntitySpiritTools(actualPattern, front, dusts, entity, this);
 	}
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getShortDesc()
