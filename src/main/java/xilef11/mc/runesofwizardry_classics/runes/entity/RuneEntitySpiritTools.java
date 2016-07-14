@@ -29,6 +29,7 @@ public class RuneEntitySpiritTools extends RuneEntity {
 	private int countdown;
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player, ItemStack[] sacrifice,boolean negated) {
+		if(player.worldObj.isRemote)return;
 		if(negated || Utils.takeXP(player, 18)){
 			for(ItemStack i:sacrifice){
 				if(i!=null){
@@ -50,16 +51,18 @@ public class RuneEntitySpiritTools extends RuneEntity {
 
 	@Override
 	public void update() {
-		countdown--;
-		if(countdown==0){
-			switch(type){
-			case SWORD:
-				Utils.spawnItemCentered(entity.getWorld(), getPos(), ItemSpiritSword.createStack());
-				break;
-			default:
+		if(!entity.getWorld().isRemote){
+			countdown--;
+			if(countdown==0){
+				switch(type){
+				case SWORD:
+					Utils.spawnItemCentered(entity.getWorld(), getPos(), ItemSpiritSword.createStack());
+					break;
+				default:
+				}
+				this.onPatternBroken();
 			}
 		}
-
 	}
 
 	/* (non-Javadoc)

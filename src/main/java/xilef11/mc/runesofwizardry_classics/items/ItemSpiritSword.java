@@ -66,7 +66,8 @@ public class ItemSpiritSword extends ItemSword{
 	@Override
 	public float getDamageVsEntity() {
 		//diamond is 3.0
-		return 4.0F;
+		//FIXME changing this has no effect
+		return 100.0F;
 	}
 	//TODO might want to make this slightly faster than normal sword
 	/* (non-Javadoc)
@@ -74,7 +75,7 @@ public class ItemSpiritSword extends ItemSword{
 	 */
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target,EntityLivingBase attacker) {
-		if(attacker instanceof EntityPlayer){
+		if(attacker instanceof EntityPlayer && !attacker.worldObj.isRemote){
 			EntityPlayer player = (EntityPlayer) attacker;
 			Random rand = new Random();
 			double r = rand.nextDouble();
