@@ -1,0 +1,2 @@
+- implemented the Rune of Spirit Tools
+- added JEI descriptions to spirit tools

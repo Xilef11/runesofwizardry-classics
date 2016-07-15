@@ -130,6 +130,7 @@ runesofwizardry_classics.rune.hellstorm.shortdesc=Summons a Rain of Fire and Dea
 runesofwizardry_classics.rune.protection.shortdesc=Pushes back hostile mobs
 runesofwizardry_classics.rune.lumber.extrasac=Chops down trees.
 runesofwizardry_classics.rune.powerdistribution.shortdesc=Distributes fuel to nearby runes
+runesofwizardry_classics.rune.spirittools.shortdesc=Summons Spirit versions of your tools
 
 #extra stuff
 runesofwizardry_classics.rune.decorative=Decorative use only (or WIP)
@@ -139,3 +140,7 @@ runesofwizardry_classics.rune.rebirth.noegg=A Spawn Egg does not exist for that 
 #items
 item.runesofwizardry_classics_spirit_sword.name=Spirit Sword
 item.runesofwizardry_classics_spirit_pickaxe.name=Spirit Pickaxe
+
+#JEI descriptions
+runesofwizardry_classics.jei.spirit_sword=Obtained through the Rune of the Spirit Tools, has a chance to drop Gunpowder Runic Dust on hit.
+runesofwizardry_classics.jei.spirit_pickaxe=Obtained through the Rune of the Spirit Tools. Hold right-click to charge, release to break stone in a large area with a chance to drop Lapis Runic Dust

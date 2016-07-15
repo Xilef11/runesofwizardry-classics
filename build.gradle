@@ -50,7 +50,7 @@ def majorVersion = "0"
 def minorVersion = "4"
 def bugfix = ".1"
 def devVersion = "-dev"
-def forgeVersion="1.9.4-12.17.0.1987"
+def forgeVersion="1.10.2-12.18.1.2014"
 def mcVersion = forgeVersion.substring(0,forgeVersion.indexOf('-'))
 
 def username = 'ForgeDevName'
@@ -87,8 +87,16 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 	replace '@VERSION@', project.version
 	replaceIn 'Refs.java'
+	
+	//JEI
+	useDepAts = true
 }
-
+repositories {
+  //JEI
+  maven {
+    url "http://dvs1.progwml6.com/files/maven"
+  }
+}
 dependencies {
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
@@ -110,6 +118,8 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    
+    deobfCompile "mezz.jei:jei_1.10.2:3.7.6.232"
 }
 
 processResources
