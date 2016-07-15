@@ -65,7 +65,14 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see net.minecraft.item.Item#hasEffect(net.minecraft.item.ItemStack)
+	 */
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return true;
+	}
 	/**
 	 * How long it takes to use or consume an item
 	 */
@@ -87,7 +94,6 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 	 */
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world,	EntityPlayer player,EnumHand hand) {
-		//player.setItemInUse(stack,this.getMaxItemUseDuration(stack));
 		player.setActiveHand(hand);
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
 	}
@@ -126,9 +132,6 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 					for (int k = -rad; k <= rad; k++) {
 						if (item.getItemDamage() >= item.getMaxDamage())
 							continue;
-						//						int bid = world.getBlockId(x + i, y + j, z + k);
-						//						int meta = world.getBlockMetadata(x + i, y + j, z + k);
-						//						Block block = Block.blocksList[bid];
 						BlockPos currentPos = hitBlock.add(i,j,k);
 						IBlockState state = world.getBlockState(currentPos);
 						Block block = state.getBlock();
@@ -166,17 +169,6 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 									if (sucess) {
 										block.onBlockDestroyedByPlayer(world, currentPos,state);
 									}
-									/*
-									world.setBlockAndMetadataWithNotify(i + x, j + y, k
-											+ z, 0,0,3); // update world
-									block.onBlockDestroyedByPlayer(world,
-											i + x, j + y, k + z, world
-													.getBlockMetadata(i + x, j
-															+ y, k + z)); // destroy
-																			// block
-									block.dropBlockAsItem(world, i + x, j + y,
-											k + z, bid, 0); // drop block
-									 */
 									if (!creative){
 										item.damageItem(1, player);
 										block.onBlockDestroyedByPlayer(world, currentPos, state);

@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "items/gold_pickaxe"
+        "layer0": "runesofwizardry_classics:items/spirit_pickaxe"
     }
 }
