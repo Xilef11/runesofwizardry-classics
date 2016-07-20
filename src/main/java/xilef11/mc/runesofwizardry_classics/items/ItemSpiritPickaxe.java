@@ -52,7 +52,7 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 
 	public static ItemSpiritPickaxe instance(){
 		if(instance==null){
-			instance=new ItemSpiritPickaxe(ToolMaterial.DIAMOND);
+			instance=new ItemSpiritPickaxe(ToolMaterial.GOLD);
 			RunesofWizardry_Classics.proxy.RegisterItemModel(instance, 0, Refs.TEXTURE_PATH+instance.getName(), "inventory");
 			//model
 		}

@@ -5,9 +5,12 @@ import java.util.Random;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,6 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
 
+import com.google.common.collect.Multimap;
 import com.zpig333.runesofwizardry.RunesOfWizardry;
 
 public class ItemSpiritSword extends ItemSword{
@@ -35,7 +39,7 @@ public class ItemSpiritSword extends ItemSword{
 		return name;
 	}
 	private ItemSpiritSword(){
-		this(ToolMaterial.DIAMOND);
+		this(ToolMaterial.GOLD);
 	}
 	public static ItemSpiritSword instance(){
 		if(instance==null){
@@ -66,10 +70,8 @@ public class ItemSpiritSword extends ItemSword{
 	@Override
 	public float getDamageVsEntity() {
 		//diamond is 3.0
-		//FIXME changing this has no effect
-		return 100.0F;
+		return 3.0F;
 	}
-	//TODO might want to make this slightly faster than normal sword
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.ItemSword#hitEntity(net.minecraft.item.ItemStack, net.minecraft.entity.EntityLivingBase, net.minecraft.entity.EntityLivingBase)
 	 */
@@ -101,7 +103,23 @@ public class ItemSpiritSword extends ItemSword{
 		subItems.add(createStack());
 	}
 	
+	@Override
+	 public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot){
+	        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
 
+	        if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
+	        {
+	        	//remove old values
+	        	multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName());
+	        	multimap.removeAll(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName());
+	            //set how we want them
+	        	multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 7D, 0));
+	        	//base is 4
+	            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", 2-4, 0));
+	        }
+
+	        return multimap;
+	    }
 
 
 }
