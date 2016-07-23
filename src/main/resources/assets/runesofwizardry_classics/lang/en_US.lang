@@ -65,7 +65,7 @@ runesofwizardry_classics.rune.sarlacc=Rune of Sarlacc
 
 #extra sacrifice info
 runesofwizardry_classics.rune.resurrection.extrasac=Two drops from the resurrected mob are to be placed on the rune after it has been activated
-runesofwizardry_classics.rune.mountain.extrasac=A live Iron Golem + 10 levels
+runesofwizardry_classics.rune.mountain.extrasac=A live Iron Golem + 10 levels. The area to lift must be surrounded with connected clay blocks, 1 level below the rune.
 runesofwizardry_classics.rune.enchantingsilktouch.extrasac=10 levels
 runesofwizardry_classics.rune.enchantingfortune.extrasac=15 levels
 runesofwizardry_classics.rune.spawnercollection.extrasac=10 levels
@@ -131,11 +131,13 @@ runesofwizardry_classics.rune.protection.shortdesc=Pushes back hostile mobs
 runesofwizardry_classics.rune.lumber.extrasac=Chops down trees.
 runesofwizardry_classics.rune.powerdistribution.shortdesc=Distributes fuel to nearby runes
 runesofwizardry_classics.rune.spirittools.shortdesc=Summons Spirit versions of your tools
+runesofwizardry_classics.rune.mountain.shortdesc=Lifts a mountain
 
 #extra stuff
 runesofwizardry_classics.rune.decorative=Decorative use only (or WIP)
 
 runesofwizardry_classics.rune.rebirth.noegg=A Spawn Egg does not exist for that entity.
+runesofwizardry_classics.rune.mountain.noarea=Could not find a marked area
 
 #items
 item.runesofwizardry_classics_spirit_sword.name=Spirit Sword

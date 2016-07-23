@@ -8,7 +8,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import xilef11.mc.runesofwizardry_classics.Refs;
-import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityUnimplemented;
+import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityMountain;
 
 import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
@@ -46,15 +46,6 @@ public class RuneMountain extends VariableRune {
 	@Override
 	public RuneEntity createRune(ItemStack[][] actualPattern, EnumFacing front,
 			Set<BlockPos> dusts, TileEntityDustActive entity) {
-		return new RuneEntityUnimplemented(actualPattern, front, dusts, entity, this);
+		return new RuneEntityMountain(actualPattern, front, dusts, entity, this);
 	}
-	/* (non-Javadoc)
-	 * @see com.zpig333.runesofwizardry.api.IRune#getShortDesc()
-	 */
-	@Override
-	public String getShortDesc() {
-		//Decorative/WIP
-		return Refs.Lang.DEC;
-	}
-	
 }
