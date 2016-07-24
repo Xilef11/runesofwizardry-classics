@@ -49,7 +49,8 @@ public class RuneEntityMountain extends RuneEntity {
 	
 	public RuneEntityMountain(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneMountain creator) {
-		super(actualPattern, facing, dusts, entity, creator);
+		//we will need to add to the dusts, so make a new set that accepts the "add" operation
+		super(actualPattern, facing, new HashSet<BlockPos>(dusts), entity, creator);
 	}
 	public static final int TICKRATE = 32;
 	private boolean gotGolem=false;
@@ -86,6 +87,7 @@ public class RuneEntityMountain extends RuneEntity {
 			if(initialPos==null){
 				player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".mountain.noarea"));
 				this.onPatternBrokenByPlayer(player);
+				return;
 			}
 			currentHeight = new int[initialPos.size()];
 			Arrays.fill(currentHeight, 0);
@@ -115,7 +117,6 @@ public class RuneEntityMountain extends RuneEntity {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		World world = entity.getWorld();
 		if(!world.isRemote && gotGolem){
 			ticksSinceGolem++;
@@ -130,6 +131,8 @@ public class RuneEntityMountain extends RuneEntity {
 					int bottom = base.getY()-ch;
 					BlockPos nextUp = base.add(0, ch+1, 0);
 					//special case for the dusts, we want to lift them and not stop.
+					//FIXME this does not seem to move the dust, but breaks the rune instead...
+					//probably because the neighbours changed
 					if(world.getBlockState(nextUp).getBlock()==WizardryRegistry.dust_placed){
 						BlockPos up2=nextUp.up();
 						//update the posSet of the rune if we will move the dust
@@ -235,7 +238,6 @@ public class RuneEntityMountain extends RuneEntity {
 		LinkedHashSet<BlockPos> result = new LinkedHashSet<BlockPos>();
 		EdgeResult edge = new EdgeResult(initial.getX(),initial.getZ());
 		edge = findEdge(world,initial,edge);
-		//FIXME what prints here is not the full edge
 		ModLogger.logInfo("Found "+edge);
 		int y = initial.getY();
 		//add edge to result
@@ -250,7 +252,6 @@ public class RuneEntityMountain extends RuneEntity {
 				if(isInside(cx,cz,edge))result.add(new BlockPos(cx,y,cz));
 			}
 		}
-		//FIXME this is *only* the edge (most of the time)
 		ModLogger.logInfo("Found "+result.size()+" blocks in area");
 		return result;
 	}
@@ -260,8 +261,8 @@ public class RuneEntityMountain extends RuneEntity {
 		//set the extreme positions
 		if(currentX<edge.smallX)edge.smallX=currentX;
 		if(currentZ<edge.smallZ)edge.smallZ=currentZ;
-		if(currentX>edge.bigX)edge.smallX=currentX;
-		if(currentX>edge.bigZ)edge.bigZ=currentZ;
+		if(currentX>edge.bigX)edge.bigX=currentX;
+		if(currentZ>edge.bigZ)edge.bigZ=currentZ;
 		Set<Integer> zpos = edge.positions.get(currentX);
 		if(zpos==null){
 			zpos=new HashSet<Integer>();
@@ -310,7 +311,11 @@ public class RuneEntityMountain extends RuneEntity {
 			sb.append("Edge: ");
 			sb.append("x: ").append(smallX).append(" to ").append(bigX);
 			sb.append(" z: ").append(smallZ).append(" to ").append(bigZ);
-			sb.append(" total blocks: ").append(positions.values().size());
+			int blocks=0;
+			for(Set<Integer> s:positions.values()){
+				blocks+=s.size();
+			}
+			sb.append(" total blocks: ").append(blocks);
 			return sb.toString();
 		}
 	}
