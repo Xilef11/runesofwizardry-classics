@@ -64,7 +64,7 @@ public class RuneEntityTorch extends RuneEntity {
 				else entity.setDrawBeam(true);
 				for(EntityItem i:world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos()))){
 					ItemStack stack = i.getEntityItem();
-					if(stack.getItem()==Items.DYE){//FIXME this is false FSR?
+					if(stack.getItem()==Items.DYE){
 						if(entity.beamdata!=null)entity.beamdata.color=EnumDyeColor.byDyeDamage(stack.getItemDamage()).getMapColor().colorValue;
 						IBlockState state = world.getBlockState(getPos());
 						i.setDead();

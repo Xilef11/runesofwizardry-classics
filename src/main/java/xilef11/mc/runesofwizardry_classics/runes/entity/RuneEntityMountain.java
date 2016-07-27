@@ -83,7 +83,11 @@ public class RuneEntityMountain extends RuneEntity {
 			entity.setupStar(0xFFFF00, 0xFFFFFF);
 			entity.setupBeam(0, BeamType.SPIRAL);
 			entity.setDrawStar(true);
-			initialPos = findArea(world,getPos().down());
+			BlockPos down = getPos().down();
+			initialPos = findArea(world,down);
+			//make sure the active dust column is the last one
+			initialPos.remove(down);
+			initialPos.add(down);
 			if(initialPos==null){
 				player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".mountain.noarea"));
 				this.onPatternBrokenByPlayer(player);
@@ -124,39 +128,52 @@ public class RuneEntityMountain extends RuneEntity {
 			if(ticksSinceGolem%TICKRATE==0){
 				Iterator<BlockPos> it = initialPos.iterator();
 				//for all columns
-				//FIXME skips every 2nd slice
 		columns: for(int i=0;i<currentHeight.length&&it.hasNext();i++){
 					int ch = currentHeight[i];
+					if(ch>=height)continue;
 					BlockPos base = it.next();
-					int bottom = base.getY()-ch;
+					int bottom = base.getY()-height+ch;
 					BlockPos nextUp = base.add(0, ch+1, 0);
 					//special case for the dusts, we want to lift them and not stop.
-					//FIXME this does not seem to move the dust, but breaks the rune instead...
-					//probably because the neighbours changed
 					if(world.getBlockState(nextUp).getBlock()==WizardryRegistry.dust_placed){
+						ModLogger.logInfo("Moving placed dust column at "+nextUp);
 						BlockPos up2=nextUp.up();
 						//update the posSet of the rune if we will move the dust
 						if(world.isAirBlock(up2)){
 							TileEntity te = world.getTileEntity(nextUp);
 							if(te instanceof TileEntityDustPlaced){
+								if(te instanceof TileEntityDustActive)ModLogger.logInfo("active dust");
 								TileEntityDustPlaced ted = (TileEntityDustPlaced)te;
 								RuneEntity ent = ted.getRune();
 								if(ent!=null){
 									//replace the dust position in the rune with 1 block higher (because it will get moved)
+									//FIXME this logic does not seem to work...
 									Iterator<BlockPos> dp = ent.dustPositions.iterator();
 									while(dp.hasNext()){
-										if(dp.next().equals(nextUp)){
+										BlockPos b = dp.next();
+										if(b.equals(nextUp)){
 											dp.remove();
 											break;
 										}
 									}
+									//maybe this doesn't get saved properly (markDirty needed)
+									//seems like there is a client-server desync
 									ent.dustPositions.add(up2);
+									ent.entity.markDirty();
 								}
+								//XXX this doesn't help
+//								if(te instanceof TileEntityDustActive){
+//									IBlockState s = world.getBlockState(nextUp); 
+//									world.notifyBlockUpdate(nextUp, s, s, 3);
+//								}
 							}
 						}
 						nextUp=up2;
+						ch++;
 					}
 					if(world.isAirBlock(nextUp)){
+						//setBlockState calls breakBlock, thus breaking the rune. this is used as a workaround
+						world.restoringBlockSnapshots=true;
 						for(int y=ch;y>bottom-base.getY();y--){
 							BlockPos current = base.add(0,y,0);
 							IBlockState toPush = world.getBlockState(current);
@@ -166,18 +183,40 @@ public class RuneEntityMountain extends RuneEntity {
 							world.setBlockState(up, toPush);
 							TileEntity te = world.getTileEntity(current);
 							if(te!=null){
-								NBTTagCompound tagCompound = te.writeToNBT(new NBTTagCompound());
+								NBTTagCompound oldData = te.writeToNBT(new NBTTagCompound());
+								
 								TileEntity newTE = world.getTileEntity(up);
-								if(newTE!=null)newTE.readFromNBT(tagCompound);
+								//see https://github.com/gigaherz/PackingTape/blob/master/src/main/java/gigaherz/packingtape/tape/BlockPackaged.java#L219,L232
+								if(newTE!=null){
+									NBTTagCompound merged = new NBTTagCompound();
+									NBTTagCompound empty = merged.copy();
+									newTE.writeToNBT(merged);
+									merged.merge(oldData);
+									merged.setInteger("x", up.getX());
+				                    merged.setInteger("y", up.getY());
+				                    merged.setInteger("z", up.getZ());
+				                    if (!merged.equals(empty))
+				                    {
+				                        newTE.readFromNBT(merged);
+				                        newTE.markDirty();
+				                    }
+				                    //this doesn't help
+//				                    world.notifyBlockUpdate(up, Blocks.AIR.getDefaultState(), toPush, 3);
+								}
 							}
 							world.setBlockToAir(current);
 							//might need to do notifyBlockUpdate
+							//not helping either
+//							world.notifyBlockUpdate(up, Blocks.AIR.getDefaultState(), toPush, 3);
+//							world.notifyBlockUpdate(current, toPush, Blocks.AIR.getDefaultState(), 3);
 						}
 						currentHeight[i]++;
+						
+						world.restoringBlockSnapshots=false;
 					}
 					
 				}
-				if(ticksSinceGolem>=TICKRATE*height)this.onPatternBroken();
+				if(ticksSinceGolem>=TICKRATE*(height+3))this.onPatternBroken();
 			}
 		}
 
