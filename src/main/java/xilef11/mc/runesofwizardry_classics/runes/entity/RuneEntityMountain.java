@@ -1,5 +1,6 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -17,10 +18,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import scala.actors.threadpool.Arrays;
 import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
@@ -86,12 +87,14 @@ public class RuneEntityMountain extends RuneEntity {
 			BlockPos down = getPos().down();
 			initialPos = findArea(world,down);
 			//make sure the active dust column is the last one
-			initialPos.remove(down);
-			initialPos.add(down);
 			if(initialPos==null){
 				player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".mountain.noarea"));
 				this.onPatternBrokenByPlayer(player);
 				return;
+			}
+			if(initialPos.contains(down)){
+				initialPos.remove(down);
+				initialPos.add(down);
 			}
 			currentHeight = new int[initialPos.size()];
 			Arrays.fill(currentHeight, 0);
@@ -136,18 +139,17 @@ public class RuneEntityMountain extends RuneEntity {
 					BlockPos nextUp = base.add(0, ch+1, 0);
 					//special case for the dusts, we want to lift them and not stop.
 					if(world.getBlockState(nextUp).getBlock()==WizardryRegistry.dust_placed){
-						ModLogger.logInfo("Moving placed dust column at "+nextUp);
+						//ModLogger.logInfo("Moving placed dust column at "+nextUp);
 						BlockPos up2=nextUp.up();
 						//update the posSet of the rune if we will move the dust
 						if(world.isAirBlock(up2)){
 							TileEntity te = world.getTileEntity(nextUp);
 							if(te instanceof TileEntityDustPlaced){
-								if(te instanceof TileEntityDustActive)ModLogger.logInfo("active dust");
+								//if(te instanceof TileEntityDustActive)ModLogger.logInfo("active dust");
 								TileEntityDustPlaced ted = (TileEntityDustPlaced)te;
 								RuneEntity ent = ted.getRune();
 								if(ent!=null){
 									//replace the dust position in the rune with 1 block higher (because it will get moved)
-									//FIXME this logic does not seem to work...
 									Iterator<BlockPos> dp = ent.dustPositions.iterator();
 									while(dp.hasNext()){
 										BlockPos b = dp.next();
@@ -156,29 +158,27 @@ public class RuneEntityMountain extends RuneEntity {
 											break;
 										}
 									}
-									//maybe this doesn't get saved properly (markDirty needed)
-									//seems like there is a client-server desync
 									ent.dustPositions.add(up2);
 									ent.entity.markDirty();
 								}
-								//XXX this doesn't help
-//								if(te instanceof TileEntityDustActive){
-//									IBlockState s = world.getBlockState(nextUp); 
-//									world.notifyBlockUpdate(nextUp, s, s, 3);
-//								}
 							}
 						}
 						nextUp=up2;
 						ch++;
 					}
 					if(world.isAirBlock(nextUp)){
+						currentHeight[i]++;//this is here to avoid changing TE data after moving it
+						entity.markDirty();
 						//setBlockState calls breakBlock, thus breaking the rune. this is used as a workaround
 						world.restoringBlockSnapshots=true;
 						for(int y=ch;y>bottom-base.getY();y--){
 							BlockPos current = base.add(0,y,0);
 							IBlockState toPush = world.getBlockState(current);
 							BlockPos up = current.up();
-							//IBlockState stateUp = world.getBlockState(up);
+							//move entities
+							for(Entity e:world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(current, current.add(1,2,1)))){
+								e.setPositionAndUpdate(e.posX, current.getY()+1, e.posZ);
+							}
 							if(toPush.getBlock()==Blocks.BEDROCK)continue columns;
 							world.setBlockState(up, toPush);
 							TileEntity te = world.getTileEntity(current);
@@ -200,23 +200,15 @@ public class RuneEntityMountain extends RuneEntity {
 				                        newTE.readFromNBT(merged);
 				                        newTE.markDirty();
 				                    }
-				                    //this doesn't help
-//				                    world.notifyBlockUpdate(up, Blocks.AIR.getDefaultState(), toPush, 3);
 								}
 							}
 							world.setBlockToAir(current);
-							//might need to do notifyBlockUpdate
-							//not helping either
-//							world.notifyBlockUpdate(up, Blocks.AIR.getDefaultState(), toPush, 3);
-//							world.notifyBlockUpdate(current, toPush, Blocks.AIR.getDefaultState(), 3);
 						}
-						currentHeight[i]++;
-						
 						world.restoringBlockSnapshots=false;
 					}
 					
 				}
-				if(ticksSinceGolem>=TICKRATE*(height+3))this.onPatternBroken();
+				if(ticksSinceGolem>=TICKRATE*(height+2))this.onPatternBroken();
 			}
 		}
 
@@ -326,12 +318,22 @@ public class RuneEntityMountain extends RuneEntity {
 	}
 	
 	private static boolean isInside(int x, int z, EdgeResult edge){
+		//note: we must rework this to be 2 non-adjacent blocks...
+		//i.e adjacent blocks should count as 1 point
+		Set<Integer> zset = edge.positions.get(x);
+		if(zset==null)return false;
+		//XXX might be better to do the sort somewhere else (so it's always sorted) instead of re-sorting every block
+		Integer[] za = new Integer[zset.size()];
+		za = zset.toArray(za);
+		Arrays.sort(za);
+		
 		int smaller=0,larger=0;
-		Set<Integer> zz = edge.positions.get(x);
-		if(zz==null)return false;
-		for(Integer cz:zz){
-			if(cz<z)smaller++;
-			if(cz>z)larger++;
+		for(int i=0;i<za.length;i++){
+			int cz = za[i];
+			if(i==0||cz!=(za[i-1]+1)){
+				if(cz<z)smaller++;
+				if(cz>z)larger++;
+			}
 		}
 		//for the point to be inside the polygon, the number of points on the edge on both sides (left/right) must be odd http://alienryderflex.com/polygon/
 		return smaller%2!=0 && larger%2!=0;
