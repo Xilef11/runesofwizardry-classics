@@ -301,6 +301,7 @@ public class RuneEntityMountain extends RuneEntity {
 		}
 		zpos.add(currentZ);
 		//find surrounding blocks
+		//XXX we may want to also look at corners, that might reduce the likeliness of "bad" patterns
 		for(EnumFacing f:EnumFacing.HORIZONTALS){
 			BlockPos next = currentBlock.offset(f);
 			if(isMarker(world, next)){
@@ -320,6 +321,19 @@ public class RuneEntityMountain extends RuneEntity {
 	private static boolean isInside(int x, int z, EdgeResult edge){
 		//note: we must rework this to be 2 non-adjacent blocks...
 		//i.e adjacent blocks should count as 1 point
+		//XXX actually, this adds another problem with adjacent blocks...
+		//might need to switch algorithms here... 
+		//http://stackoverflow.com/questions/14685739/find-all-inner-grid-points-of-a-polygon-made-up-from-neighbouring-grid-points
+		/*
+		 * XX     XX <- this row will be ignored if we don't "merge" adjacent blocks
+		 *  XXXXXXX
+		 *  
+		 *  x      x
+		 *  x  xx  x <- this one will also be ignored
+		 *  x xxxx x <- this row will be ignored if we merge adjacent blocks
+		 *  xxx  xxx
+		 * 
+		 */
 		Set<Integer> zset = edge.positions.get(x);
 		if(zset==null)return false;
 		//XXX might be better to do the sort somewhere else (so it's always sorted) instead of re-sorting every block
