@@ -75,7 +75,7 @@ runesofwizardry_classics.rune.spirittools.extrasac=18 levels
 runesofwizardry_classics.rune.rabbitHole.extrasac=2 hunger
 runesofwizardry_classics.rune.healing.extrasac=2 levels
 runesofwizardry_classics.rune.spriteearth.extrasac=20 levels
-runesofwizardry_classics.rune.spritefire.extrasac=22 levels
+runesofwizardry_classics.rune.spritefire.extrasac=22 levels\nLasts for 3 days unless fueled
 runesofwizardry_classics.rune.barrier.extrasac=3 levels\nmight destroy blocks on its path
 runesofwizardry_classics.rune.void.extrasac=3 levels\nSacrificed items will be stored\nActivate with no sacrifice to recover your items
 runesofwizardry_classics.rune.transport.extrasac=5 levels\nNetwork is set by the block under the blaze square
@@ -132,6 +132,7 @@ runesofwizardry_classics.rune.lumber.extrasac=Chops down trees.
 runesofwizardry_classics.rune.powerdistribution.shortdesc=Distributes fuel to nearby runes
 runesofwizardry_classics.rune.spirittools.shortdesc=Summons Spirit versions of your tools
 runesofwizardry_classics.rune.mountain.shortdesc=Lifts a mountain
+runesofwizardry_classics.rune.spritefire.shortdesc=Summons a fire sprite to burn your enemies.
 
 #extra stuff
 runesofwizardry_classics.rune.decorative=Decorative use only (or WIP)
