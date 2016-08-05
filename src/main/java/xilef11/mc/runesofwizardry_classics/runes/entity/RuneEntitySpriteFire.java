@@ -46,7 +46,6 @@ public class RuneEntitySpriteFire extends FueledRuneEntity {
 			activatingPlayer=player.getName();
 			entity.setupStar(0xFF0000, 0xFF0000);
 			entity.setDrawStar(true);
-			//TODO spawn the sprite entity
 		}
 	}
 	private static final int RAD=3;
@@ -55,6 +54,7 @@ public class RuneEntitySpriteFire extends FueledRuneEntity {
 	 */
 	@Override
 	public void update() {
+		//we could also do this with an actual entity that follows the player around...
 		World world = entity.getWorld();
 			if(!this.hasRedstoneSignal()){
 				super.update();
@@ -98,14 +98,6 @@ public class RuneEntitySpriteFire extends FueledRuneEntity {
 			}else{
 				entity.setDrawStar(false);
 			}
-	}
-
-	/* (non-Javadoc)
-	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#onPatternBroken()
-	 */
-	@Override
-	public void onPatternBroken() {
-		super.onPatternBroken();
 	}
 
 	/* (non-Javadoc)
