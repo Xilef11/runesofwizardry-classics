@@ -14,6 +14,9 @@ import com.zpig333.runesofwizardry.api.IRune;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 /*
  * Really hard to guess what this does from code, and it crashes on activation...
+ * managed to test on an older version:
+ * 8 blocks float around the player, and surround it when crouching
+ * when floating, blocks have no collision
  */
 public class RuneEntitySpriteEarth extends FueledRuneEntity {
 
