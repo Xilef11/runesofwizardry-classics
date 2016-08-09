@@ -74,8 +74,8 @@ runesofwizardry_classics.rune.rebirth.extrasac=A live Mob + 10 levels
 runesofwizardry_classics.rune.spirittools.extrasac=18 levels
 runesofwizardry_classics.rune.rabbitHole.extrasac=2 hunger
 runesofwizardry_classics.rune.healing.extrasac=2 levels
-runesofwizardry_classics.rune.spriteearth.extrasac=20 levels
-runesofwizardry_classics.rune.spritefire.extrasac=22 levels\nLasts for 3 days unless fueled
+runesofwizardry_classics.rune.spriteearth.extrasac=20 levels\nLasts 3 days unless fueled
+runesofwizardry_classics.rune.spritefire.extrasac=22 levels\nLasts 3 days unless fueled
 runesofwizardry_classics.rune.barrier.extrasac=3 levels\nmight destroy blocks on its path
 runesofwizardry_classics.rune.void.extrasac=3 levels\nSacrificed items will be stored\nActivate with no sacrifice to recover your items
 runesofwizardry_classics.rune.transport.extrasac=5 levels\nNetwork is set by the block under the blaze square
@@ -92,7 +92,7 @@ runesofwizardry_classics.rune.fire.extrasac=Lasts 1/4 of a day unless fueled\nIt
 runesofwizardry_classics.rune.lockedtime.extrasac=Lasts 1 day unless fueled\nWarning: May break mods
 runesofwizardry_classics.rune.hellstorm.extrasac=Lasts 1/2 of a day unless fueled.\nWarning: May cause massive lag
 runesofwizardry_classics.rune.protection.extrasac=Lasts 1 day unless fueled.
-runesofwizardry_classics.rune.lumber.extrasac=Must be placed around a tree\nHas a chance of dropping extra itemsw
+runesofwizardry_classics.rune.lumber.extrasac=Must be placed around a tree\nHas a chance of dropping extra items
 
 #descriptions
 runesofwizardry_classics.rune.torch.shortdesc=Spawn a torch
@@ -133,6 +133,7 @@ runesofwizardry_classics.rune.powerdistribution.shortdesc=Distributes fuel to ne
 runesofwizardry_classics.rune.spirittools.shortdesc=Summons Spirit versions of your tools
 runesofwizardry_classics.rune.mountain.shortdesc=Lifts a mountain
 runesofwizardry_classics.rune.spritefire.shortdesc=Summons a fire sprite to burn your enemies.
+runesofwizardry_classics.rune.spriteearth.shortdesc=Summons an earth sprite that will protect you if you stop and crouch
 
 #extra stuff
 runesofwizardry_classics.rune.decorative=Decorative use only (or WIP)
