@@ -1,2 +1,5 @@
 - implemented the Rune of Spirit Tools
 - added JEI descriptions to spirit tools
+- implemented rune of the Mountain
+- implemented rune of fire sprite
+- implemented rune of earth sprite

@@ -146,6 +146,7 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 									// of rock
 								{
 									if (!playedSound) {
+										@SuppressWarnings("deprecation")
 										SoundType sound = block.getSoundType();
 										world.playSound(
 												player,
