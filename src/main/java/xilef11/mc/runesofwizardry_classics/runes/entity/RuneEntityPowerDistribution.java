@@ -66,7 +66,7 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 	public void update() {
 		if(!initialised)init();
 		//super.update(); - don't consume fuel
-		//if(!entity.getWorld().isRemote){
+		//if(!entity.getWorld().isRemote){ - do work on both sides for the star to be drawn correctly
 			if(stableFuel<0)stableFuel = TICKRATE*poweredRunes.size()*STABLE_FUEL_CYCLES;
 			if(entity.ticksExisted()%TICKRATE==0){
 				//add fuel to the runes
@@ -80,7 +80,7 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 				int gb = (int)(255*percent);
 				if(gb>255)gb=255;
 				int color = 0xFF0000|(gb<<8)|(gb);
-				if(entity.ticksExisted()%10==0)ModLogger.logInfo(percent+" "+gb+" "+Integer.toHexString(color));
+				//if(entity.ticksExisted()%10==0)ModLogger.logInfo(percent+" "+gb+" "+Integer.toHexString(color));
 				if(entity.stardata!=null){
 					entity.stardata.outercolor=color;
 					entity.stardata.innercolor=color;

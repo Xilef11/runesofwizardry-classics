@@ -12,6 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.Refs;
 
@@ -41,7 +42,9 @@ public class RuneEntityHeights extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
+		//get the offset for the beam to be on the column
 		entity.setupBeam(0x72723E, BeamType.BEACON);
+		entity.beamdata.offset=new Vec3d(face.getDirectionVec());
 		entity.setDrawBeam(true);
 	}
 	private int currentDepth=DEPTH;
