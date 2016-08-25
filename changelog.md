@@ -1,0 +1,1 @@
+- fix crash when negating rune of spirit tools sacrifice
