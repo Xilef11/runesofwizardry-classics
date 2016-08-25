@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -47,14 +48,16 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 		//super.onRuneActivatedbyPlayer(player, sacrifice, negated); don't register to other runes
 		World world = player.worldObj;
 		if(!world.isRemote){
+			entity.setupStar(0xFFFFFF, 0xFFFFFF);
 			findNearbyRunes();
+			entity.setDrawStar(!poweredRunes.isEmpty());
 			initialised=true;
 		}
 	}
 	//the runes that are being powered by this one
 	private List<FueledRuneEntity> poweredRunes=new LinkedList<FueledRuneEntity>();
 	private static final int TICKRATE=10;
-	private static final int STABLE_FUEL_CYCLES=10;
+	private static final int STABLE_FUEL_CYCLES=120;//120 should be about 1 minute
 	private int stableFuel=-1;
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#update()
@@ -63,22 +66,27 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 	public void update() {
 		if(!initialised)init();
 		//super.update(); - don't consume fuel
-		if(!entity.getWorld().isRemote){
+		//if(!entity.getWorld().isRemote){
 			if(stableFuel<0)stableFuel = TICKRATE*poweredRunes.size()*STABLE_FUEL_CYCLES;
 			if(entity.ticksExisted()%TICKRATE==0){
 				//add fuel to the runes
 				for(FueledRuneEntity fe:poweredRunes){
-					if(this.ticksLeft>TICKRATE){
+					if(this.ticksLeft>=TICKRATE){
 						fe.addFuel(TICKRATE);
 						ticksLeft-=TICKRATE;
 					}
 				}
-				double percent = ticksLeft/stableFuel;
+				double percent = stableFuel>0? (double)ticksLeft/(double)stableFuel : 1;
 				int gb = (int)(255*percent);
-				int color = 0xFF0000|(gb<<4)|(gb);
-				if(entity.stardata!=null)entity.stardata.innercolor=color;
+				if(gb>255)gb=255;
+				int color = 0xFF0000|(gb<<8)|(gb);
+				if(entity.ticksExisted()%10==0)ModLogger.logInfo(percent+" "+gb+" "+Integer.toHexString(color));
+				if(entity.stardata!=null){
+					entity.stardata.outercolor=color;
+					entity.stardata.innercolor=color;
+				}
 			}
-		}
+		//}
 	}
 	/**Horizontal radius of the powering**/
 	public static final int RANGE=32;
@@ -122,12 +130,18 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 		poweredRunes.add(toPower);
 		if(toPower.entity.stardata!=null)toPower.entity.stardata.scale*=1.04F;
 		stableFuel = TICKRATE*poweredRunes.size()*STABLE_FUEL_CYCLES;
+		entity.setDrawStar(true);
+		IBlockState state = entity.getWorld().getBlockState(getPos());
+		entity.getWorld().notifyBlockUpdate(getPos(), state, state, 3);
 	}
 	/**removes a rune to be powered by this**/
 	public void unregister(FueledRuneEntity toPower){
 		poweredRunes.remove(toPower);
 		if(toPower.entity.stardata!=null)toPower.entity.stardata.scale/=1.04F;
 		stableFuel = TICKRATE*poweredRunes.size()*STABLE_FUEL_CYCLES;
+		if(poweredRunes.isEmpty())entity.setDrawStar(false);
+		IBlockState state = entity.getWorld().getBlockState(getPos());
+		entity.getWorld().notifyBlockUpdate(getPos(), state, state, 3);
 	}
 	private Set<BlockPos> toInit=null;
 	private boolean initialised=false;

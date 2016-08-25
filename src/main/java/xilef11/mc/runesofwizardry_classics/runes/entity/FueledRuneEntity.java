@@ -90,7 +90,7 @@ public abstract class FueledRuneEntity extends RuneEntity {
 	@Override
 	public boolean handleEntityCollision(World worldIn, BlockPos pos,
 			IBlockState state, Entity entityIn) {
-		if(entity.ticksExisted()%FUEL_EAT_TICKS==0){
+		if(entity.ticksExisted()%FUEL_EAT_TICKS==0 && !worldIn.isRemote){
 			if(entityIn instanceof EntityItem){
 				ItemStack stack = ((EntityItem)entityIn).getEntityItem();
 				//find the furnace burn time. if not hardcoded in vanilla furnace, it will check Forge's registered fuelHandlers
@@ -100,6 +100,8 @@ public abstract class FueledRuneEntity extends RuneEntity {
 					worldIn.playSound(null,entityIn.posX, entityIn.posY, entityIn.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 					worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, entityIn.posX, entityIn.posY, entityIn.posZ, 0, 0, 0);
 					entityIn.setDead();
+					IBlockState bstate = worldIn.getBlockState(getPos());
+					worldIn.notifyBlockUpdate(getPos(), bstate, bstate, 3);
 				}
 			}
 		}

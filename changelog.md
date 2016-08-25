@@ -1,1 +1,3 @@
 - fix crash when negating rune of spirit tools sacrifice
+- fix division by zero in power distribution
+- added/fixed star indicator for power distribution
