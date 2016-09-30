@@ -6,8 +6,11 @@ import org.apache.logging.log4j.Level;
 
 import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.ModLogger;
+import xilef11.mc.runesofwizardry_classics.Refs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
+import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.runes.inscription.RuneChargeInscription;
 
 public class RuneInscriptionEnchant extends RuneChargeInscription {
@@ -36,7 +39,7 @@ public class RuneInscriptionEnchant extends RuneChargeInscription {
 		}
 	}
 	protected ItemStack[][] setupPattern() throws IOException{
-		return null;
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeClassicChargeInscritpion.json"));
 	}
 	
 }
