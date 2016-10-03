@@ -90,5 +90,16 @@ public abstract class ClassicInscription extends Inscription{
 		return allowed;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.zpig333.runesofwizardry.api.Inscription#getExtraChargeInfo()
+	 */
+	@Override
+	public String getExtraChargeInfo() {
+		return hasExtraSacrifice()? getName()+".extrasac" : null;
+	}
+
+	protected boolean hasExtraSacrifice(){
+		return false;
+	}
 	
 }

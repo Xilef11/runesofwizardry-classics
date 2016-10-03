@@ -7,6 +7,8 @@ import xilef11.mc.runesofwizardry_classics.Refs;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -20,8 +22,7 @@ public class InscriptionReturn extends ClassicInscription {
 
 	@Override
 	protected ItemStack[] setupChargeItems() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ItemStack[]{new ItemStack(Blocks.QUARTZ_BLOCK),new ItemStack(Items.ENDER_PEARL,2)};
 	}
 
 	@Override

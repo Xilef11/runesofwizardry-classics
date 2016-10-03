@@ -17,6 +17,14 @@ import com.zpig333.runesofwizardry.api.DustRegistry;
 
 public class ModInscriptions {
 	private static List<ClassicInscription> insc;
+	public static ClassicInscription insLeap,
+					   insLeap2,
+					   insReturn,
+					   insVoid,
+					   insBounce,
+					   insBlink,
+					   insBlink2,
+					   insForesight;
 	public static List<ClassicInscription> getInscriptions(){
 		return insc;
 	}
@@ -27,13 +35,22 @@ public class ModInscriptions {
 	}
 	public static void initInscriptions(){
 		insc = new LinkedList<ClassicInscription>();
-		if(!Config.disableWIP)insc.add(new InscriptionLeap());
-		if(!Config.disableWIP)insc.add(new InscriptionLeapII());
-		if(!Config.disableWIP)insc.add(new InscriptionReturn());
-		if(!Config.disableWIP)insc.add(new InscriptionVoid());
-		if(!Config.disableWIP)insc.add(new InscriptionBounce());
-		if(!Config.disableWIP)insc.add(new InscriptionBlink());
-		if(!Config.disableWIP)insc.add(new InscriptionBlinkII());
-		if(!Config.disableWIP)insc.add(new InscriptionForesight());
+		insLeap = new InscriptionLeap();
+		insLeap2= new InscriptionLeapII();
+		insReturn= new InscriptionReturn();
+		insVoid= new InscriptionVoid();
+		insBounce= new InscriptionBounce();
+		insBlink= new InscriptionBlink();
+		insBlink2= new InscriptionBlinkII();
+		insForesight= new InscriptionForesight();
+		
+		if(!Config.disableWIP)insc.add(insLeap);
+		if(!Config.disableWIP)insc.add(insLeap2);
+		if(!Config.disableWIP)insc.add(insReturn);
+		if(!Config.disableWIP)insc.add(insVoid);
+		if(!Config.disableWIP)insc.add(insBounce);
+		if(!Config.disableWIP)insc.add(insBlink);
+		if(!Config.disableWIP)insc.add(insBlink2);
+		if(!Config.disableWIP)insc.add(insForesight);
 	}
 }
