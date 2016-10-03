@@ -2,16 +2,20 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
+import xilef11.mc.runesofwizardry_classics.Refs;
+
+import com.zpig333.runesofwizardry.core.rune.PatternUtils;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class InscriptionBlinkII extends ClassicInscription {
 
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionBlinkII.json"));
 	}
 
 	@Override
@@ -21,9 +25,8 @@ public class InscriptionBlinkII extends ClassicInscription {
 	}
 
 	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getID() {
+		return "blink2";
 	}
 
 	@Override
