@@ -35,7 +35,7 @@ public class InscriptionLeap extends ClassicInscription {
 				return Utils.takeXP(player, 4);
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	/* (non-Javadoc)

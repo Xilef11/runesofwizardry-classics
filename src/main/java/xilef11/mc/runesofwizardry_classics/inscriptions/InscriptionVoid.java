@@ -45,7 +45,7 @@ public class InscriptionVoid extends ClassicInscription {
 				return Utils.takeXP(player, 5);
 			}
 		}
-		return false;
+		return true;
 	}
 
 	@Override

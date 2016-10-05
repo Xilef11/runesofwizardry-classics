@@ -52,7 +52,7 @@ public class InscriptionLeapII extends ClassicInscription {
 				return Utils.takeXP(player, 7);
 			}
 		}
-		return false;
+		return true;
 	}
 
 	@Override
