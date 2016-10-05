@@ -2,20 +2,48 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
-import xilef11.mc.runesofwizardry_classics.Refs;
-import xilef11.mc.runesofwizardry_classics.utils.Utils;
-
-import com.zpig333.runesofwizardry.core.rune.PatternUtils;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.managers.IVoidStorageCapability;
+import xilef11.mc.runesofwizardry_classics.managers.VoidStorageCapability;
+import xilef11.mc.runesofwizardry_classics.utils.Utils;
+
+import com.zpig333.runesofwizardry.api.DustRegistry;
+import com.zpig333.runesofwizardry.core.WizardryRegistry;
+import com.zpig333.runesofwizardry.core.rune.PatternUtils;
+import com.zpig333.runesofwizardry.item.ItemInscription;
 
 public class InscriptionVoid extends ClassicInscription {
-
+	public InscriptionVoid() {
+		MinecraftForge.EVENT_BUS.register(this);
+	}
+	
+	@SubscribeEvent
+	public void onItemPickup(EntityItemPickupEvent event){
+		EntityPlayer player = event.getEntityPlayer();
+		if(player==null)return;
+		ItemStack insc = ((ItemInscription)WizardryRegistry.inscription).getWornInscription(player);
+		if(insc!=null && insc.getItem()==WizardryRegistry.inscription){
+			if(DustRegistry.getInscriptionFromStack(insc)==this){
+				if(insc.getItemDamage()<getMaxDurability()){
+					IVoidStorageCapability store = player.getCapability(VoidStorageCapability.VOID_STORAGE_CAPABILITY, null);
+					if(store!=null){
+						store.addStackToVoid(event.getItem().getEntityItem());
+						//TODO durability
+					}
+				}
+			}
+		}
+	}
+	
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionVoid.json"));
@@ -61,8 +89,7 @@ public class InscriptionVoid extends ClassicInscription {
 
 	@Override
 	public void onWornTick(World world, EntityPlayer player, ItemStack stack) {
-		// TODO Auto-generated method stub
-
+		//NOP
 	}
 
 }
