@@ -53,8 +53,8 @@ public class InscriptionLeap extends ClassicInscription {
 
 	@Override
 	public int getMaxDurability() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1001;
+		//take 10 per launch
 	}
 
 	@Override

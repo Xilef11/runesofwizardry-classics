@@ -13,7 +13,7 @@ import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 
 public class InscriptionForesight extends ClassicInscription {
-
+	//Original doesn't seem to be doing anything...
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionForesight.json"));
@@ -50,8 +50,8 @@ public class InscriptionForesight extends ClassicInscription {
 
 	@Override
 	public int getMaxDurability() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1001;
+		//take 1 per 2 seconds
 	}
 
 	@Override

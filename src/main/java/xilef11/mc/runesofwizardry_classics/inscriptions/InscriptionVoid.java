@@ -83,8 +83,8 @@ public class InscriptionVoid extends ClassicInscription {
 
 	@Override
 	public int getMaxDurability() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1001;
+		//take 1 per item (not stack)
 	}
 
 	@Override

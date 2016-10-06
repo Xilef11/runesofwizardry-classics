@@ -32,8 +32,8 @@ public class InscriptionReturn extends ClassicInscription {
 
 	@Override
 	public int getMaxDurability() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1001;
+		//take 20 per tp
 	}
 
 	@Override

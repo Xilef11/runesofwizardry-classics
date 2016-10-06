@@ -31,8 +31,8 @@ public class InscriptionBounce extends ClassicInscription {
 
 	@Override
 	public int getMaxDurability() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1001;
+		//not sure, 24 per bounce?
 	}
 
 	@Override

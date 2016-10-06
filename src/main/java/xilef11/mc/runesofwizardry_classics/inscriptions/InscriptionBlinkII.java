@@ -16,7 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class InscriptionBlinkII extends ClassicInscription {
-
+	//also has a particle effect at the teleport destination
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
 		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionBlinkII.json"));
@@ -59,8 +59,8 @@ public class InscriptionBlinkII extends ClassicInscription {
 
 	@Override
 	public int getMaxDurability() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1001;
+		//take 10 per teleport
 	}
 
 	@Override
