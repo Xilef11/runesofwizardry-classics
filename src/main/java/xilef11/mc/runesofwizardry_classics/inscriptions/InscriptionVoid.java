@@ -17,9 +17,7 @@ import xilef11.mc.runesofwizardry_classics.managers.VoidStorageCapability;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
 import com.zpig333.runesofwizardry.api.DustRegistry;
-import com.zpig333.runesofwizardry.core.WizardryRegistry;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
-import com.zpig333.runesofwizardry.item.ItemInscription;
 
 public class InscriptionVoid extends ClassicInscription {
 	public InscriptionVoid() {
@@ -30,15 +28,17 @@ public class InscriptionVoid extends ClassicInscription {
 	public void onItemPickup(EntityItemPickupEvent event){
 		EntityPlayer player = event.getEntityPlayer();
 		if(player==null)return;
-		ItemStack insc = ((ItemInscription)WizardryRegistry.inscription).getWornInscription(player);
-		if(insc!=null && insc.getItem()==WizardryRegistry.inscription){
-			if(DustRegistry.getInscriptionFromStack(insc)==this){
-				if(insc.getItemDamage()<getMaxDurability()){
-					IVoidStorageCapability store = player.getCapability(VoidStorageCapability.VOID_STORAGE_CAPABILITY, null);
-					if(store!=null){
-						store.addStackToVoid(event.getItem().getEntityItem());
-						//TODO durability
-					}
+		ItemStack insc = DustRegistry.getWornInscription(player);
+		if(insc!=null && DustRegistry.getInscriptionFromStack(insc)==this){
+			int damage = insc.getItemDamage();
+			int damageLeft = getMaxDurability()-damage;
+			if(damageLeft>0){
+				IVoidStorageCapability store = player.getCapability(VoidStorageCapability.VOID_STORAGE_CAPABILITY, null);
+				if(store!=null){
+					ItemStack stack = event.getItem().getEntityItem();
+					ItemStack split = stack.splitStack(damageLeft);
+					store.addStackToVoid(split);
+					if(!player.capabilities.isCreativeMode)insc.setItemDamage(damage+split.stackSize);
 				}
 			}
 		}

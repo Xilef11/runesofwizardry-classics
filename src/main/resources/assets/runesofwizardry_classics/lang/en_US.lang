@@ -135,6 +135,17 @@ runesofwizardry_classics.rune.mountain.shortdesc=Lifts a mountain
 runesofwizardry_classics.rune.spritefire.shortdesc=Summons a fire sprite to burn your enemies.
 runesofwizardry_classics.rune.spriteearth.shortdesc=Summons an earth sprite that will protect you if you stop and crouch
 
+#Inscriptions
+runesofwizardry_classics.inscription.void=Void
+runesofwizardry_classics.inscription.bounce=Bounce
+
+#inscription descriptions
+runesofwizardry_classics.inscription.void.shortdesc=Stores picked up items in the void
+runesofwizardry_classics.inscription.bounce.shortdesc=Bounce back up when you fall (sneak to cancel)
+
+#sacrifices
+runesofwizardry_classics.inscription.void.extrasac=5 XP
+
 #extra stuff
 runesofwizardry_classics.rune.decorative=Decorative use only (or WIP)
 
