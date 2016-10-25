@@ -138,16 +138,21 @@ runesofwizardry_classics.rune.spriteearth.shortdesc=Summons an earth sprite that
 #Inscriptions
 runesofwizardry_classics.inscription.void=Void
 runesofwizardry_classics.inscription.bounce=Bounce
+runesofwizardry_classics.inscription.return=Return
 
 #inscription descriptions
 runesofwizardry_classics.inscription.void.shortdesc=Stores picked up items in the void
 runesofwizardry_classics.inscription.bounce.shortdesc=Bounce back up when you fall (sneak to cancel)
+runesofwizardry_classics.inscription.return.shortdesc=Go Home
+runesofwizardry_classics.inscription.return.instructions=Sneak+right-click with the item to set a home point\nSneak while looking at the ground, not moving and wearing the inscription to return to the home point
 
 #sacrifices
 runesofwizardry_classics.inscription.void.extrasac=5 XP
 
 #extra stuff
 runesofwizardry_classics.rune.decorative=Decorative use only (or WIP)
+
+runesofwizardry_classics.lang.coords=Coords: X=%d Y=%d Z=%d
 
 runesofwizardry_classics.rune.rebirth.noegg=A Spawn Egg does not exist for that entity.
 runesofwizardry_classics.rune.mountain.noarea=Could not find a marked area
