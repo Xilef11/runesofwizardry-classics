@@ -139,15 +139,22 @@ runesofwizardry_classics.rune.spriteearth.shortdesc=Summons an earth sprite that
 runesofwizardry_classics.inscription.void=Void
 runesofwizardry_classics.inscription.bounce=Bounce
 runesofwizardry_classics.inscription.return=Return
+runesofwizardry_classics.inscription.leap=Leap
+runesofwizardry_classics.inscription.leap2=Leap II
 
 #inscription descriptions
 runesofwizardry_classics.inscription.void.shortdesc=Stores picked up items in the void
 runesofwizardry_classics.inscription.bounce.shortdesc=Bounce back up when you fall (sneak to cancel)
 runesofwizardry_classics.inscription.return.shortdesc=Go Home
 runesofwizardry_classics.inscription.return.instructions=Sneak+right-click with the item to set a home point\nSneak while looking at the ground, not moving and wearing the inscription to return to the home point
+runesofwizardry_classics.inscription.leap.shortdesc=Launch Forward
+runesofwizardry_classics.inscription.leap2.shortdesc=Launch Forward, Jump Higher
+
 
 #sacrifices
-runesofwizardry_classics.inscription.void.extrasac=5 XP
+runesofwizardry_classics.inscription.void.extrasac=- 5 XP
+runesofwizardry_classics.inscription.leap.extrasac=- 5 XP\nSneak+left-click with an empty hand to activate. You won't take fall damage
+runesofwizardry_classics.inscription.leap2.extrasac=- 7XP\nSneak+left-click with an empty hand to activate. You won't take fall damage\nLevel 2 adds more powerful launches and a passive jump boost
 
 #extra stuff
 runesofwizardry_classics.rune.decorative=Decorative use only (or WIP)
