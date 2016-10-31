@@ -2,17 +2,22 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 
 public class InscriptionBlink extends ClassicInscription {
 
@@ -61,10 +66,42 @@ public class InscriptionBlink extends ClassicInscription {
 		return 1001;
 		//take 20 per teleport
 	}
-
+	private static final int DELAY=20;
+	private static final int DAMAGE=20;
 	@Override
 	public void onWornTick(World world, EntityPlayer player, ItemStack stack) {
-		// TODO Auto-generated method stub
+		if(player.isSneaking()&&player.isSwingInProgress&&player.getHeldItemMainhand()==null){
+			int newDamage =stack.getItemDamage()+DAMAGE; 
+			if(newDamage<getMaxDurability()){
+				if(world.getTotalWorldTime()>(getTime(stack)+DELAY)){
+					//get the look direction
+					Vec3d look = player.getLookVec();
+					look = look.addVector(Math.random()*2-1,0, Math.random()*2-1);
+					double dist = Math.random()*9+9D;
+					BlockPos to = player.getPosition().add(dist*look.xCoord, dist*look.yCoord, dist*look.zCoord);
+					//sound + particles for fun
+					world.playSound(null,player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);
+					world.playSound(null,to.getX(), to.getY(), to.getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);
+					if(world instanceof WorldServer){
+						WorldServer ws = (WorldServer)world;
+						ws.spawnParticle(EnumParticleTypes.SPELL_WITCH, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ(), 10, 0.5, 0.5, 0.5, 0);
+						//ws.spawnParticle(EnumParticleTypes.PORTAL, getPos().getX(), getPos().getY(), getPos().getZ(), 0.5F, 0.5, 0.5);
+						//ws.spawnParticle(EnumParticleTypes.PORTAL, dest.getX(), dest.getY(), dest.getZ(), 0.5F, 0.5, 0.5);
+						ws.spawnParticle(EnumParticleTypes.PORTAL, to.getX(), to.getY(), to.getZ(), 10, 0.5, 0.5, 0.5, 10);
+					}
+					player.setPositionAndUpdate(to.getX()+0.5, to.getY(), to.getZ()+0.5);
+					player.fallDistance=0;
+					setTime(stack, world.getTotalWorldTime());
+					stack.setItemDamage(newDamage);
+				}
+			}
+		}
+	}
+	protected static void setTime(ItemStack stack, long time){
+		stack.getSubCompound(Refs.MODID, true).setLong("lastTime", time);
+	}
+	protected static long getTime(ItemStack stack){
+		return stack.getSubCompound(Refs.MODID, true).getLong("lastTime");
 	}
 
 }

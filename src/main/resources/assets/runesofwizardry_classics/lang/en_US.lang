@@ -141,6 +141,8 @@ runesofwizardry_classics.inscription.bounce=Bounce
 runesofwizardry_classics.inscription.return=Return
 runesofwizardry_classics.inscription.leap=Leap
 runesofwizardry_classics.inscription.leap2=Leap II
+runesofwizardry_classics.inscription.blink=Blink
+runesofwizardry_classics.inscription.blink2=Blink II
 
 #inscription descriptions
 runesofwizardry_classics.inscription.void.shortdesc=Stores picked up items in the void
@@ -149,7 +151,8 @@ runesofwizardry_classics.inscription.return.shortdesc=Go Home
 runesofwizardry_classics.inscription.return.instructions=Sneak+right-click with the item to set a home point\nSneak while looking at the ground, not moving and wearing the inscription to return to the home point
 runesofwizardry_classics.inscription.leap.shortdesc=Launch Forward
 runesofwizardry_classics.inscription.leap2.shortdesc=Launch Forward, Jump Higher
-
+runesofwizardry_classics.inscription.blink.shortdesc=Blink like an Enderman. Safety and accuracy not guaranteed.
+runesofwizardry_classics.inscription.blink2.shortdesc=Enables precision teleporting
 
 #sacrifices
 runesofwizardry_classics.inscription.void.extrasac=- 5 XP
