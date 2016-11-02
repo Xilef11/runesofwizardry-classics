@@ -78,7 +78,7 @@ public class InscriptionReturn extends ClassicInscription {
 							player.setPositionAndUpdate(to.getX()+0.5, to.getY(), to.getZ()+0.5);
 							player.fallDistance=0;
 							setTime(stack, world.getTotalWorldTime());
-							stack.setItemDamage(stack.getItemDamage()+DAMAGE);
+							if(!player.capabilities.isCreativeMode)stack.setItemDamage(stack.getItemDamage()+DAMAGE);
 						}
 					}
 				}

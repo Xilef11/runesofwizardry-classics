@@ -78,13 +78,13 @@ public class InscriptionBlinkII extends ClassicInscription {
 			int newDamage =stack.getItemDamage()+DAMAGE; 
 			if(newDamage<getMaxDurability()){
 				if(world.getTotalWorldTime()>(getTime(stack)+DELAY)){
-					RayTraceResult res = RayTracer.retrace(player);
+					RayTraceResult res = RayTracer.retrace(player,16);
 					Vec3d look = player.getLookVec();
 					BlockPos to = res.getBlockPos();//.subtract(new Vec3i(look.xCoord,look.yCoord,look.zCoord));
 					if(player.getDistanceSqToCenter(to)>16*16)return;
 					if(world.isRemote){
 						//FIXME to is the player position (client side)
-						world.spawnParticle(EnumParticleTypes.SPELL, true, to.getX(), to.getY(), to.getZ(), 0.5, 0.5, 0.5, 0);
+						world.spawnParticle(EnumParticleTypes.SPELL, true, to.getX()+0.5, to.getY(), to.getZ()+0.5, 0.5, 0.5, 0.5, 0);
 					}
 					if(player.isSwingInProgress&&player.getHeldItemMainhand()==null){
 						//sound + particles for fun
@@ -100,7 +100,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 						player.setPositionAndUpdate(to.getX()+0.5, to.getY()+1, to.getZ()+0.5);
 						player.fallDistance=0;
 						setTime(stack, world.getTotalWorldTime());
-						stack.setItemDamage(newDamage);
+						if(!player.capabilities.isCreativeMode)stack.setItemDamage(newDamage);
 					}
 				}
 			}

@@ -92,7 +92,7 @@ public class InscriptionBlink extends ClassicInscription {
 					player.setPositionAndUpdate(to.getX()+0.5, to.getY(), to.getZ()+0.5);
 					player.fallDistance=0;
 					setTime(stack, world.getTotalWorldTime());
-					stack.setItemDamage(newDamage);
+					if(!player.capabilities.isCreativeMode)stack.setItemDamage(newDamage);
 				}
 			}
 		}

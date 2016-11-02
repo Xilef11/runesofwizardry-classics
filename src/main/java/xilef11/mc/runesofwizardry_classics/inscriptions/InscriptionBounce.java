@@ -47,7 +47,7 @@ public class InscriptionBounce extends ClassicInscription {
 			if(!player.isSneaking()){//cancel if sneak
 				player.fallDistance /=2;
 				player.motionY = -getLastSpeedY(stack)*0.76D;
-				stack.setItemDamage(stack.getItemDamage()+8);
+				if(!player.capabilities.isCreativeMode)stack.setItemDamage(stack.getItemDamage()+8);
 			}
 			//reset falling status and speed
 			setFalling(stack,false,0);

@@ -82,7 +82,7 @@ public class InscriptionLeap extends ClassicInscription {
 					player.addVelocity((-player.motionX+look.xCoord)*POWER, (-player.motionY+look.yCoord)*POWER, (-player.motionZ+look.zCoord)*POWER);
 					setTime(stack, world.getTotalWorldTime());
 					setFalling(stack, true);
-					stack.setItemDamage(newDamage);
+					if(!player.capabilities.isCreativeMode)stack.setItemDamage(newDamage);
 				}
 			}
 		}
