@@ -2,6 +2,7 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -12,8 +13,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import xilef11.mc.runesofwizardry_classics.Refs;
@@ -78,13 +77,13 @@ public class InscriptionBlinkII extends ClassicInscription {
 			int newDamage =stack.getItemDamage()+DAMAGE; 
 			if(newDamage<getMaxDurability()){
 				if(world.getTotalWorldTime()>(getTime(stack)+DELAY)){
-					RayTraceResult res = RayTracer.retrace(player,16);
-					Vec3d look = player.getLookVec();
-					BlockPos to = res.getBlockPos();//.subtract(new Vec3i(look.xCoord,look.yCoord,look.zCoord));
+					//crappy workaround for the client-side wierdness
+					RayTraceResult res = world.isRemote? Minecraft.getMinecraft().objectMouseOver : RayTracer.retrace(player,16);
+					BlockPos to = res.getBlockPos();
 					if(player.getDistanceSqToCenter(to)>16*16)return;
 					if(world.isRemote){
-						//FIXME to is the player position (client side)
-						world.spawnParticle(EnumParticleTypes.SPELL, true, to.getX()+0.5, to.getY(), to.getZ()+0.5, 0.5, 0.5, 0.5, 0);
+						//FIXME to is the player position (client side) if using world.raytrace
+						world.spawnParticle(EnumParticleTypes.SPELL, true, to.getX()+0.5, to.getY(), to.getZ()+0.5, 0d, 0d, 0d, 0);
 					}
 					if(player.isSwingInProgress&&player.getHeldItemMainhand()==null){
 						//sound + particles for fun
@@ -97,7 +96,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 							//ws.spawnParticle(EnumParticleTypes.PORTAL, dest.getX(), dest.getY(), dest.getZ(), 0.5F, 0.5, 0.5);
 							ws.spawnParticle(EnumParticleTypes.PORTAL, to.getX(), to.getY(), to.getZ(), 10, 0.5, 0.5, 0.5, 10);
 						}
-						player.setPositionAndUpdate(to.getX()+0.5, to.getY()+1, to.getZ()+0.5);
+						player.setPositionAndUpdate(to.getX(), to.getY()+1, to.getZ());
 						player.fallDistance=0;
 						setTime(stack, world.getTotalWorldTime());
 						if(!player.capabilities.isCreativeMode)stack.setItemDamage(newDamage);
