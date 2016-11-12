@@ -2,11 +2,14 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 
@@ -57,6 +60,22 @@ public class InscriptionForesight extends ClassicInscription {
 	@Override
 	public void onWornTick(World world, EntityPlayer player, ItemStack stack) {
 		// TODO Auto-generated method stub
+		if(world.isRemote){
+			EntityZombie dummy = new EntityZombie(world);
+			dummy.setChildSize(true);
+			int rad = Config.foresightRadius;
+			for(int i=-rad;i<rad;i++){
+				for(int j=-rad;j<rad;j++){
+					for(int k=-rad;k<rad;k++){
+						//FIXME apparently not working
+						dummy.setPosition(player.serverPosX+i, player.serverPosY+j, player.serverPosZ+k);
+						if(dummy.getCanSpawnHere()/*&& Math.random() < 0.2*/){
+							world.spawnParticle(EnumParticleTypes.SPELL_WITCH, false, dummy.posX+0.5, dummy.posY, dummy.posZ+0.5, 0d, 0d, 0d, 0);
+						}
+					}
+				}
+			}
+		}
 
 	}
 
