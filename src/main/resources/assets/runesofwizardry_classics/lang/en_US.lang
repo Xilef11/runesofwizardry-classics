@@ -143,6 +143,7 @@ runesofwizardry_classics.inscription.leap=Leap
 runesofwizardry_classics.inscription.leap2=Leap II
 runesofwizardry_classics.inscription.blink=Blink
 runesofwizardry_classics.inscription.blink2=Blink II
+runesofwizardry_classics.inscription.foresight=Foresight
 
 #inscription descriptions
 runesofwizardry_classics.inscription.void.shortdesc=Stores picked up items in the void
@@ -153,11 +154,13 @@ runesofwizardry_classics.inscription.leap.shortdesc=Launch Forward
 runesofwizardry_classics.inscription.leap2.shortdesc=Launch Forward, Jump Higher
 runesofwizardry_classics.inscription.blink.shortdesc=Blink like an Enderman. Safety and accuracy not guaranteed.
 runesofwizardry_classics.inscription.blink2.shortdesc=Enables precision teleporting
+runesofwizardry_classics.inscription.foresight.shortdesc=Anticipate the spawning of mobs
 
 #sacrifices
 runesofwizardry_classics.inscription.void.extrasac=- 5 XP
 runesofwizardry_classics.inscription.leap.extrasac=- 5 XP\nSneak+left-click with an empty hand to activate. You won't take fall damage
-runesofwizardry_classics.inscription.leap2.extrasac=- 7XP\nSneak+left-click with an empty hand to activate. You won't take fall damage\nLevel 2 adds more powerful launches and a passive jump boost
+runesofwizardry_classics.inscription.leap2.extrasac=- 7 XP\nSneak+left-click with an empty hand to activate. You won't take fall damage\nLevel 2 adds more powerful launches and a passive jump boost
+runesofwizardry_classics.inscription.foresight.extrasac=- 20 XP
 
 #extra stuff
 runesofwizardry_classics.rune.decorative=Decorative use only (or WIP)
