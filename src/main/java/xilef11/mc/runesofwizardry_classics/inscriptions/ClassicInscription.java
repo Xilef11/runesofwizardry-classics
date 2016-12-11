@@ -85,8 +85,7 @@ public abstract class ClassicInscription extends Inscription{
 				//TODO check if cheats enabled if single player
 			}
 		}
-		//TODO check that message if we need to switch to an inscription-specific one
-		if(!allowed)player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".nopermission.message",new TextComponentTranslation(getName())));
+		if(!allowed)player.addChatMessage(new TextComponentTranslation(Refs.MODID+".inscription.nopermission.message",new TextComponentTranslation(getName())));
 		return allowed;
 	}
 	

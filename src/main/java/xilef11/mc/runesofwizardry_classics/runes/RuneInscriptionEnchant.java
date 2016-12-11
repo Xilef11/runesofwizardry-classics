@@ -15,6 +15,14 @@ import com.zpig333.runesofwizardry.runes.inscription.RuneChargeInscription;
 
 public class RuneInscriptionEnchant extends RuneChargeInscription {
 	private ItemStack[][] pattern;
+	
+	/* (non-Javadoc)
+	 * @see com.zpig333.runesofwizardry.runes.inscription.RuneChargeInscription#getName()
+	 */
+	@Override
+	public String getName() {
+		return Refs.MODID+".inscription.classicinscriptionenchant";
+	}
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getPattern()
 	 */
@@ -39,7 +47,7 @@ public class RuneInscriptionEnchant extends RuneChargeInscription {
 		}
 	}
 	protected ItemStack[][] setupPattern() throws IOException{
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeClassicChargeInscritpion.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeClassicChargeInscription.json"));
 	}
 	
 }

@@ -11,12 +11,17 @@ tile.runesofwizardry_classics_dust_classic_storage.0.name=Block of Plant Runic D
 tile.runesofwizardry_classics_dust_classic_storage.1.name=Block of Gunpowder Runic Dust
 tile.runesofwizardry_classics_dust_classic_storage.2.name=Block of Lapis Runic Dust
 tile.runesofwizardry_classics_dust_classic_storage.3.name=Block of Blaze Runic Dust
+
 #configuration
 runesofwizardry_classics.configuration.catruneperms=Rune Permissions
+
 #unimplemented runes
 runesofwizardry_classics.rune.unimplemented.message=This rune is not yet implemented: %s
+
 #permission refused
 runesofwizardry_classics.rune.nopermission.message=You do not have permission to use the %s
+runesofwizardry_classics.inscription.nopermission.message=You do not have permission to activate %s
+
 #rune names
 runesofwizardry_classics.rune.torch=Torch Rune
 runesofwizardry_classics.rune.rabbitHole=Rune of the Rabbit Hole
@@ -62,6 +67,7 @@ runesofwizardry_classics.rune.protection=Rune of Protection
 runesofwizardry_classics.rune.levelearth=Rune of Level Earth
 runesofwizardry_classics.rune.mountain=Rune of the Mountain
 runesofwizardry_classics.rune.sarlacc=Rune of Sarlacc
+runesofwizardry_classics.rune.classicinscriptionenchant=Classic Inscription Enchanting Rune
 
 #extra sacrifice info
 runesofwizardry_classics.rune.resurrection.extrasac=Two drops from the resurrected mob are to be placed on the rune after it has been activated
