@@ -11,12 +11,17 @@ tile.runesofwizardry_classics_dust_classic_storage.0.name=Block of Plant Runic D
 tile.runesofwizardry_classics_dust_classic_storage.1.name=Block of Gunpowder Runic Dust
 tile.runesofwizardry_classics_dust_classic_storage.2.name=Block of Lapis Runic Dust
 tile.runesofwizardry_classics_dust_classic_storage.3.name=Block of Blaze Runic Dust
+
 #configuration
 runesofwizardry_classics.configuration.catruneperms=Rune Permissions
+
 #unimplemented runes
 runesofwizardry_classics.rune.unimplemented.message=This rune is not yet implemented: %s
+
 #permission refused
 runesofwizardry_classics.rune.nopermission.message=You do not have permission to use the %s
+runesofwizardry_classics.inscription.nopermission.message=You do not have permission to activate %s
+
 #rune names
 runesofwizardry_classics.rune.torch=Torch Rune
 runesofwizardry_classics.rune.rabbitHole=Rune of the Rabbit Hole
@@ -62,6 +67,7 @@ runesofwizardry_classics.rune.protection=Rune of Protection
 runesofwizardry_classics.rune.levelearth=Rune of Level Earth
 runesofwizardry_classics.rune.mountain=Rune of the Mountain
 runesofwizardry_classics.rune.sarlacc=Rune of Sarlacc
+runesofwizardry_classics.rune.classicinscriptionenchant=Classic Inscription Enchanting Rune
 
 #extra sacrifice info
 runesofwizardry_classics.rune.resurrection.extrasac=Two drops from the resurrected mob are to be placed on the rune after it has been activated
@@ -135,8 +141,39 @@ runesofwizardry_classics.rune.mountain.shortdesc=Lifts a mountain
 runesofwizardry_classics.rune.spritefire.shortdesc=Summons a fire sprite to burn your enemies.
 runesofwizardry_classics.rune.spriteearth.shortdesc=Summons an earth sprite that will protect you if you stop and crouch
 
+#Inscriptions
+runesofwizardry_classics.inscription.void=Void
+runesofwizardry_classics.inscription.bounce=Bounce
+runesofwizardry_classics.inscription.return=Return
+runesofwizardry_classics.inscription.leap=Leap
+runesofwizardry_classics.inscription.leap2=Leap II
+runesofwizardry_classics.inscription.blink=Blink
+runesofwizardry_classics.inscription.blink2=Blink II
+runesofwizardry_classics.inscription.foresight=Foresight
+
+#inscription descriptions
+runesofwizardry_classics.inscription.void.shortdesc=Stores picked up items in the void
+runesofwizardry_classics.inscription.bounce.shortdesc=Bounce back up when you fall (sneak to cancel)
+runesofwizardry_classics.inscription.return.shortdesc=Go Home
+runesofwizardry_classics.inscription.return.instructions=Sneak+right-click with the item to set a home point\nSneak while looking at the ground, not moving and wearing the inscription to return to the home point
+runesofwizardry_classics.inscription.leap.shortdesc=Launch Forward
+runesofwizardry_classics.inscription.leap2.shortdesc=Launch Forward, Jump Higher
+runesofwizardry_classics.inscription.blink.shortdesc=Blink like an Enderman. Safety and accuracy not guaranteed.
+runesofwizardry_classics.inscription.blink2.shortdesc=Enables precision teleporting
+runesofwizardry_classics.inscription.foresight.shortdesc=Anticipate the spawning of mobs
+
+#sacrifices
+runesofwizardry_classics.inscription.void.extrasac=- 5 XP
+runesofwizardry_classics.inscription.leap.extrasac=- 5 XP\nSneak+left-click with an empty hand to activate. You won't take fall damage
+runesofwizardry_classics.inscription.leap2.extrasac=- 7 XP\nSneak+left-click with an empty hand to activate. You won't take fall damage\nLevel 2 adds more powerful launches and a passive jump boost
+runesofwizardry_classics.inscription.foresight.extrasac=- 20 XP
+runesofwizardry_classics.inscription.blink2.extrasac=- 10 XP\nSneak+left-click with an empty hand to teleport.           
+runesofwizardry_classics.inscription.blink.extrasac=- 10 XP\nSneak+left-click with an empty hand to teleport.          
+
 #extra stuff
 runesofwizardry_classics.rune.decorative=Decorative use only (or WIP)
+
+runesofwizardry_classics.lang.coords=Coords: X=%d Y=%d Z=%d
 
 runesofwizardry_classics.rune.rebirth.noegg=A Spawn Egg does not exist for that entity.
 runesofwizardry_classics.rune.mountain.noarea=Could not find a marked area

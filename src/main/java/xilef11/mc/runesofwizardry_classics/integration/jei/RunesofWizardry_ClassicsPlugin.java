@@ -20,7 +20,6 @@ public class RunesofWizardry_ClassicsPlugin implements IModPlugin{
 
 	@Override
 	public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
-		// TODO Auto-generated method stub
 		
 	}
 
