@@ -44,13 +44,18 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'co.riiid.gradle' 
 apply plugin: "com.matthewprenger.cursegradle"
 
+sourceCompatibility = targetCompatibility = "1.6" // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.6"
+}
+
 //https://github.com/riiid/gradle-github-plugin for auto github releases
 //https://github.com/matthewprenger/CurseGradle for auto curseforge releases
 def majorVersion = "0"
 def minorVersion = "4"
 def bugfix = ".3"
 def devVersion = "-dev"
-def forgeVersion="1.10.2-12.18.1.2073"
+def forgeVersion="1.10.2-12.18.3.2185"
 def mcVersion = forgeVersion.substring(0,forgeVersion.indexOf('-'))
 
 def username = 'ForgeDevName'
@@ -83,13 +88,11 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20160518"
+    mappings = "snapshot_20161111"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 	replace '@VERSION@', project.version
 	replaceIn 'Refs.java'
 	
-	//JEI
-	useDepAts = true
 }
 repositories {
   //JEI
@@ -119,7 +122,8 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     
-    deobfCompile "mezz.jei:jei_1.10.2:3.9.0.246"
+    deobfCompile "mezz.jei:jei_1.10.2:3.13.6.387:api"
+	runtime "mezz.jei:jei_1.10.2:3.13.6.387"
 }
 
 processResources
@@ -144,11 +148,6 @@ processResources
     }
 }
 
-tasks.withType(JavaCompile) {
-    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-	sourceCompatibility=1.6
-	targetCompatibility=1.7
-}
 
 //custom tasks and configs
 
