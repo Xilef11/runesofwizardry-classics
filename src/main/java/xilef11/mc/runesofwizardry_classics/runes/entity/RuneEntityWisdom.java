@@ -110,7 +110,7 @@ public class RuneEntityWisdom extends RuneEntity {
 			while(xpAbsorbed>0){
 				int xp = EntityXPOrb.getXPSplit(xpAbsorbed);
 				xpAbsorbed-=xp;
-				world.spawnEntityInWorld(new EntityXPOrb(world, getPos().getX()+0.5, getPos().getY()+0.5, getPos().getZ()+0.5, xp));
+				world.spawnEntity(new EntityXPOrb(world, getPos().getX()+0.5, getPos().getY()+0.5, getPos().getZ()+0.5, xp));
 			}
 		}
 		super.onPatternBroken();

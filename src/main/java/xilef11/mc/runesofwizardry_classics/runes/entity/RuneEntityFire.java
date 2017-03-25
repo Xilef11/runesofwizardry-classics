@@ -86,7 +86,7 @@ public class RuneEntityFire extends FueledRuneEntity {
 							result.setCount(result.getCount()*((Math.random() > 0.85) ? 2:1));
 							EntityItem toSpawn = new EntityItem(world, e.posX, e.posY, e.posZ, result);
 							ReflectionHelper.setPrivateValue(Entity.class, toSpawn, true, "isImmuneToFire","field_70178_ae");
-							world.spawnEntityInWorld(toSpawn);
+							world.spawnEntity(toSpawn);
 							shoot(toSpawn);
 							toSpawn.extinguish();
 						}

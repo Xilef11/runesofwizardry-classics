@@ -11,6 +11,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -51,16 +52,16 @@ public class RuneEntityResurrection extends RuneEntity {
 			}
 			if(numItems>1){
 				//try to get the entity
-				String id = ((RuneResurrection)creator).entityIDFromDrops(stacks,world);
+				ResourceLocation id = ((RuneResurrection)creator).entityIDFromDrops(stacks,world);
 				//spawn the entity
 				if(id!=null){
 					for(EntityItem ei:items){
 						ei.setDead();
 						((WorldServer)world).spawnParticle(EnumParticleTypes.SMOKE_NORMAL, false, ei.posX, ei.posY, ei.posZ, 1, 0d, 0.5d, 0d, 0d);
 					}
-					Entity e = EntityList.createEntityByName(id, world);
+					Entity e = EntityList.createEntityByIDFromName(id, world);
 					e.setPositionAndUpdate(getPos().getX()+0.5, getPos().getY()+0.5, getPos().getZ()+0.5);
-					world.spawnEntityInWorld(e);
+					world.spawnEntity(e);
 					//world.playSoundAtEntity(e, "mob.chicken.plop", 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 					world.playSound(null,e.posX, e.posY, e.posZ, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 0.8F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 					this.onPatternBroken();

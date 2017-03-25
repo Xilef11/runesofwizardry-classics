@@ -59,7 +59,7 @@ public class InscriptionReturn extends ClassicInscription {
 			long time = world.getTotalWorldTime();
 			long stackTime = getTime(stack);
 			if(time>stackTime/*+(5*Refs.TPS)*/){
-				double speed = MathHelper.sqrt_double(player.motionX*player.motionX+player.motionY*player.motionY+player.motionZ*player.motionZ);
+				double speed = Math.sqrt(player.motionX*player.motionX+player.motionY*player.motionY+player.motionZ*player.motionZ);
 				if(speed<0.08 && player.onGround){
 					RayTraceResult res = RayTracer.retrace(player);
 					if(player.getPosition().down().equals(res.getBlockPos())){
