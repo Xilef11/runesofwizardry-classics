@@ -6,6 +6,7 @@ import java.util.Set;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import static net.minecraft.item.ItemStack.EMPTY;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
@@ -39,17 +40,17 @@ public class RuneTorch extends VariableRune {
 	protected ItemStack[][] setupPattern() {
 		ItemStack variable = new ItemStack(DustVariable.instance);
 		return new ItemStack[][]{
-				{null,null,null,null},
-				{null,variable,variable,null},
-				{null,variable,variable,null},
-				{null,null,null,null}
+				{EMPTY,EMPTY,EMPTY,EMPTY},
+				{EMPTY,variable,variable,EMPTY},
+				{EMPTY,variable,variable,EMPTY},
+				{EMPTY,EMPTY,EMPTY,EMPTY}
 				};
 	}
 	//sacrifice is nothing or a piece of flint
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				null,
+				EMPTY,
 				{new ItemStack(Items.FLINT)}
 		};
 	}

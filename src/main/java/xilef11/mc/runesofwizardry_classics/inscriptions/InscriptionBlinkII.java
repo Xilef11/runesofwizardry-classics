@@ -91,7 +91,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 						world.spawnParticle(EnumParticleTypes.SPELL, true, to.getX()+0.5, to.getY(), to.getZ()+0.5, 0d, 0d, 0d, 0);
 					}
 					
-					if(player.isSwingInProgress&&player.getHeldItemMainhand()==null){
+					if(player.isSwingInProgress&&player.getHeldItemMainhand().isEmpty()){
 						//sound + particles for fun
 						world.playSound(null,player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);
 						world.playSound(null,to.getX(), to.getY(), to.getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);

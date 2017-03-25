@@ -73,7 +73,7 @@ public class InscriptionLeap extends ClassicInscription {
 			player.fallDistance=0;
 			if(player.onGround)setFalling(stack, false);
 		}
-		if(player.isSneaking() && player.isSwingInProgress && player.getHeldItemMainhand()==null){
+		if(player.isSneaking() && player.isSwingInProgress && player.getHeldItemMainhand().isEmpty()){
 			int newDamage =stack.getItemDamage()+DAMAGE; 
 			if(newDamage<getMaxDurability()){
 				if(world.getTotalWorldTime()>(getTime(stack)+DELAY)){

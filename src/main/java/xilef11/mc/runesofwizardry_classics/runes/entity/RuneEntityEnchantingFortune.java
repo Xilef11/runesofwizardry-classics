@@ -26,7 +26,7 @@ public class RuneEntityEnchantingFortune extends RuneEntity {
 		if(!world.isRemote){
 			if(negated || Utils.takeXP(player, 15)){
 				//find the bow stack
-				ItemStack toEnchant=null;
+				ItemStack toEnchant=ItemStack.EMPTY;
 				boolean sword=false;
 				if(sacrifice!=null){
 					for(ItemStack i:sacrifice){
@@ -40,7 +40,7 @@ public class RuneEntityEnchantingFortune extends RuneEntity {
 						}
 					}
 				}
-				if(toEnchant==null && negated)toEnchant=new ItemStack(Items.DIAMOND_PICKAXE);
+				if(toEnchant.isEmpty() && negated)toEnchant=new ItemStack(Items.DIAMOND_PICKAXE);
 				if(!sword)toEnchant.addEnchantment(Enchantments.FORTUNE, Enchantments.FORTUNE.getMaxLevel()+1);
 				else toEnchant.addEnchantment(Enchantments.LOOTING, Enchantments.LOOTING.getMaxLevel()+1);
 				toEnchant.setItemDamage(0);

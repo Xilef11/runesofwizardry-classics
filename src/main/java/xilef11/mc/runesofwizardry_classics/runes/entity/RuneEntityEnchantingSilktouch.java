@@ -26,7 +26,7 @@ public class RuneEntityEnchantingSilktouch extends RuneEntity {
 		if(!world.isRemote){
 			if(negated || Utils.takeXP(player, 10)){
 				//find the bow stack
-				ItemStack toEnchant=null;
+				ItemStack toEnchant=ItemStack.EMPTY;
 				if(sacrifice!=null){
 					for(ItemStack i:sacrifice){
 						if(i.getItem()==Items.DIAMOND_PICKAXE || i.getItem()==Items.DIAMOND_SHOVEL){
@@ -34,7 +34,7 @@ public class RuneEntityEnchantingSilktouch extends RuneEntity {
 						}
 					}
 				}
-				if(toEnchant==null && negated)toEnchant=new ItemStack(Items.DIAMOND_PICKAXE);
+				if(toEnchant.isEmpty() && negated)toEnchant=new ItemStack(Items.DIAMOND_PICKAXE);
 				toEnchant.addEnchantment(Enchantments.SILK_TOUCH, Enchantments.SILK_TOUCH.getMaxLevel());
 				toEnchant.setItemDamage(0);
 				Utils.spawnItemCentered(world, getPos(), toEnchant);

@@ -81,7 +81,7 @@ public class RuneEntityFire extends FueledRuneEntity {
 				if(entity.ticksExisted()%TICK_RATE==0){//removing this condition seems to destroy less non-smeltable items FSR
 					ItemStack stack = e.getEntityItem();
 					ItemStack result = FurnaceRecipes.instance().getSmeltingResult(stack).copy();
-					if(result!=null){
+					if(!result.isEmpty()){
 						if(stack.getCount()==1){
 							result.setCount(result.getCount()*((Math.random() > 0.85) ? 2:1));
 							EntityItem toSpawn = new EntityItem(world, e.posX, e.posY, e.posZ, result);

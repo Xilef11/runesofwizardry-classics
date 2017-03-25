@@ -35,7 +35,7 @@ public class RuneEntityDepths extends RuneEntity {
 		if(!world.isRemote){
 			Coords c = ((RuneDepths)creator).getVariableDusts().iterator().next();
 			EnumDustTypes type = EnumDustTypes.getByMeta(placedPattern[c.row][c.col].getMetadata());
-			ItemStack wanted=null;
+			ItemStack wanted=ItemStack.EMPTY;
 			int size=1;
 			//sacrifice + size is dependant on dust used
 			switch(type){

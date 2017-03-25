@@ -29,7 +29,7 @@ public class InscriptionVoid extends ClassicInscription {
 		EntityPlayer player = event.getEntityPlayer();
 		if(player==null)return;
 		ItemStack insc = DustRegistry.getWornInscription(player);
-		if(insc!=null && DustRegistry.getInscriptionFromStack(insc)==this){
+		if(!insc.isEmpty() && DustRegistry.getInscriptionFromStack(insc)==this){
 			int damage = insc.getItemDamage();
 			int damageLeft = getMaxDurability()-damage;
 			if(damageLeft>0){

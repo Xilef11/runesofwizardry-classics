@@ -216,8 +216,8 @@ public class RuneResurrection extends ClassicRune {
 				continue;
 			}
 			ItemStack stack = item.getEntityItem();
-			if(stack==null){
-				ModLogger.logError("Error - NULL ItemStack (in a valid EntityItem) - while finding drops of entity: "+ent.getName());
+			if(stack.isEmpty()){
+				ModLogger.logError("Error - Empty ItemStack (in a valid EntityItem) - while finding drops of entity: "+ent.getName());
 				continue;
 			}
 			result.add(stack);
