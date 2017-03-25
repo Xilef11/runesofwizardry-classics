@@ -88,7 +88,7 @@ public class RuneEntityMountain extends RuneEntity {
 			initialPos = findArea(world,down);
 			//make sure the active dust column is the last one
 			if(initialPos==null){
-				player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".mountain.noarea"));
+				player.sendMessage(new TextComponentTranslation(Refs.Lang.RUNE+".mountain.noarea"));
 				this.onPatternBrokenByPlayer(player);
 				return;
 			}

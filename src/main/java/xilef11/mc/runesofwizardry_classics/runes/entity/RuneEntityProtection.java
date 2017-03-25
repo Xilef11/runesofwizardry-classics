@@ -72,7 +72,7 @@ public class RuneEntityProtection extends FueledRuneEntity {
 				//XXX actually, not all mods' hostile creatures implement this :(
 				if(e instanceof IMob){//hopefully this identifies potentially "hostile" creatures
 					BlockPos thisPos = getPos();
-					float dist = MathHelper.sqrt_double(e.getDistanceSqToCenter(thisPos));
+					float dist = MathHelper.sqrt(e.getDistanceSqToCenter(thisPos));
 					if(dist<radius){
 						//get the distance (x and z) from the center
 						double dx = e.posX-(thisPos.getX()+0.5);

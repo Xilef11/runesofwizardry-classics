@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -20,10 +18,12 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+
+import org.lwjgl.input.Keyboard;
+
 import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.Refs;
 

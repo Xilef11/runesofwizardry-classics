@@ -93,11 +93,11 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 	 * pressed. Args: itemStack, world, entityPlayer
 	 */
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world,	EntityPlayer player,EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick(World world,	EntityPlayer player,EnumHand hand) {
 		player.setActiveHand(hand);
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
-
+	
 	/**@author billythegoat101 with tweaks by Xilef11**/
 	@Override
 	public void onPlayerStoppedUsing(ItemStack item, World world,EntityLivingBase user,int timeLeft) {

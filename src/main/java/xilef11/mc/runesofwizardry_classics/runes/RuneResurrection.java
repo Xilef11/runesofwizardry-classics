@@ -172,7 +172,7 @@ public class RuneResurrection extends ClassicRune {
 	private List<ItemStack> getEntityLoot_Table(EntityLiving el){
 		ResourceLocation location = (ResourceLocation)ReflectionHelper.getPrivateValue(EntityLiving.class, el, "deathLootTable","field_184659_bA");
 		if(location==null){
-			Method getLT = ReflectionHelper.findMethod(EntityLiving.class, el, new String[]{"getLootTable","func_184647_J"});
+			Method getLT = ReflectionHelper.findMethod(EntityLiving.class,"getLootTable","func_184647_J");
 			try {
 				location = (ResourceLocation)getLT.invoke(el);
 			} catch (IllegalAccessException e) {
@@ -197,7 +197,7 @@ public class RuneResurrection extends ClassicRune {
 	private List<ItemStack> getEntityLoot_Hacky(EntityLiving ent){
 		List<ItemStack> result = new LinkedList<ItemStack>();
 		ent.captureDrops=true;
-		Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, (EntityLivingBase)ent, new String[]{"dropLoot","func_184610_a"},boolean.class,int.class,DamageSource.class);
+		Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, "dropLoot","func_184610_a",boolean.class,int.class,DamageSource.class);
 		try {
 			getdrops.invoke(ent,true, 10,DamageSource.GENERIC);
 		} catch (IllegalAccessException e1) {
