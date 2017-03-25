@@ -190,7 +190,7 @@ public class RuneResurrection extends ClassicRune {
 			ModLogger.logWarn(el.getName()+" does not have a LootTable. falling back to kill method");
 			return getEntityLoot_Hacky(el);
 		}
-		LootTableManager manager = el.worldObj.getLootTableManager();
+		LootTableManager manager = el.world.getLootTableManager();
 		LootTable table = manager.getLootTableFromLocation(location);
 		return LootUtils.tableToItemStacks(table);
 	}

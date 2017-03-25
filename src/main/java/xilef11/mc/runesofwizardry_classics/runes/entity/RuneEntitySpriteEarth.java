@@ -42,7 +42,7 @@ public class RuneEntitySpriteEarth extends FueledRuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
 		super.onRuneActivatedbyPlayer(player, sacrifice, negated);
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			if((negated||Utils.takeXP(player, 20))){
 				activatingPlayer = player.getName();
 				entity.setupStar(0x00FF00, 0x00FF00);

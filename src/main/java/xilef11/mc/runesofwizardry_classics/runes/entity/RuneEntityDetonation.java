@@ -26,7 +26,7 @@ public class RuneEntityDetonation extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			Coords c = ((RuneDetonation)creator).getFuse().iterator().next();
 			switch(EnumDustTypes.getByMeta(placedPattern[c.row][c.col].getMetadata())){
 			case PLANT:fuselength=-1;

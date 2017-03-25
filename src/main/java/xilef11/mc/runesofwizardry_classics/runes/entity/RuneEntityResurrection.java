@@ -30,7 +30,7 @@ public class RuneEntityResurrection extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			entity.setupStar(0xFFFFFF, 0xFFFFFF);
 			entity.setDrawStar(true);
 			entity.setupBeam(0xFFFFFF, BeamType.SPIRAL);

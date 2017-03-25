@@ -31,7 +31,7 @@ public class RuneEntityTrapLightning extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			Coords c = ((RuneTrapLightning)creator).getVariableDusts().iterator().next();
 			meta=placedPattern[c.row][c.col].getMetadata();
 		}

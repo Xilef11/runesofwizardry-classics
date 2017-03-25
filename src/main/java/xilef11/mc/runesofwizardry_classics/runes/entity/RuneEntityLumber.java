@@ -29,7 +29,7 @@ public class RuneEntityLumber extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		World world = player.worldObj;
+		World world = player.world;
 		if(!world.isRemote){
 			Coords c = ((RuneLumber)creator).getVariableDusts().iterator().next();
 			dust = EnumDustTypes.getByMeta((placedPattern[c.row][c.col].getMetadata()));

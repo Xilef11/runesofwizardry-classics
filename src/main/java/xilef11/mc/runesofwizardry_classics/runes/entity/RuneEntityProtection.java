@@ -35,7 +35,7 @@ public class RuneEntityProtection extends FueledRuneEntity {
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
 		super.onRuneActivatedbyPlayer(player, sacrifice, negated);
-		World world = player.worldObj;
+		World world = player.world;
 		if(!world.isRemote){
 			if(!(negated || Utils.takeXP(player, 15))){
 				this.onPatternBrokenByPlayer(player);

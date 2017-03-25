@@ -31,7 +31,7 @@ public class RuneEntityBarrier extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		World world = player.worldObj;
+		World world = player.world;
 		if(!world.isRemote){
 			if(!Utils.takeXP(player, 3)){
 				this.onPatternBrokenByPlayer(player);

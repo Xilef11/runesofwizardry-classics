@@ -42,7 +42,7 @@ public class RuneEntityUnimplemented extends RuneEntity {
 		RunesUtil.deactivateRune(this);
 		//return the sacrifice
 		for(ItemStack i:sacrifice){
-			Utils.spawnItemCentered(player.worldObj, getPos(), i);
+			Utils.spawnItemCentered(player.world, getPos(), i);
 		}
 	}
 	/* (non-Javadoc)

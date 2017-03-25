@@ -43,7 +43,7 @@ public abstract class FueledRuneEntity extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			this.ticksLeft=initialTicks();
 			entity.setupStar(0xFFFFFF, 0xFFFFFF, 1, 1);
 			entity.setDrawStar(true);

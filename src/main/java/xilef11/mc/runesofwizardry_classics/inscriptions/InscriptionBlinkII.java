@@ -51,7 +51,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 	 */
 	@Override
 	public boolean onInscriptionCharged(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			if(!negated){
 				return Utils.takeXP(player, 10);
 			}
@@ -81,7 +81,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 					Vec3d start = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
 					Vec3d look = player.getLook(1);;
 			        Vec3d end = start.addVector(look.xCoord * REACH, look.yCoord * REACH, look.zCoord * REACH);
-			        RayTraceResult res = player.worldObj.rayTraceBlocks(start, end, true, true, true);
+			        RayTraceResult res = player.world.rayTraceBlocks(start, end, true, true, true);
 			        if(res==null) return;
 			        BlockPos to = res.getBlockPos();
 			        

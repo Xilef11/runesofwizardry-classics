@@ -37,7 +37,7 @@ public class RuneEntitySpriteFire extends FueledRuneEntity {
 	 */
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			if(!(negated || Utils.takeXP(player, 22))){
 				this.onPatternBrokenByPlayer(player);
 				return;

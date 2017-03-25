@@ -46,7 +46,7 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
 		//super.onRuneActivatedbyPlayer(player, sacrifice, negated); don't register to other runes
-		World world = player.worldObj;
+		World world = player.world;
 		if(!world.isRemote){
 			entity.setupStar(0xFFFFFF, 0xFFFFFF);
 			findNearbyRunes();

@@ -102,9 +102,9 @@ public class RuneEntityFire extends FueledRuneEntity {
 	}
 	private void shoot(EntityItem item) {
 		float random = 0.12F;
-		float xrand = (float)item.worldObj.rand.nextGaussian(),
-			  yrand = (float)Math.abs(item.worldObj.rand.nextGaussian()),
-			  zrand = (float)item.worldObj.rand.nextGaussian();
+		float xrand = (float)item.world.rand.nextGaussian(),
+			  yrand = (float)Math.abs(item.world.rand.nextGaussian()),
+			  zrand = (float)item.world.rand.nextGaussian();
 		//It seems that this is NOT causing the issue
 		//xrand=yrand=zrand=1F;
 		//ModLogger.logInfo("Shoot rands: "+xrand + " "+yrand+" "+zrand);

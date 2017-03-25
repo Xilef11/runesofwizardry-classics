@@ -77,7 +77,7 @@ public class ItemSpiritSword extends ItemSword{
 	 */
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target,EntityLivingBase attacker) {
-		if(attacker instanceof EntityPlayer && !attacker.worldObj.isRemote){
+		if(attacker instanceof EntityPlayer && !attacker.world.isRemote){
 			EntityPlayer player = (EntityPlayer) attacker;
 			Random rand = new Random();
 			double r = rand.nextDouble();

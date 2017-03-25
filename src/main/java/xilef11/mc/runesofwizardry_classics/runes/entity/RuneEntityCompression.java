@@ -20,7 +20,7 @@ public class RuneEntityCompression extends RuneEntity {
 	}
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		World world = player.worldObj;
+		World world = player.world;
 		if(!world.isRemote){
 			int numCoal=0;
 			for(ItemStack i:sacrifice){

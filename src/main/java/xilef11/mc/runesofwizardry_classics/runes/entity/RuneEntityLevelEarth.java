@@ -32,7 +32,7 @@ public class RuneEntityLevelEarth extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			//FX
 			entity.setupStar(0xFFFFFF, (114<<8)|(53<<4)|(62));
 			//set up the rune based on dust used

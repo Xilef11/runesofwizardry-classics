@@ -56,7 +56,7 @@ public class RuneEntitySarlacc extends RuneEntity {
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
 		//not much
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			ticksremaining=Refs.TICKS_PER_DAY;
 			activator=player.getName();
 			entity.setupStar(0xFFFFFF, 0xFFFFFF);
