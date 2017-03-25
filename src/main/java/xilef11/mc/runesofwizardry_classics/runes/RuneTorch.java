@@ -50,7 +50,7 @@ public class RuneTorch extends VariableRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				EMPTY,
+				null,
 				{new ItemStack(Items.FLINT)}
 		};
 	}
