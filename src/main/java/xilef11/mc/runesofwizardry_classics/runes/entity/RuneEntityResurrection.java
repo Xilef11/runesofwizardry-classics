@@ -47,7 +47,7 @@ public class RuneEntityResurrection extends RuneEntity {
 			for(EntityItem ei:items){
 				ItemStack s = ei.getEntityItem();
 				stacks.add(s);
-				numItems+=s.stackSize;
+				numItems+=s.getCount();
 			}
 			if(numItems>1){
 				//try to get the entity

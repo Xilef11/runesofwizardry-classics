@@ -24,7 +24,7 @@ public class RuneEntityCompression extends RuneEntity {
 		if(!world.isRemote){
 			int numCoal=0;
 			for(ItemStack i:sacrifice){
-				if(i.getItem()==Items.COAL)numCoal+=i.stackSize;
+				if(i.getItem()==Items.COAL)numCoal+=i.getCount();
 			}
 			if(negated && numCoal==0)numCoal=32;
 			int numDiamonds = numCoal/32;

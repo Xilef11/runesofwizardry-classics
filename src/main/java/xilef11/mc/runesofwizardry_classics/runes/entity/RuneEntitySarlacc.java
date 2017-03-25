@@ -72,7 +72,7 @@ public class RuneEntitySarlacc extends RuneEntity {
 			for(Entity e:ents){
 				if(e instanceof EntityItem){
 					//increase the lifetime
-					ticksremaining+=((EntityItem)e).getEntityItem().stackSize*(Refs.TPS/2);
+					ticksremaining+=((EntityItem)e).getEntityItem().getCount()*(Refs.TPS/2);
 					e.setDead();
 				}else if(e instanceof EntityLiving){
 					//EntityLiving should be mobs but not players (or armor stands wtf), might cause issues with modded mobs if they extend EntityLivingBase directly

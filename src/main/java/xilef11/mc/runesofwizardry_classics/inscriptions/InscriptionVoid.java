@@ -38,7 +38,7 @@ public class InscriptionVoid extends ClassicInscription {
 					ItemStack stack = event.getItem().getEntityItem();
 					ItemStack split = stack.splitStack(damageLeft);
 					store.addStackToVoid(split);
-					if(!player.capabilities.isCreativeMode)insc.setItemDamage(damage+split.stackSize);
+					if(!player.capabilities.isCreativeMode)insc.setItemDamage(damage+split.getCount());
 				}
 			}
 		}
