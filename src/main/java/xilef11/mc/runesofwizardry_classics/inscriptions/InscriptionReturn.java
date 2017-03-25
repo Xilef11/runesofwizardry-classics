@@ -113,12 +113,12 @@ public class InscriptionReturn extends ClassicInscription {
 	}
 
 	private void setLocation(ItemStack stack, BlockPos pos){
-		NBTTagCompound tag = stack.getSubCompound(Refs.MODID, true);
+		NBTTagCompound tag = stack.getOrCreateSubCompound(Refs.MODID);
 		tag.setIntArray("returnPos", new int[]{pos.getX(),pos.getY(),pos.getZ()});
 	}
 	@Nullable
 	private BlockPos getLocation(ItemStack stack){
-		NBTTagCompound tag = stack.getSubCompound(Refs.MODID, false);
+		NBTTagCompound tag = stack.getSubCompound(Refs.MODID);
 		if(tag!=null){
 			int[] c = tag.getIntArray("returnPos");
 			return new BlockPos(c[0],c[1],c[2]);
@@ -126,11 +126,11 @@ public class InscriptionReturn extends ClassicInscription {
 		return null;
 	}
 	private void setTime(ItemStack stack, long time){
-		NBTTagCompound tag = stack.getSubCompound(Refs.MODID, true);
+		NBTTagCompound tag = stack.getOrCreateSubCompound(Refs.MODID);
 		tag.setLong("useTime", time);
 	}
 	private long getTime(ItemStack stack){
-		NBTTagCompound tag = stack.getSubCompound(Refs.MODID, true);
+		NBTTagCompound tag = stack.getOrCreateSubCompound(Refs.MODID);
 		return tag.getLong("useTime");
 	}
 }

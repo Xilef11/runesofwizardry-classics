@@ -89,15 +89,15 @@ public class InscriptionLeap extends ClassicInscription {
 	}
 
 	protected static void setFalling(ItemStack stack, boolean value){
-		stack.getSubCompound(Refs.MODID, true).setBoolean("falling", value);
+		stack.getOrCreateSubCompound(Refs.MODID).setBoolean("falling", value);
 	}
 	protected static boolean isFalling(ItemStack stack){
-		return stack.getSubCompound(Refs.MODID, true).getBoolean("falling");
+		return stack.getOrCreateSubCompound(Refs.MODID).getBoolean("falling");
 	}
 	protected static void setTime(ItemStack stack, long time){
-		stack.getSubCompound(Refs.MODID, true).setLong("lastTime", time);
+		stack.getOrCreateSubCompound(Refs.MODID).setLong("lastTime", time);
 	}
 	protected static long getTime(ItemStack stack){
-		return stack.getSubCompound(Refs.MODID, true).getLong("lastTime");
+		return stack.getOrCreateSubCompound(Refs.MODID).getLong("lastTime");
 	}
 }

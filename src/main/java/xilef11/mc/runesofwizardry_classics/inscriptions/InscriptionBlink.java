@@ -98,10 +98,10 @@ public class InscriptionBlink extends ClassicInscription {
 		}
 	}
 	protected static void setTime(ItemStack stack, long time){
-		stack.getSubCompound(Refs.MODID, true).setLong("lastTime", time);
+		stack.getOrCreateSubCompound(Refs.MODID).setLong("lastTime", time);
 	}
 	protected static long getTime(ItemStack stack){
-		return stack.getSubCompound(Refs.MODID, true).getLong("lastTime");
+		return stack.getOrCreateSubCompound(Refs.MODID).getLong("lastTime");
 	}
 
 }

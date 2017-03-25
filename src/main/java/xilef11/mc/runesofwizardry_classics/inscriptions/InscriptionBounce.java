@@ -55,15 +55,15 @@ public class InscriptionBounce extends ClassicInscription {
 	}
 
 	private float getLastSpeedY(ItemStack item){
-		NBTTagCompound tag = item.getSubCompound(Refs.MODID, true);
+		NBTTagCompound tag = item.getOrCreateSubCompound(Refs.MODID);
 		return tag.getFloat("ySpeed");
 	}
 	private boolean wasFalling(ItemStack item){
-		NBTTagCompound tag = item.getSubCompound(Refs.MODID, true);
+		NBTTagCompound tag = item.getOrCreateSubCompound(Refs.MODID);
 		return tag.getBoolean("falling");
 	}
 	private void setFalling(ItemStack item,boolean falling,float yspeed){
-		NBTTagCompound tag = item.getSubCompound(Refs.MODID, true);
+		NBTTagCompound tag = item.getOrCreateSubCompound(Refs.MODID);
 		tag.setBoolean("falling", falling);
 		tag.setFloat("ySpeed", yspeed);
 	}
