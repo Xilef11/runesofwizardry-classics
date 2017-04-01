@@ -18,7 +18,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneTrapLightning extends VariableRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeTrapLightning.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runetraplightning.json");
 	}
 	@Override
 	protected Vec3i setupEntityPos() {

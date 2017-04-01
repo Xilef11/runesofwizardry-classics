@@ -46,7 +46,7 @@ public class InscriptionVoid extends ClassicInscription {
 	
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionVoid.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/inscriptionvoid.json"));
 	}
 
 	@Override

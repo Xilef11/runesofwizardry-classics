@@ -44,7 +44,7 @@ public class RuneLockedTime extends ClassicRune {
 	}
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeLockedTime.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runelockedtime.json");
 	}
 	@Override
 	public String getID() {

@@ -25,7 +25,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 	//also has a particle effect at the teleport destination
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionBlinkII.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/inscriptionblinkii.json"));
 	}
 
 	@Override

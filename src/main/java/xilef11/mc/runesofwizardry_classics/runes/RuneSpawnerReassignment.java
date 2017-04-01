@@ -15,7 +15,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneSpawnerReassignment extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeSpawnerReassignment.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runespawnerreassignment.json");
 	}
 	@Override
 	public String getID() {

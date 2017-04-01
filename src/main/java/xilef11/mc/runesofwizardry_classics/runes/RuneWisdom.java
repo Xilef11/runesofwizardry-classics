@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneWisdom extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeWisdom.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runewisdom.json");
 	}
 	@Override
 	public String getID() {

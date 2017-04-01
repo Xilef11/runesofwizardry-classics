@@ -22,7 +22,7 @@ public class InscriptionForesight extends ClassicInscription {
 	//Original doesn't seem to be doing anything...
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionForesight.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/inscriptionforesight.json"));
 	}
 
 	@Override

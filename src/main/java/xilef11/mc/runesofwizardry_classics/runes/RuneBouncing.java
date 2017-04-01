@@ -32,7 +32,7 @@ public class RuneBouncing extends ClassicRune {
 	}
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeBouncing.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runebouncing.json");
 	}
 	@Override
 	protected Vec3i setupEntityPos() {

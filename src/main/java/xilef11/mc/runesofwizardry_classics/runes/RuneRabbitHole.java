@@ -26,7 +26,7 @@ public class RuneRabbitHole extends VariableRune {
 	 */
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeRabbitHole.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runerabbithole.json"));
 	}
 	@Override
 	public String getID() {

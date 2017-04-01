@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneLeapingFrog extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeLeapingFrog.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeleapingfrog.json");
 	}
 	@Override
 	public String getID() {

@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneRebirth extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeRebirth.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runerebirth.json");
 	}
 	@Override
 	protected Vec3i setupEntityPos() {

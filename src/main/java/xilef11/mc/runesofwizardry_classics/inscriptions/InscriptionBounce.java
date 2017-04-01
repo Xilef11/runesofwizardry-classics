@@ -16,7 +16,7 @@ public class InscriptionBounce extends ClassicInscription {
 	
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionBounce.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/inscriptionbounce.json"));
 	}
 
 	@Override

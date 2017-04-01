@@ -31,7 +31,7 @@ public class RuneDepths extends VariableRune {
 	 */
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeDepths.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runedepths.json");
 	}
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.ClassicRune#setupEntityPos()

@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneProtection extends VariableRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeProtection.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeprotection.json");
 	}
 	@Override
 	public String getID() {

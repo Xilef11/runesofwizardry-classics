@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneMusic extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeMusic.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runemusic.json");
 	}
 	@Override
 	protected Vec3i setupEntityPos() {

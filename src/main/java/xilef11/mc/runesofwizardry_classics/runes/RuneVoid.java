@@ -20,7 +20,7 @@ public class RuneVoid extends ClassicRune {
 	}
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeVoid.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runevoid.json");
 	}
 	@Override
 	protected Vec3i setupEntityPos() {

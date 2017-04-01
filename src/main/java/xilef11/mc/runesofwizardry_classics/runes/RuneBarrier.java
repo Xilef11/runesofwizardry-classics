@@ -20,7 +20,7 @@ public class RuneBarrier extends ClassicRune {
 	}
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeBarrier.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runebarrier.json");
 	}
 	@Override
 	protected Vec3i setupEntityPos() {

@@ -28,7 +28,7 @@ public class RuneLumber extends VariableRune {
 	 */
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeLumber.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runelumber.json"));
 	}
 	@Override
 	public String getID() {

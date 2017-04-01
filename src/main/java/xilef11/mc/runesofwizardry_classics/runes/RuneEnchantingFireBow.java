@@ -18,7 +18,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneEnchantingFireBow extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeEnchantingFireBow.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeenchantingfirebow.json");
 	}
 	@Override
 	public String getID() {

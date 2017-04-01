@@ -34,7 +34,7 @@ import com.zpig333.runesofwizardry.util.RayTracer;
 public class InscriptionReturn extends ClassicInscription {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionReturn.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/inscriptionreturn.json"));
 	}
 
 	@Override

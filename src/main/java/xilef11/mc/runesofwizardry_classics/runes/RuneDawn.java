@@ -17,7 +17,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneDawn extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeDawn.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runedawn.json");
 	}
 	@Override
 	public String getID() {

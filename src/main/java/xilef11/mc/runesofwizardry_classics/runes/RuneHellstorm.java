@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneHellstorm extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeHellstorm.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runehellstorm.json");
 	}
 	@Override
 	protected Vec3i setupEntityPos() {

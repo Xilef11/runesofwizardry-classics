@@ -27,7 +27,7 @@ public class RuneHealing extends VariableRune {
 	 */
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeHealing.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runehealing.json"));
 	}
 	@Override
 	public String getID() {

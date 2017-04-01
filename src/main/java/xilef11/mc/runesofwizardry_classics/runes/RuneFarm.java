@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneFarm extends VariableRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeFarm.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runefarm.json");
 	}
 	@Override
 	protected Vec3i setupEntityPos() {

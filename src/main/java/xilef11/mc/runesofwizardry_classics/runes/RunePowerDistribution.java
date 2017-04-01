@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RunePowerDistribution extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runePowerDistribution.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runepowerdistribution.json");
 	}
 	@Override
 	public String getID() {

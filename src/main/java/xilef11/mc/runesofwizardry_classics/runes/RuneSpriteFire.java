@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneSpriteFire extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeSpriteFire.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runespritefire.json");
 	}
 	@Override
 	protected Vec3i setupEntityPos() {

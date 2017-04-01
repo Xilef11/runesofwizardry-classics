@@ -38,7 +38,7 @@ public class InscriptionLeapII extends InscriptionLeap {
 	
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionLeapII.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/inscriptionleapii.json"));
 	}
 
 	@Override

@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneHeights extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeHeights.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeheights.json");
 	}
 	@Override
 	public String getID() {

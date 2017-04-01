@@ -23,7 +23,7 @@ public class InscriptionBlink extends ClassicInscription {
 
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/InscriptionBlink.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.MODID,"patterns/inscriptions/inscriptionblink.json"));
 	}
 
 	@Override

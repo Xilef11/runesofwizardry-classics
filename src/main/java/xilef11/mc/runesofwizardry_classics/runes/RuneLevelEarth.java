@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneLevelEarth extends VariableRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeLevelEarth.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runelevelearth.json");
 	}
 	@Override
 	public String getID() {

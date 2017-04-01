@@ -20,7 +20,7 @@ public class RuneTeleportation extends ClassicRune {
 	}
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeTeleportation.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeteleportation.json");
 	}
 	@Override
 	protected Vec3i setupEntityPos() {

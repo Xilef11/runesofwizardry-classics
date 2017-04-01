@@ -16,7 +16,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneSpeed extends VariableRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {
-		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runeSpeed.json");
+		return PatternUtils.importFromJson(Refs.PATTERN_PATH+"runespeed.json");
 	}
 	@Override
 	public String getID() {

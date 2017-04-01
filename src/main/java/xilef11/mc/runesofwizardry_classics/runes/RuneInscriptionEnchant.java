@@ -47,7 +47,7 @@ public class RuneInscriptionEnchant extends RuneChargeInscription {
 		}
 	}
 	protected ItemStack[][] setupPattern() throws IOException{
-		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeClassicChargeInscription.json"));
+		return PatternUtils.importFromJson(new ResourceLocation(Refs.PATTERN_PATH+"runeclassicchargeinscription.json"));
 	}
 	
 }
