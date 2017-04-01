@@ -42,7 +42,7 @@ public class InscriptionForesight extends ClassicInscription {
 	 */
 	@Override
 	public boolean onInscriptionCharged(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			if(!negated){
 				return Utils.takeXP(player, 20);
 			}

@@ -32,7 +32,7 @@ public class RuneEntityTeleportation extends RuneEntity {
 	}
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		World world = player.worldObj;
+		World world = player.world;
 		if(!world.isRemote){
 			//take the XP
 			if(!(negated||Utils.takeXP(player, 5))){
@@ -82,7 +82,7 @@ public class RuneEntityTeleportation extends RuneEntity {
 							p.timeUntilPortal=0;
 							p.fallDistance=0;
 							//deal 3 hearts of damage
-							p.attackEntityFrom(DamageSource.magic, 6);
+							p.attackEntityFrom(DamageSource.MAGIC, 6);
 							//sound + particles for fun
 							world.playSound(null,getPos().getX(), getPos().getY(), getPos().getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);
 							world.playSound(null,dest.getX(), dest.getY(), dest.getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);

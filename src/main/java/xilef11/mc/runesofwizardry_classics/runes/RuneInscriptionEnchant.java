@@ -21,7 +21,7 @@ public class RuneInscriptionEnchant extends RuneChargeInscription {
 	 */
 	@Override
 	public String getName() {
-		return Refs.MODID+".inscription.classicinscriptionenchant";
+		return Refs.MODID+".rune.classicinscriptionenchant";
 	}
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#getPattern()

@@ -57,7 +57,7 @@ public class RuneBouncing extends ClassicRune {
 	@SubscribeEvent
 	public void onEntityJump(LivingJumpEvent event){
 		EntityLivingBase ent = event.getEntityLiving();
-		World world = ent.worldObj;
+		World world = ent.world;
 		if(!world.isRemote){
 			//basically, check if we are standing on placed dust, then check if its an active rune of bouncing
 			BlockPos feetPos = ent.getPosition();

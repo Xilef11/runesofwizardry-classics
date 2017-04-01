@@ -24,7 +24,7 @@ public abstract class VariableRune extends ClassicRune {
 			for(int r = 0;r<pattern.length;r++){
 				for(int c=0;c<pattern[r].length;c++){
 					ItemStack s = pattern[r][c];
-					if(s!=null && s.getItem()==DustVariable.instance){
+					if(s.getItem()==DustVariable.instance){
 						variables.add(new Coords(r,c));
 					}
 				}
@@ -45,10 +45,10 @@ public abstract class VariableRune extends ClassicRune {
 	 * @return true if the variable dust positions are valid
 	 */
 	protected boolean variablesOK(ItemStack[][] foundPattern) {
-		ItemStack firstVar=null;
+		ItemStack firstVar=ItemStack.EMPTY;
 		for(Coords c:getVariableDusts()){
-			if(firstVar==null)firstVar=foundPattern[c.row][c.col];
-			if(foundPattern[c.row][c.col]==null || !ItemStack.areItemStacksEqual(firstVar, foundPattern[c.row][c.col]))return false;
+			if(firstVar.isEmpty())firstVar=foundPattern[c.row][c.col];
+			if(foundPattern[c.row][c.col].isEmpty() || !ItemStack.areItemStacksEqual(firstVar, foundPattern[c.row][c.col]))return false;
 		}
 		return true;
 	}

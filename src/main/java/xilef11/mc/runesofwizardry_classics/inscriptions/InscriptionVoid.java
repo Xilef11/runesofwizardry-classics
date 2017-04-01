@@ -29,7 +29,7 @@ public class InscriptionVoid extends ClassicInscription {
 		EntityPlayer player = event.getEntityPlayer();
 		if(player==null)return;
 		ItemStack insc = DustRegistry.getWornInscription(player);
-		if(insc!=null && DustRegistry.getInscriptionFromStack(insc)==this){
+		if(!insc.isEmpty() && DustRegistry.getInscriptionFromStack(insc)==this){
 			int damage = insc.getItemDamage();
 			int damageLeft = getMaxDurability()-damage;
 			if(damageLeft>0){
@@ -38,7 +38,7 @@ public class InscriptionVoid extends ClassicInscription {
 					ItemStack stack = event.getItem().getEntityItem();
 					ItemStack split = stack.splitStack(damageLeft);
 					store.addStackToVoid(split);
-					if(!player.capabilities.isCreativeMode)insc.setItemDamage(damage+split.stackSize);
+					if(!player.capabilities.isCreativeMode)insc.setItemDamage(damage+split.getCount());
 				}
 			}
 		}
@@ -68,7 +68,7 @@ public class InscriptionVoid extends ClassicInscription {
 	 */
 	@Override
 	public boolean onInscriptionCharged(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			if(!negated){
 				return Utils.takeXP(player, 5);
 			}

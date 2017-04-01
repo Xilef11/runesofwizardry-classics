@@ -21,11 +21,11 @@ public class RuneEntityEnchantingFireBow extends RuneEntity {
 	}
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		World world = player.worldObj;
+		World world = player.world;
 		if(!world.isRemote){
 			if(negated || Utils.takeXP(player, 5)){
 				//find the bow stack
-				ItemStack bow=null;
+				ItemStack bow=ItemStack.EMPTY;
 				if(sacrifice!=null){
 					for(ItemStack i:sacrifice){
 						if(i.getItem()==Items.BOW){
@@ -33,7 +33,7 @@ public class RuneEntityEnchantingFireBow extends RuneEntity {
 						}
 					}
 				}
-				if(bow==null && negated)bow = new ItemStack(Items.BOW);
+				if(bow.isEmpty() && negated)bow = new ItemStack(Items.BOW);
 				bow.addEnchantment(Enchantments.FLAME, Enchantments.FLAME.getMaxLevel());
 				bow.setItemDamage(0);
 				Utils.spawnItemCentered(world, getPos(), bow);

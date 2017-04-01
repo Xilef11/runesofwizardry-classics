@@ -38,11 +38,11 @@ public class RuneEntityUnimplemented extends RuneEntity {
 	 */
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice,boolean negated) {
-		player.addChatMessage(new TextComponentTranslation(message, new TextComponentTranslation(runeName)));
+		player.sendMessage(new TextComponentTranslation(message, new TextComponentTranslation(runeName)));
 		RunesUtil.deactivateRune(this);
 		//return the sacrifice
 		for(ItemStack i:sacrifice){
-			Utils.spawnItemCentered(player.worldObj, getPos(), i);
+			Utils.spawnItemCentered(player.world, getPos(), i);
 		}
 	}
 	/* (non-Javadoc)

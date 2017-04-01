@@ -51,7 +51,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 	 */
 	@Override
 	public boolean onInscriptionCharged(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			if(!negated){
 				return Utils.takeXP(player, 10);
 			}
@@ -81,7 +81,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 					Vec3d start = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
 					Vec3d look = player.getLook(1);;
 			        Vec3d end = start.addVector(look.xCoord * REACH, look.yCoord * REACH, look.zCoord * REACH);
-			        RayTraceResult res = player.worldObj.rayTraceBlocks(start, end, true, true, true);
+			        RayTraceResult res = player.world.rayTraceBlocks(start, end, true, true, true);
 			        if(res==null) return;
 			        BlockPos to = res.getBlockPos();
 			        
@@ -91,7 +91,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 						world.spawnParticle(EnumParticleTypes.SPELL, true, to.getX()+0.5, to.getY(), to.getZ()+0.5, 0d, 0d, 0d, 0);
 					}
 					
-					if(player.isSwingInProgress&&player.getHeldItemMainhand()==null){
+					if(player.isSwingInProgress&&player.getHeldItemMainhand().isEmpty()){
 						//sound + particles for fun
 						world.playSound(null,player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);
 						world.playSound(null,to.getX(), to.getY(), to.getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);
@@ -110,10 +110,10 @@ public class InscriptionBlinkII extends ClassicInscription {
 		}
 	}
 	protected static void setTime(ItemStack stack, long time){
-		stack.getSubCompound(Refs.MODID, true).setLong("lastTime", time);
+		stack.getOrCreateSubCompound(Refs.MODID).setLong("lastTime", time);
 	}
 	protected static long getTime(ItemStack stack){
-		return stack.getSubCompound(Refs.MODID, true).getLong("lastTime");
+		return stack.getOrCreateSubCompound(Refs.MODID).getLong("lastTime");
 	}
 
 }

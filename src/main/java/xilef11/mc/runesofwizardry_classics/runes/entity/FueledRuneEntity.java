@@ -43,7 +43,7 @@ public abstract class FueledRuneEntity extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			this.ticksLeft=initialTicks();
 			entity.setupStar(0xFFFFFF, 0xFFFFFF, 1, 1);
 			entity.setDrawStar(true);
@@ -96,7 +96,7 @@ public abstract class FueledRuneEntity extends RuneEntity {
 				//find the furnace burn time. if not hardcoded in vanilla furnace, it will check Forge's registered fuelHandlers
 				int burnTime = TileEntityFurnace.getItemBurnTime(stack);
 				if(burnTime!=0){
-					this.addFuel(burnTime*stack.stackSize);
+					this.addFuel(burnTime*stack.getCount());
 					worldIn.playSound(null,entityIn.posX, entityIn.posY, entityIn.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 					worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, entityIn.posX, entityIn.posY, entityIn.posZ, 0, 0, 0);
 					entityIn.setDead();

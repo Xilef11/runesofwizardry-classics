@@ -26,7 +26,7 @@ public class RuneEntityHealing extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		World world = player.worldObj;
+		World world = player.world;
 		System.out.println("WTF");
 		if(!world.isRemote){
 			if(!(negated || Utils.takeXP(player, 2))){

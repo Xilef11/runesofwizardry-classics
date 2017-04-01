@@ -85,7 +85,7 @@ public abstract class ClassicInscription extends Inscription{
 				//TODO check if cheats enabled if single player
 			}
 		}
-		if(!allowed)player.addChatMessage(new TextComponentTranslation(Refs.MODID+".inscription.nopermission.message",new TextComponentTranslation(getName())));
+		if(!allowed)player.sendMessage(new TextComponentTranslation(Refs.MODID+".inscription.nopermission.message",new TextComponentTranslation(getName())));
 		return allowed;
 	}
 	

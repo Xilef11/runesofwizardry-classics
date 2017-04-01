@@ -33,12 +33,6 @@ buildscript {
 		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.7"
     }
 }
-/*
-// for people who want stable - not yet functional for MC 1.8.8 - we require the forgegradle 2.1 snapshot
-plugins {
-    id "net.minecraftforge.gradle.forge" version "2.0.2"
-}
-*/
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'co.riiid.gradle' 
@@ -52,11 +46,12 @@ compileJava {
 //https://github.com/riiid/gradle-github-plugin for auto github releases
 //https://github.com/matthewprenger/CurseGradle for auto curseforge releases
 def majorVersion = "0"
-def minorVersion = "4"
-def bugfix = ".4"
+def minorVersion = "5"
+def bugfix = ".0"
 def devVersion = "-dev"
-def forgeVersion="1.10.2-12.18.3.2185"
+def forgeVersion="1.11.2-13.20.0.2260"
 def mcVersion = forgeVersion.substring(0,forgeVersion.indexOf('-'))
+def jeiversion = "1.11.2:4.2.10.250"
 
 def username = 'ForgeDevName'
 //set from command line with -Pdev_username=name
@@ -88,7 +83,7 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20161111"
+    mappings = "snapshot_20161220"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 	replace '@VERSION@', project.version
 	replaceIn 'Refs.java'
@@ -121,9 +116,9 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    
-    deobfCompile "mezz.jei:jei_1.10.2:3.13.6.387:api"
-	runtime "mezz.jei:jei_1.10.2:3.13.6.387"
+    //JEI
+    deobfCompile "mezz.jei:jei_"+jeiversion+":api"
+	runtime "mezz.jei:jei_"+jeiversion
 }
 
 processResources
@@ -233,9 +228,8 @@ if(project.hasProperty('curseKey')){
 		addGameVersion mcVersion
 		addGameVersion 'Java 8'
 		addGameVersion 'Java 7'
-		addGameVersion '1.10'
-		addGameVersion '1.10.2'
-		addGameVersion '1.9.4'
+		addGameVersion '1.11.2'
+		addGameVersion '1.11'
 		//version pulled from ForgeGradle includes java 6
 		changelogType='markdown'
 		changelog = file('changelog.md').getText()+"\n\nBuilt with Forge "+forgeVersion+" and "+row

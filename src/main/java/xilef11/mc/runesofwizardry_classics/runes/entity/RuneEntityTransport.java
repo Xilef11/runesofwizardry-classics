@@ -30,7 +30,7 @@ public class RuneEntityTransport extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			if(!Utils.takeXP(player, 5)){
 				this.onPatternBrokenByPlayer(player);
 			}

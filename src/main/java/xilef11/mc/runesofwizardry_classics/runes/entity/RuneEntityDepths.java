@@ -31,11 +31,11 @@ public class RuneEntityDepths extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		World world = player.worldObj;
+		World world = player.world;
 		if(!world.isRemote){
 			Coords c = ((RuneDepths)creator).getVariableDusts().iterator().next();
 			EnumDustTypes type = EnumDustTypes.getByMeta(placedPattern[c.row][c.col].getMetadata());
-			ItemStack wanted=null;
+			ItemStack wanted=ItemStack.EMPTY;
 			int size=1;
 			//sacrifice + size is dependant on dust used
 			switch(type){
@@ -69,7 +69,7 @@ public class RuneEntityDepths extends RuneEntity {
 				}
 			}
 			BlockPos last = beginPos.down(1);
-			//world.spawnEntityInWorld(new EntityLightningBolt(world, last.getX(), last.getY()+1, last.getZ()));
+			//world.spawnEntity(new EntityLightningBolt(world, last.getX(), last.getY()+1, last.getZ()));
 			//lightning eats sacrifice negator, so we'll spawn a new one
 			world.addWeatherEffect(new EntityLightningBolt(world, last.getX(), last.getY()+1, last.getZ(),true));
 			if(negated)xilef11.mc.runesofwizardry_classics.utils.Utils.spawnItemCentered(world, getPos(), new ItemStack(WizardryRegistry.sacrifice_negator));

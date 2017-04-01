@@ -73,17 +73,17 @@ public class RuneDetonation extends ClassicRune {
 		return fuseOK(foundPattern)&&centerOK(foundPattern);
 	}
 	private boolean centerOK(ItemStack[][] foundPattern) {
-		ItemStack first = null;
+		ItemStack first = ItemStack.EMPTY;
 		for(Coords c:getCenter()){
-			if(first==null)first=foundPattern[c.row][c.col];
+			if(first.isEmpty())first=foundPattern[c.row][c.col];
 			if(!ItemStack.areItemStacksEqual(first, foundPattern[c.row][c.col]))return false;
 		}
 		return true;
 	}
 	private boolean fuseOK(ItemStack[][] foundPattern) {
-		ItemStack first = null;
+		ItemStack first = ItemStack.EMPTY;
 		for(Coords c:getFuse()){
-			if(first==null)first=foundPattern[c.row][c.col];
+			if(first.isEmpty())first=foundPattern[c.row][c.col];
 			if(!ItemStack.areItemStacksEqual(first, foundPattern[c.row][c.col]))return false;
 		}
 		return true;

@@ -28,7 +28,7 @@ public class RuneEntityTrapCage extends RuneEntity {
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
 		//nothing here
-		if(!player.worldObj.isRemote)user=player.getName();
+		if(!player.world.isRemote)user=player.getName();
 	}
 	private static final int RADIUS=3;
 	@Override

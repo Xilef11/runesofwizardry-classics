@@ -80,13 +80,13 @@ public class RuneEntityFire extends FueledRuneEntity {
 				e.extinguish();
 				if(entity.ticksExisted()%TICK_RATE==0){//removing this condition seems to destroy less non-smeltable items FSR
 					ItemStack stack = e.getEntityItem();
-					ItemStack result = ItemStack.copyItemStack(FurnaceRecipes.instance().getSmeltingResult(stack));
-					if(result!=null){
-						if(stack.stackSize==1){
-							result.stackSize*=((Math.random() > 0.85) ? 2:1);
+					ItemStack result = FurnaceRecipes.instance().getSmeltingResult(stack).copy();
+					if(!result.isEmpty()){
+						if(stack.getCount()==1){
+							result.setCount(result.getCount()*((Math.random() > 0.85) ? 2:1));
 							EntityItem toSpawn = new EntityItem(world, e.posX, e.posY, e.posZ, result);
 							ReflectionHelper.setPrivateValue(Entity.class, toSpawn, true, "isImmuneToFire","field_70178_ae");
-							world.spawnEntityInWorld(toSpawn);
+							world.spawnEntity(toSpawn);
 							shoot(toSpawn);
 							toSpawn.extinguish();
 						}
@@ -102,9 +102,9 @@ public class RuneEntityFire extends FueledRuneEntity {
 	}
 	private void shoot(EntityItem item) {
 		float random = 0.12F;
-		float xrand = (float)item.worldObj.rand.nextGaussian(),
-			  yrand = (float)Math.abs(item.worldObj.rand.nextGaussian()),
-			  zrand = (float)item.worldObj.rand.nextGaussian();
+		float xrand = (float)item.world.rand.nextGaussian(),
+			  yrand = (float)Math.abs(item.world.rand.nextGaussian()),
+			  zrand = (float)item.world.rand.nextGaussian();
 		//It seems that this is NOT causing the issue
 		//xrand=yrand=zrand=1F;
 		//ModLogger.logInfo("Shoot rands: "+xrand + " "+yrand+" "+zrand);

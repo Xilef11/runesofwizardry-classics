@@ -30,11 +30,11 @@ public class RuneEntitySpiritTools extends RuneEntity {
 	private int countdown;
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player, ItemStack[] sacrifice,boolean negated) {
-		if(player.worldObj.isRemote)return;
+		if(player.world.isRemote)return;
 		if(negated || Utils.takeXP(player, 18)){
 			if(sacrifice!=null){
 				for(ItemStack i:sacrifice){
-					if(i!=null){
+					if(!i.isEmpty()){
 						if(i.getItem()==Items.GOLDEN_SWORD)type=EnumType.SWORD;
 						else if(i.getItem()==Items.GOLDEN_PICKAXE)type=EnumType.PICK;
 					}

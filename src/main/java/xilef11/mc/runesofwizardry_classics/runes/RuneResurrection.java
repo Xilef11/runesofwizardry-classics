@@ -55,7 +55,7 @@ import com.zpig333.runesofwizardry.api.RuneEntity;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneResurrection extends ClassicRune {
-	public static Map<String,Set<String>> dropToEntity=null;
+	public static Map<String,Set<ResourceLocation>> dropToEntity=null;
 	public RuneResurrection() {
 		super();
 		MinecraftForge.EVENT_BUS.register(this);
@@ -137,12 +137,12 @@ public class RuneResurrection extends ClassicRune {
 			ModLogger.logInfo("drop table already exists");
 			//return;
 		}else{
-			dropToEntity = new HashMap<String,Set<String>>();
+			dropToEntity = new HashMap<String,Set<ResourceLocation>>();
 		}
-		for(String entName:EntityList.getEntityNameList()){
+		for(ResourceLocation entName:EntityList.getEntityNameList()){
 			Entity e=null;
 			try{
-				e = EntityList.createEntityByName(entName, world);
+				e = EntityList.createEntityByIDFromName(entName, world);
 			}catch(NoClassDefFoundError err){
 				ModLogger.logException(Level.ERROR, err, "An entity has caused a client-side class to load on the server: "+entName+" ; Please report to that mod's author.");
 				continue;
@@ -157,9 +157,9 @@ public class RuneResurrection extends ClassicRune {
 						continue;
 					}
 					String key = i.getRegistryName().toString()+"@"+stack.getMetadata();
-					Set<String> ids = dropToEntity.get(key);
+					Set<ResourceLocation> ids = dropToEntity.get(key);
 					if(ids==null){
-						ids=new HashSet<String>();
+						ids=new HashSet<ResourceLocation>();
 						dropToEntity.put(key, ids);
 					}
 					ids.add(entName);
@@ -172,7 +172,7 @@ public class RuneResurrection extends ClassicRune {
 	private List<ItemStack> getEntityLoot_Table(EntityLiving el){
 		ResourceLocation location = (ResourceLocation)ReflectionHelper.getPrivateValue(EntityLiving.class, el, "deathLootTable","field_184659_bA");
 		if(location==null){
-			Method getLT = ReflectionHelper.findMethod(EntityLiving.class, el, new String[]{"getLootTable","func_184647_J"});
+			Method getLT = ReflectionHelper.findMethod(EntityLiving.class,"getLootTable","func_184647_J");
 			try {
 				location = (ResourceLocation)getLT.invoke(el);
 			} catch (IllegalAccessException e) {
@@ -190,16 +190,16 @@ public class RuneResurrection extends ClassicRune {
 			ModLogger.logWarn(el.getName()+" does not have a LootTable. falling back to kill method");
 			return getEntityLoot_Hacky(el);
 		}
-		LootTableManager manager = el.worldObj.getLootTableManager();
+		LootTableManager manager = el.world.getLootTableManager();
 		LootTable table = manager.getLootTableFromLocation(location);
 		return LootUtils.tableToItemStacks(table);
 	}
 	private List<ItemStack> getEntityLoot_Hacky(EntityLiving ent){
 		List<ItemStack> result = new LinkedList<ItemStack>();
 		ent.captureDrops=true;
-		Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, (EntityLivingBase)ent, new String[]{"dropLoot","func_184610_a"},boolean.class,int.class,DamageSource.class);
+		Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, "dropLoot","func_184610_a",boolean.class,int.class,DamageSource.class);
 		try {
-			getdrops.invoke(ent,true, 10,DamageSource.generic);
+			getdrops.invoke(ent,true, 10,DamageSource.GENERIC);
 		} catch (IllegalAccessException e1) {
 			ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
 			return result;
@@ -216,8 +216,8 @@ public class RuneResurrection extends ClassicRune {
 				continue;
 			}
 			ItemStack stack = item.getEntityItem();
-			if(stack==null){
-				ModLogger.logError("Error - NULL ItemStack (in a valid EntityItem) - while finding drops of entity: "+ent.getName());
+			if(stack.isEmpty()){
+				ModLogger.logError("Error - Empty ItemStack (in a valid EntityItem) - while finding drops of entity: "+ent.getName());
 				continue;
 			}
 			result.add(stack);
@@ -230,18 +230,18 @@ public class RuneResurrection extends ClassicRune {
 	 * @param aWorld any Loaded World (the one that contains the rune would do)
 	 * @return a random entity that may drop the items passed, or null if there is none.
 	 */
-	public String entityIDFromDrops(Collection<ItemStack> drops,World aWorld){
-		List<String> possible = null;
+	public ResourceLocation entityIDFromDrops(Collection<ItemStack> drops,World aWorld){
+		List<ResourceLocation> possible = null;
 		if(dropToEntity==null)initDropsTable(aWorld);
 		for(ItemStack s:drops){
 			String key = s.getItem().getRegistryName().toString()+"@"+s.getMetadata();
-			Set<String> entities = dropToEntity.get(key);
+			Set<ResourceLocation> entities = dropToEntity.get(key);
 			if(entities==null)return null;
 			if(possible==null){
-				possible = new LinkedList<String>();
+				possible = new LinkedList<ResourceLocation>();
 				possible.addAll(entities);
 			}else{
-				Iterator<String> it = possible.iterator();
+				Iterator<ResourceLocation> it = possible.iterator();
 				while(it.hasNext()){
 					if(!entities.contains(it.next()))it.remove();
 				}

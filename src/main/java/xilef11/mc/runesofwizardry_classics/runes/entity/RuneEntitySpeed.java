@@ -22,7 +22,7 @@ public class RuneEntitySpeed extends RuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			Coords p = ((RuneSpeed)creator).getVariableDusts().iterator().next();
 			ItemStack stack = placedPattern[p.row][p.col];
 			int power,duration;

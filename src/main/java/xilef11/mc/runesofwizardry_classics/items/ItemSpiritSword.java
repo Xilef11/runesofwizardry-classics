@@ -1,6 +1,5 @@
 package xilef11.mc.runesofwizardry_classics.items;
 
-import java.util.List;
 import java.util.Random;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,6 +14,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -77,7 +77,7 @@ public class ItemSpiritSword extends ItemSword{
 	 */
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target,EntityLivingBase attacker) {
-		if(attacker instanceof EntityPlayer && !attacker.worldObj.isRemote){
+		if(attacker instanceof EntityPlayer && !attacker.world.isRemote){
 			EntityPlayer player = (EntityPlayer) attacker;
 			Random rand = new Random();
 			double r = rand.nextDouble();
@@ -99,9 +99,10 @@ public class ItemSpiritSword extends ItemSword{
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item itemIn, CreativeTabs tab,List<ItemStack> subItems) {
+	public void getSubItems(Item itemIn, CreativeTabs tab,NonNullList<ItemStack> subItems) {
 		subItems.add(createStack());
 	}
+	
 	
 	@Override
 	 public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot){
@@ -110,12 +111,12 @@ public class ItemSpiritSword extends ItemSword{
 	        if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
 	        {
 	        	//remove old values
-	        	multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName());
-	        	multimap.removeAll(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName());
+	        	multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getName());
+	        	multimap.removeAll(SharedMonsterAttributes.ATTACK_SPEED.getName());
 	            //set how we want them
-	        	multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 7D, 0));
+	        	multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 7D, 0));
 	        	//base is 4
-	            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", 2-4, 0));
+	            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", 2-4, 0));
 	        }
 
 	        return multimap;

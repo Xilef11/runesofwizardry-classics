@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumFacing.AxisDirection;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -46,7 +47,7 @@ public class RuneEntityRebirth extends RuneEntity {
 	 */
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		World world = player.worldObj;
+		World world = player.world;
 		if(!world.isRemote){
 			//take xp if not negated
 			if(!negated){
@@ -87,18 +88,19 @@ public class RuneEntityRebirth extends RuneEntity {
 	public boolean handleEntityCollision(World worldIn, BlockPos pos,IBlockState state, Entity entityIn) {
 		if(!worldIn.isRemote){
 			if((entityIn instanceof EntityLivingBase) && !(entityIn instanceof EntityPlayer)&&!(entityIn instanceof EntityArmorStand)){
-				String entID = EntityList.CLASS_TO_NAME.get(entityIn.getClass());
+				ResourceLocation entID = EntityList.getKey(entityIn);
+				
 				//check if a spawn egg exists TODO also config blacklist?
 				if(EntityList.ENTITY_EGGS.get(entID)!=null){
 					ItemStack egg = new ItemStack(Items.SPAWN_EGG);
 					NBTTagCompound entityTag = new NBTTagCompound();
-					entityTag.setString("id", entID);
+					entityTag.setString("id", entID.toString());
 					egg.setTagInfo("EntityTag", entityTag);
 					Utils.spawnItemCentered(worldIn, pos, egg);
 					this.onPatternBroken();//kill the rune
 					entityIn.setDead();//kill the entity
 				}else{
-					worldIn.getClosestPlayer(pos.getX(),pos.getY(),pos.getZ(), 16, false).addChatMessage(new TextComponentTranslation(NO_SPAWN_EGG));
+					worldIn.getClosestPlayer(pos.getX(),pos.getY(),pos.getZ(), 16, false).sendMessage(new TextComponentTranslation(NO_SPAWN_EGG));
 				}
 			}
 		}

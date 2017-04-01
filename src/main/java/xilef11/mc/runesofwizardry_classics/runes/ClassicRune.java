@@ -112,7 +112,7 @@ public abstract class ClassicRune extends IRune {
 				//TODO check if cheats enabled if single player
 			}
 		}
-		if(!allowed)player.addChatMessage(new TextComponentTranslation(Refs.Lang.RUNE+".nopermission.message",new TextComponentTranslation(getName())));
+		if(!allowed)player.sendMessage(new TextComponentTranslation(Refs.Lang.RUNE+".nopermission.message",new TextComponentTranslation(getName())));
 		return allowed;
 	}
 }

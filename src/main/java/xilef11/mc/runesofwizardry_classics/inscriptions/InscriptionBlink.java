@@ -53,7 +53,7 @@ public class InscriptionBlink extends ClassicInscription {
 	 */
 	@Override
 	public boolean onInscriptionCharged(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			if(!negated){
 				return Utils.takeXP(player, 10);
 			}
@@ -98,10 +98,10 @@ public class InscriptionBlink extends ClassicInscription {
 		}
 	}
 	protected static void setTime(ItemStack stack, long time){
-		stack.getSubCompound(Refs.MODID, true).setLong("lastTime", time);
+		stack.getOrCreateSubCompound(Refs.MODID).setLong("lastTime", time);
 	}
 	protected static long getTime(ItemStack stack){
-		return stack.getSubCompound(Refs.MODID, true).getLong("lastTime");
+		return stack.getOrCreateSubCompound(Refs.MODID).getLong("lastTime");
 	}
 
 }

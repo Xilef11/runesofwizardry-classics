@@ -58,7 +58,7 @@ public class LootUtils {
     					if(func instanceof SetMetadata){
     						metaSet=true;
     						RandomValueRange range = (RandomValueRange)ReflectionHelper.getPrivateValue(SetMetadata.class, (SetMetadata)func, "metaRange","field_186573_b");
-    						int meta = MathHelper.floor_float(range.getMin());
+    						int meta = MathHelper.floor(range.getMin());
     						stacks.add(new ItemStack(item,1,meta));
     					}
     				}

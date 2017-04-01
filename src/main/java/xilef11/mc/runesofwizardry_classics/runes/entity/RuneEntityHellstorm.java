@@ -61,7 +61,7 @@ public class RuneEntityHellstorm extends FueledRuneEntity {
 				arrow.setFire(30);
 				arrow.pickupStatus=PickupStatus.DISALLOWED;//why is this an int...
 				//arrow.setThrowableHeading(0, -1, 0, 2F, 0);
-				world.spawnEntityInWorld(arrow);
+				world.spawnEntity(arrow);
 			}
 		}
 	}

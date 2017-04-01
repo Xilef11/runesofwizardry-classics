@@ -42,7 +42,7 @@ public class RuneEntitySpriteEarth extends FueledRuneEntity {
 	@Override
 	public void onRuneActivatedbyPlayer(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
 		super.onRuneActivatedbyPlayer(player, sacrifice, negated);
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			if((negated||Utils.takeXP(player, 20))){
 				activatingPlayer = player.getName();
 				entity.setupStar(0x00FF00, 0x00FF00);
@@ -79,7 +79,7 @@ public class RuneEntitySpriteEarth extends FueledRuneEntity {
             entity.stardata.offset=pos;
             //protection
             if(!world.isRemote){
-            	double speed = MathHelper.sqrt_double(player.motionX*player.motionX+player.motionY*player.motionY+player.motionZ*player.motionZ);
+            	double speed = Math.sqrt(player.motionX*player.motionX+player.motionY*player.motionY+player.motionZ*player.motionZ);
             	boolean protect = player.isSneaking() && speed<0.08 && player.onGround;
             	if(protect && !wasProtecting){
             		//set blocks

@@ -56,7 +56,7 @@ public class RuneEntitySarlacc extends RuneEntity {
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
 		//not much
-		if(!player.worldObj.isRemote){
+		if(!player.world.isRemote){
 			ticksremaining=Refs.TICKS_PER_DAY;
 			activator=player.getName();
 			entity.setupStar(0xFFFFFF, 0xFFFFFF);
@@ -72,7 +72,7 @@ public class RuneEntitySarlacc extends RuneEntity {
 			for(Entity e:ents){
 				if(e instanceof EntityItem){
 					//increase the lifetime
-					ticksremaining+=((EntityItem)e).getEntityItem().stackSize*(Refs.TPS/2);
+					ticksremaining+=((EntityItem)e).getEntityItem().getCount()*(Refs.TPS/2);
 					e.setDead();
 				}else if(e instanceof EntityLiving){
 					//EntityLiving should be mobs but not players (or armor stands wtf), might cause issues with modded mobs if they extend EntityLivingBase directly
@@ -82,7 +82,7 @@ public class RuneEntitySarlacc extends RuneEntity {
 						//int value = (int) xpValueGet.invokeExact((EntityLiving)ent);
 						xp*=2;//drop double XP
 						//kill the entity (2M half-hearts of damage => 1M hearts)
-						ent.attackEntityFrom(DamageSource.magic, 2000000);
+						ent.attackEntityFrom(DamageSource.MAGIC, 2000000);
 						if(ent.getHealth()<=0){//avoid spawning too much XP if a mob has a silly amount of health and needs multiple ticks to die
 							while(xp>0){
 								int toDrop = EntityXPOrb.getXPSplit(xp);
@@ -92,7 +92,7 @@ public class RuneEntitySarlacc extends RuneEntity {
 								double xPos = getPos().getX() + ((Math.random() > 0.5D) ? 1 : -1) + Math.random() * 0.4D - 0.2D;
 								EntityXPOrb orb = new EntityXPOrb(world, xPos+0.5, getPos().getY()+0.2, zPos+0.5, toDrop);
 								orb.motionX=orb.motionY=orb.motionZ=0;//no initial speed
-								world.spawnEntityInWorld(orb);
+								world.spawnEntity(orb);
 							}
 							//add to the rune's lifetime
 							ticksremaining+=Refs.TICKS_PER_DAY/8;
@@ -102,10 +102,10 @@ public class RuneEntitySarlacc extends RuneEntity {
 					EntityPlayer p = (EntityPlayer)e;
 					if(p.getName().equals(activator)) {//slow damage to the owner
 						if (e.ticksExisted%Refs.TPS==0 && e.ticksExisted!=0) {
-							p.attackEntityFrom(DamageSource.magic, 2);
+							p.attackEntityFrom(DamageSource.MAGIC, 2);
 						}
 					}else{//fast damage to other players (but not as fast as mobs)
-						p.attackEntityFrom(DamageSource.magic, 1);
+						p.attackEntityFrom(DamageSource.MAGIC, 1);
 					}
 				}
 			}
