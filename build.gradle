@@ -47,7 +47,7 @@ compileJava {
 //https://github.com/matthewprenger/CurseGradle for auto curseforge releases
 def majorVersion = "0"
 def minorVersion = "5"
-def bugfix = ".0"
+def bugfix = ".1"
 def devVersion = "-dev"
 def forgeVersion="1.11.2-13.20.0.2260"
 def mcVersion = forgeVersion.substring(0,forgeVersion.indexOf('-'))
