@@ -1,0 +1,1 @@
+- update to latest 1.11.2 dependencies
