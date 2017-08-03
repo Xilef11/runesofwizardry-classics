@@ -35,7 +35,7 @@ public class InscriptionVoid extends ClassicInscription {
 			if(damageLeft>0){
 				IVoidStorageCapability store = player.getCapability(VoidStorageCapability.VOID_STORAGE_CAPABILITY, null);
 				if(store!=null){
-					ItemStack stack = event.getItem().getEntityItem();
+					ItemStack stack = event.getItem().getItem();
 					ItemStack split = stack.splitStack(damageLeft);
 					store.addStackToVoid(split);
 					if(!player.capabilities.isCreativeMode)insc.setItemDamage(damage+split.getCount());

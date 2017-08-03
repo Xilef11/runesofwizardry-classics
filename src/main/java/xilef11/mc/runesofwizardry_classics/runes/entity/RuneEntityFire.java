@@ -79,7 +79,7 @@ public class RuneEntityFire extends FueledRuneEntity {
 				ReflectionHelper.setPrivateValue(Entity.class, e, true, "isImmuneToFire","field_70178_ae");
 				e.extinguish();
 				if(entity.ticksExisted()%TICK_RATE==0){//removing this condition seems to destroy less non-smeltable items FSR
-					ItemStack stack = e.getEntityItem();
+					ItemStack stack = e.getItem();
 					ItemStack result = FurnaceRecipes.instance().getSmeltingResult(stack).copy();
 					if(!result.isEmpty()){
 						if(stack.getCount()==1){

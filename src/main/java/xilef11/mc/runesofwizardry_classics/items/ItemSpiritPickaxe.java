@@ -2,6 +2,11 @@ package xilef11.mc.runesofwizardry_classics.items;
 
 import java.util.Random;
 
+import org.apache.logging.log4j.Level;
+
+import com.zpig333.runesofwizardry.RunesOfWizardry;
+import com.zpig333.runesofwizardry.util.RayTracer;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -22,16 +27,9 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import org.apache.logging.log4j.Level;
-
 import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
-
-import com.zpig333.runesofwizardry.RunesOfWizardry;
-import com.zpig333.runesofwizardry.util.RayTracer;
 
 public class ItemSpiritPickaxe extends ItemPickaxe {
 
@@ -40,7 +38,7 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 
 	protected ItemSpiritPickaxe(ToolMaterial material) {
 		super(material);
-		GameRegistry.register(this, new ResourceLocation(Refs.MODID,getName()));
+		setRegistryName(new ResourceLocation(Refs.MODID,getName()));
 		this.setCreativeTab(RunesOfWizardry.wizardry_tab);
 		setUnlocalizedName(Refs.MODID+"_"+getName());
 		this.setMaxDamage(250);

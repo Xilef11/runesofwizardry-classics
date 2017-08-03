@@ -78,7 +78,7 @@ public class InscriptionBlink extends ClassicInscription {
 					Vec3d look = player.getLookVec();
 					look = look.addVector(Math.random()*2-1,0, Math.random()*2-1);
 					double dist = Math.random()*9+9D;
-					BlockPos to = player.getPosition().add(dist*look.xCoord, dist*look.yCoord, dist*look.zCoord);
+					BlockPos to = player.getPosition().add(dist*look.x, dist*look.y, dist*look.z);
 					//sound + particles for fun
 					world.playSound(null,player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);
 					world.playSound(null,to.getX(), to.getY(), to.getZ(), SoundEvents.ENTITY_ENDERMEN_TELEPORT,SoundCategory.PLAYERS, 1.0F, 1.0F);

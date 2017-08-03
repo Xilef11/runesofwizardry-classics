@@ -52,7 +52,7 @@ public class RuneEntityRebirth extends RuneEntity {
 			//take xp if not negated
 			if(!negated){
 				if(player.experienceLevel>=10){
-					player.removeExperienceLevel(10);
+					player.addExperienceLevel(-10);
 				}else{
 					//kill the rune
 					this.onPatternBrokenByPlayer(player);

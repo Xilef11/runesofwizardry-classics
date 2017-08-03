@@ -79,7 +79,7 @@ public class InscriptionLeap extends ClassicInscription {
 				if(world.getTotalWorldTime()>(getTime(stack)+DELAY)){
 					//launch the player
 					Vec3d look = player.getLookVec();
-					player.addVelocity((-player.motionX+look.xCoord)*POWER, (-player.motionY+look.yCoord)*POWER, (-player.motionZ+look.zCoord)*POWER);
+					player.addVelocity((-player.motionX+look.x)*POWER, (-player.motionY+look.y)*POWER, (-player.motionZ+look.z)*POWER);
 					setTime(stack, world.getTotalWorldTime());
 					setFalling(stack, true);
 					if(!player.capabilities.isCreativeMode)stack.setItemDamage(newDamage);

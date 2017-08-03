@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -99,12 +100,12 @@ public class InscriptionReturn extends ClassicInscription {
 	 * @see com.zpig333.runesofwizardry.api.Inscription#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
 	 */
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn,List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, World worldIn,List<String> tooltip, ITooltipFlag flag) {
 		boolean sneak = Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT);
 		if(sneak){
 			tooltip.add(RunesOfWizardry.proxy.translate(getName()+".instructions"));
 		}
-		if(advanced||Config.returnCoords){
+		if(flag.isAdvanced()||Config.returnCoords){
 			BlockPos pos = getLocation(stack);
 			if(pos!=null){
 				tooltip.add(RunesOfWizardry.proxy.translate("runesofwizardry_classics.lang.coords", pos.getX(),pos.getY(),pos.getZ()));

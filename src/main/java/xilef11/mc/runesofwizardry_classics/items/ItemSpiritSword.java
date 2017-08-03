@@ -2,6 +2,9 @@ package xilef11.mc.runesofwizardry_classics.items;
 
 import java.util.Random;
 
+import com.google.common.collect.Multimap;
+import com.zpig333.runesofwizardry.RunesOfWizardry;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -11,26 +14,21 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
-
-import com.google.common.collect.Multimap;
-import com.zpig333.runesofwizardry.RunesOfWizardry;
 
 public class ItemSpiritSword extends ItemSword{
 	private String name = "spirit_sword";
 	private static ItemSpiritSword instance=null;
 	private ItemSpiritSword(ToolMaterial material) {
 		super(material);
-		GameRegistry.register(this, new ResourceLocation(Refs.MODID,getName()));
+		setRegistryName(new ResourceLocation(Refs.MODID,getName()));
 		this.setCreativeTab(RunesOfWizardry.wizardry_tab);
 		setUnlocalizedName(Refs.MODID+"_"+getName());
 		this.setMaxDamage(131);
@@ -99,8 +97,10 @@ public class ItemSpiritSword extends ItemSword{
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item itemIn, CreativeTabs tab,NonNullList<ItemStack> subItems) {
-		subItems.add(createStack());
+	public void getSubItems(CreativeTabs tab,NonNullList<ItemStack> subItems) {
+		if(this.isInCreativeTab(tab)){
+			subItems.add(createStack());
+		}
 	}
 	
 	

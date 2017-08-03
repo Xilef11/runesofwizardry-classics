@@ -80,7 +80,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 					//get block looked at
 					Vec3d start = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
 					Vec3d look = player.getLook(1);;
-			        Vec3d end = start.addVector(look.xCoord * REACH, look.yCoord * REACH, look.zCoord * REACH);
+			        Vec3d end = start.addVector(look.x * REACH, look.y * REACH, look.z * REACH);
 			        RayTraceResult res = player.world.rayTraceBlocks(start, end, true, true, true);
 			        if(res==null) return;
 			        BlockPos to = res.getBlockPos();

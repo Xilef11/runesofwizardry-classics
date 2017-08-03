@@ -72,7 +72,8 @@ public class RuneEntitySpriteFire extends FueledRuneEntity {
 						BlockPos ppos = player.getPosition();
 						List<EntityLiving> ents = world.getEntitiesWithinAABB(EntityLiving.class, new AxisAlignedBB(ppos.add(-RAD, -RAD, -RAD), ppos.add(RAD,RAD,RAD)));
 						for(EntityLiving e:ents){
-							if(player.equals(e.getAttackTarget())||(e.equals(player.getLastAttacker())&&player.ticksExisted-player.getLastAttackerTime()<5*Refs.TPS)){
+							//UPDATE 1.12 not sure about getLastAttacker/Time -> getLastAttackedEntity/Time
+							if(player.equals(e.getAttackTarget())||(e.equals(player.getLastAttackedEntity())&&player.ticksExisted-player.getLastAttackedEntityTime()<5*Refs.TPS)){
 								if(!e.isBurning())e.setFire(2+world.rand.nextInt(5));
 							}
 						}

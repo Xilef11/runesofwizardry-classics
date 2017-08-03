@@ -92,7 +92,7 @@ public abstract class FueledRuneEntity extends RuneEntity {
 			IBlockState state, Entity entityIn) {
 		if(entity.ticksExisted()%FUEL_EAT_TICKS==0 && !worldIn.isRemote){
 			if(entityIn instanceof EntityItem){
-				ItemStack stack = ((EntityItem)entityIn).getEntityItem();
+				ItemStack stack = ((EntityItem)entityIn).getItem();
 				//find the furnace burn time. if not hardcoded in vanilla furnace, it will check Forge's registered fuelHandlers
 				int burnTime = TileEntityFurnace.getItemBurnTime(stack);
 				if(burnTime!=0){

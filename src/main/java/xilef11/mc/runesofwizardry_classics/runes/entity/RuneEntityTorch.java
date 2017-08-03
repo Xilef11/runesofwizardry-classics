@@ -63,9 +63,9 @@ public class RuneEntityTorch extends RuneEntity {
 				if(hasRedstoneSignal())entity.setDrawBeam(false);
 				else entity.setDrawBeam(true);
 				for(EntityItem i:world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos()))){
-					ItemStack stack = i.getEntityItem();
+					ItemStack stack = i.getItem();
 					if(stack.getItem()==Items.DYE){
-						if(entity.beamdata!=null)entity.beamdata.color=EnumDyeColor.byDyeDamage(stack.getItemDamage()).getMapColor().colorValue;
+						if(entity.beamdata!=null)entity.beamdata.color=EnumDyeColor.byDyeDamage(stack.getItemDamage()).getColorValue();
 						IBlockState state = world.getBlockState(getPos());
 						i.setDead();
 						world.notifyBlockUpdate(getPos(), state, state, 3);

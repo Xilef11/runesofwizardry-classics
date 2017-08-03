@@ -46,7 +46,7 @@ public class RuneEntityResurrection extends RuneEntity {
 			List<ItemStack> stacks = new LinkedList<ItemStack>();
 			int numItems= 0;
 			for(EntityItem ei:items){
-				ItemStack s = ei.getEntityItem();
+				ItemStack s = ei.getItem();
 				stacks.add(s);
 				numItems+=s.getCount();
 			}

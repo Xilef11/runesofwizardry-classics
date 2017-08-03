@@ -52,7 +52,7 @@ public class RuneEntityWisdom extends RuneEntity {
 						player.addExperience(-1);
 						xpAbsorbed++;
 					}else if(player.experienceLevel>0){
-						player.removeExperienceLevel(1);
+						player.addExperienceLevel(-1);
 						player.addExperience(player.xpBarCap()-1);
 						xpAbsorbed++;
 					}
