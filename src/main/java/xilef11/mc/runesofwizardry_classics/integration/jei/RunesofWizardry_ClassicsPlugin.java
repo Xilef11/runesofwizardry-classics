@@ -6,6 +6,7 @@ import mezz.jei.api.IModRegistry;
 import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
+import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.items.ItemSpiritPickaxe;
@@ -33,6 +34,10 @@ public class RunesofWizardry_ClassicsPlugin implements IModPlugin{
 	@Override
 	public void registerIngredients(IModIngredientRegistration registry) {
 		
+	}
+
+	@Override
+	public void registerCategories(IRecipeCategoryRegistration registry) {
 	}
 
 }
