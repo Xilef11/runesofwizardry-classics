@@ -137,7 +137,7 @@ public class RuneResurrection extends ClassicRune {
 			ModLogger.logInfo("drop table already exists");
 			//return;
 		}else{
-			dropToEntity = new HashMap<String,Set<ResourceLocation>>();
+			dropToEntity = new HashMap<>();
 		}
 		for(ResourceLocation entName:EntityList.getEntityNameList()){
 			Entity e=null;
@@ -159,7 +159,7 @@ public class RuneResurrection extends ClassicRune {
 					String key = i.getRegistryName().toString()+"@"+stack.getMetadata();
 					Set<ResourceLocation> ids = dropToEntity.get(key);
 					if(ids==null){
-						ids=new HashSet<ResourceLocation>();
+						ids=new HashSet<>();
 						dropToEntity.put(key, ids);
 					}
 					ids.add(entName);
@@ -195,7 +195,7 @@ public class RuneResurrection extends ClassicRune {
 		return LootUtils.tableToItemStacks(table);
 	}
 	private List<ItemStack> getEntityLoot_Hacky(EntityLiving ent){
-		List<ItemStack> result = new LinkedList<ItemStack>();
+		List<ItemStack> result = new LinkedList<>();
 		ent.captureDrops=true;
 		Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, "dropLoot","func_184610_a",boolean.class,int.class,DamageSource.class);
 		try {
@@ -238,7 +238,7 @@ public class RuneResurrection extends ClassicRune {
 			Set<ResourceLocation> entities = dropToEntity.get(key);
 			if(entities==null)return null;
 			if(possible==null){
-				possible = new LinkedList<ResourceLocation>();
+				possible = new LinkedList<>();
 				possible.addAll(entities);
 			}else{
 				Iterator<ResourceLocation> it = possible.iterator();

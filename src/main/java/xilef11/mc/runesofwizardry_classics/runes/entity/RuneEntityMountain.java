@@ -51,7 +51,7 @@ public class RuneEntityMountain extends RuneEntity {
 	public RuneEntityMountain(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneMountain creator) {
 		//we will need to add to the dusts, so make a new set that accepts the "add" operation
-		super(actualPattern, facing, new HashSet<BlockPos>(dusts), entity, creator);
+		super(actualPattern, facing, new HashSet<>(dusts), entity, creator);
 	}
 	public static final int TICKRATE = 32;
 	private boolean gotGolem=false;
@@ -223,7 +223,7 @@ public class RuneEntityMountain extends RuneEntity {
 		gotGolem = compound.getBoolean("GOLEM");
 		height = compound.getInteger("HEIGHT");
 		NBTTagList positions = (NBTTagList) compound.getTag("POSITIONS");
-		initialPos = new LinkedHashSet<BlockPos>();
+		initialPos = new LinkedHashSet<>();
 		for(int i=0;i<positions.tagCount();i++){
 			NBTTagCompound coords = positions.getCompoundTagAt(i);
 			int[] c = coords.getIntArray("Coords");
@@ -266,7 +266,7 @@ public class RuneEntityMountain extends RuneEntity {
 				return null;
 			}
 		}
-		LinkedHashSet<BlockPos> result = new LinkedHashSet<BlockPos>();
+		LinkedHashSet<BlockPos> result = new LinkedHashSet<>();
 		EdgeResult edge = new EdgeResult(initial.getX(),initial.getZ());
 		edge = findEdge(world,initial,edge);
 		ModLogger.logInfo("Found "+edge);
@@ -296,7 +296,7 @@ public class RuneEntityMountain extends RuneEntity {
 		if(currentZ>edge.bigZ)edge.bigZ=currentZ;
 		Set<Integer> zpos = edge.positions.get(currentX);
 		if(zpos==null){
-			zpos=new HashSet<Integer>();
+			zpos=new HashSet<>();
 			edge.positions.put(currentX, zpos);
 		}
 		zpos.add(currentZ);
@@ -357,7 +357,7 @@ public class RuneEntityMountain extends RuneEntity {
 		public EdgeResult(int initialX,int initialZ){
 			smallX=bigX=initialX;
 			smallZ=bigZ=initialZ;
-			positions = new HashMap<Integer, Set<Integer>>();
+			positions = new HashMap<>();
 		}
 		public int smallX,smallZ,bigX,bigZ;
 		public Map<Integer, Set<Integer>> positions;

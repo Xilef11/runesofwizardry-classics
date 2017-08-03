@@ -55,7 +55,7 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 		}
 	}
 	//the runes that are being powered by this one
-	private List<FueledRuneEntity> poweredRunes=new LinkedList<FueledRuneEntity>();
+	private List<FueledRuneEntity> poweredRunes=new LinkedList<>();
 	private static final int TICKRATE=10;
 	private static final int STABLE_FUEL_CYCLES=120;//120 should be about 1 minute
 	private int stableFuel=-1;
@@ -95,8 +95,8 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 	private void findNearbyRunes(){
 		World world = entity.getWorld();
 		if(!world.isRemote){
-			poweredRunes = new LinkedList<FueledRuneEntity>();
-			Set<BlockPos> checkedPositions = new HashSet<BlockPos>();
+			poweredRunes = new LinkedList<>();
+			Set<BlockPos> checkedPositions = new HashSet<>();
 			BlockPos thisPos = getPos();
 			//don't check this rune
 			checkedPositions.addAll(this.dustPositions);
@@ -170,7 +170,7 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		NBTTagList runes = (NBTTagList) compound.getTag("PoweredRunes");
-		toInit = new HashSet<BlockPos>();
+		toInit = new HashSet<>();
 		for(int i=0;i<runes.tagCount();i++){
 			int[] c = runes.getIntArrayAt(i);
 			BlockPos pos = new BlockPos(c[0],c[1],c[2]);

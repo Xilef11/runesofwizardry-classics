@@ -46,7 +46,7 @@ public class RuneDetonation extends ClassicRune {
 	private Set<Coords> center=null;
 	public Set<Coords> getCenter(){
 		if(center==null){
-			center = new HashSet<Coords>();
+			center = new HashSet<>();
 			center.add(new Coords(5,5));
 			center.add(new Coords(5,6));
 			center.add(new Coords(6,5));
@@ -57,7 +57,7 @@ public class RuneDetonation extends ClassicRune {
 	private Set<Coords> fuse=null;
 	public Set<Coords> getFuse(){
 		if(fuse==null){
-			fuse=new HashSet<Coords>();
+			fuse=new HashSet<>();
 			fuse.add(new Coords(2,3));
 			fuse.add(new Coords(3,3));
 			fuse.add(new Coords(3,4));

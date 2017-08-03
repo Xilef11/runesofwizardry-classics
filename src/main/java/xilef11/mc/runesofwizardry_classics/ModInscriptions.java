@@ -34,7 +34,7 @@ public class ModInscriptions {
 		}
 	}
 	public static void initInscriptions(){
-		insc = new LinkedList<ClassicInscription>();
+		insc = new LinkedList<>();
 		insLeap = new InscriptionLeap();
 		insLeap2= new InscriptionLeapII();
 		insReturn= new InscriptionReturn();

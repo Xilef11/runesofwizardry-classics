@@ -93,7 +93,7 @@ public class InscriptionReturn extends ClassicInscription {
 	@Override
 	public ActionResult<ItemStack> handleRightClick(ItemStack itemStackIn,World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		setLocation(itemStackIn, playerIn.getPosition());
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 	
 	/* (non-Javadoc)

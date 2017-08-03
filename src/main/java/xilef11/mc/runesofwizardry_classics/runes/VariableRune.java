@@ -19,7 +19,7 @@ public abstract class VariableRune extends ClassicRune {
 	 */
 	public Set<Coords> getVariableDusts(){
 		if(variables==null){
-			variables=new HashSet<Coords>();
+			variables=new HashSet<>();
 			ItemStack[][] pattern = getPattern();
 			for(int r = 0;r<pattern.length;r++){
 				for(int c=0;c<pattern[r].length;c++){

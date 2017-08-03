@@ -32,7 +32,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustPlaced;
  */
 public abstract class FueledRuneEntity extends RuneEntity {
 	protected int ticksLeft=0;
-	private List<RuneEntityPowerDistribution> poweredBy=new LinkedList<RuneEntityPowerDistribution>();
+	private List<RuneEntityPowerDistribution> poweredBy=new LinkedList<>();
 	public FueledRuneEntity(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, IRune creator) {
 		super(actualPattern, facing, dusts, entity, creator);
@@ -123,7 +123,7 @@ public abstract class FueledRuneEntity extends RuneEntity {
 		World world = entity.getWorld();
 		if(!world.isRemote){
 			BlockPos thisPos = getPos();
-			Set<BlockPos> checked = new HashSet<BlockPos>();
+			Set<BlockPos> checked = new HashSet<>();
 			checked.addAll(dustPositions);
 			for(int dx=-range;dx<=range;dx++){
 				for(int dz=-range;dz<=range;dz++){

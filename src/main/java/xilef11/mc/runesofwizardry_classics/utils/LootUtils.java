@@ -46,7 +46,7 @@ public class LootUtils {
      * @return a LinkedList of the stacks in the loot table
      */
     public static List<ItemStack> tableToItemStacks(LootTable table){
-    	List<ItemStack> stacks = new LinkedList<ItemStack>();
+    	List<ItemStack> stacks = new LinkedList<>();
     	for(LootPool p:getPools(table)){
     		for(LootEntry entry:getEntries(p)){
     			if(entry instanceof LootEntryItem){

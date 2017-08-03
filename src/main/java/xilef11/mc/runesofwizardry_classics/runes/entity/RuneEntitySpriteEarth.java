@@ -84,7 +84,7 @@ public class RuneEntitySpriteEarth extends FueledRuneEntity {
             	if(protect && !wasProtecting){
             		//set blocks
             		BlockPos pl = player.getPosition();
-            		box = new HashSet<BlockPos>();
+            		box = new HashSet<>();
             		for(EnumFacing f: EnumFacing.HORIZONTALS){
             			BlockPos current = pl.offset(f);
             			if(world.isAirBlock(current)){
@@ -128,7 +128,7 @@ public class RuneEntitySpriteEarth extends FueledRuneEntity {
 		activatingPlayer=compound.getString("player");
 		wasProtecting = compound.getBoolean("protecting");
 		NBTTagList pos = (NBTTagList) compound.getTag("boxPositions");
-		box = new HashSet<BlockPos>();
+		box = new HashSet<>();
 		for(int i=0;i<pos.tagCount();i++){
 			int[] c = pos.getIntArrayAt(i);
 			box.add(new BlockPos(c[0],c[1],c[2]));

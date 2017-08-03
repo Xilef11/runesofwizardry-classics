@@ -43,7 +43,7 @@ public class RuneEntityResurrection extends RuneEntity {
 		World world = entity.getWorld();
 		if(!world.isRemote){
 			List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(getPos().add(-RAD,0,-RAD), getPos().add(RAD,1,RAD)));
-			List<ItemStack> stacks = new LinkedList<ItemStack>();
+			List<ItemStack> stacks = new LinkedList<>();
 			int numItems= 0;
 			for(EntityItem ei:items){
 				ItemStack s = ei.getItem();
