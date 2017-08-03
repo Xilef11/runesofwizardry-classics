@@ -16,8 +16,8 @@ public class RunesofWizardry_ClassicsPlugin implements IModPlugin{
 
 	@Override
 	public void register(IModRegistry registry) {
-		registry.addDescription(ItemSpiritSword.createStack(), Refs.Lang.Jei.SPIRIT_SWORD);
-		registry.addDescription(new ItemStack(ItemSpiritPickaxe.instance()), Refs.Lang.Jei.SPIRIT_PICKAXE);
+		registry.addIngredientInfo(ItemSpiritSword.createStack(), ItemStack.class, Refs.Lang.Jei.SPIRIT_SWORD);
+		registry.addIngredientInfo(new ItemStack(ItemSpiritPickaxe.instance()), ItemStack.class, Refs.Lang.Jei.SPIRIT_PICKAXE);
 	}
 
 	@Override
