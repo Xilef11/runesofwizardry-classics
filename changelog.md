@@ -1,1 +1,2 @@
-- Added Inscriptions! all of them!
+- Fix rune of protection sacrifice
+- LAST version for 1.10.2, no matter how broken things may be. 
