@@ -1,0 +1,48 @@
+{
+  "result": {
+    "item": "runesofwizardry_classics:dust_classic",
+    "data": 0,
+    "count": 8
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:coal",
+      "data": 0
+    },
+    [
+    	{
+    		"type": "forge:ore_dict",
+      		"ore": "treeSapling"
+    	},
+    	{
+      		"type": "forge:ore_dict",
+      		"ore": "treeLeaves"
+    	},
+    	{
+     		"item": "minecraft:wheat_seeds"
+    	},
+    	{
+	      "item": "minecraft:tallgrass",
+	      "data": 32767
+	    }
+    ],
+    [
+    	{
+    		"type": "forge:ore_dict",
+      		"ore": "treeSapling"
+    	},
+    	{
+      		"type": "forge:ore_dict",
+      		"ore": "treeLeaves"
+    	},
+    	{
+     		"item": "minecraft:wheat_seeds"
+    	},
+    	{
+	      "item": "minecraft:tallgrass",
+	      "data": 32767
+	    }
+    ]
+  ],
+  "type": "forge:ore_shapeless"
+}

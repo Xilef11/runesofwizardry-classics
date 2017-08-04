@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "runesofwizardry_classics:dust_classic",
+    "data": 2,
+    "count": 8
+  },
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "gemLapis"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "gemLapis"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "gemLapis"
+    },
+    {
+      "item": "minecraft:coal",
+      "data": 0
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

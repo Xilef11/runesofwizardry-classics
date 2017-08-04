@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "runesofwizardry_classics:dust_classic",
+    "data": 3,
+    "count": 12
+  },
+  "ingredients": [
+    {
+      "item": "runesofwizardry_classics:dust_classic",
+      "data": 2
+    },
+    {
+      "item": "runesofwizardry_classics:dust_classic",
+      "data": 2
+    },
+    {
+      "item": "runesofwizardry_classics:dust_classic",
+      "data": 2
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}
