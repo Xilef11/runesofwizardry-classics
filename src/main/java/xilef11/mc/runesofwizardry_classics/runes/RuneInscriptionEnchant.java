@@ -2,16 +2,14 @@ package xilef11.mc.runesofwizardry_classics.runes;
 
 import java.io.IOException;
 
-import org.apache.logging.log4j.Level;
-
-import xilef11.mc.runesofwizardry_classics.Config;
-import xilef11.mc.runesofwizardry_classics.ModLogger;
-import xilef11.mc.runesofwizardry_classics.Refs;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 import com.zpig333.runesofwizardry.runes.inscription.RuneChargeInscription;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import xilef11.mc.runesofwizardry_classics.Config;
+import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
 
 public class RuneInscriptionEnchant extends RuneChargeInscription {
 	private ItemStack[][] pattern;
@@ -33,7 +31,7 @@ public class RuneInscriptionEnchant extends RuneChargeInscription {
 				try {
 					pattern=setupPattern();
 				} catch (IOException e) {
-					ModLogger.logException(Level.FATAL, e, "Could not set up pattern");
+					RunesofWizardry_Classics.log().fatal("Could not set up pattern",e);
 				}
 			}
 			return pattern;
@@ -41,7 +39,7 @@ public class RuneInscriptionEnchant extends RuneChargeInscription {
 			try {
 				return setupPattern();
 			} catch (IOException e) {
-				ModLogger.logException(Level.FATAL, e, "Could not set up pattern");
+				RunesofWizardry_Classics.log().fatal("Could not set up pattern",e);
 				return new ItemStack[4][4];
 			}
 		}

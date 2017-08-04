@@ -2,8 +2,6 @@ package xilef11.mc.runesofwizardry_classics.items;
 
 import java.util.Random;
 
-import org.apache.logging.log4j.Level;
-
 import com.zpig333.runesofwizardry.RunesOfWizardry;
 import com.zpig333.runesofwizardry.util.RayTracer;
 
@@ -27,7 +25,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
 
@@ -177,8 +174,8 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 								}
 							}
 						} catch (Exception e) {
-							ModLogger.logException(Level.WARN,e,"Error breaking block "
-									+ block.getUnlocalizedName()+" at "+currentPos);
+							RunesofWizardry_Classics.log().warn("Error breaking block "
+									+ block.getUnlocalizedName()+" at "+currentPos,e);
 						}// fracking mods
 					}
 				}

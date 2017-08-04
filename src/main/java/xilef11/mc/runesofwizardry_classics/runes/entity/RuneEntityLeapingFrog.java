@@ -1,6 +1,10 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.IRune;
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -13,10 +17,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-
-import com.zpig333.runesofwizardry.api.IRune;
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneEntityLeapingFrog extends RuneEntity {
 	public RuneEntityLeapingFrog(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,

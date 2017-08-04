@@ -3,6 +3,8 @@ package xilef11.mc.runesofwizardry_classics;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.zpig333.runesofwizardry.api.DustRegistry;
+
 import xilef11.mc.runesofwizardry_classics.inscriptions.ClassicInscription;
 import xilef11.mc.runesofwizardry_classics.inscriptions.InscriptionBlink;
 import xilef11.mc.runesofwizardry_classics.inscriptions.InscriptionBlinkII;
@@ -12,8 +14,6 @@ import xilef11.mc.runesofwizardry_classics.inscriptions.InscriptionLeap;
 import xilef11.mc.runesofwizardry_classics.inscriptions.InscriptionLeapII;
 import xilef11.mc.runesofwizardry_classics.inscriptions.InscriptionReturn;
 import xilef11.mc.runesofwizardry_classics.inscriptions.InscriptionVoid;
-
-import com.zpig333.runesofwizardry.api.DustRegistry;
 
 public class ModInscriptions {
 	private static List<ClassicInscription> insc;

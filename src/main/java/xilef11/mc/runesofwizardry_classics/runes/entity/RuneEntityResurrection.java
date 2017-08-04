@@ -3,6 +3,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.item.EntityItem;
@@ -18,10 +22,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import xilef11.mc.runesofwizardry_classics.runes.RuneResurrection;
-
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
 public class RuneEntityResurrection extends RuneEntity {
 	public RuneEntityResurrection(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,

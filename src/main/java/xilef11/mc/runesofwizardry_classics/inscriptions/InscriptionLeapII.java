@@ -2,6 +2,9 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
+import com.zpig333.runesofwizardry.api.DustRegistry;
+import com.zpig333.runesofwizardry.core.rune.PatternUtils;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -13,9 +16,6 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
-
-import com.zpig333.runesofwizardry.api.DustRegistry;
-import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 
 public class InscriptionLeapII extends InscriptionLeap {
 	public InscriptionLeapII(){

@@ -2,6 +2,9 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
+import com.zpig333.runesofwizardry.api.DustRegistry;
+import com.zpig333.runesofwizardry.core.rune.PatternUtils;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -15,9 +18,6 @@ import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.managers.IVoidStorageCapability;
 import xilef11.mc.runesofwizardry_classics.managers.VoidStorageCapability;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
-
-import com.zpig333.runesofwizardry.api.DustRegistry;
-import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 
 public class InscriptionVoid extends ClassicInscription {
 	public InscriptionVoid() {

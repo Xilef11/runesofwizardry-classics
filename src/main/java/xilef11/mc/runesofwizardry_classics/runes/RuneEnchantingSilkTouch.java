@@ -2,6 +2,10 @@ package xilef11.mc.runesofwizardry_classics.runes;
 import java.io.IOException;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.core.rune.PatternUtils;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -11,10 +15,6 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraftforge.oredict.OreDictionary;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityEnchantingSilktouch;
-
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.core.rune.PatternUtils;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneEnchantingSilkTouch extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {

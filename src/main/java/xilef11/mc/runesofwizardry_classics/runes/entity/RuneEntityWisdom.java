@@ -1,6 +1,10 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.IRune;
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -12,10 +16,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
-
-import com.zpig333.runesofwizardry.api.IRune;
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneEntityWisdom extends RuneEntity {
 	private static final byte RCDelay = 5*20;//delay in ticks between r-click and taking xp
 	private String user;//username of activating player

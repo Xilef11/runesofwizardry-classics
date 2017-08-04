@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.IRune;
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -17,13 +21,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import xilef11.mc.runesofwizardry_classics.ModLogger;
+import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
 import xilef11.mc.runesofwizardry_classics.managers.TeleportationData;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
-
-import com.zpig333.runesofwizardry.api.IRune;
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneEntityTeleportation extends RuneEntity {
 	public RuneEntityTeleportation(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,
@@ -56,7 +56,7 @@ public class RuneEntityTeleportation extends RuneEntity {
 			for(EntityPlayer p:players){
 				//teleport them after delay
 				//maybe we can use timeuntilportal for the delay
-				//ModLogger.logInfo("Time until portal: "+p.timeUntilPortal);
+				//RunesofWizardry_Classics.log().info("Time until portal: "+p.timeUntilPortal);
 				if(p.timeUntilPortal<=0){
 					p.timeUntilPortal=105;
 				}else if(p.timeUntilPortal<=5){
@@ -65,7 +65,7 @@ public class RuneEntityTeleportation extends RuneEntity {
 					IBlockState net = world.getBlockState(getPos().down());
 					Set<BlockPos> destinations = teles.getDestinations(net);
 					if(destinations==null){
-						ModLogger.logError("Tried to teleport while no destinations exist! "+net);
+						RunesofWizardry_Classics.log().error("Tried to teleport while no destinations exist! "+net);
 						return;
 					}
 					//select a random destination

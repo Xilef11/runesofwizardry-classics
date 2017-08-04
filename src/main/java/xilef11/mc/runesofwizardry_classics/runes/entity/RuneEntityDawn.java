@@ -1,6 +1,11 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.IRune;
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -8,11 +13,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.zpig333.runesofwizardry.api.IRune;
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
 public class RuneEntityDawn extends RuneEntity {
 	private boolean activatedAtDay=false;
 	public RuneEntityDawn(ItemStack[][] actualPattern, EnumFacing facing,
@@ -50,7 +50,7 @@ public class RuneEntityDawn extends RuneEntity {
 			}
 		}else{
 			//night: 0.25 to 0.75
-			//ModLogger.logInfo(world.getCelestialAngle(0));
+			//RunesofWizardry_Classics.log().info(world.getCelestialAngle(0));
 			if(world.getCelestialAngle(0)>0.248 && world.getCelestialAngle(0)<0.752)world.setWorldTime(world.getWorldTime()+25);
 		}
 	}

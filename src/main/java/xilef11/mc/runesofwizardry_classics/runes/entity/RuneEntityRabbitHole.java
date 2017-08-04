@@ -2,6 +2,9 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.List;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,13 +16,10 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import xilef11.mc.runesofwizardry_classics.ModLogger;
+import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneRabbitHole;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
-
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneEntityRabbitHole extends RuneEntity {
 	public RuneEntityRabbitHole(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, RuneRabbitHole creator) {
@@ -114,7 +114,7 @@ public class RuneEntityRabbitHole extends RuneEntity {
 				List<EntityPlayer> up = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(getPos(), getPos().add(1,2,1)));
 				for(EntityPlayer p:up){
 					if(p.isSneaking()){
-						//ModLogger.logInfo("Torch: "+torch);
+						//RunesofWizardry_Classics.log().info("Torch: "+torch);
 						p.setPositionAndUpdate(torch.getX()+0.5, torch.getY()+0.5, torch.getZ()+0.5);
 						p.fallDistance=0;
 						delay=15;
@@ -125,7 +125,7 @@ public class RuneEntityRabbitHole extends RuneEntity {
 					up = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(torch, torch.add(1,2,1)));
 					for(EntityPlayer p:up){
 						if(p.isSneaking()){
-							ModLogger.logInfo("pos: "+getPos());
+							RunesofWizardry_Classics.log().info("pos: "+getPos());
 							p.setPositionAndUpdate(getPos().getX()+0.5, getPos().getY()+0.5, getPos().getZ()+0.5);
 							p.fallDistance=0;
 							delay=15;

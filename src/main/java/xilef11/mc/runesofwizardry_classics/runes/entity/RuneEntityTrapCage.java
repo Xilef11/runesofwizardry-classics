@@ -2,6 +2,11 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.List;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.IRune;
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.core.WizardryRegistry;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,11 +18,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.Refs;
-
-import com.zpig333.runesofwizardry.api.IRune;
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.core.WizardryRegistry;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneEntityTrapCage extends RuneEntity {
 	private String user="";
 	public RuneEntityTrapCage(ItemStack[][] actualPattern, EnumFacing facing,

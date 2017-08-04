@@ -2,6 +2,11 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.List;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.IRune;
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
@@ -17,11 +22,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import xilef11.mc.runesofwizardry_classics.Refs;
-
-import com.zpig333.runesofwizardry.api.IRune;
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
 /*Behaviour:
  * Lasts 1 day
  * Every mob kill adds 1/8 day
@@ -141,7 +141,7 @@ public class RuneEntitySarlacc extends RuneEntity {
 		try {
 			field = EntityLiving.class.getDeclaredField("field_70728_aV");
 		} catch (NoSuchFieldException e) {
-			ModLogger.logWarn("Couldn't get experienceValue field with srg name");
+			RunesofWizardry_Classics.log().warn("Couldn't get experienceValue field with srg name");
 			try {
 				field = EntityLiving.class.getDeclaredField("experienceValue");
 			} catch (NoSuchFieldException e1) {

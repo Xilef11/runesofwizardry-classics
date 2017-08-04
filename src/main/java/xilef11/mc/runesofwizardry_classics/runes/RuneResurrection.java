@@ -19,6 +19,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.core.rune.PatternUtils;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
@@ -37,23 +45,12 @@ import net.minecraft.world.storage.loot.LootTable;
 import net.minecraft.world.storage.loot.LootTableManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
-
-import org.apache.logging.log4j.Level;
-
 import scala.util.Random;
 import xilef11.mc.runesofwizardry_classics.Config;
-import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityResurrection;
 import xilef11.mc.runesofwizardry_classics.utils.LootUtils;
-
-import com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonIOException;
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.core.rune.PatternUtils;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneResurrection extends ClassicRune {
 	public static Map<String,Set<ResourceLocation>> dropToEntity=null;
 	public RuneResurrection() {
@@ -104,7 +101,7 @@ public class RuneResurrection extends ClassicRune {
 					try {
 						read = new FileReader(map);
 					} catch (FileNotFoundException e) {
-						ModLogger.logException(Level.WARN, e, "couldn't find drops initialisation file");
+						RunesofWizardry_Classics.log().warn("couldn't find drops initialisation file",e);
 						initDropsTable_entity(world);
 						return;
 					}
@@ -119,10 +116,8 @@ public class RuneResurrection extends ClassicRune {
 						Writer out = new BufferedWriter(new FileWriter(new File("config/"+Refs.MODID+"_ResurrectionMap.json"))); 
 						gson.toJson(dropToEntity, out);
 						out.close();
-					} catch (JsonIOException e) {
-						ModLogger.logException(Level.ERROR, e, "Couldn't write JSON map");
-					} catch (IOException e) {
-						ModLogger.logException(Level.ERROR, e, "Couldn't write JSON map");
+					} catch (JsonIOException | IOException e) {
+						RunesofWizardry_Classics.log().error("Couldn't write JSON map",e);
 					}
 				}
 			}else{
@@ -132,9 +127,9 @@ public class RuneResurrection extends ClassicRune {
 	}
 	public void initDropsTable_entity(World world){
 		if(world.isRemote)return;//server side only
-		ModLogger.logInfo("Creating drop table for world: "+world.provider.getDimensionType());
+		RunesofWizardry_Classics.log().info("Creating drop table for world: "+world.provider.getDimensionType());
 		if(dropToEntity!=null){
-			ModLogger.logInfo("drop table already exists");
+			RunesofWizardry_Classics.log().info("drop table already exists");
 			//return;
 		}else{
 			dropToEntity = new HashMap<>();
@@ -144,7 +139,7 @@ public class RuneResurrection extends ClassicRune {
 			try{
 				e = EntityList.createEntityByIDFromName(entName, world);
 			}catch(NoClassDefFoundError err){
-				ModLogger.logException(Level.ERROR, err, "An entity has caused a client-side class to load on the server: "+entName+" ; Please report to that mod's author.");
+				RunesofWizardry_Classics.log().error("An entity has caused a client-side class to load on the server: "+entName+" ; Please report to that mod's author.",err);
 				continue;
 			}
 			if(e instanceof EntityLiving){//if its a mob
@@ -153,7 +148,7 @@ public class RuneResurrection extends ClassicRune {
 				for(ItemStack stack:list){
 					Item i = stack.getItem();
 					if(i==null){
-						ModLogger.logError("Error - NULL Item (in a non-null ItemStack) - while finding drops of entity: "+entName);
+						RunesofWizardry_Classics.log().error("Error - NULL Item (in a non-null ItemStack) - while finding drops of entity: "+entName);
 						continue;
 					}
 					String key = i.getRegistryName().toString()+"@"+stack.getMetadata();
@@ -175,19 +170,13 @@ public class RuneResurrection extends ClassicRune {
 			Method getLT = ReflectionHelper.findMethod(EntityLiving.class,"getLootTable","func_184647_J");
 			try {
 				location = (ResourceLocation)getLT.invoke(el);
-			} catch (IllegalAccessException e) {
-				ModLogger.logException(Level.ERROR, e, "Exception when trying to get LootTable from entity: "+el.getName());
-				return getEntityLoot_Hacky(el);
-			} catch (IllegalArgumentException e) {
-				ModLogger.logException(Level.ERROR, e, "Exception when trying to get LootTable from entity: "+el.getName());
-				return getEntityLoot_Hacky(el);
-			} catch (InvocationTargetException e) {
-				ModLogger.logException(Level.ERROR, e, "Exception when trying to get LootTable from entity: "+el.getName());
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				RunesofWizardry_Classics.log().error("Exception when trying to get LootTable from entity: "+el.getName(),e);
 				return getEntityLoot_Hacky(el);
 			}
 		}
 		if(location==null){
-			ModLogger.logWarn(el.getName()+" does not have a LootTable. falling back to kill method");
+			RunesofWizardry_Classics.log().warn(el.getName()+" does not have a LootTable. falling back to kill method");
 			return getEntityLoot_Hacky(el);
 		}
 		LootTableManager manager = el.world.getLootTableManager();
@@ -200,24 +189,18 @@ public class RuneResurrection extends ClassicRune {
 		Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, "dropLoot","func_184610_a",boolean.class,int.class,DamageSource.class);
 		try {
 			getdrops.invoke(ent,true, 10,DamageSource.GENERIC);
-		} catch (IllegalAccessException e1) {
-			ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
-			return result;
-		} catch (IllegalArgumentException e1) {
-			ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
-			return result;
-		} catch (InvocationTargetException e1) {
-			ModLogger.logException(Level.ERROR, e1, "Exception when trying to get drops from entity: "+ent);
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e1) {
+			RunesofWizardry_Classics.log().error("Exception when trying to get drops from entity: "+ent,e1);
 			return result;
 		}
 		for(EntityItem item:ent.capturedDrops){
 			if(item==null){
-				ModLogger.logError("Error - NULL entityItem- while finding drops of entity: "+ent.getName());
+				RunesofWizardry_Classics.log().error("Error - NULL entityItem- while finding drops of entity: "+ent.getName());
 				continue;
 			}
 			ItemStack stack = item.getItem();
 			if(stack.isEmpty()){
-				ModLogger.logError("Error - Empty ItemStack (in a valid EntityItem) - while finding drops of entity: "+ent.getName());
+				RunesofWizardry_Classics.log().error("Error - Empty ItemStack (in a valid EntityItem) - while finding drops of entity: "+ent.getName());
 				continue;
 			}
 			result.add(stack);

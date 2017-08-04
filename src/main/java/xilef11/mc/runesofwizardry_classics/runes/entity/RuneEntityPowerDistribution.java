@@ -4,6 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.IRune;
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustPlaced;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -14,13 +19,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
-
-import com.zpig333.runesofwizardry.api.IRune;
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustPlaced;
+import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
 public class RuneEntityPowerDistribution extends FueledRuneEntity {
 	public RuneEntityPowerDistribution(ItemStack[][] actualPattern,
 			EnumFacing facing, Set<BlockPos> dusts,
@@ -80,7 +80,7 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 				int gb = (int)(255*percent);
 				if(gb>255)gb=255;
 				int color = 0xFF0000|(gb<<8)|(gb);
-				//if(entity.ticksExisted()%10==0)ModLogger.logInfo(percent+" "+gb+" "+Integer.toHexString(color));
+				//if(entity.ticksExisted()%10==0)RunesofWizardry_Classics.log().info(percent+" "+gb+" "+Integer.toHexString(color));
 				if(entity.stardata!=null){
 					entity.stardata.outercolor=color;
 					entity.stardata.innercolor=color;
@@ -155,10 +155,10 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 				if((rune instanceof FueledRuneEntity) && !(rune instanceof RuneEntityPowerDistribution)){
 					((FueledRuneEntity)rune).registerTo(this);;
 				}else{
-					ModLogger.logError("rune at "+p+" was not appropriate for power distribution");
+					RunesofWizardry_Classics.log().error("rune at "+p+" was not appropriate for power distribution");
 				}
 			}else{
-				ModLogger.logError("TileEntity at "+p+" was not placed dust for power distribution");
+				RunesofWizardry_Classics.log().error("TileEntity at "+p+" was not placed dust for power distribution");
 			}
 		}
 		initialised=true;
@@ -198,12 +198,12 @@ public class RuneEntityPowerDistribution extends FueledRuneEntity {
 	@Override
 	public void registerTo(RuneEntityPowerDistribution power) {
 		// NOTHING
-		ModLogger.logWarn("Something tried to power a rune of power distribution...");
+		RunesofWizardry_Classics.log().warn("Something tried to power a rune of power distribution...");
 	}
 	@Override
 	public void unregisterFrom(RuneEntityPowerDistribution power) {
 		// NOTHING
-		ModLogger.logWarn("Something tried to unregister a rune of power distribution...");
+		RunesofWizardry_Classics.log().warn("Something tried to unregister a rune of power distribution...");
 	}
 	/* (non-Javadoc)
 	 * @see xilef11.mc.runesofwizardry_classics.runes.entity.FueledRuneEntity#onPatternBroken()

@@ -1,6 +1,8 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,8 +12,6 @@ import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.managers.LockedTimeData;
 import xilef11.mc.runesofwizardry_classics.runes.RuneLockedTime;
-
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneEntityLockedTime extends FueledRuneEntity {
 	private long time=0;
 	public RuneEntityLockedTime(ItemStack[][] actualPattern, EnumFacing facing,

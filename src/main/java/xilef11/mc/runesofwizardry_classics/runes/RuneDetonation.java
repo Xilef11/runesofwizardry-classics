@@ -3,6 +3,10 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.core.rune.PatternUtils;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -11,10 +15,6 @@ import net.minecraft.util.math.Vec3i;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntityDetonation;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
-
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.core.rune.PatternUtils;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneDetonation extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupPattern() throws IOException {

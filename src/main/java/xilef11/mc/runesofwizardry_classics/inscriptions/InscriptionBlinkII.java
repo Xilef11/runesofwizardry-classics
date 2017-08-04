@@ -2,6 +2,9 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
+import com.zpig333.runesofwizardry.api.DustRegistry;
+import com.zpig333.runesofwizardry.core.rune.PatternUtils;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -17,9 +20,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
-
-import com.zpig333.runesofwizardry.api.DustRegistry;
-import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 
 public class InscriptionBlinkII extends ClassicInscription {
 	//also has a particle effect at the teleport destination

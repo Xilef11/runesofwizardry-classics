@@ -2,19 +2,16 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
+import com.zpig333.runesofwizardry.api.Inscription;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-
-import org.apache.logging.log4j.Level;
-
 import xilef11.mc.runesofwizardry_classics.Config;
-import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
-
-import com.zpig333.runesofwizardry.api.Inscription;
+import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
 
 public abstract class ClassicInscription extends Inscription{
 	private ItemStack[][] pattern;
@@ -27,7 +24,7 @@ public abstract class ClassicInscription extends Inscription{
 				try {
 					pattern=setupPattern();
 				} catch (IOException e) {
-					ModLogger.logException(Level.FATAL, e, "Could not set up pattern");
+					RunesofWizardry_Classics.log().fatal("Could not set up pattern",e);
 				}
 			}
 			return pattern;
@@ -35,7 +32,7 @@ public abstract class ClassicInscription extends Inscription{
 			try {
 				return setupPattern();
 			} catch (IOException e) {
-				ModLogger.logException(Level.FATAL, e, "Could not set up pattern");
+				RunesofWizardry_Classics.log().fatal("Could not set up pattern",e);
 				return new ItemStack[4][4];
 			}
 		}

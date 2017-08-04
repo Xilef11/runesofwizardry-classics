@@ -2,20 +2,20 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Collection;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.IRune;
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
 import xilef11.mc.runesofwizardry_classics.managers.IVoidStorageCapability;
 import xilef11.mc.runesofwizardry_classics.managers.VoidStorageCapability;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
-
-import com.zpig333.runesofwizardry.api.IRune;
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneEntityVoid extends RuneEntity {
 	public RuneEntityVoid(ItemStack[][] actualPattern, EnumFacing facing,
 			Set<BlockPos> dusts, TileEntityDustActive entity, IRune creator) {
@@ -37,9 +37,9 @@ public class RuneEntityVoid extends RuneEntity {
 					for(ItemStack i:sacrifice){
 						storage.addStackToVoid(i);
 					}
-					ModLogger.logDebug("Stored sacrifice in the void");
+					RunesofWizardry_Classics.log().debug("Stored sacrifice in the void");
 				}else{
-					ModLogger.logError("player did not have VOID_STORAGE capability");
+					RunesofWizardry_Classics.log().error("player did not have VOID_STORAGE capability");
 				}
 			}else{
 				IVoidStorageCapability storage = player.getCapability(VoidStorageCapability.VOID_STORAGE_CAPABILITY, null);
@@ -49,9 +49,9 @@ public class RuneEntityVoid extends RuneEntity {
 						Utils.spawnItemCentered(world, getPos(), i);
 					}
 					inv.clear();
-					ModLogger.logDebug("Spawned void inventory");
+					RunesofWizardry_Classics.log().debug("Spawned void inventory");
 				}else{
-					ModLogger.logError("player did not have VOID_STORAGE capability");
+					RunesofWizardry_Classics.log().error("player did not have VOID_STORAGE capability");
 				}
 			}
 			this.onPatternBroken();

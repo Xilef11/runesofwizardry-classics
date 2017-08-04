@@ -2,6 +2,9 @@ package xilef11.mc.runesofwizardry_classics.runes;
 import java.io.IOException;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -17,9 +20,6 @@ import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.items.ItemSpiritPickaxe;
 import xilef11.mc.runesofwizardry_classics.items.ItemSpiritSword;
 import xilef11.mc.runesofwizardry_classics.runes.entity.RuneEntitySpiritTools;
-
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneSpiritTools extends ClassicRune {
 	public RuneSpiritTools() {
 		//register to the event bus to be able to create the spirit tools instances.

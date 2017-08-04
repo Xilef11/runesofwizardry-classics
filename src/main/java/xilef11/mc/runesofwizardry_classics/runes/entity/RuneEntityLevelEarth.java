@@ -1,6 +1,10 @@
 package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.core.WizardryRegistry;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,10 +21,6 @@ import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneLevelEarth;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
-
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.core.WizardryRegistry;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 public class RuneEntityLevelEarth extends RuneEntity {
 	private static final int TICKRATE=Refs.TPS;
 	public RuneEntityLevelEarth(ItemStack[][] actualPattern, EnumFacing facing,

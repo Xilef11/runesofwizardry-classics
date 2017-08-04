@@ -3,8 +3,9 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-import xilef11.mc.runesofwizardry_classics.Refs;
-import xilef11.mc.runesofwizardry_classics.utils.Utils;
+import com.zpig333.runesofwizardry.api.IRune;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -16,9 +17,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import com.zpig333.runesofwizardry.api.IRune;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.utils.Utils;
 /*
  * Really hard to guess what this does from code, and it crashes on activation...
  * managed to test on an older version:

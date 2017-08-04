@@ -2,6 +2,9 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
+import com.zpig333.runesofwizardry.api.DustRegistry;
+import com.zpig333.runesofwizardry.core.rune.PatternUtils;
+
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -14,9 +17,6 @@ import net.minecraft.world.World;
 import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
-
-import com.zpig333.runesofwizardry.api.DustRegistry;
-import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 
 public class InscriptionForesight extends ClassicInscription {
 	//Original doesn't seem to be doing anything...
@@ -83,7 +83,7 @@ public class InscriptionForesight extends ClassicInscription {
 						if(test2&& Math.random() < 0.2){
 							int blockLight = world.getLightFor(EnumSkyBlock.BLOCK, pos.up());
 							int skyLight = world.getLightFor(EnumSkyBlock.SKY, pos.up())-skysub;
-							//ModLogger.logInfo(blockLight+" "+skyLight);
+							//RunesofWizardry_Classics.log().info(blockLight+" "+skyLight);
 							if(blockLight<8){
 								if(skyLight<8){//can spawn now
 									world.spawnParticle(EnumParticleTypes.SPELL, false, pos.getX()+0.5, pos.getY()+1, pos.getZ()+0.5, 0d, 0d, 0d);

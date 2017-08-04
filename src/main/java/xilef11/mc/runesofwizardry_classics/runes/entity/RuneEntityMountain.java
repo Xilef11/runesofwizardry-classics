@@ -8,6 +8,12 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.core.WizardryRegistry;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustPlaced;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityIronGolem;
@@ -22,18 +28,12 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import xilef11.mc.runesofwizardry_classics.ModLogger;
 import xilef11.mc.runesofwizardry_classics.Refs;
+import xilef11.mc.runesofwizardry_classics.RunesofWizardry_Classics;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneMountain;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
-
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.core.WizardryRegistry;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive.BeamType;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustPlaced;
 /* Behaviour:
  * (DELiftTerrain)
  * lifts an area delimited by clay blocks (which must be connected to the rune)
@@ -78,7 +78,7 @@ public class RuneEntityMountain extends RuneEntity {
 				break;
 			case BLAZE:height=32;
 				break;
-			default:ModLogger.logError("Wrong Dust Type in RuneEntityMountain#onRuneActivatedByPlayer");
+			default:RunesofWizardry_Classics.log().error("Wrong Dust Type in RuneEntityMountain#onRuneActivatedByPlayer");
 				break;
 			}
 			entity.setupStar(0xFFFF00, 0xFFFFFF);
@@ -139,13 +139,13 @@ public class RuneEntityMountain extends RuneEntity {
 					BlockPos nextUp = base.add(0, ch+1, 0);
 					//special case for the dusts, we want to lift them and not stop.
 					if(world.getBlockState(nextUp).getBlock()==WizardryRegistry.dust_placed){
-						//ModLogger.logInfo("Moving placed dust column at "+nextUp);
+						//RunesofWizardry_Classics.log().info("Moving placed dust column at "+nextUp);
 						BlockPos up2=nextUp.up();
 						//update the posSet of the rune if we will move the dust
 						if(world.isAirBlock(up2)){
 							TileEntity te = world.getTileEntity(nextUp);
 							if(te instanceof TileEntityDustPlaced){
-								//if(te instanceof TileEntityDustActive)ModLogger.logInfo("active dust");
+								//if(te instanceof TileEntityDustActive)RunesofWizardry_Classics.log().info("active dust");
 								TileEntityDustPlaced ted = (TileEntityDustPlaced)te;
 								RuneEntity ent = ted.getRune();
 								if(ent!=null){
@@ -262,14 +262,14 @@ public class RuneEntityMountain extends RuneEntity {
 				}
 			}
 			if(offset==MAX_SEARCH_RANGE){
-				ModLogger.logWarn("Could not find marked area");
+				RunesofWizardry_Classics.log().warn("Could not find marked area");
 				return null;
 			}
 		}
 		LinkedHashSet<BlockPos> result = new LinkedHashSet<>();
 		EdgeResult edge = new EdgeResult(initial.getX(),initial.getZ());
 		edge = findEdge(world,initial,edge);
-		ModLogger.logInfo("Found "+edge);
+		RunesofWizardry_Classics.log().info("Found "+edge);
 		int y = initial.getY();
 		//add edge to result
 		for(Integer x:edge.positions.keySet()){
@@ -283,7 +283,7 @@ public class RuneEntityMountain extends RuneEntity {
 				if(isInside(cx,cz,edge))result.add(new BlockPos(cx,y,cz));
 			}
 		}
-		ModLogger.logInfo("Found "+result.size()+" blocks in area");
+		RunesofWizardry_Classics.log().info("Found "+result.size()+" blocks in area");
 		return result;
 	}
 	private static EdgeResult findEdge(World world, BlockPos currentBlock, EdgeResult edge){

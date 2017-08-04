@@ -2,6 +2,10 @@ package xilef11.mc.runesofwizardry_classics.runes.entity;
 import java.util.Random;
 import java.util.Set;
 
+import com.zpig333.runesofwizardry.api.RuneEntity;
+import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
+import com.zpig333.runesofwizardry.util.Utils;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,10 +20,6 @@ import net.minecraft.world.WorldServer;
 import xilef11.mc.runesofwizardry_classics.items.EnumDustTypes;
 import xilef11.mc.runesofwizardry_classics.runes.RuneLumber;
 import xilef11.mc.runesofwizardry_classics.utils.Utils.Coords;
-
-import com.zpig333.runesofwizardry.api.RuneEntity;
-import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
-import com.zpig333.runesofwizardry.util.Utils;
 //TODO rework this one, it has wierd results in forests
 public class RuneEntityLumber extends RuneEntity {
 	public RuneEntityLumber(ItemStack[][] actualPattern, EnumFacing facing,
