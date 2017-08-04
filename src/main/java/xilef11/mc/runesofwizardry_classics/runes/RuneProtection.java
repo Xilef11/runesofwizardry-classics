@@ -8,6 +8,7 @@ import com.zpig333.runesofwizardry.tileentity.TileEntityDustActive;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
@@ -28,11 +29,12 @@ public class RuneProtection extends VariableRune {
 	}
 	@Override
 	protected ItemStack[][] setupSacrifice() {
-		//TODO fix this now
-		ItemStack villagerEgg = new ItemStack(Items.SPAWN_EGG,1,120);//Looks like we're using meta, tag is 1.9
-//		NBTTagCompound id = new NBTTagCompound();
-//		id.setString("id", "Villager");
-//		villagerEgg.getTagCompound().setTag("EntityTag", id);
+		ItemStack villagerEgg = new ItemStack(Items.SPAWN_EGG);
+		NBTTagCompound id = new NBTTagCompound();
+		id.setString("id", "villager");
+		NBTTagCompound eggTag = new NBTTagCompound();
+		eggTag.setTag("EntityTag", id);
+		villagerEgg.setTagCompound(eggTag);
 		return new ItemStack[][]{
 				{villagerEgg}
 				};

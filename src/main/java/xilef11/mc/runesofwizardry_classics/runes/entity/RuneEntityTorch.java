@@ -42,7 +42,7 @@ public class RuneEntityTorch extends RuneEntity {
 		RunesofWizardry_Classics.log().debug("Activated torch rune with sacrifice: "+sacrifice);
 		if(sacrifice!=null||negated){
 			this.beacon=true;
-			//TODO create beacon
+			//create beacon
 			entity.setupBeam(0xFFFFFF, BeamType.BEACON);
 			entity.beamdata.beamRadius=0.1;
 			entity.beamdata.glowRadius=0.2;
