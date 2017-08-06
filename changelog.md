@@ -1,0 +1,2 @@
+- Update to 1.12
+- Fix Rune of Protection sacrifice
