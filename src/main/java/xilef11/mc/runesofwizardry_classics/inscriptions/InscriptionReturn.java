@@ -28,6 +28,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.Refs;
 
@@ -99,6 +101,7 @@ public class InscriptionReturn extends ClassicInscription {
 	 * @see com.zpig333.runesofwizardry.api.Inscription#addInformation(net.minecraft.item.ItemStack, net.minecraft.entity.player.EntityPlayer, java.util.List, boolean)
 	 */
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World worldIn,List<String> tooltip, ITooltipFlag flag) {
 		boolean sneak = Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT);
 		if(sneak){
