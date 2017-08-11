@@ -70,7 +70,8 @@ public class InscriptionBlink extends ClassicInscription {
 	private static final int DAMAGE=20;
 	@Override
 	public void onWornTick(World world, EntityPlayer player, ItemStack stack) {
-		if(player.isSneaking()&&player.isSwingInProgress&&player.getHeldItemMainhand()==null){
+		//TODO check if this still works with the null
+		if(player.isSneaking()&&player.isSwingInProgress&&player.getHeldItemMainhand().isEmpty()){
 			int newDamage =stack.getItemDamage()+DAMAGE; 
 			if(newDamage<getMaxDurability()){
 				if(world.getTotalWorldTime()>(getTime(stack)+DELAY)){

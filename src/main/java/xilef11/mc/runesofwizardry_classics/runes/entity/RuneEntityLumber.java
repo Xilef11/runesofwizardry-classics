@@ -163,14 +163,14 @@ public class RuneEntityLumber extends RuneEntity {
 		IBlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
 		ItemStack stack = new ItemStack(block, 1, block.getMetaFromState(state));
-		if(stack.getItem()==null)return false;
+		if(stack.isEmpty())return false;
 		return Utils.stacksEqualWildcardSize(new ItemStack(Blocks.LEAVES),stack , true);
 	}
 	private static boolean isWood(World world, BlockPos pos){
 		IBlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
 		ItemStack stack = new ItemStack(block, 1, block.getMetaFromState(state));
-		if(stack.getItem()==null)return false;
+		if(stack.isEmpty())return false;
 		return Utils.stacksEqualWildcardSize(new ItemStack(Blocks.LOG),stack , true);
 	}
 	private static void spawnExplosionParticle(World world, double x, double y, double z){
