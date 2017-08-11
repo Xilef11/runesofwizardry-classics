@@ -58,9 +58,22 @@ def username = 'ForgeDevName'
 if (project.hasProperty('dev_username'))
 username = "${dev_username}"
 
+//get the name of the runes of wizardry jar
+FileTree libs = fileTree('libs').include('Runes-of-Wizardry*.jar')
+def row=""
+try{
+	row = libs.getSingleFile().getName() - ~/-deobf.*/
+	row = row - ~/Runes-of-Wizardry-/
+	println "Found Runes of Wizardry version "+row
+}catch(IllegalStateException e){
+	//nothing
+}
+
 version = "${mcVersion}-${majorVersion}.${minorVersion}${bugfix}${devVersion}"
 group= "xilef11.mc.runesofwizardry-classics" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "RunesofWizardry-Classics"
+
+println "Project version is "+project.version
 
 //must be run before all other configs (but after initially setting the version)
 task('setReleaseNumber') {
@@ -87,6 +100,9 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 	replace '@VERSION@', project.version
 	replaceIn 'Refs.java'
+	
+	replace 'required-after:runesofwizardry', 'required-after:runesofwizardry['+row+',)'
+	replaceIn 'RunesofWizardry_Classics.java'
 	
 }
 repositories {
@@ -145,15 +161,6 @@ processResources
 
 
 //custom tasks and configs
-
-//get the name of the runes of wizardry jar
-FileTree libs = fileTree('libs').include('Runes-of-Wizardry*.jar')
-def row=""
-try{
-	row = libs.getSingleFile().getName() - ~/-deobf.*/
-}catch(IllegalStateException e){
-	//nothing
-}
 
 task('incrementBuildNumber') << {
 //http://stackoverflow.com/questions/17448565/how-to-autoincrement-versioncode-in-android-gradle
@@ -226,7 +233,7 @@ if(project.hasProperty('curseKey')){
 	  project {
 		id = '243956'
 		changelogType='markdown'
-		changelog = file('changelog.md').getText()+"\n\nBuilt with Forge "+forgeVersion+" and "+row
+		changelog = file('changelog.md').getText()+"\n\nBuilt with Forge "+forgeVersion+" and Runes of Wizardry "+row
 		releaseType = 'beta'
 		mainArtifact jar
 		relations{
