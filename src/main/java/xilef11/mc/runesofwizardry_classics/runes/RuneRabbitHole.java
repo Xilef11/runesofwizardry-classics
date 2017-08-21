@@ -58,7 +58,7 @@ public class RuneRabbitHole extends VariableRune {
 	 */
 	@Override
 	public String getName() {
-		return Refs.Lang.RUNE+".rabbitHole";
+		return Refs.Lang.RUNE+".rabbithole";
 	}
 	/* (non-Javadoc)
 	 * @see com.zpig333.runesofwizardry.api.IRune#createRune(net.minecraft.item.ItemStack[][], net.minecraft.util.EnumFacing, java.util.Set, com.zpig333.runesofwizardry.tileentity.TileEntityDustActive)

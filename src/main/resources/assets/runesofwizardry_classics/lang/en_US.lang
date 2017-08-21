@@ -24,7 +24,7 @@ runesofwizardry_classics.inscription.nopermission.message=You do not have permis
 
 #rune names
 runesofwizardry_classics.rune.torch=Torch Rune
-runesofwizardry_classics.rune.rabbitHole=Rune of the Rabbit Hole
+runesofwizardry_classics.rune.rabbithole=Rune of the Rabbit Hole
 runesofwizardry_classics.rune.healing=Rune of Healing
 runesofwizardry_classics.rune.lumber=Rune of Lumber
 runesofwizardry_classics.rune.fire=Rune of Fire
@@ -78,7 +78,7 @@ runesofwizardry_classics.rune.spawnercollection.extrasac=10 levels
 runesofwizardry_classics.rune.spawnerreassignment.extrasac=Kept for decorative purposes
 runesofwizardry_classics.rune.rebirth.extrasac=A live Mob + 10 levels
 runesofwizardry_classics.rune.spirittools.extrasac=18 levels
-runesofwizardry_classics.rune.rabbitHole.extrasac=2 hunger
+runesofwizardry_classics.rune.rabbithole.extrasac=2 hunger
 runesofwizardry_classics.rune.healing.extrasac=2 levels
 runesofwizardry_classics.rune.spriteearth.extrasac=20 levels\nLasts 3 days unless fueled
 runesofwizardry_classics.rune.spritefire.extrasac=22 levels\nLasts 3 days unless fueled
@@ -131,15 +131,19 @@ runesofwizardry_classics.rune.entrapment.shortdesc=Locks up nearby mobs and play
 runesofwizardry_classics.rune.resurrection.shortdesc=Makes a mob rise from its drops
 runesofwizardry_classics.rune.levelearth.shortdesc=Flattens Terrain
 runesofwizardry_classics.rune.fire.shortdesc=Creates a Flame that smelts items.
-runesofwizardry_classics.rune.lockedtime.shortdesc=Locks the daY/night cycle and prevents blocks from falling
+runesofwizardry_classics.rune.lockedtime.shortdesc=Locks the day/night cycle and prevents blocks from falling
 runesofwizardry_classics.rune.hellstorm.shortdesc=Summons a Rain of Fire and Death
 runesofwizardry_classics.rune.protection.shortdesc=Pushes back hostile mobs
-runesofwizardry_classics.rune.lumber.extrasac=Chops down trees.
+runesofwizardry_classics.rune.lumber.shortdesc=Chops down trees.
 runesofwizardry_classics.rune.powerdistribution.shortdesc=Distributes fuel to nearby runes
 runesofwizardry_classics.rune.spirittools.shortdesc=Summons Spirit versions of your tools
 runesofwizardry_classics.rune.mountain.shortdesc=Lifts a mountain
 runesofwizardry_classics.rune.spritefire.shortdesc=Summons a fire sprite to burn your enemies.
 runesofwizardry_classics.rune.spriteearth.shortdesc=Summons an earth sprite that will protect you if you stop and crouch
+runesofwizardry_classics.rune.rebirth.shortdesc=What came first, the Mob or the Egg?
+runesofwizardry_classics.rune.spawnercollection.shortdesc=Collect Spawners
+runesofwizardry_classics.rune.music.shortdesc=Complete your Record collection
+runesofwizardry_classics.rune.classicinscriptionenchant.shortdesc=Charges an Inscription
 
 #Inscriptions
 runesofwizardry_classics.inscription.void=Void
