@@ -31,7 +31,7 @@ public class RuneProtection extends VariableRune {
 	protected ItemStack[][] setupSacrifice() {
 		ItemStack villagerEgg = new ItemStack(Items.SPAWN_EGG);
 		NBTTagCompound id = new NBTTagCompound();
-		id.setString("id", "villager");
+		id.setString("id", "Villager");
 		NBTTagCompound eggTag = new NBTTagCompound();
 		eggTag.setTag("EntityTag", id);
 		villagerEgg.setTagCompound(eggTag);
