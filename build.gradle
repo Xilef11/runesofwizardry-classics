@@ -53,7 +53,7 @@ compileJava {
 //https://github.com/matthewprenger/CurseGradle for auto curseforge releases
 def majorVersion = "0"
 def minorVersion = "4"
-def bugfix = ".3-b2"
+def bugfix = ".3-b2" 
 def devVersion = "-dev"
 def forgeVersion="1.10.2-12.18.3.2185"
 def mcVersion = forgeVersion.substring(0,forgeVersion.indexOf('-'))
@@ -210,7 +210,7 @@ github {
 		token = project.githubKey
 		tagName = 'v'+project.version
 		name=tagName
-		targetCommitish = 'master'
+		targetCommitish = "git rev-parse HEAD".execute().text
 		draft=false
 		prerelease = project.version.contains(devVersion)
 		body = "Changelog:\n"+file('changelog.md').getText()+"\n\nBuilt with Forge "+forgeVersion+" and "+row
