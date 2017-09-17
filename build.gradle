@@ -110,6 +110,7 @@ repositories {
   maven {
     url "http://dvs1.progwml6.com/files/maven"
   }
+  maven { url 'http://tehnut.info/maven/' }
 }
 dependencies {
     // you may put jars on which you depend on in ./libs
@@ -135,6 +136,9 @@ dependencies {
     //JEI
     deobfCompile "mezz.jei:jei_"+jeiversion+":api"
 	runtime "mezz.jei:jei_"+jeiversion
+	
+	//Guide-API
+	deobfProvided "info.amerifrance.guideapi:Guide-API:1.12-2.1.4-57"
 }
 
 processResources
