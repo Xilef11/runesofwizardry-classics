@@ -39,7 +39,7 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 		this.setCreativeTab(RunesOfWizardry.wizardry_tab);
 		setUnlocalizedName(Refs.MODID+"_"+getName());
 		this.setMaxDamage(250);
-		this.efficiencyOnProperMaterial=16F;
+		this.efficiency=16F;
 	}
 	public String getName(){
 		return name;

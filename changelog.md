@@ -1,0 +1,2 @@
+- added Guide-API integration
+- Runes which accept a variable number of items as sacrifice are still broken :(

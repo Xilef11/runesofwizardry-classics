@@ -189,3 +189,7 @@ item.runesofwizardry_classics_spirit_pickaxe.name=Spirit Pickaxe
 #JEI descriptions
 runesofwizardry_classics.jei.spirit_sword=Obtained through the Rune of the Spirit Tools, has a chance to drop Gunpowder Runic Dust on hit.
 runesofwizardry_classics.jei.spirit_pickaxe=Obtained through the Rune of the Spirit Tools. Hold right-click to charge, release to break stone in a large area with a chance to drop Lapis Runic Dust
+
+runesofwizardry_classics.guide.spiritpick=[Spirit Pickaxe]\nResult of sacrificing a pickaxe. Hold right-click to charge, release to break stone in a large area with a chance to drop Lapis Runic Dust.
+runesofwizardry_classics.guide.spiritsword=[Spirit Sword]\nResult of sacrificing a sword. Has a chance to drop Gunpowder Runic Dust on hit.
+runesofwizardry_classics.guide.variabledust=[Variable dust placeholder]\nThis dust can be replaced by any classic dust. (Plant*, Gunpowder, Lapis, Blaze*)

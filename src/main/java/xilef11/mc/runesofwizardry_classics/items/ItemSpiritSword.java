@@ -66,10 +66,11 @@ public class ItemSpiritSword extends ItemSword{
 	 * @see net.minecraft.item.ItemSword#getDamageVsEntity()
 	 */
 	@Override
-	public float getDamageVsEntity() {
+	public float getAttackDamage() {
 		//diamond is 3.0
 		return 3.0F;
 	}
+	
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.ItemSword#hitEntity(net.minecraft.item.ItemStack, net.minecraft.entity.EntityLivingBase, net.minecraft.entity.EntityLivingBase)
 	 */
