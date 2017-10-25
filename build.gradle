@@ -102,7 +102,7 @@ minecraft {
 	replace '@VERSION@', project.version
 	replaceIn 'Refs.java'
 	
-	replace 'required-after:runesofwizardry', 'required-after:runesofwizardry['+row+',)'
+	replace 'required-after:runesofwizardry', 'required-after:runesofwizardry@['+row+',)'
 	replaceIn 'RunesofWizardry_Classics.java'
 	
 }
