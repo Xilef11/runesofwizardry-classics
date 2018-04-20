@@ -30,7 +30,7 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
 		classpath 'co.riiid:gradle-github-plugin:0.4.2'
-		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.7"
+		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.10"
     }
 }
 
@@ -49,10 +49,10 @@ def majorVersion = "0"
 def minorVersion = "5"
 def bugfix = ".7"
 def devVersion = "-dev"
-def forgeVersion="1.12.2-14.23.0.2512"
+def forgeVersion="1.12.2-14.23.3.2661"
 def mcVersion = forgeVersion.substring(0,forgeVersion.indexOf('-'))
-def jeiversion = "1.12.2:4.8.0.109"
-def guideAPIversion="1.12-2.1.4-57"
+def jeiversion = "1.12.2:4.8.6.162"
+def guideAPIversion="1.12-2.1.5-60"
 
 def username = 'ForgeDevName'
 //set from command line with -Pdev_username=name
