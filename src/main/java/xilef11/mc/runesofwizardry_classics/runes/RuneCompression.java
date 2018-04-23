@@ -30,7 +30,7 @@ public class RuneCompression extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				{new ItemStack(Blocks.IRON_BLOCK),new ItemStack(Items.COAL,-1)}
+				{new ItemStack(Blocks.IRON_BLOCK),makeWildcardStack(new ItemStack(Items.COAL,32))}
 				};
 	}
 	/* (non-Javadoc)
