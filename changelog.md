@@ -1,2 +1,0 @@
-- Fix Rune of Compression
-- prevent crash if a classic dust gets created with invalid metadata.
