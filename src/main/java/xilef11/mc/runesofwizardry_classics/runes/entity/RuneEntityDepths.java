@@ -62,7 +62,7 @@ public class RuneEntityDepths extends RuneEntity {
 				BlockPos current = beginPos.down(dy);
 				IBlockState state = world.getBlockState(current);
 				Block toBreak = state.getBlock();
-				if(toBreak!=Blocks.BEDROCK||!Config.levelEarthBlackList.contains(toBreak.getRegistryName().toString())){
+				if(toBreak!=Blocks.BEDROCK && !Config.levelEarthBlackList.contains(toBreak.getRegistryName().toString())){
 					toBreak.onBlockDestroyedByPlayer(world, current, state);
 					toBreak.dropBlockAsItem(world, current, state, 0);
 					world.setBlockToAir(current);
