@@ -85,6 +85,7 @@ public class RuneEntitySarlacc extends RuneEntity {
 						//kill the entity (2M half-hearts of damage => 1M hearts)
 						ent.attackEntityFrom(DamageSource.MAGIC, 2000000);
 						if(ent.getHealth()<=0){//avoid spawning too much XP if a mob has a silly amount of health and needs multiple ticks to die
+							ent.captureDrops=true;
 							while(xp>0){
 								int toDrop = EntityXPOrb.getXPSplit(xp);
 								xp-=toDrop;
@@ -97,6 +98,10 @@ public class RuneEntitySarlacc extends RuneEntity {
 							}
 							//add to the rune's lifetime
 							ticksremaining+=Refs.TICKS_PER_DAY/8;
+							for(EntityItem item:ent.capturedDrops) {
+								ticksremaining+=item.getItem().getCount()*(Refs.TPS/2);
+								item.setDead();
+							}
 						}
 					}
 				}else if(e instanceof EntityPlayer){

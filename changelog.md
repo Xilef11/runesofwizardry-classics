@@ -1,0 +1,1 @@
+- Fix rune of Sarlacc not capturing mob drops near the edges
