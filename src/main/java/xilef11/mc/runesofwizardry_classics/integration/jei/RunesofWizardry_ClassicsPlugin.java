@@ -6,6 +6,7 @@ import mezz.jei.api.IModRegistry;
 import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 import xilef11.mc.runesofwizardry_classics.Refs;
@@ -17,8 +18,8 @@ public class RunesofWizardry_ClassicsPlugin implements IModPlugin{
 
 	@Override
 	public void register(IModRegistry registry) {
-		registry.addIngredientInfo(ItemSpiritSword.createStack(), ItemStack.class, Refs.Lang.Jei.SPIRIT_SWORD);
-		registry.addIngredientInfo(new ItemStack(ItemSpiritPickaxe.instance()), ItemStack.class, Refs.Lang.Jei.SPIRIT_PICKAXE);
+		registry.addIngredientInfo(ItemSpiritSword.createStack(), VanillaTypes.ITEM, Refs.Lang.Jei.SPIRIT_SWORD);
+		registry.addIngredientInfo(new ItemStack(ItemSpiritPickaxe.instance()), VanillaTypes.ITEM, Refs.Lang.Jei.SPIRIT_PICKAXE);
 	}
 
 	@Override

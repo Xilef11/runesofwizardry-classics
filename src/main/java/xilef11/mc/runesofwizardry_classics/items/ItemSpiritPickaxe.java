@@ -116,7 +116,7 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 		Random rand = new Random();
 		int level = player.experienceLevel + 1;
 		level *= level;
-		double tol = (double) level / 900D;
+		double tol = level / 900D;
 
 		if (use > 25) {
 			boolean creative = player.capabilities.isCreativeMode;

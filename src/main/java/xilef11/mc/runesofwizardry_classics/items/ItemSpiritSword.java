@@ -82,7 +82,7 @@ public class ItemSpiritSword extends ItemSword{
 			double r = rand.nextDouble();
 
 			int level = player.experienceLevel+5;
-			double tol = (double)level/25D;
+			double tol = level/25D;
 
 			if(r < tol){
 				int amt = rand.nextDouble() < 0.5D? 2:1;

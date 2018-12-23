@@ -13,7 +13,7 @@ import net.minecraft.world.storage.loot.LootTable;
 import net.minecraft.world.storage.loot.RandomValueRange;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraft.world.storage.loot.functions.SetMetadata;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 /**
  * Helper functions for loot tables. borrowed from Way2MuchNoise's JustEnoughResources
@@ -24,21 +24,25 @@ public class LootUtils {
 	
     public static List<LootPool> getPools(LootTable table)
     {
-        return ReflectionHelper.getPrivateValue(LootTable.class, table, "pools", "field_186466_c");
+    	//"pools"
+        return ObfuscationReflectionHelper.getPrivateValue(LootTable.class, table, "field_186466_c");
     }
 
     public static List<LootEntry> getEntries(LootPool pool)
     {
-        return ReflectionHelper.getPrivateValue(LootPool.class, pool, "lootEntries", "field_186453_a");
+    	//return ReflectionHelper.getPrivateValue(LootPool.class, pool, "lootEntries", "field_186453_a");
+        return ObfuscationReflectionHelper.getPrivateValue(LootPool.class, pool, "field_186453_a");
     }
 
     public static Item getItem(LootEntryItem lootEntry)
     {
-        return ReflectionHelper.getPrivateValue(LootEntryItem.class, lootEntry, "item", "field_186368_a");
+    	//"item"
+        return ObfuscationReflectionHelper.getPrivateValue(LootEntryItem.class, lootEntry, "field_186368_a");
     }
     public static LootFunction[] getFunctions(LootEntryItem lootEntry)
     {
-        return ReflectionHelper.getPrivateValue(LootEntryItem.class, lootEntry, "functions", "field_186369_b");
+    	//"functions"
+        return ObfuscationReflectionHelper.getPrivateValue(LootEntryItem.class, lootEntry, "field_186369_b");
     }
     /**
      * Converts a LootTable to a list of possible drops, only looks for Item and metadata.
@@ -57,7 +61,8 @@ public class LootUtils {
     				for(LootFunction func:functs){
     					if(func instanceof SetMetadata){
     						metaSet=true;
-    						RandomValueRange range = (RandomValueRange)ReflectionHelper.getPrivateValue(SetMetadata.class, (SetMetadata)func, "metaRange","field_186573_b");
+    						//"metaRange"
+    						RandomValueRange range = (RandomValueRange)ObfuscationReflectionHelper.getPrivateValue(SetMetadata.class, (SetMetadata)func, "field_186573_b");
     						int meta = MathHelper.floor(range.getMin());
     						stacks.add(new ItemStack(item,1,meta));
     					}

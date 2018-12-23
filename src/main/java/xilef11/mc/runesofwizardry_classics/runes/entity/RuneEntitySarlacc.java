@@ -20,7 +20,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import xilef11.mc.runesofwizardry_classics.Refs;
 /*Behaviour:
  * Lasts 1 day
@@ -78,7 +78,8 @@ public class RuneEntitySarlacc extends RuneEntity {
 					//EntityLiving should be mobs but not players (or armor stands wtf), might cause issues with modded mobs if they extend EntityLivingBase directly
 					EntityLiving ent = (EntityLiving)e;
 					if(ent.getHealth()>0){//don't get stuck if the entity is already dying
-						int xp = ReflectionHelper.getPrivateValue(EntityLiving.class, ent, "experienceValue","field_70728_aV");
+						//int xp = ReflectionHelper.getPrivateValue(EntityLiving.class, ent, "experienceValue","field_70728_aV");
+						int xp = ObfuscationReflectionHelper.getPrivateValue(EntityLiving.class, ent,"field_70728_aV");
 						//int value = (int) xpValueGet.invokeExact((EntityLiving)ent);
 						xp*=2;//drop double XP
 						//kill the entity (2M half-hearts of damage => 1M hearts)

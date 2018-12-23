@@ -44,7 +44,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTable;
 import net.minecraft.world.storage.loot.LootTableManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import scala.util.Random;
 import xilef11.mc.runesofwizardry_classics.Config;
 import xilef11.mc.runesofwizardry_classics.Refs;
@@ -164,10 +164,13 @@ public class RuneResurrection extends ClassicRune {
 		}
 	}
 	
+	private Method getLT = ObfuscationReflectionHelper.findMethod(EntityLiving.class, "func_184647_J", ResourceLocation.class);
 	private List<ItemStack> getEntityLoot_Table(EntityLiving el){
-		ResourceLocation location = (ResourceLocation)ReflectionHelper.getPrivateValue(EntityLiving.class, el, "deathLootTable","field_184659_bA");
+		//ResourceLocation location = (ResourceLocation)ReflectionHelper.getPrivateValue(EntityLiving.class, el, "deathLootTable","field_184659_bA");
+		ResourceLocation location = (ResourceLocation)ObfuscationReflectionHelper.getPrivateValue(EntityLiving.class, el, "field_184659_bA");
 		if(location==null){
-			Method getLT = ReflectionHelper.findMethod(EntityLiving.class,"getLootTable","func_184647_J");
+			//Method getLT = ObfuscationReflectionHelper.findMethod(EntityLiving.class, "func_184647_J", ResourceLocation.class);
+			//Method getLT = ReflectionHelper.findMethod(EntityLiving.class,"getLootTable","func_184647_J");
 			try {
 				location = (ResourceLocation)getLT.invoke(el);
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -183,10 +186,12 @@ public class RuneResurrection extends ClassicRune {
 		LootTable table = manager.getLootTableFromLocation(location);
 		return LootUtils.tableToItemStacks(table);
 	}
+	private Method getdrops = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class,"func_184610_a",void.class,boolean.class,int.class,DamageSource.class);
 	private List<ItemStack> getEntityLoot_Hacky(EntityLiving ent){
 		List<ItemStack> result = new LinkedList<>();
 		ent.captureDrops=true;
-		Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, "dropLoot","func_184610_a",boolean.class,int.class,DamageSource.class);
+		//Method getdrops = ReflectionHelper.findMethod(EntityLivingBase.class, "dropLoot","func_184610_a",boolean.class,int.class,DamageSource.class);
+		//Method getdrops = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class,"func_184610_a",void.class,boolean.class,int.class,DamageSource.class);
 		try {
 			getdrops.invoke(ent,true, 10,DamageSource.GENERIC);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e1) {

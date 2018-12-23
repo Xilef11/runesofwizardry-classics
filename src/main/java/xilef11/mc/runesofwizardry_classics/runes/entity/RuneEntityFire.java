@@ -18,7 +18,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import xilef11.mc.runesofwizardry_classics.Refs;
 public class RuneEntityFire extends FueledRuneEntity {
 	private static final int TICK_RATE=3;
@@ -76,7 +76,8 @@ public class RuneEntityFire extends FueledRuneEntity {
 				if(e.isDead){//not causing the issue either
 					continue;
 				}
-				ReflectionHelper.setPrivateValue(Entity.class, e, true, "isImmuneToFire","field_70178_ae");
+				//ReflectionHelper.setPrivateValue(Entity.class, e, true, "isImmuneToFire","field_70178_ae");
+				ObfuscationReflectionHelper.setPrivateValue(Entity.class, e, true, "field_70178_ae");
 				e.extinguish();
 				if(entity.ticksExisted()%TICK_RATE==0){//removing this condition seems to destroy less non-smeltable items FSR
 					ItemStack stack = e.getItem();
@@ -85,7 +86,8 @@ public class RuneEntityFire extends FueledRuneEntity {
 						if(stack.getCount()==1){
 							result.setCount(result.getCount()*((Math.random() > 0.85) ? 2:1));
 							EntityItem toSpawn = new EntityItem(world, e.posX, e.posY, e.posZ, result);
-							ReflectionHelper.setPrivateValue(Entity.class, toSpawn, true, "isImmuneToFire","field_70178_ae");
+							//ReflectionHelper.setPrivateValue(Entity.class, toSpawn, true, "isImmuneToFire","field_70178_ae");
+							ObfuscationReflectionHelper.setPrivateValue(Entity.class, toSpawn, true, "field_70178_ae");
 							world.spawnEntity(toSpawn);
 							shoot(toSpawn);
 							toSpawn.extinguish();

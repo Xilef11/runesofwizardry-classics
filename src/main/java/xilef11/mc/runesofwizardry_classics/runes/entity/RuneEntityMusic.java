@@ -21,7 +21,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import xilef11.mc.runesofwizardry_classics.Refs;
 import xilef11.mc.runesofwizardry_classics.utils.Utils;
 /**
@@ -53,7 +53,8 @@ public class RuneEntityMusic extends RuneEntity {
 		World world = entity.getWorld();
 		if(!world.isRemote && entity.ticksExisted()==Refs.TPS*5){
 			//grab the list of records
-			Map<String,ItemRecord> recordMap = ReflectionHelper.getPrivateValue(ItemRecord.class, (ItemRecord)Items.RECORD_13, "RECORDS","field_150928_b");//XXX recheck name when update
+			//Map<String,ItemRecord> recordMap = ReflectionHelper.getPrivateValue(ItemRecord.class, (ItemRecord)Items.RECORD_13, "RECORDS","field_150928_b");
+			Map<String,ItemRecord> recordMap = ObfuscationReflectionHelper.getPrivateValue(ItemRecord.class, (ItemRecord)Items.RECORD_13,"field_150928_b");
 			Collection<ItemRecord> records = recordMap.values();
 			//select a random number
 			Random rand = new Random();
