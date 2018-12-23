@@ -220,7 +220,7 @@ github {
 		targetCommitish = 'master'
 		draft=false
 		prerelease = project.version.contains(devVersion)
-		body = "Changelog:\n"+file('changelog.md').getText()+"\n\nBuilt with Forge "+forgeVersion+" and "+row
+		body = "Changelog:\n"+file('changelog.md').getText()+"\n\nBuilt with Forge "+forgeVersion+" and Runes of Wizardry "+row
 		assets = [
 				"build/libs/${project.archivesBaseName}-${project.version}.jar"
 				//,"build/libs/${project.archivesBaseName}-${project.version}-sources.jar"
