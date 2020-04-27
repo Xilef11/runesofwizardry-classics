@@ -43,14 +43,13 @@ public class InscriptionLeapII extends InscriptionLeap {
 
 	@Override
 	protected ItemStack[] setupChargeItems() {
-		ItemStack leap1 = DustRegistry.getStackForInscription(Refs.MODID+":leap");
 		ItemStack slimeEgg = new ItemStack(Items.SPAWN_EGG);
 		NBTTagCompound id = new NBTTagCompound();
 		id.setString("id", "Slime");
 		NBTTagCompound main = new NBTTagCompound();
 		main.setTag("EntityTag", id);
 		slimeEgg.setTagCompound(main);
-		return new ItemStack[]{leap1,slimeEgg};
+		return new ItemStack[]{slimeEgg,new ItemStack(Items.FEATHER,4),new ItemStack(Items.FIREWORKS)};
 		//+7 xp
 	}
 	
@@ -69,7 +68,7 @@ public class InscriptionLeapII extends InscriptionLeap {
 	public boolean onInscriptionCharged(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
 		if(!player.world.isRemote){
 			if(!negated){
-				return Utils.takeXP(player, 7);
+				return Utils.takeXP(player, 12);
 			}
 		}
 		return true;

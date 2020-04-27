@@ -169,9 +169,9 @@ runesofwizardry_classics.inscription.foresight.shortdesc=Anticipate the spawning
 #sacrifices
 runesofwizardry_classics.inscription.void.extrasac=- 5 XP
 runesofwizardry_classics.inscription.leap.extrasac=- 5 XP\nSneak+left-click with an empty hand to activate. You won't take fall damage
-runesofwizardry_classics.inscription.leap2.extrasac=- 7 XP\nSneak+left-click with an empty hand to activate. You won't take fall damage\nLevel 2 adds more powerful launches and a passive jump boost
+runesofwizardry_classics.inscription.leap2.extrasac=- 12 XP\nSneak+left-click with an empty hand to activate. You won't take fall damage\nLevel 2 adds more powerful launches and a passive jump boost
 runesofwizardry_classics.inscription.foresight.extrasac=- 20 XP
-runesofwizardry_classics.inscription.blink2.extrasac=- 10 XP\nSneak+left-click with an empty hand to teleport.           
+runesofwizardry_classics.inscription.blink2.extrasac=- 20 XP\nSneak+left-click with an empty hand to teleport.           
 runesofwizardry_classics.inscription.blink.extrasac=- 10 XP\nSneak+left-click with an empty hand to teleport.          
 
 #extra stuff

@@ -1,0 +1,1 @@
+- Change sacrifices of Leap II and BLink II inscriptions to avoid requiring level I inscriptions

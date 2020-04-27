@@ -2,7 +2,6 @@ package xilef11.mc.runesofwizardry_classics.inscriptions;
 
 import java.io.IOException;
 
-import com.zpig333.runesofwizardry.api.DustRegistry;
 import com.zpig333.runesofwizardry.core.rune.PatternUtils;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,10 +29,10 @@ public class InscriptionBlinkII extends ClassicInscription {
 
 	@Override
 	protected ItemStack[] setupChargeItems() {
-		ItemStack blink1 = DustRegistry.getStackForInscription(Refs.MODID+":blink");
 		return new ItemStack[]{
-				blink1,
-				new ItemStack(Items.ENDER_PEARL,8),
+				new ItemStack(Blocks.QUARTZ_BLOCK),
+				new ItemStack(Items.BLAZE_ROD,2),
+				new ItemStack(Items.ENDER_PEARL,16),
 				new ItemStack(Blocks.OBSIDIAN,4),
 				new ItemStack(Blocks.END_STONE,8)
 		};//10 xp
@@ -53,7 +52,7 @@ public class InscriptionBlinkII extends ClassicInscription {
 	public boolean onInscriptionCharged(EntityPlayer player,ItemStack[] sacrifice, boolean negated) {
 		if(!player.world.isRemote){
 			if(!negated){
-				return Utils.takeXP(player, 10);
+				return Utils.takeXP(player, 20);
 			}
 		}
 		return true;
