@@ -31,7 +31,6 @@ public class RuneEnchantingSilkTouch extends ClassicRune {
 	@Override
 	protected ItemStack[][] setupSacrifice() {
 		return new ItemStack[][]{
-				//FIXME this one doesn't accept the items with wildcard meta
 				{new ItemStack(Blocks.GOLD_BLOCK),new ItemStack(Items.DIAMOND_PICKAXE,1,OreDictionary.WILDCARD_VALUE)},
 				{new ItemStack(Blocks.GOLD_BLOCK),new ItemStack(Items.DIAMOND_SHOVEL,1,OreDictionary.WILDCARD_VALUE)}
 				//take 10 XP

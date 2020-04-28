@@ -23,7 +23,7 @@ public class RuneEntityEnchantingFortune extends RuneEntity {
 	public void onRuneActivatedbyPlayer(EntityPlayer player,
 			ItemStack[] sacrifice, boolean negated) {
 		World world = player.world;
-		if(!world.isRemote){
+ 		if(!world.isRemote){
 			if(negated || Utils.takeXP(player, 15)){
 				//find the bow stack
 				ItemStack toEnchant=ItemStack.EMPTY;
