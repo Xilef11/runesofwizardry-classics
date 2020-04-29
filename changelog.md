@@ -1,1 +1,4 @@
 - Change sacrifices of Leap II and BLink II inscriptions to avoid requiring level I inscriptions
+- Fix spirit sword durability
+- Fix spirit pickaxe mining level (Iron)
+- Fix runes consuming 10 levels instead of stated values 

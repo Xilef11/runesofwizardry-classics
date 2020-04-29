@@ -7,7 +7,6 @@ import com.zpig333.runesofwizardry.util.RayTracer;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -47,9 +46,9 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 
 	public static ItemSpiritPickaxe instance(){
 		if(instance==null){
-			instance=new ItemSpiritPickaxe(ToolMaterial.GOLD);
-			RunesofWizardry_Classics.proxy.RegisterItemModel(instance, 0, Refs.TEXTURE_PATH+instance.getName(), "inventory");
+			instance=new ItemSpiritPickaxe(ToolMaterial.IRON);
 			//model
+			RunesofWizardry_Classics.proxy.RegisterItemModel(instance, 0, Refs.TEXTURE_PATH+instance.getName(), "inventory");
 		}
 		return instance;
 	}
@@ -57,7 +56,7 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 	 * @see net.minecraft.item.Item#getRarity(net.minecraft.item.ItemStack)
 	 */
 	@Override
-	public EnumRarity getRarity(ItemStack stack) {
+	public EnumRarity getForgeRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
 	}
 	
@@ -134,15 +133,10 @@ public class ItemSpiritPickaxe extends ItemPickaxe {
 
 							if (block !=Blocks.AIR) // block is not null (air)
 							{
-								//XXX maybe a check for "is the pick effective on this" instead of just ROCK
-								if (state.getMaterial() == Material.ROCK
-										&& block != Blocks.BEDROCK) // if block
-									// is made
-									// of rock
+								if (canHarvestBlock(state, item)) // if block is harvestable with tool
 								{
 									if (!playedSound) {
-										@SuppressWarnings("deprecation")
-										SoundType sound = block.getSoundType();
+										SoundType sound = block.getSoundType(state, world, currentPos, player);
 										world.playSound(
 												player,
 												hitBlock,

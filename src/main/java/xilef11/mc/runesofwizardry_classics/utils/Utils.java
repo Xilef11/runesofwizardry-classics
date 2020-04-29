@@ -20,7 +20,7 @@ public class Utils {
 	}
 	/**
 	 * Attempts to remove experience levels from the player.
-	 * @param player the player from wich to take XP
+	 * @param player the player from which to take XP
 	 * @param levels the number of XP levels to take
 	 * @return true if the levels have been removed, false if the player didn't have enough
 	 */
@@ -28,7 +28,7 @@ public class Utils {
 		if(player.capabilities.isCreativeMode)return true;
 		boolean enough =player.experienceLevel>=levels;
 		if(enough){
-			player.addExperienceLevel(-10);
+			player.addExperienceLevel(-levels);
 		}
 		return enough;
 	}

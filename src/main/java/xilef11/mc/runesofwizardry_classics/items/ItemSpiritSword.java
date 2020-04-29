@@ -51,7 +51,7 @@ public class ItemSpiritSword extends ItemSword{
 	 * @see net.minecraft.item.Item#getRarity(net.minecraft.item.ItemStack)
 	 */
 	@Override
-	public EnumRarity getRarity(ItemStack stack) {
+	public EnumRarity getForgeRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
 	}
 	//we want knockback 10 and smite 5 on this. original did it in onUpdate
@@ -91,7 +91,7 @@ public class ItemSpiritSword extends ItemSword{
 				ei.setPickupDelay(0);
 			}
 		}
-		return false;
+		return super.hitEntity(stack, target, attacker);
 	}
 	/* (non-Javadoc)
 	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.item.Item, net.minecraft.creativetab.CreativeTabs, java.util.List)
